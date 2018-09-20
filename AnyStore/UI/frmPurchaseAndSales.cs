@@ -22,6 +22,8 @@ namespace AnyStore.UI
             InitializeComponent();
         }
 
+        private int count_prod = 0;
+
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -109,15 +111,20 @@ namespace AnyStore.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (count_prod >= 26)
+            {
+                //Display error MEssage
+                MessageBox.Show("Not more than 26 Products allowed.");
+                return;
+            }
             //Get Product Name, Rate and Qty customer wants to buy
-            string productName = txtProductName.Text;
-            decimal Rate = decimal.Parse(txtRate.Text);
-            if (TxtQty.Text == "" || TxtQty.Text == null)
+            if (TxtQty.Text == "" || txtRate.Text == "" || txtProductName.Text == "")
             {
                 return;
             }
+            string productName = txtProductName.Text;
+            decimal Rate = decimal.Parse(txtRate.Text);
             decimal Qty = decimal.Parse(TxtQty.Text);
-
             decimal Total = Rate * Qty; //Total=RatexQty
 
             //Display the Subtotal in textbox
@@ -147,6 +154,7 @@ namespace AnyStore.UI
                 txtInventory.Text = "0.00";
                 txtRate.Text = "0.00";
                 TxtQty.Text = "0.00";
+                count_prod += 1;
             }
         }
 

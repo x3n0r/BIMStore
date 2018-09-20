@@ -49,9 +49,11 @@ namespace AnyStore.DAL
         private int tabellentiefe;
         private int anzahlDatensätze;
         private double Zwischensumme;
+           /*
         private double Versandkosten;
         private double mwst19;
         private double mwst7;
+        */
         private double rabatt;
 
 
@@ -118,7 +120,7 @@ namespace AnyStore.DAL
                 }
 
                 // Die Namen der Produkte müssen natürlich nicht stimmen
-                /*tabelle.Rows.Add(2, 123456, "Produkt1", "85,00", 19);
+                /*tabelle.Rows.Add(2, 123456, "Produkt1", "85,00", 19);*/
                 tabelle.Rows.Add(2, 123456, "Produkt2", "85,00", 7);
                 tabelle.Rows.Add(2, 654321, "Produkt3", "41,00", 7);
                 tabelle.Rows.Add(3, 654123, "Produkt4", "12,00", 7);
@@ -137,22 +139,23 @@ namespace AnyStore.DAL
                 tabelle.Rows.Add(16, 123654, "Produkt17", "52,33", 19);
                 tabelle.Rows.Add(17, 415263, "Produkt18", "74,25", 19);
                 tabelle.Rows.Add(18, 142536, "Produkt19", "5,14", 7);
-                tabelle.Rows.Add(19, 654123, "Produkt20", "12,14", 19);*/
-                /*     --> Hier haben wir die maximale Anzahl für die erste Seite an Einträgen ausgelastet
-                 *       tabelle.Rows.Add(20, 123654, "Produkt21", "52,14", 7);
-                 *       tabelle.Rows.Add(21, 415263, "Produkt22", "74,78", 19);
-                 *       tabelle.Rows.Add(22, 142536, "Produkt23", "5,50", 7);
-                 *       tabelle.Rows.Add(23, 123456, "Produkt24", "85,10", 19);
-                 *       tabelle.Rows.Add(24, 654321, "Produkt25", "41,20", 7);
-                 *       tabelle.Rows.Add(25, 654123, "Produkt26", "12,60", 19);
-                 *       tabelle.Rows.Add(26, 123654, "Produkt", "52,85", 19);
-                 *       tabelle.Rows.Add(27, 415263, "Produkt", "74,48", 7);
-                 *       tabelle.Rows.Add(28, 142536, "Produkt", "5,85", 7);
-                 *       tabelle.Rows.Add(29, 654123, "Produkt", "12,60", 19);
-                 *       tabelle.Rows.Add(30, 123654, "Produkt", "52,85", 19);
-                 *       tabelle.Rows.Add(31, 415263, "Produkt", "74,48", 7);
-                 *       tabelle.Rows.Add(32, 142536, "Produkt", "5,85", 7);
-                 */
+                tabelle.Rows.Add(19, 654123, "Produkt20", "12,14", 19);
+                /*     --> Hier haben wir die maximale Anzahl für die erste Seite an Einträgen ausgelastet */
+                      tabelle.Rows.Add(20, 123654, "Produkt21", "52,14", 7);
+                      tabelle.Rows.Add(21, 415263, "Produkt22", "74,78", 19);
+                      tabelle.Rows.Add(22, 142536, "Produkt23", "5,50", 7);
+                      tabelle.Rows.Add(23, 123456, "Produkt24", "85,10", 19);
+                      tabelle.Rows.Add(24, 654321, "Produkt25", "41,20", 7);
+                      tabelle.Rows.Add(25, 654123, "Produkt26", "12,60", 19);
+                /*
+                      tabelle.Rows.Add(26, 123654, "Produkt", "52,85", 19);
+                      tabelle.Rows.Add(27, 415263, "Produkt", "74,48", 7);
+                      tabelle.Rows.Add(28, 142536, "Produkt", "5,85", 7);
+                      tabelle.Rows.Add(29, 654123, "Produkt", "12,60", 19);
+                      tabelle.Rows.Add(30, 123654, "Produkt", "52,85", 19);
+                      tabelle.Rows.Add(31, 415263, "Produkt", "74,48", 7);
+                      tabelle.Rows.Add(32, 142536, "Produkt", "5,85", 7);
+                  */
                 anzahlDatensätze = tabelle.Rows.Count; //Diese Zuweisung zählt die Datensätze und schreibt die Anzahl in eine Variable.
             }
                 catch (Exception Fehler) {
@@ -265,7 +268,7 @@ namespace AnyStore.DAL
             e.Graphics.DrawString("Artikelnummer", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(145, Zeichenhöhe - 20));
             e.Graphics.DrawString("Name", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(265, Zeichenhöhe - 20));
             //e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(395, Zeichenhöhe - 20));
-            e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(523, Zeichenhöhe - 20));
+            e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(480, Zeichenhöhe - 20));
             //e.Graphics.DrawString("Mwst", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(523, Zeichenhöhe - 20));
             e.Graphics.DrawString("Gesamtpreis Netto", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(585, Zeichenhöhe - 20));
             e.Graphics.DrawLine(new Pen(Color.Black, 2), new Point(87, Zeichenhöhe), new Point(735, Zeichenhöhe)); // Trennung der Tabelle waagerecht
@@ -277,7 +280,8 @@ namespace AnyStore.DAL
             
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(140, Zeichenhöhe), new Point(140, tabellentiefe));//nach Menge
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(260, Zeichenhöhe), new Point(260, tabellentiefe));//nach Artikelnummer
-            e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(390, Zeichenhöhe), new Point(390, tabellentiefe));//nach Name
+            e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(470, Zeichenhöhe), new Point(470, tabellentiefe));//nach Name
+            //e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(390, Zeichenhöhe), new Point(390, tabellentiefe));//nach Name
             //e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(510, Zeichenhöhe), new Point(510, tabellentiefe));//nach Einzelpris Netto
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(570, Zeichenhöhe), new Point(570, tabellentiefe));//nach MWS
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(87, tabellentiefe), new Point(735, tabellentiefe));//Endlinie
@@ -316,7 +320,8 @@ namespace AnyStore.DAL
                 string Eintrag = item.ToString() + " €"; //String zusammenfassen
                 SizeF stringSize = new SizeF(); // Größe des Strings als Variable definieren
                 stringSize = e.Graphics.MeasureString(Eintrag, new Font("Courier", 10)); //Größe des Strings in Variable schreiben
-                e.Graphics.DrawString(Eintrag, new Font("Courier", 10), Brushes.Black, new PointF(506 - stringSize.Width, Zeichenhöhe)); //String schreiben minus die abgemessene Breite um eine künstliche Rechtsbündigkeit zu erzeugen
+                e.Graphics.DrawString(Eintrag, new Font("Courier", 10), Brushes.Black, new PointF(550 - stringSize.Width, Zeichenhöhe)); //String schreiben minus die abgemessene Breite um eine künstliche Rechtsbündigkeit zu erzeugen
+                //e.Graphics.DrawString(Eintrag, new Font("Courier", 10), Brushes.Black, new PointF(506 - stringSize.Width, Zeichenhöhe)); //String schreiben minus die abgemessene Breite um eine künstliche Rechtsbündigkeit zu erzeugen
                 Zeichenhöhe = Zeichenhöhe + 15; //Nächster Eintrag muss tiefer sein als dieser Eintrag
             }
 
@@ -350,6 +355,7 @@ namespace AnyStore.DAL
                 Zwischensumme = Zwischensumme + produktsumme; //Wir berechnen in dieser Schleife die Summe aller Artikel
 
                 // - Berechnung MWST - Wir müssen in dieser Schleife die MWST berechnen, da nur hier die Produktsumme in Verbindung mit den verschiedenen MWST-Sätzen steht.
+                /*
                 Object mwstcheck = row.ItemArray[4]; //Auslesen der MWST des derzeitigen Produkts
                 if (mwstcheck.ToString() == "19") //Abfrage, welcher Mehrwertsteuersatz genutzt wird. Kundenvorgabe sind 2 verschiedene Sätze.
                 {
@@ -360,7 +366,7 @@ namespace AnyStore.DAL
 
                    // mwst7 = mwst7 + (produktsumme * 0.07d);//Hier wird die Mehrwertsteuer 7% des derzeitigen Produkts zu den anderen MWST-Sätzen addiert, wenn das Produkt 7% enthält.
                 }
-
+                */
              }
 
             //Rechnungszusammenfassung
@@ -435,8 +441,9 @@ namespace AnyStore.DAL
              //Überweisungsaufforderung unter der Tabelle
             String überweisungsaufforderung = "Bitte überweisen Sie den Gesamtbetrag von " + gesamt_string +" innerhalb 7 Tagen |unter Angabe der Rechnungsnummer auf mein Konto. ||Vielen Dank!||" +Sachbearbeiter;
             überweisungsaufforderung = überweisungsaufforderung.Replace("|", Environment.NewLine);
-            e.Graphics.DrawString(überweisungsaufforderung, new Font("Courier", 10), Brushes.Black, new Point(87, tabellentiefe + 190)); //Dynamisch gehalten, das der Ort dieses Textes je nach Anzahl der Produkte passend geschrieben wird.
-           
+            //e.Graphics.DrawString(überweisungsaufforderung, new Font("Courier", 10), Brushes.Black, new Point(87, tabellentiefe + 190)); //Dynamisch gehalten, das der Ort dieses Textes je nach Anzahl der Produkte passend geschrieben wird.
+            e.Graphics.DrawString(überweisungsaufforderung, new Font("Courier", 10), Brushes.Black, new Point(87, 980)); //Dynamisch gehalten, das der Ort dieses Textes je nach Anzahl der Produkte passend geschrieben wird.
+
             //Fußzeile
             String Fußzeile = "IBAN: " + IBAN +"       BIC: "+  BIC ;
             Fußzeile = Fußzeile.Replace("|", Environment.NewLine);
