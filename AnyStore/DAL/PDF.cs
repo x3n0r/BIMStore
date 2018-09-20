@@ -264,8 +264,9 @@ namespace AnyStore.DAL
             e.Graphics.DrawString("Menge", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, Zeichenhöhe - 20));
             e.Graphics.DrawString("Artikelnummer", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(145, Zeichenhöhe - 20));
             e.Graphics.DrawString("Name", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(265, Zeichenhöhe - 20));
-            e.Graphics.DrawString("Einzelpreis Netto", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(395, Zeichenhöhe - 20));
-            e.Graphics.DrawString("Mwst", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(523, Zeichenhöhe - 20));
+            //e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(395, Zeichenhöhe - 20));
+            e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(523, Zeichenhöhe - 20));
+            //e.Graphics.DrawString("Mwst", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(523, Zeichenhöhe - 20));
             e.Graphics.DrawString("Gesamtpreis Netto", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(585, Zeichenhöhe - 20));
             e.Graphics.DrawLine(new Pen(Color.Black, 2), new Point(87, Zeichenhöhe), new Point(735, Zeichenhöhe)); // Trennung der Tabelle waagerecht
             //Folgende Reihenfolge wird in der Tabelle benutzt (vom Kunde vorgegeben): Menge, Artikelnummer, Name, Einzelpreis Netto, Mwst, Gesamtpreis netto
@@ -277,7 +278,7 @@ namespace AnyStore.DAL
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(140, Zeichenhöhe), new Point(140, tabellentiefe));//nach Menge
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(260, Zeichenhöhe), new Point(260, tabellentiefe));//nach Artikelnummer
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(390, Zeichenhöhe), new Point(390, tabellentiefe));//nach Name
-            e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(510, Zeichenhöhe), new Point(510, tabellentiefe));//nach Einzelpris Netto
+            //e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(510, Zeichenhöhe), new Point(510, tabellentiefe));//nach Einzelpris Netto
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(570, Zeichenhöhe), new Point(570, tabellentiefe));//nach MWS
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(87, tabellentiefe), new Point(735, tabellentiefe));//Endlinie
 
@@ -319,7 +320,7 @@ namespace AnyStore.DAL
                 Zeichenhöhe = Zeichenhöhe + 15; //Nächster Eintrag muss tiefer sein als dieser Eintrag
             }
 
-
+            /*
             Zeichenhöhe = Zeichenhöhe_orig; //Dieser Eintrag setzt den Cursor zum ausfüllen der Tabelle zurück
             foreach (DataRow row in tabelle.Rows)
             {
@@ -330,7 +331,7 @@ namespace AnyStore.DAL
                 e.Graphics.DrawString(Eintrag, new Font("Courier", 10), Brushes.Black, new PointF(562 - stringSize.Width, Zeichenhöhe));
                 Zeichenhöhe = Zeichenhöhe + 15;
                 
-            }
+            }*/
 
 
             Zeichenhöhe = Zeichenhöhe_orig; //Dieser Eintrag setzt den Cursor zum ausfüllen der Tabelle zurück
@@ -372,6 +373,8 @@ namespace AnyStore.DAL
             e.Graphics.DrawLine(new Pen(Color.Gray, 1), new Point(575, tabellentiefe + 20), new Point(735, tabellentiefe + 20));//Zwischensumme Linie
             e.Graphics.DrawString("Zwischensumme: ", new Font("Courier", 10), Brushes.Black, new Point(265, tabellentiefe + 3)); //Beschreibung der Zahlen
 
+
+            /*
             // - Versandkosten
             string Versandkosten_string = Versandkosten.ToString("n2") + " €";
             SizeF Versandkosten_setting = new SizeF();
@@ -402,31 +405,32 @@ namespace AnyStore.DAL
             e.Graphics.DrawString(mwstges_string, new Font("Courier", 10), Brushes.Black, new PointF(706 - mwstges_setting.Width, tabellentiefe + 65));
             e.Graphics.DrawString("MwSt. gesamt: ", new Font("Courier", 10), Brushes.Black, new Point(265, tabellentiefe + 65));
             e.Graphics.DrawLine(new Pen(Color.Gray, 1), new Point(575, tabellentiefe + 80), new Point(735, tabellentiefe + 80));//Linie über Summe
-
+            
 
             // - Summe ermitteln
-            double summe = Zwischensumme + Versandkosten + mwstges;
+            double summe = Zwischensumme; // + Versandkosten + mwstges;
             string summe_string = summe.ToString("n2") + " €";
             SizeF summe_setting = new SizeF();
             summe_setting = e.Graphics.MeasureString(summe_string, new Font("Courier", 10));
             e.Graphics.DrawString(summe_string, new Font("Courier", 10, FontStyle.Bold), Brushes.Black, new PointF(706 - summe_setting.Width, tabellentiefe + 80));
             e.Graphics.DrawString("Summe: ", new Font("Courier", 10, FontStyle.Bold), Brushes.Black, new Point(265, tabellentiefe + 80));
+            */
 
             // - Rabatt ausrechnen & schreiben
-           string rabatt_string = rabatt.ToString("n2") + " €";
+            string rabatt_string = rabatt.ToString("n2") + " €";
             SizeF rabatt_setting = new SizeF();
             rabatt_setting = e.Graphics.MeasureString(rabatt_string, new Font("Courier", 10));
-            e.Graphics.DrawString(rabatt_string, new Font("Courier", 10), Brushes.Black, new PointF(706 - rabatt_setting.Width, tabellentiefe + 95));
-            e.Graphics.DrawString("Rabatt: ", new Font("Courier", 10), Brushes.Black, new Point(265, tabellentiefe + 95));
-            e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(575, tabellentiefe + 110), new Point(735, tabellentiefe + 110));//Linie über gesamt
+            e.Graphics.DrawString(rabatt_string, new Font("Courier", 10), Brushes.Black, new PointF(706 - rabatt_setting.Width, tabellentiefe + 20));
+            e.Graphics.DrawString("Rabatt: ", new Font("Courier", 10), Brushes.Black, new Point(265, tabellentiefe + 20));
+            e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(575, tabellentiefe + 35), new Point(735, tabellentiefe + 35));//Linie über gesamt
 
             // - Gesamt
-            double gesamt = summe - rabatt; //Gesamtbetrag ausrechnen
+            double gesamt = Zwischensumme - rabatt; //Gesamtbetrag ausrechnen
             string gesamt_string = gesamt.ToString("n2") + " €"; 
             SizeF gesamt_setting = new SizeF();
             gesamt_setting = e.Graphics.MeasureString(gesamt_string, new Font("Courier", 10));
-            e.Graphics.DrawString(gesamt_string, new Font("Courier", 10, FontStyle.Bold), Brushes.Black, new PointF(706 - gesamt_setting.Width, tabellentiefe + 110));
-            e.Graphics.DrawString("Gesamt: ", new Font("Courier", 10,FontStyle.Bold), Brushes.Black, new Point(265, tabellentiefe + 110));
+            e.Graphics.DrawString(gesamt_string, new Font("Courier", 10, FontStyle.Bold), Brushes.Black, new PointF(706 - gesamt_setting.Width, tabellentiefe + 35));
+            e.Graphics.DrawString("Gesamt: ", new Font("Courier", 10,FontStyle.Bold), Brushes.Black, new Point(265, tabellentiefe + 35));
 
              //Überweisungsaufforderung unter der Tabelle
             String überweisungsaufforderung = "Bitte überweisen Sie den Gesamtbetrag von " + gesamt_string +" innerhalb 7 Tagen |unter Angabe der Rechnungsnummer auf mein Konto. ||Vielen Dank!||" +Sachbearbeiter;
