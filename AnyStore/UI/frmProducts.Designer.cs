@@ -131,12 +131,13 @@
             this.lblRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRate.Location = new System.Drawing.Point(12, 302);
             this.lblRate.Name = "lblRate";
-            this.lblRate.Size = new System.Drawing.Size(34, 17);
+            this.lblRate.Size = new System.Drawing.Size(36, 17);
             this.lblRate.TabIndex = 7;
-            this.lblRate.Text = "Rate";
+            this.lblRate.Text = "Price";
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(120, 60);
             this.txtID.Name = "txtID";
@@ -184,7 +185,7 @@
             this.dgvProducts.Location = new System.Drawing.Point(397, 100);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.Size = new System.Drawing.Size(418, 227);
-            this.dgvProducts.TabIndex = 13;
+            this.dgvProducts.TabIndex = 99;
             this.dgvProducts.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProducts_RowHeaderMouseClick);
             // 
             // txtSearch
@@ -193,7 +194,7 @@
             this.txtSearch.Location = new System.Drawing.Point(447, 60);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(368, 25);
-            this.txtSearch.TabIndex = 15;
+            this.txtSearch.TabIndex = 98;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch

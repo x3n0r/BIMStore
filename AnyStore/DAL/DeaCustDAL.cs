@@ -158,15 +158,42 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO SAERCH DEALER Or CUSTOMER FOR TRANSACTON MODULE
+        public DeaCustBLL SearchDealerCustomerForTransaction(string keyword,string DeaorCust)
+        {
+            int i = 0;
+            if (DeaorCust == "Dealer")
+            {
+                i = 1;
+            } else
+            {
+                i = 2;
+            }
+            return SearchDealerCustomerForTransaction(keyword, i);
+        }
+        #endregion
+        #region METHOD TO SAERCH DEALER Or CUSTOMER FOR TRANSACTON MODULE
         public DeaCustBLL SearchDealerCustomerForTransaction(string keyword)
         {
+            return SearchDealerCustomerForTransaction(keyword, 0);
+        }
+        #endregion
+        #region METHOD TO SAERCH DEALER Or CUSTOMER FOR TRANSACTON MODULE
+        /* 0 nothing 1 dealer 2 customer*/
+        public DeaCustBLL SearchDealerCustomerForTransaction(string keyword,int deacustnothing)
+        {
+            
+            Dictionary<int, string> dict= new Dictionary<int, string>();
+            dict.Add(0, "");
+            dict.Add(1, "Dealer");
+            dict.Add(2, "Customer");
             //Create an object for DeaCustBLL class
             DeaCustBLL dc = new DeaCustBLL();
 
             try
             {
                 var erg = from deacusts in db.tbl_dea_cust
-                          where SqlMethods.Like(deacusts.name, "%" + keyword + "%")
+                          where SqlMethods.Like(deacusts.name, "%" + keyword + "%") &&
+                          SqlMethods.Like(deacusts.type,"%"+ dict[deacustnothing] + "%")                           
                           select deacusts;
 
                 tbl_dea_cust myDeaCust = erg.FirstOrDefault();

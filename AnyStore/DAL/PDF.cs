@@ -94,7 +94,7 @@ namespace AnyStore.DAL
                 //Postleitzahl = 32132;
                 Ort = pdf.customeraddress.country;// "Musterdorf";
                 Rechnungsnr = pdf.invoicenumber;// 1234567890;
-                Rechnungsdatum = new DateTime(2014, 11 ,21);
+                Rechnungsdatum = pdf.invoicedate;
                 Mailaddr = pdf.companyaddress.email;//"erika@musterfrau.tld";
                 Sachbearbeiter = "Erika Musterfrau";
                 Telefonnr = pdf.companyaddress.telnb;// "+49 123 3215 - 10";
@@ -111,9 +111,12 @@ namespace AnyStore.DAL
                 tabelle.Columns.Add("Einzelpreis Netto");
                 tabelle.Columns.Add("MwSt");
 
-                
-                tabelle.Rows.Add(pdf.listitems[0]);
-                tabelle.Rows.Add(pdf.listitems[1]);
+                foreach ( var value in pdf.listitems)
+                {
+                    tabelle.Rows.Add(value.amount, value.productnumber, value.name, value.price, 0);
+
+                }
+
                 // Die Namen der Produkte müssen natürlich nicht stimmen
                 /*tabelle.Rows.Add(2, 123456, "Produkt1", "85,00", 19);
                 tabelle.Rows.Add(2, 123456, "Produkt2", "85,00", 7);
@@ -199,7 +202,7 @@ namespace AnyStore.DAL
             e.Graphics.DrawString(Sachbearbeiter, new Font("Courier", 10, FontStyle.Bold), new SolidBrush(Color.Black), new Point(590, 225));
             e.Graphics.DrawString("Tel:  " + Telefonnr, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(590, 240));
             //e.Graphics.DrawString("Fax: " + Faxnr, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(590, 255));
-            e.Graphics.DrawString(Mailaddr, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(590, 270));
+            e.Graphics.DrawString(Mailaddr, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(590, 255)); //270
            
             // Faltlinen - an ein standartisiertes Schema angepasst
             e.Graphics.DrawString("__", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(16, 383));
@@ -349,12 +352,12 @@ namespace AnyStore.DAL
                 Object mwstcheck = row.ItemArray[4]; //Auslesen der MWST des derzeitigen Produkts
                 if (mwstcheck.ToString() == "19") //Abfrage, welcher Mehrwertsteuersatz genutzt wird. Kundenvorgabe sind 2 verschiedene Sätze.
                 {
-                    mwst19 = mwst19 + (produktsumme * 0.19d); //Hier wird die Mehrwertsteuer 19% des derzeitigen Produkts zu den anderen MWST-Sätzen addiert, wenn das Produkt 19% enthält.
+                    //mwst19 = mwst19 + (produktsumme * 0.19d); //Hier wird die Mehrwertsteuer 19% des derzeitigen Produkts zu den anderen MWST-Sätzen addiert, wenn das Produkt 19% enthält.
                 }
                 if (mwstcheck.ToString() == "7")
                 {
 
-                    mwst7 = mwst7 + (produktsumme * 0.07d);//Hier wird die Mehrwertsteuer 7% des derzeitigen Produkts zu den anderen MWST-Sätzen addiert, wenn das Produkt 7% enthält.
+                   // mwst7 = mwst7 + (produktsumme * 0.07d);//Hier wird die Mehrwertsteuer 7% des derzeitigen Produkts zu den anderen MWST-Sätzen addiert, wenn das Produkt 7% enthält.
                 }
 
              }

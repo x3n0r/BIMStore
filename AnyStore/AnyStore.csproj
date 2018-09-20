@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\CompanyDataBLL.cs" />
     <Compile Include="BLL\PDFBLL.cs" />
     <Compile Include="BLL\categoriesBLL.cs" />
     <Compile Include="BLL\DeaCustBLL.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="BLL\transactionDetailBLL.cs" />
     <Compile Include="BLL\transactionsBLL.cs" />
     <Compile Include="BLL\userBLL.cs" />
+    <Compile Include="DAL\CompanyDataDAL.cs" />
     <Compile Include="DAL\categoriesDAL.cs" />
     <Compile Include="DAL\DeaCustDAL.cs" />
     <Compile Include="DAL\DGVPrinter.cs" />
@@ -85,12 +87,19 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="UI\frmAdminDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmAdminDashboard.Designer.cs">
       <DependentUpon>frmAdminDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmCompanyData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCompanyData.Designer.cs">
+      <DependentUpon>frmCompanyData.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmCategories.cs">
       <SubType>Form</SubType>
@@ -103,12 +112,6 @@
     </Compile>
     <Compile Include="UI\frmDeaCust.Designer.cs">
       <DependentUpon>frmDeaCust.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\frmCompanyData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\frmCompanyData.Designer.cs">
-      <DependentUpon>frmCompanyData.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmInventory.cs">
       <SubType>Form</SubType>
@@ -157,14 +160,14 @@
     <EmbeddedResource Include="UI\frmAdminDashboard.resx">
       <DependentUpon>frmAdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmCompanyData.resx">
+      <DependentUpon>frmCompanyData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmCategories.resx">
       <DependentUpon>frmCategories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmDeaCust.resx">
       <DependentUpon>frmDeaCust.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmCompanyData.resx">
-      <DependentUpon>frmCompanyData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmInventory.resx">
       <DependentUpon>frmInventory.cs</DependentUpon>
@@ -200,9 +203,11 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

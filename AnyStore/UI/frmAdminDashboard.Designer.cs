@@ -39,12 +39,12 @@
             this.purchaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.companydataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblLoggedInUser = new System.Windows.Forms.Label();
             this.lblAppFName = new System.Windows.Forms.Label();
             this.lblLName = new System.Windows.Forms.Label();
             this.lblSHead = new System.Windows.Forms.Label();
-            this.companydataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlFooter.SuspendLayout();
             this.menuStripTop.SuspendLayout();
             this.SuspendLayout();
@@ -66,13 +66,14 @@
             this.lblFooter.ForeColor = System.Drawing.Color.White;
             this.lblFooter.Location = new System.Drawing.Point(586, 8);
             this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(167, 17);
+            this.lblFooter.Size = new System.Drawing.Size(169, 17);
             this.lblFooter.TabIndex = 0;
             this.lblFooter.Text = "Developed By: VIJAY THAPA";
             // 
             // menuStripTop
             // 
             this.menuStripTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.companydataToolStripMenuItem,
             this.usersToolStripMenuItem,
             this.categoryToolStripMenuItem,
             this.productsToolStripMenuItem,
@@ -80,8 +81,7 @@
             this.inventoryToolStripMenuItem,
             this.purchaseToolStripMenuItem,
             this.salesToolStripMenuItem,
-            this.transactionToolStripMenuItem,
-            this.companydataToolStripMenuItem});
+            this.transactionToolStripMenuItem});
             this.menuStripTop.Location = new System.Drawing.Point(0, 0);
             this.menuStripTop.Name = "menuStripTop";
             this.menuStripTop.Size = new System.Drawing.Size(1192, 24);
@@ -140,9 +140,16 @@
             // transactionToolStripMenuItem
             // 
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.transactionToolStripMenuItem.Text = "Transaction";
             this.transactionToolStripMenuItem.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
+            // 
+            // companydataToolStripMenuItem
+            // 
+            this.companydataToolStripMenuItem.Name = "companydataToolStripMenuItem";
+            this.companydataToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.companydataToolStripMenuItem.Text = "Companydata";
+            this.companydataToolStripMenuItem.Click += new System.EventHandler(this.companydataToolStripMenuItem_Click);
             // 
             // lblUser
             // 
@@ -180,7 +187,7 @@
             this.lblLName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLName.Location = new System.Drawing.Point(656, 266);
             this.lblLName.Name = "lblLName";
-            this.lblLName.Size = new System.Drawing.Size(99, 37);
+            this.lblLName.Size = new System.Drawing.Size(100, 37);
             this.lblLName.TabIndex = 5;
             this.lblLName.Text = "STORE";
             // 
@@ -191,16 +198,9 @@
             this.lblSHead.ForeColor = System.Drawing.Color.MediumSeaGreen;
             this.lblSHead.Location = new System.Drawing.Point(525, 303);
             this.lblSHead.Name = "lblSHead";
-            this.lblSHead.Size = new System.Drawing.Size(311, 25);
+            this.lblSHead.Size = new System.Drawing.Size(310, 25);
             this.lblSHead.TabIndex = 6;
             this.lblSHead.Text = "Billing and Inventory Management";
-            // 
-            // companydataToolStripMenuItem
-            // 
-            this.companydataToolStripMenuItem.Name = "companydataToolStripMenuItem";
-            this.companydataToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.companydataToolStripMenuItem.Text = "Companydata";
-            this.companydataToolStripMenuItem.Click += new System.EventHandler(this.companydataToolStripMenuItem_Click);
             // 
             // frmAdminDashboard
             // 

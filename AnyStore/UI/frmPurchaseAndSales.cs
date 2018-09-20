@@ -56,7 +56,7 @@ namespace AnyStore.UI
             //Get the keyword fro the text box
             string keyword = txtSearch.Text;
 
-            if(keyword=="")
+            if (keyword == "")
             {
                 //Clear all the textboxes
                 txtName.Text = "";
@@ -65,9 +65,16 @@ namespace AnyStore.UI
                 txtAddress.Text = "";
                 return;
             }
-
+            DeaCustBLL dc = new DeaCustBLL();
             //Write the code to get the details and set the value on text boxes
-            DeaCustBLL dc = dcDAL.SearchDealerCustomerForTransaction(keyword);
+            string transactionType = lblTop.Text;
+            if (transactionType == "Purchase") { 
+                //search dealer
+                dc = dcDAL.SearchDealerCustomerForTransaction(keyword,"Dealer");
+            } else { 
+                //serach customer
+                dc = dcDAL.SearchDealerCustomerForTransaction(keyword,"Customer");
+            }
 
             //Now transfer or set the value from DeCustBLL to textboxes
             txtName.Text = dc.name;
@@ -341,6 +348,7 @@ namespace AnyStore.UI
                         cust.name = "MAX MUSTERMAN";
                         cust.address = "FUltonstraße 26/4/23";
                         cust.country = "1210 Wien";
+                        pdf.customeraddress = cust;
 
                         //companyaddress
                         company comp = new company();
@@ -348,9 +356,10 @@ namespace AnyStore.UI
                         comp.country = "1234 Burgenland";
                         comp.email = "veri@gmx.at";
                         comp.telnb = "+43 676 8781 66666";
+                        pdf.companyaddress = comp;
 
                         pdf.invoicenumber = 1234;
-                        pdf.invoicedate = "11.11.1111";
+                        pdf.invoicedate = new DateTime(2014, 11, 21); 
                         //listitems
                         List<items> lit = new List<items>();
                         items it = new items();
@@ -361,15 +370,16 @@ namespace AnyStore.UI
                         it.total = 18;
                         lit.Add(it);
                         pdf.listitems = lit;
-                        pdf.sum = Convert.ToDecimal("18,21");
-                        pdf.discount = Convert.ToDecimal("10,00");
-                        pdf.total = Convert.ToDecimal("14,00");
+                        pdf.sum = Convert.ToDecimal(18.21M);
+                        pdf.discount = Convert.ToDecimal(10.00M);
+                        pdf.total = Convert.ToDecimal(14.00M);
                         pdf.IBAN = "MYIBAN";
                         pdf.BIC = "MYBIC";
                         pdfengine.generate(pdf, printDialog1);
                     }
-                    
 
+                    //Transaction Failed
+                    MessageBox.Show("Saved");
                 }
                 else
                 {

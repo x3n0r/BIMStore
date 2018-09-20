@@ -37,7 +37,7 @@ namespace AnyStore.BLL
         public customer customeraddress { get; set; }
         public company companyaddress { get; set; }
         public int invoicenumber { get; set; }
-        public string invoicedate { get; set; }
+        public DateTime invoicedate { get; set; }
         public List<items> listitems { get; set; }
         public decimal sum { get; set; }
         public decimal discount { get; set; }

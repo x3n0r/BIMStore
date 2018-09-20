@@ -144,40 +144,48 @@
             this.dtpBillDate.Location = new System.Drawing.Point(985, 25);
             this.dtpBillDate.Name = "dtpBillDate";
             this.dtpBillDate.Size = new System.Drawing.Size(200, 25);
-            this.dtpBillDate.TabIndex = 12;
+            this.dtpBillDate.TabIndex = 2;
             // 
             // txtName
             // 
+            this.txtName.Enabled = false;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(61, 59);
             this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(223, 25);
-            this.txtName.TabIndex = 11;
+            this.txtName.TabIndex = 0;
             // 
             // txtContact
             // 
+            this.txtContact.Enabled = false;
             this.txtContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.Location = new System.Drawing.Point(377, 59);
             this.txtContact.Name = "txtContact";
+            this.txtContact.ReadOnly = true;
             this.txtContact.Size = new System.Drawing.Size(223, 25);
-            this.txtContact.TabIndex = 10;
+            this.txtContact.TabIndex = 0;
             // 
             // txtAddress
             // 
+            this.txtAddress.Enabled = false;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(676, 25);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(223, 54);
-            this.txtAddress.TabIndex = 9;
+            this.txtAddress.TabIndex = 0;
             // 
             // txtEmail
             // 
+            this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(377, 22);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(223, 25);
-            this.txtEmail.TabIndex = 8;
+            this.txtEmail.TabIndex = 0;
             // 
             // txtSearch
             // 
@@ -185,7 +193,7 @@
             this.txtSearch.Location = new System.Drawing.Point(61, 25);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(223, 25);
-            this.txtSearch.TabIndex = 7;
+            this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblAddress
@@ -285,18 +293,20 @@
             this.btnAdd.Location = new System.Drawing.Point(1082, 15);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(103, 36);
-            this.btnAdd.TabIndex = 12;
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtRate
             // 
+            this.txtRate.Enabled = false;
             this.txtRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRate.Location = new System.Drawing.Point(676, 26);
             this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(145, 25);
-            this.txtRate.TabIndex = 11;
+            this.txtRate.TabIndex = 0;
             // 
             // TxtQty
             // 
@@ -304,23 +314,27 @@
             this.TxtQty.Location = new System.Drawing.Point(874, 26);
             this.TxtQty.Name = "TxtQty";
             this.TxtQty.Size = new System.Drawing.Size(145, 25);
-            this.TxtQty.TabIndex = 10;
+            this.TxtQty.TabIndex = 4;
             // 
             // txtProductName
             // 
+            this.txtProductName.Enabled = false;
             this.txtProductName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductName.Location = new System.Drawing.Point(261, 26);
             this.txtProductName.Name = "txtProductName";
+            this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(145, 25);
-            this.txtProductName.TabIndex = 9;
+            this.txtProductName.TabIndex = 0;
             // 
             // txtInventory
             // 
+            this.txtInventory.Enabled = false;
             this.txtInventory.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInventory.Location = new System.Drawing.Point(485, 26);
             this.txtInventory.Name = "txtInventory";
+            this.txtInventory.ReadOnly = true;
             this.txtInventory.Size = new System.Drawing.Size(145, 25);
-            this.txtInventory.TabIndex = 8;
+            this.txtInventory.TabIndex = 0;
             // 
             // txtSearchProduct
             // 
@@ -328,7 +342,7 @@
             this.txtSearchProduct.Location = new System.Drawing.Point(61, 26);
             this.txtSearchProduct.Name = "txtSearchProduct";
             this.txtSearchProduct.Size = new System.Drawing.Size(145, 25);
-            this.txtSearchProduct.TabIndex = 7;
+            this.txtSearchProduct.TabIndex = 3;
             this.txtSearchProduct.TextChanged += new System.EventHandler(this.txtSearchProduct_TextChanged);
             // 
             // lblProductName
@@ -367,9 +381,9 @@
             this.lblRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRate.Location = new System.Drawing.Point(636, 26);
             this.lblRate.Name = "lblRate";
-            this.lblRate.Size = new System.Drawing.Size(34, 17);
+            this.lblRate.Size = new System.Drawing.Size(36, 17);
             this.lblRate.TabIndex = 2;
-            this.lblRate.Text = "Rate";
+            this.lblRate.Text = "Price";
             // 
             // lblProductSearch
             // 
@@ -403,10 +417,11 @@
             // dgvAddedProducts
             // 
             this.dgvAddedProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAddedProducts.Enabled = false;
             this.dgvAddedProducts.Location = new System.Drawing.Point(7, 35);
             this.dgvAddedProducts.Name = "dgvAddedProducts";
             this.dgvAddedProducts.Size = new System.Drawing.Size(578, 282);
-            this.dgvAddedProducts.TabIndex = 1;
+            this.dgvAddedProducts.TabIndex = 0;
             // 
             // lblDGVTtitle
             // 
@@ -447,20 +462,21 @@
             this.btnSave.Location = new System.Drawing.Point(223, 277);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(217, 40);
-            this.btnSave.TabIndex = 13;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtReturnAmount
             // 
+            this.txtReturnAmount.Enabled = false;
             this.txtReturnAmount.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReturnAmount.ForeColor = System.Drawing.Color.DarkRed;
             this.txtReturnAmount.Location = new System.Drawing.Point(134, 231);
             this.txtReturnAmount.Name = "txtReturnAmount";
             this.txtReturnAmount.ReadOnly = true;
             this.txtReturnAmount.Size = new System.Drawing.Size(394, 39);
-            this.txtReturnAmount.TabIndex = 12;
+            this.txtReturnAmount.TabIndex = 0;
             // 
             // txtPaidAmount
             // 
@@ -468,17 +484,18 @@
             this.txtPaidAmount.Location = new System.Drawing.Point(134, 186);
             this.txtPaidAmount.Name = "txtPaidAmount";
             this.txtPaidAmount.Size = new System.Drawing.Size(394, 25);
-            this.txtPaidAmount.TabIndex = 11;
+            this.txtPaidAmount.TabIndex = 8;
             this.txtPaidAmount.TextChanged += new System.EventHandler(this.txtPaidAmount_TextChanged);
             // 
             // txtGrandTotal
             // 
+            this.txtGrandTotal.Enabled = false;
             this.txtGrandTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrandTotal.Location = new System.Drawing.Point(134, 146);
             this.txtGrandTotal.Name = "txtGrandTotal";
             this.txtGrandTotal.ReadOnly = true;
             this.txtGrandTotal.Size = new System.Drawing.Size(394, 25);
-            this.txtGrandTotal.TabIndex = 10;
+            this.txtGrandTotal.TabIndex = 0;
             // 
             // txtDiscount
             // 
@@ -486,7 +503,7 @@
             this.txtDiscount.Location = new System.Drawing.Point(134, 71);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(394, 25);
-            this.txtDiscount.TabIndex = 9;
+            this.txtDiscount.TabIndex = 6;
             this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
             // 
             // txtVat
@@ -495,17 +512,18 @@
             this.txtVat.Location = new System.Drawing.Point(134, 108);
             this.txtVat.Name = "txtVat";
             this.txtVat.Size = new System.Drawing.Size(394, 25);
-            this.txtVat.TabIndex = 8;
+            this.txtVat.TabIndex = 7;
             this.txtVat.TextChanged += new System.EventHandler(this.txtVat_TextChanged);
             // 
             // txtSubTotal
             // 
+            this.txtSubTotal.Enabled = false;
             this.txtSubTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSubTotal.Location = new System.Drawing.Point(134, 35);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.ReadOnly = true;
             this.txtSubTotal.Size = new System.Drawing.Size(394, 25);
-            this.txtSubTotal.TabIndex = 7;
+            this.txtSubTotal.TabIndex = 0;
             this.txtSubTotal.Text = "0";
             // 
             // lblReturnAmount

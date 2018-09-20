@@ -48,6 +48,9 @@ namespace AnyStore
     partial void Inserttbl_users(tbl_users instance);
     partial void Updatetbl_users(tbl_users instance);
     partial void Deletetbl_users(tbl_users instance);
+    partial void Inserttbl_companydata(tbl_companydata instance);
+    partial void Updatetbl_companydata(tbl_companydata instance);
+    partial void Deletetbl_companydata(tbl_companydata instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -125,6 +128,14 @@ namespace AnyStore
 			get
 			{
 				return this.GetTable<tbl_users>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_companydata> tbl_companydata
+		{
+			get
+			{
+				return this.GetTable<tbl_companydata>();
 			}
 		}
 	}
@@ -1508,6 +1519,260 @@ namespace AnyStore
 					this._added_by = value;
 					this.SendPropertyChanged("added_by");
 					this.Onadded_byChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_companydata")]
+	public partial class tbl_companydata : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+		private string _slogan;
+		
+		private string _address;
+		
+		private string _country;
+		
+		private string _telnb;
+		
+		private string _email;
+		
+		private string _IBAN;
+		
+		private string _BIC;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnsloganChanging(string value);
+    partial void OnsloganChanged();
+    partial void OnaddressChanging(string value);
+    partial void OnaddressChanged();
+    partial void OncountryChanging(string value);
+    partial void OncountryChanged();
+    partial void OntelnbChanging(string value);
+    partial void OntelnbChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void OnIBANChanging(string value);
+    partial void OnIBANChanged();
+    partial void OnBICChanging(string value);
+    partial void OnBICChanged();
+    #endregion
+		
+		public tbl_companydata()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(MAX)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_slogan", DbType="VarChar(MAX)")]
+		public string slogan
+		{
+			get
+			{
+				return this._slogan;
+			}
+			set
+			{
+				if ((this._slogan != value))
+				{
+					this.OnsloganChanging(value);
+					this.SendPropertyChanging();
+					this._slogan = value;
+					this.SendPropertyChanged("slogan");
+					this.OnsloganChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="VarChar(MAX)")]
+		public string address
+		{
+			get
+			{
+				return this._address;
+			}
+			set
+			{
+				if ((this._address != value))
+				{
+					this.OnaddressChanging(value);
+					this.SendPropertyChanging();
+					this._address = value;
+					this.SendPropertyChanged("address");
+					this.OnaddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_country", DbType="VarChar(MAX)")]
+		public string country
+		{
+			get
+			{
+				return this._country;
+			}
+			set
+			{
+				if ((this._country != value))
+				{
+					this.OncountryChanging(value);
+					this.SendPropertyChanging();
+					this._country = value;
+					this.SendPropertyChanged("country");
+					this.OncountryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telnb", DbType="VarChar(50)")]
+		public string telnb
+		{
+			get
+			{
+				return this._telnb;
+			}
+			set
+			{
+				if ((this._telnb != value))
+				{
+					this.OntelnbChanging(value);
+					this.SendPropertyChanging();
+					this._telnb = value;
+					this.SendPropertyChanged("telnb");
+					this.OntelnbChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(50)")]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IBAN", DbType="VarChar(50)")]
+		public string IBAN
+		{
+			get
+			{
+				return this._IBAN;
+			}
+			set
+			{
+				if ((this._IBAN != value))
+				{
+					this.OnIBANChanging(value);
+					this.SendPropertyChanging();
+					this._IBAN = value;
+					this.SendPropertyChanged("IBAN");
+					this.OnIBANChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BIC", DbType="VarChar(50)")]
+		public string BIC
+		{
+			get
+			{
+				return this._BIC;
+			}
+			set
+			{
+				if ((this._BIC != value))
+				{
+					this.OnBICChanging(value);
+					this.SendPropertyChanging();
+					this._BIC = value;
+					this.SendPropertyChanged("BIC");
+					this.OnBICChanged();
 				}
 			}
 		}

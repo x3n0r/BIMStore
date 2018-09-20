@@ -30,6 +30,10 @@ namespace AnyStore.UI
 
         private void btnADD_Click(object sender, EventArgs e)
         {
+            if (txtDescription.Text == "" && txtTitle.Text == "")
+            {
+                return;
+            }
             //Get the values from Categroy Form
             c.title = txtTitle.Text;
             c.description = txtDescription.Text;
@@ -86,6 +90,10 @@ namespace AnyStore.UI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (txtCategoryID.Text == "")
+            {
+                return;
+            }
             //Get the Values from the CAtegory form
             c.id = int.Parse(txtCategoryID.Text);
             c.title = txtTitle.Text;
@@ -118,6 +126,10 @@ namespace AnyStore.UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (txtCategoryID.Text == "")
+            {
+                return;
+            }
             //Get te ID of the Category Which we want to Delete
             c.id = int.Parse(txtCategoryID.Text);
 
