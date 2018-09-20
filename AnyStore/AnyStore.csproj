@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\PDFBLL.cs" />
     <Compile Include="BLL\categoriesBLL.cs" />
     <Compile Include="BLL\DeaCustBLL.cs" />
     <Compile Include="BLL\loginBLL.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="DAL\DeaCustDAL.cs" />
     <Compile Include="DAL\DGVPrinter.cs" />
     <Compile Include="DAL\loginDAL.cs" />
+    <Compile Include="DAL\PDF.cs" />
     <Compile Include="DAL\productsDAL.cs" />
     <Compile Include="DAL\transactionDAL.cs" />
     <Compile Include="DAL\transactionDetailDAL.cs" />
@@ -101,6 +103,12 @@
     </Compile>
     <Compile Include="UI\frmDeaCust.Designer.cs">
       <DependentUpon>frmDeaCust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmCompanyData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmCompanyData.Designer.cs">
+      <DependentUpon>frmCompanyData.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmInventory.cs">
       <SubType>Form</SubType>
@@ -154,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmDeaCust.resx">
       <DependentUpon>frmDeaCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmCompanyData.resx">
+      <DependentUpon>frmCompanyData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmInventory.resx">
       <DependentUpon>frmInventory.cs</DependentUpon>
@@ -230,6 +241,7 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

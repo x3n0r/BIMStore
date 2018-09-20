@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
+using static AnyStore.BLL.PDFBLL;
 
 namespace AnyStore.UI
 {
@@ -104,6 +105,10 @@ namespace AnyStore.UI
             //Get Product Name, Rate and Qty customer wants to buy
             string productName = txtProductName.Text;
             decimal Rate = decimal.Parse(txtRate.Text);
+            if (TxtQty.Text == "" || TxtQty.Text == null)
+            {
+                return;
+            }
             decimal Qty = decimal.Parse(TxtQty.Text);
 
             decimal Total = Rate * Qty; //Total=RatexQty
@@ -275,13 +280,16 @@ namespace AnyStore.UI
                     bool y = tdDAL.InsertTransactionDetail(transactionDetail);
                     success = w && x && y;
                 }
-                
+
                 if (success == true)
                 {
+
+                    /* DGVPrinter*/ 
                     //Transaction Complete
                     scope.Complete();
 
                     //Code to Print Bill
+                    /*
                     DGVPrinter printer = new DGVPrinter();
 
                     printer.Title = "\r\n\r\n\r\n ANYSTORE PVT. LTD. \r\n\r\n";
@@ -316,6 +324,52 @@ namespace AnyStore.UI
                     txtGrandTotal.Text = "0";
                     txtPaidAmount.Text = "0";
                     txtReturnAmount.Text = "0";
+                    */
+
+                    /* PDF */
+                    // Hier wird der Aufruf aus der GUI-Simuliert mit allen übergebenen Variablen/Parameter
+                    PrintDialog printDialog1 = new PrintDialog();
+                    DialogResult result = printDialog1.ShowDialog();
+                    if (result == DialogResult.OK)
+                    { //Prüfen, ob auf Abbrechen im Druckdialog gedrückt wurde
+                        PDF pdfengine = new PDF();
+                        PDFBLL pdf = new PDFBLL();
+                        pdf.companyname = "VeriBader";
+                        pdf.slogan = "veris slogan";
+                        //customeradrress
+                        customer cust = new customer();
+                        cust.name = "MAX MUSTERMAN";
+                        cust.address = "FUltonstraße 26/4/23";
+                        cust.country = "1210 Wien";
+
+                        //companyaddress
+                        company comp = new company();
+                        comp.address = "veris adresse 1/1";
+                        comp.country = "1234 Burgenland";
+                        comp.email = "veri@gmx.at";
+                        comp.telnb = "+43 676 8781 66666";
+
+                        pdf.invoicenumber = 1234;
+                        pdf.invoicedate = "11.11.1111";
+                        //listitems
+                        List<items> lit = new List<items>();
+                        items it = new items();
+                        it.amount = 2;
+                        it.productnumber = 33;
+                        it.name = "name prod";
+                        it.price = 9;
+                        it.total = 18;
+                        lit.Add(it);
+                        pdf.listitems = lit;
+                        pdf.sum = Convert.ToDecimal("18,21");
+                        pdf.discount = Convert.ToDecimal("10,00");
+                        pdf.total = Convert.ToDecimal("14,00");
+                        pdf.IBAN = "MYIBAN";
+                        pdf.BIC = "MYBIC";
+                        pdfengine.generate(pdf, printDialog1);
+                    }
+                    
+
                 }
                 else
                 {

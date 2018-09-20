@@ -111,7 +111,7 @@
             this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserType.Location = new System.Drawing.Point(38, 176);
             this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(56, 13);
+            this.lblUserType.Size = new System.Drawing.Size(55, 13);
             this.lblUserType.TabIndex = 3;
             this.lblUserType.Text = "User Type";
             this.lblUserType.Visible = false;

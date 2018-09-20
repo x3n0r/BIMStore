@@ -83,5 +83,11 @@ namespace AnyStore
             frmPurchaseAndSales sales = new frmPurchaseAndSales();
             sales.Show();
         }
+
+        private void companydataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCompanyData companydata = new frmCompanyData();
+            companydata.Show();
+        }
     }
 }
