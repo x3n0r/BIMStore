@@ -258,8 +258,10 @@ namespace AnyStore.UI
                 //Create aboolean value and insert transaction 
                 bool w = tDAL.Insert_Transaction(transaction, out transactionID);
 
+                List<items> lit = new List<items>();
+
                 //Use for loop to insert Transaction Details
-                for(int i=0;i<transactionDT.Rows.Count;i++)
+                for (int i=0;i<transactionDT.Rows.Count;i++)
                 {
                     //Get all the details of the product
                     transactionDetailBLL transactionDetail = new transactionDetailBLL();
@@ -274,6 +276,16 @@ namespace AnyStore.UI
                     transactionDetail.dea_cust_id = dc.id;
                     transactionDetail.added_date = DateTime.Now;
                     transactionDetail.added_by = u.id;
+
+                    //listitems
+
+                    items it = new items();
+                    it.amount = Convert.ToInt32(transactionDetail.qty);
+                    it.productnumber = transactionDetail.product_id;
+                    it.name = transactionDT.Rows[i][0].ToString();
+                    it.price = transactionDetail.rate;
+                    it.total = 0;
+                    lit.Add(it);
 
                     //Here Increase or Decrease Product Quantity based on Purchase or sales
                     string transactionType = lblTop.Text;
@@ -299,7 +311,10 @@ namespace AnyStore.UI
                 if (success == true)
                 {
 
-                    /* DGVPrinter*/ 
+                    CompanyDataDAL cdDAL = new CompanyDataDAL();
+                    List<tbl_companydata> cd = cdDAL.Select();
+
+                    /* DGVPrinter*/
                     //Transaction Complete
                     scope.Complete();
 
@@ -349,40 +364,43 @@ namespace AnyStore.UI
                     { //Prüfen, ob auf Abbrechen im Druckdialog gedrückt wurde
                         PDF pdfengine = new PDF();
                         PDFBLL pdf = new PDFBLL();
-                        pdf.companyname = "VeriBader";
-                        pdf.slogan = "veris slogan";
+
+                        //start pdf struct filling
+
+                        //COMPANY ITEMS
+                        pdf.companyname = cd[0].name;
+                        pdf.slogan = cd[0].slogan;
+                        //companyaddress
+                        company comp = new company();
+                        comp.address = cd[0].address;
+                        comp.country = cd[0].country;
+                        comp.email = cd[0].email;
+                        comp.telnb = cd[0].telnb;
+                        pdf.companyaddress = comp;
+
+                        pdf.IBAN = cd[0].IBAN;
+                        pdf.BIC = cd[0].BIC;
+
                         //customeradrress
                         customer cust = new customer();
-                        cust.name = "MAX MUSTERMAN";
-                        cust.address = "FUltonstraße 26/4/23";
+                        cust.name = dc.name;
+                        cust.address = dc.address;
                         cust.country = "1210 Wien";
                         pdf.customeraddress = cust;
 
-                        //companyaddress
-                        company comp = new company();
-                        comp.address = "veris adresse 1/1";
-                        comp.country = "1234 Burgenland";
-                        comp.email = "veri@gmx.at";
-                        comp.telnb = "+43 676 8781 66666";
-                        pdf.companyaddress = comp;
-
-                        pdf.invoicenumber = 1234;
-                        pdf.invoicedate = new DateTime(2014, 11, 21); 
-                        //listitems
-                        List<items> lit = new List<items>();
-                        items it = new items();
-                        it.amount = 2;
-                        it.productnumber = 33;
-                        it.name = "name prod";
-                        it.price = 9;
-                        it.total = 18;
-                        lit.Add(it);
+                        //fill product listitems
                         pdf.listitems = lit;
-                        pdf.sum = Convert.ToDecimal(18.21M);
-                        pdf.discount = Convert.ToDecimal(10.00M);
-                        pdf.total = Convert.ToDecimal(14.00M);
-                        pdf.IBAN = "MYIBAN";
-                        pdf.BIC = "MYBIC";
+
+                        pdf.invoicenumber = transactionID;
+                        //TODO
+                        pdf.invoicedate = 
+                        pdf.invoicedate = new DateTime(transaction.transaction_date.Year, transaction.transaction_date.Month, transaction.transaction_date.Day); 
+
+                        pdf.sum = Convert.ToDecimal(txtSubTotal.Text);
+                        pdf.total = Convert.ToDecimal(txtGrandTotal.Text);
+                        pdf.discount = Convert.ToDecimal(Convert.ToDecimal(txtGrandTotal.Text) - Convert.ToDecimal(txtSubTotal.Text));
+
+                        //Generate PDF
                         pdfengine.generate(pdf, printDialog1);
                     }
 

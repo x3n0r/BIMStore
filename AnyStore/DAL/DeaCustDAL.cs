@@ -232,6 +232,10 @@ namespace AnyStore.DAL
                 if (myDeaCust != null)
                 {
                     dc.id = myDeaCust.Id;
+                    dc.name = myDeaCust.name;
+                    dc.email = myDeaCust.email;
+                    dc.contact = myDeaCust.contact;
+                    dc.address = myDeaCust.address;
                 }
             }
             catch(Exception ex)
