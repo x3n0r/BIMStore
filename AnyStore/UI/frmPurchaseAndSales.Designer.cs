@@ -34,7 +34,7 @@
             this.lblTop = new System.Windows.Forms.Label();
             this.pnlDeaCust = new System.Windows.Forms.Panel();
             this.dtpBillDate = new System.Windows.Forms.DateTimePicker();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtFirstname = new System.Windows.Forms.TextBox();
             this.txtContact = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -77,6 +77,8 @@
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.lblcalculationTitle = new System.Windows.Forms.Label();
+            this.txtLastname = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             this.pnlDeaCust.SuspendLayout();
@@ -120,8 +122,10 @@
             // 
             // pnlDeaCust
             // 
+            this.pnlDeaCust.Controls.Add(this.txtLastname);
+            this.pnlDeaCust.Controls.Add(this.label1);
             this.pnlDeaCust.Controls.Add(this.dtpBillDate);
-            this.pnlDeaCust.Controls.Add(this.txtName);
+            this.pnlDeaCust.Controls.Add(this.txtFirstname);
             this.pnlDeaCust.Controls.Add(this.txtContact);
             this.pnlDeaCust.Controls.Add(this.txtAddress);
             this.pnlDeaCust.Controls.Add(this.txtEmail);
@@ -135,32 +139,32 @@
             this.pnlDeaCust.Controls.Add(this.lblDeaCustTitle);
             this.pnlDeaCust.Location = new System.Drawing.Point(13, 40);
             this.pnlDeaCust.Name = "pnlDeaCust";
-            this.pnlDeaCust.Size = new System.Drawing.Size(1205, 100);
+            this.pnlDeaCust.Size = new System.Drawing.Size(1205, 140);
             this.pnlDeaCust.TabIndex = 3;
             // 
             // dtpBillDate
             // 
             this.dtpBillDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpBillDate.Location = new System.Drawing.Point(985, 25);
+            this.dtpBillDate.Location = new System.Drawing.Point(384, 28);
             this.dtpBillDate.Name = "dtpBillDate";
             this.dtpBillDate.Size = new System.Drawing.Size(200, 25);
             this.dtpBillDate.TabIndex = 2;
             // 
-            // txtName
+            // txtFirstname
             // 
-            this.txtName.Enabled = false;
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(61, 59);
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(223, 25);
-            this.txtName.TabIndex = 0;
+            this.txtFirstname.Enabled = false;
+            this.txtFirstname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstname.Location = new System.Drawing.Point(77, 62);
+            this.txtFirstname.Name = "txtFirstname";
+            this.txtFirstname.ReadOnly = true;
+            this.txtFirstname.Size = new System.Drawing.Size(223, 25);
+            this.txtFirstname.TabIndex = 0;
             // 
             // txtContact
             // 
             this.txtContact.Enabled = false;
             this.txtContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(377, 59);
+            this.txtContact.Location = new System.Drawing.Point(383, 93);
             this.txtContact.Name = "txtContact";
             this.txtContact.ReadOnly = true;
             this.txtContact.Size = new System.Drawing.Size(223, 25);
@@ -170,7 +174,7 @@
             // 
             this.txtAddress.Enabled = false;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(676, 25);
+            this.txtAddress.Location = new System.Drawing.Point(688, 65);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ReadOnly = true;
@@ -181,7 +185,7 @@
             // 
             this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(377, 22);
+            this.txtEmail.Location = new System.Drawing.Point(383, 62);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(223, 25);
@@ -190,7 +194,7 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(61, 25);
+            this.txtSearch.Location = new System.Drawing.Point(77, 28);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(223, 25);
             this.txtSearch.TabIndex = 1;
@@ -200,7 +204,7 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(614, 25);
+            this.lblAddress.Location = new System.Drawing.Point(626, 65);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(56, 17);
             this.lblAddress.TabIndex = 6;
@@ -210,7 +214,7 @@
             // 
             this.lblBillDate.AutoSize = true;
             this.lblBillDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBillDate.Location = new System.Drawing.Point(923, 25);
+            this.lblBillDate.Location = new System.Drawing.Point(322, 28);
             this.lblBillDate.Name = "lblBillDate";
             this.lblBillDate.Size = new System.Drawing.Size(55, 17);
             this.lblBillDate.TabIndex = 5;
@@ -220,17 +224,17 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(7, 62);
+            this.lblName.Location = new System.Drawing.Point(8, 65);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(43, 17);
+            this.lblName.Size = new System.Drawing.Size(67, 17);
             this.lblName.TabIndex = 4;
-            this.lblName.Text = "Name";
+            this.lblName.Text = "FirstName";
             // 
             // lblContact
             // 
             this.lblContact.AutoSize = true;
             this.lblContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContact.Location = new System.Drawing.Point(319, 62);
+            this.lblContact.Location = new System.Drawing.Point(325, 96);
             this.lblContact.Name = "lblContact";
             this.lblContact.Size = new System.Drawing.Size(52, 17);
             this.lblContact.TabIndex = 3;
@@ -240,7 +244,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(319, 25);
+            this.lblEmail.Location = new System.Drawing.Point(325, 65);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(39, 17);
             this.lblEmail.TabIndex = 2;
@@ -280,7 +284,7 @@
             this.panel2.Controls.Add(this.lblRate);
             this.panel2.Controls.Add(this.lblProductSearch);
             this.panel2.Controls.Add(this.lblProductTitle);
-            this.panel2.Location = new System.Drawing.Point(13, 158);
+            this.panel2.Location = new System.Drawing.Point(12, 186);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1205, 66);
             this.panel2.TabIndex = 4;
@@ -409,7 +413,7 @@
             // 
             this.pnldataGRidView.Controls.Add(this.dgvAddedProducts);
             this.pnldataGRidView.Controls.Add(this.lblDGVTtitle);
-            this.pnldataGRidView.Location = new System.Drawing.Point(13, 244);
+            this.pnldataGRidView.Location = new System.Drawing.Point(12, 258);
             this.pnldataGRidView.Name = "pnldataGRidView";
             this.pnldataGRidView.Size = new System.Drawing.Size(600, 331);
             this.pnldataGRidView.TabIndex = 5;
@@ -449,7 +453,7 @@
             this.pnlCalculation.Controls.Add(this.lblDiscount);
             this.pnlCalculation.Controls.Add(this.lblSubTotal);
             this.pnlCalculation.Controls.Add(this.lblcalculationTitle);
-            this.pnlCalculation.Location = new System.Drawing.Point(630, 244);
+            this.pnlCalculation.Location = new System.Drawing.Point(630, 258);
             this.pnlCalculation.Name = "pnlCalculation";
             this.pnlCalculation.Size = new System.Drawing.Size(588, 331);
             this.pnlCalculation.TabIndex = 6;
@@ -513,6 +517,7 @@
             this.txtVat.Name = "txtVat";
             this.txtVat.Size = new System.Drawing.Size(394, 25);
             this.txtVat.TabIndex = 7;
+            this.txtVat.Visible = false;
             this.txtVat.TextChanged += new System.EventHandler(this.txtVat_TextChanged);
             // 
             // txtSubTotal
@@ -565,6 +570,7 @@
             this.lblVat.Size = new System.Drawing.Size(54, 17);
             this.lblVat.TabIndex = 3;
             this.lblVat.Text = "VAT (%)";
+            this.lblVat.Visible = false;
             // 
             // lblDiscount
             // 
@@ -596,12 +602,32 @@
             this.lblcalculationTitle.TabIndex = 0;
             this.lblcalculationTitle.Text = "Calculation Details";
             // 
+            // txtLastname
+            // 
+            this.txtLastname.Enabled = false;
+            this.txtLastname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastname.Location = new System.Drawing.Point(78, 93);
+            this.txtLastname.Name = "txtLastname";
+            this.txtLastname.ReadOnly = true;
+            this.txtLastname.Size = new System.Drawing.Size(223, 25);
+            this.txtLastname.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 17);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "LastName";
+            // 
             // frmPurchaseAndSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(1230, 587);
+            this.ClientSize = new System.Drawing.Size(1230, 603);
             this.Controls.Add(this.pnlCalculation);
             this.Controls.Add(this.pnldataGRidView);
             this.Controls.Add(this.panel2);
@@ -635,7 +661,7 @@
         private System.Windows.Forms.Label lblTop;
         private System.Windows.Forms.Panel pnlDeaCust;
         private System.Windows.Forms.DateTimePicker dtpBillDate;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtFirstname;
         private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtEmail;
@@ -678,5 +704,7 @@
         private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Label lblSubTotal;
         private System.Windows.Forms.Label lblcalculationTitle;
+        private System.Windows.Forms.TextBox txtLastname;
+        private System.Windows.Forms.Label label1;
     }
 }

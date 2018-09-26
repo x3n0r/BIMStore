@@ -48,6 +48,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.chbHasQTY = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -109,7 +110,7 @@
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(13, 142);
+            this.lblCategory.Location = new System.Drawing.Point(13, 131);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(61, 17);
             this.lblCategory.TabIndex = 5;
@@ -119,7 +120,7 @@
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(13, 186);
+            this.lblDescription.Location = new System.Drawing.Point(13, 162);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(74, 17);
             this.lblDescription.TabIndex = 6;
@@ -129,7 +130,7 @@
             // 
             this.lblRate.AutoSize = true;
             this.lblRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRate.Location = new System.Drawing.Point(12, 302);
+            this.lblRate.Location = new System.Drawing.Point(12, 270);
             this.lblRate.Name = "lblRate";
             this.lblRate.Size = new System.Drawing.Size(36, 17);
             this.lblRate.TabIndex = 7;
@@ -157,7 +158,7 @@
             // 
             this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(120, 142);
+            this.cmbCategory.Location = new System.Drawing.Point(120, 131);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(224, 25);
             this.cmbCategory.TabIndex = 10;
@@ -165,7 +166,7 @@
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(120, 186);
+            this.txtDescription.Location = new System.Drawing.Point(120, 162);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(224, 102);
@@ -174,7 +175,7 @@
             // txtRate
             // 
             this.txtRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRate.Location = new System.Drawing.Point(120, 302);
+            this.txtRate.Location = new System.Drawing.Point(120, 270);
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(224, 25);
             this.txtRate.TabIndex = 12;
@@ -212,7 +213,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.ForestGreen;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(266, 349);
+            this.btnAdd.Location = new System.Drawing.Point(266, 358);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(119, 50);
             this.btnAdd.TabIndex = 16;
@@ -225,7 +226,7 @@
             this.btnUpdate.BackColor = System.Drawing.Color.Chartreuse;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(395, 349);
+            this.btnUpdate.Location = new System.Drawing.Point(395, 358);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(119, 50);
             this.btnUpdate.TabIndex = 17;
@@ -239,7 +240,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(524, 349);
+            this.btnDelete.Location = new System.Drawing.Point(524, 358);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(119, 50);
             this.btnDelete.TabIndex = 18;
@@ -247,12 +248,25 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // chbHasQTY
+            // 
+            this.chbHasQTY.AutoSize = true;
+            this.chbHasQTY.Checked = true;
+            this.chbHasQTY.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbHasQTY.Location = new System.Drawing.Point(120, 301);
+            this.chbHasQTY.Name = "chbHasQTY";
+            this.chbHasQTY.Size = new System.Drawing.Size(87, 17);
+            this.chbHasQTY.TabIndex = 13;
+            this.chbHasQTY.Text = "Has Quantity";
+            this.chbHasQTY.UseVisualStyleBackColor = true;
+            // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(836, 420);
+            this.Controls.Add(this.chbHasQTY);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
@@ -305,5 +319,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.CheckBox chbHasQTY;
     }
 }

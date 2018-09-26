@@ -183,6 +183,13 @@ namespace AnyStore.DAL
                 if (myUser != null)
                 {
                     u.id = myUser.Id;
+                    u.first_name = myUser.first_name;
+                    u.last_name = myUser.last_name;
+                    u.email = myUser.email;
+                    u.username = myUser.username;
+                    u.contact = myUser.contact;
+                    u.address = myUser.address;
+                    u.gender = myUser.gender;
                 }
             }
             catch(Exception ex)

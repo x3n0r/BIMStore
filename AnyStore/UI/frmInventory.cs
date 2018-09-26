@@ -37,7 +37,7 @@ namespace AnyStore.UI
             cmbCategories.ValueMember = "Id";
 
             //Display all the products in Datagrid view when the form is loaded
-            List<tbl_products> prod = pdal.Select();
+            List<tbl_products> prod = pdal.SelectHasQTY();
             dgvProducts.DataSource = prod;
         }
         
@@ -57,7 +57,7 @@ namespace AnyStore.UI
         private void btnAll_Click(object sender, EventArgs e)
         {
             //Display all the productswhen this button is clicked
-            List<tbl_products> prod = pdal.Select();
+            List<tbl_products> prod = pdal.SelectHasQTY();
             dgvProducts.DataSource = prod;
         }
     }

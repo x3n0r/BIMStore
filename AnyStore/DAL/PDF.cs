@@ -48,13 +48,18 @@ namespace AnyStore.DAL
         //private Int64 Steuernr;
         private int tabellentiefe;
         private int anzahlDatensätze;
+
+        /*
+     private double Versandkosten;
+     private double mwst19;
+     private double mwst7;
+     */
         private double Zwischensumme;
-           /*
-        private double Versandkosten;
-        private double mwst19;
-        private double mwst7;
-        */
         private double rabatt;
+
+        private double sum;
+        private double discount;
+        private double total;
 
 
         public void generate(PDFBLL pdf, PrintDialog dialog)
@@ -86,25 +91,32 @@ namespace AnyStore.DAL
                 Firmenstr = pdf.companyaddress.address_street;
                 Firmenplz = Convert.ToInt32(pdf.companyaddress.address_postcode);
                 Firmenort = pdf.companyaddress.address_city;// "Mustershausen";
+
+
                 Anrede = pdf.customeraddress.form_of_address;
                 Vorname = pdf.customeraddress.first_name;// "Maximilian";
                 Nachname = pdf.customeraddress.last_name;
                 Straße = pdf.customeraddress.address_street;// "Musterstraße";
-                //Versandkosten = 10.30;
-                //Hausnummer = 123;
                 Postleitzahl = Convert.ToInt32(pdf.customeraddress.address_postcode);
                 Ort = pdf.customeraddress.address_city;// "Musterdorf";
+
+                                                       //Versandkosten = 10.30;
+                                                       //Hausnummer = 123;
+
                 Rechnungsnr = pdf.invoicenumber;// 1234567890;
                 Rechnungsdatum = pdf.invoicedate;
                 Mailaddr = pdf.companyaddress.contact_mail;//"erika@musterfrau.tld";
-                Sachbearbeiter = "Erika Musterfrau";
+                Sachbearbeiter = pdf.user.first_name + " " + pdf.user.last_name;// "Erika Musterfrau";
                 Telefonnr = pdf.companyaddress.contact_phone;// "+49 123 3215 - 10";
                 //Faxnr = "+49 123 3215 - 20";
                 IBAN = pdf.IBAN;// "DE42 4242 0420 0000 0424 29";
                 //Steuernr = 04242424200;
-                rabatt = Convert.ToDouble(pdf.discount); //10;
                 BIC = pdf.BIC; //"BERLADE42XXX";
-                        
+
+                discount = Convert.ToDouble(pdf.discount); //10;
+                sum = Convert.ToDouble(pdf.sum);
+                total = Convert.ToDouble(pdf.total);
+
                 //Tabelle füllen
                 tabelle.Columns.Add("Menge");
                 tabelle.Columns.Add("Artikelnummer");
@@ -120,6 +132,7 @@ namespace AnyStore.DAL
 
                 // Die Namen der Produkte müssen natürlich nicht stimmen
                 /*tabelle.Rows.Add(2, 123456, "Produkt1", "85,00", 19);*/
+                /*
                 tabelle.Rows.Add(2, 123456, "Produkt2", "85,00", 7);
                 tabelle.Rows.Add(2, 654321, "Produkt3", "41,00", 7);
                 tabelle.Rows.Add(3, 654123, "Produkt4", "12,00", 7);
@@ -138,14 +151,16 @@ namespace AnyStore.DAL
                 tabelle.Rows.Add(16, 123654, "Produkt17", "52,33", 19);
                 tabelle.Rows.Add(17, 415263, "Produkt18", "74,25", 19);
                 tabelle.Rows.Add(18, 142536, "Produkt19", "5,14", 7);
-                tabelle.Rows.Add(19, 654123, "Produkt20", "12,14", 19);
+                tabelle.Rows.Add(19, 654123, "Produkt20", "12,14", 19); */
                 /*     --> Hier haben wir die maximale Anzahl für die erste Seite an Einträgen ausgelastet */
+                /*
                       tabelle.Rows.Add(20, 123654, "Produkt21", "52,14", 7);
                       tabelle.Rows.Add(21, 415263, "Produkt22", "74,78", 19);
                       tabelle.Rows.Add(22, 142536, "Produkt23", "5,50", 7);
                       tabelle.Rows.Add(23, 123456, "Produkt24", "85,10", 19);
                       tabelle.Rows.Add(24, 654321, "Produkt25", "41,20", 7);
                       tabelle.Rows.Add(25, 654123, "Produkt26", "12,60", 19);
+                      */
                 /*
                       tabelle.Rows.Add(26, 123654, "Produkt", "52,85", 19);
                       tabelle.Rows.Add(27, 415263, "Produkt", "74,48", 7);
@@ -192,10 +207,10 @@ namespace AnyStore.DAL
             e.Graphics.DrawString(Firmenname + "  -  " + Firmenstr + " " + " " + Firmenort, new Font("Courier", 7, FontStyle.Underline), new SolidBrush(Color.DarkGreen), new Point(87, 170)); //30 - 225
            
             // Empfängeradresse
-            //e.Graphics.DrawString(Anrede, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 195));
-            e.Graphics.DrawString(Vorname, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 210)); //+15 
+            e.Graphics.DrawString(Anrede, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 195));
+            e.Graphics.DrawString(Vorname + " " +Nachname, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 210)); //+15 
             e.Graphics.DrawString(Straße, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 225));//+15
-            e.Graphics.DrawString(Ort, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 240));//+15
+            e.Graphics.DrawString(Postleitzahl + " " + Ort , new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 240));//+15
            
             //Absenderadresse
             e.Graphics.DrawString(Firmenstr , new Font("Courier", 10), new SolidBrush(Color.Black), new Point(590, 195));
@@ -269,7 +284,8 @@ namespace AnyStore.DAL
             //e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(395, Zeichenhöhe - 20));
             e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(480, Zeichenhöhe - 20));
             //e.Graphics.DrawString("Mwst", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(523, Zeichenhöhe - 20));
-            e.Graphics.DrawString("Gesamtpreis Netto", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(585, Zeichenhöhe - 20));
+            e.Graphics.DrawString("Gesamtpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(620, Zeichenhöhe - 20));
+            //e.Graphics.DrawString("Gesamtpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(585, Zeichenhöhe - 20));
             e.Graphics.DrawLine(new Pen(Color.Black, 2), new Point(87, Zeichenhöhe), new Point(735, Zeichenhöhe)); // Trennung der Tabelle waagerecht
             //Folgende Reihenfolge wird in der Tabelle benutzt (vom Kunde vorgegeben): Menge, Artikelnummer, Name, Einzelpreis Netto, Mwst, Gesamtpreis netto
 
@@ -371,7 +387,8 @@ namespace AnyStore.DAL
             //Rechnungszusammenfassung
 
             // - Zwischensumme (unterKathegorie von Rechnungszusammenfassung)
-            string Zwischensumme_string = Zwischensumme.ToString("n2") + " €"; //Hier wird die Zwischensumme als String formatiert
+            //string Zwischensumme_string = Zwischensumme.ToString("n2") + " €"; //Hier wird die Zwischensumme als String formatiert
+            string Zwischensumme_string = sum.ToString("n2") + " €";
             SizeF Zwischensumme_setting = new SizeF(); //Eine größenangabe in der Variable
             Zwischensumme_setting = e.Graphics.MeasureString(Zwischensumme_string, new Font("Courier", 10));//Testen wie groß der String sein wird
             e.Graphics.DrawString(Zwischensumme_string, new Font("Courier", 10), Brushes.Black, new PointF(706 - Zwischensumme_setting.Width, tabellentiefe +3));//An entsprechnder Tabelle unterhalb der Tabelle schreiben
@@ -422,7 +439,8 @@ namespace AnyStore.DAL
             */
 
             // - Rabatt ausrechnen & schreiben
-            string rabatt_string = rabatt.ToString("n2") + " €";
+            //string rabatt_string = rabatt.ToString("n2") + " €";
+            string rabatt_string = "-"+discount.ToString("n2") + " €";
             SizeF rabatt_setting = new SizeF();
             rabatt_setting = e.Graphics.MeasureString(rabatt_string, new Font("Courier", 10));
             e.Graphics.DrawString(rabatt_string, new Font("Courier", 10), Brushes.Black, new PointF(706 - rabatt_setting.Width, tabellentiefe + 20));
@@ -431,7 +449,8 @@ namespace AnyStore.DAL
 
             // - Gesamt
             double gesamt = Zwischensumme - rabatt; //Gesamtbetrag ausrechnen
-            string gesamt_string = gesamt.ToString("n2") + " €"; 
+            //string gesamt_string = gesamt.ToString("n2") + " €";
+            string gesamt_string = total.ToString("n2") + " €"; 
             SizeF gesamt_setting = new SizeF();
             gesamt_setting = e.Graphics.MeasureString(gesamt_string, new Font("Courier", 10));
             e.Graphics.DrawString(gesamt_string, new Font("Courier", 10, FontStyle.Bold), Brushes.Black, new PointF(706 - gesamt_setting.Width, tabellentiefe + 35));

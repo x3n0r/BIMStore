@@ -38,10 +38,17 @@ namespace AnyStore.BLL
             public string contact_mail { get; set; }
         }
 
+        public struct companyuser
+        {
+            public string first_name { get; set; }
+            public string last_name { get; set; }
+        }
+
         public string companyname { get; set; }
         public string slogan { get; set; }
         public customer customeraddress { get; set; }
         public company companyaddress { get; set; }
+        public companyuser user { get; set; }
         public int invoicenumber { get; set; }
         public DateTime invoicedate { get; set; }
         public List<items> listitems { get; set; }

@@ -41,6 +41,7 @@ namespace AnyStore.UI
             dc.address_city = txtCity.Text;
             dc.address_country = txtCountry.Text;
             dc.address_postcode = txtPostcode.Text;
+            dc.form_of_address = txtFormofaddress.Text;
             //Getting the ID to Logged in user and passign its value in dealer or cutomer module
             string loggedUsr = frmLogin.loggedIn;
             userBLL usr = uDal.GetIDFromUsername(loggedUsr);
@@ -74,6 +75,7 @@ namespace AnyStore.UI
             txtPostcode.Text = "";
             txtCountry.Text = "";
             txtSearch.Text = "";
+            txtFormofaddress.Text = "";
         }
 
         private void frmDeaCust_Load(object sender, EventArgs e)
@@ -92,6 +94,7 @@ namespace AnyStore.UI
             cmbDeaCust.Text = dgvDeaCust.Rows[rowIndex].Cells[1].Value.ToString();
             txtFirstname.Text = dgvDeaCust.Rows[rowIndex].Cells[2].Value.ToString();
             txtLastname.Text = dgvDeaCust.Rows[rowIndex].Cells[3].Value.ToString();
+            txtFormofaddress.Text = dgvDeaCust.Rows[rowIndex].Cells[4].Value.ToString();
             txtEmail.Text = dgvDeaCust.Rows[rowIndex].Cells[10].Value.ToString();
             txtContact.Text = dgvDeaCust.Rows[rowIndex].Cells[9].Value.ToString();
             txtStreet.Text = dgvDeaCust.Rows[rowIndex].Cells[5].Value.ToString();
@@ -113,6 +116,7 @@ namespace AnyStore.UI
             dc.address_city = txtCity.Text;
             dc.address_country = txtCountry.Text;
             dc.address_postcode = txtPostcode.Text;
+            dc.form_of_address = txtFormofaddress.Text;
 
             //create boolean variable to check whether the dealer or customer is updated or not
             bool success = dcDal.Update(dc);

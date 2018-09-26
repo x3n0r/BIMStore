@@ -52,6 +52,8 @@ namespace AnyStore.UI
             p.description = txtDescription.Text;
             p.rate = decimal.Parse(txtRate.Text);
             p.qty = 0;
+            p.hasqty = chbHasQTY.Checked;
+            
             p.added_date = DateTime.Now;
             //Getting username of logged in user
             String loggedUsr = frmLogin.loggedIn;
@@ -85,6 +87,7 @@ namespace AnyStore.UI
             txtDescription.Text = "";
             txtRate.Text = "";
             txtSearch.Text = "";
+            chbHasQTY.Checked = true;
         }
 
         private void dgvProducts_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -97,6 +100,13 @@ namespace AnyStore.UI
             cmbCategory.Text = dgvProducts.Rows[rowIndex].Cells[2].Value.ToString();
             txtDescription.Text = dgvProducts.Rows[rowIndex].Cells[3].Value.ToString();
             txtRate.Text = dgvProducts.Rows[rowIndex].Cells[4].Value.ToString();
+            if (dgvProducts.Rows[rowIndex].Cells[8].Value.ToString() == "True" )
+            {
+                chbHasQTY.Checked = true;
+            } else
+            {
+                chbHasQTY.Checked = false;
+            }
 
         }
 
@@ -109,6 +119,7 @@ namespace AnyStore.UI
             p.description = txtDescription.Text;
             p.rate = decimal.Parse(txtRate.Text);
             p.added_date = DateTime.Now;
+            p.hasqty = chbHasQTY.Checked;
             //Getting Username of logged in user for added by
             String loggedUsr = frmLogin.loggedIn;
             userBLL usr = udal.GetIDFromUsername(loggedUsr);

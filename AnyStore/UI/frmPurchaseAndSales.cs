@@ -61,7 +61,8 @@ namespace AnyStore.UI
             if (keyword == "")
             {
                 //Clear all the textboxes
-                txtName.Text = "";
+                txtFirstname.Text = "";
+                txtLastname.Text = "";
                 txtEmail.Text = "";
                 txtContact.Text = "";
                 txtAddress.Text = "";
@@ -79,7 +80,8 @@ namespace AnyStore.UI
             }
 
             //Now transfer or set the value from DeCustBLL to textboxes
-            txtName.Text = dc.first_name + " " + dc.last_name;
+            txtFirstname.Text = dc.first_name;
+            txtLastname.Text = dc.last_name;
             txtEmail.Text = dc.contact_mail;
             txtContact.Text = dc.contact_phone;
             txtAddress.Text = dc.address_street + Environment.NewLine + dc.address_postcode + " " + dc.address_city + Environment.NewLine  + dc.address_country;
@@ -151,9 +153,9 @@ namespace AnyStore.UI
                 //Clear the Textboxes
                 txtSearchProduct.Text = "";
                 txtProductName.Text = "";
-                txtInventory.Text = "0.00";
+                txtInventory.Text = "0";
                 txtRate.Text = "0.00";
-                TxtQty.Text = "0.00";
+                TxtQty.Text = "0";
                 count_prod += 1;
             }
         }
@@ -217,7 +219,20 @@ namespace AnyStore.UI
             txtReturnAmount.Text = returnAmount.ToString();
         }
 
+
         private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            bool h = H_booking();
+            if (h == true && decimal.Parse(txtPaidAmount.Text) > 0)
+            {
+                bool s = S_booking();
+            }
+
+        }
+
+        /*ausgleichsbuchung*/
+        private bool S_booking()
         {
             //Get the Values from PurchaseSales Form First
             transactionsBLL transaction = new transactionsBLL();
@@ -226,16 +241,58 @@ namespace AnyStore.UI
 
             //Get the ID of Dealer or Customer Here
             //Lets get name of the dealer or customer first
-            string deaCustName = txtName.Text;
-            DeaCustBLL dc = dcDAL.GetDeaCustIDFromName(deaCustName);
+            string deaCustFirstName = txtFirstname.Text;
+            string deaCustLastName = txtLastname.Text;
+            DeaCustBLL dc = dcDAL.GetDeaCustIDFromName(deaCustFirstName, deaCustLastName);
 
             transaction.dea_cust_id = dc.Id;
-            transaction.grandTotal = Math.Round(decimal.Parse(txtGrandTotal.Text),2);
+            transaction.grandTotal = Math.Round(decimal.Parse(txtPaidAmount.Text), 2);
+            transaction.transaction_date = DateTime.Now;
+            transaction.tax = 0;
+            transaction.discount = 0;
+
+            //Get the Username of Logged in user
+            string username = frmLogin.loggedIn;
+            userBLL u = uDAL.GetIDFromUsername(username);
+
+            transaction.kontobez = "S";
+            transaction.added_by = u.id;
+            //transaction.transactionDetails = transactionDT;
+
+            bool w;
+            //Actual Code to Insert Transaction And Transaction Details
+            using (TransactionScope scope = new TransactionScope())
+            {
+                int transactionID = -1;
+                //Create aboolean value and insert transaction 
+                w = tDAL.Insert_Transaction(transaction, out transactionID);
+                scope.Complete();
+            }
+            return w;
+        }
+
+        /* With transaction details */
+        private bool H_booking()
+        {
+            //Get the Values from PurchaseSales Form First
+            transactionsBLL transaction = new transactionsBLL();
+
+            transaction.type = lblTop.Text;
+
+            //Get the ID of Dealer or Customer Here
+            //Lets get name of the dealer or customer first
+            string deaCustFirstName = txtFirstname.Text;
+            string deaCustLastName = txtLastname.Text;
+            DeaCustBLL dc = dcDAL.GetDeaCustIDFromName(deaCustFirstName, deaCustLastName);
+
+            transaction.dea_cust_id = dc.Id;
+            transaction.grandTotal = Math.Round(decimal.Parse(txtGrandTotal.Text), 2);
             transaction.transaction_date = DateTime.Now;
             if (txtVat.Text != "")
             {
                 transaction.tax = decimal.Parse(txtVat.Text);
-            } else
+            }
+            else
             {
                 transaction.tax = 0;
             }
@@ -245,6 +302,10 @@ namespace AnyStore.UI
             string username = frmLogin.loggedIn;
             userBLL u = uDAL.GetIDFromUsername(username);
 
+
+            string transactionType = lblTop.Text;
+
+            transaction.kontobez = "H";
             transaction.added_by = u.id;
             transaction.transactionDetails = transactionDT;
 
@@ -261,7 +322,7 @@ namespace AnyStore.UI
                 List<items> lit = new List<items>();
 
                 //Use for loop to insert Transaction Details
-                for (int i=0;i<transactionDT.Rows.Count;i++)
+                for (int i = 0; i < transactionDT.Rows.Count; i++)
                 {
                     //Get all the details of the product
                     transactionDetailBLL transactionDetail = new transactionDetailBLL();
@@ -269,10 +330,12 @@ namespace AnyStore.UI
                     string ProductName = transactionDT.Rows[i][0].ToString();
                     productsBLL p = pDAL.GetProductIDFromName(ProductName);
 
+                    bool producthasqty = p.hasqty;
+
                     transactionDetail.product_id = p.id;
                     transactionDetail.rate = decimal.Parse(transactionDT.Rows[i][1].ToString());
                     transactionDetail.qty = decimal.Parse(transactionDT.Rows[i][2].ToString());
-                    transactionDetail.total = Math.Round(decimal.Parse(transactionDT.Rows[i][3].ToString()),2);
+                    transactionDetail.total = Math.Round(decimal.Parse(transactionDT.Rows[i][3].ToString()), 2);
                     transactionDetail.dea_cust_id = dc.Id;
                     transactionDetail.added_date = DateTime.Now;
                     transactionDetail.added_by = u.id;
@@ -288,21 +351,25 @@ namespace AnyStore.UI
                     lit.Add(it);
 
                     //Here Increase or Decrease Product Quantity based on Purchase or sales
-                    string transactionType = lblTop.Text;
-
                     //Lets check whether we are on Purchase or Sales
-                    bool x=false;
-                    if(transactionType=="Purchase")
+                    bool x = false;
+                    if (producthasqty)
                     {
-                        //Increase the Product
-                        x = pDAL.IncreaseProduct(transactionDetail.product_id, transactionDetail.qty);
+                        if (transactionType == "Purchase")
+                        {
+                            //Increase the Product
+                            x = pDAL.IncreaseProduct(transactionDetail.product_id, transactionDetail.qty);
+                        }
+                        else if (transactionType == "Sales")
+                        {
+                            //Decrease the Product Quntiyt
+                            x = pDAL.DecreaseProduct(transactionDetail.product_id, transactionDetail.qty);
+                        }
                     }
-                    else if(transactionType=="Sales")
+                    else
                     {
-                        //Decrease the Product Quntiyt
-                        x = pDAL.DecreaseProduct(transactionDetail.product_id, transactionDetail.qty);
+                        x = true;
                     }
-
                     //Insert Transaction Details inside the database
                     bool y = tdDAL.InsertTransactionDetail(transactionDetail);
                     success = w && x && y;
@@ -378,7 +445,7 @@ namespace AnyStore.UI
                         comp.address_street = cd[0].address_street;
                         comp.contact_mail = cd[0].contact_email;
                         comp.contact_phone = cd[0].contact_phone;
-                        
+
                         pdf.companyaddress = comp;
 
                         pdf.IBAN = cd[0].IBAN;
@@ -392,6 +459,7 @@ namespace AnyStore.UI
                         cust.address_country = dc.address_country;
                         cust.address_postcode = dc.address_postcode;
                         cust.address_street = dc.address_street;
+                        cust.form_of_address = dc.form_of_address;
                         pdf.customeraddress = cust;
 
                         //fill product listitems
@@ -399,26 +467,39 @@ namespace AnyStore.UI
 
                         pdf.invoicenumber = transactionID;
                         //TODO
-                        pdf.invoicedate = 
-                        pdf.invoicedate = new DateTime(transaction.transaction_date.Year, transaction.transaction_date.Month, transaction.transaction_date.Day); 
+                        pdf.invoicedate =
+                        pdf.invoicedate = new DateTime(transaction.transaction_date.Year, transaction.transaction_date.Month, transaction.transaction_date.Day);
 
                         pdf.sum = Convert.ToDecimal(txtSubTotal.Text);
                         pdf.total = Convert.ToDecimal(txtGrandTotal.Text);
-                        pdf.discount = Convert.ToDecimal(Convert.ToDecimal(txtGrandTotal.Text) - Convert.ToDecimal(txtSubTotal.Text));
+                        pdf.discount = Convert.ToDecimal(txtSubTotal.Text) - Convert.ToDecimal(txtGrandTotal.Text);
 
+                        companyuser usr = new companyuser();
+                        usr.first_name = u.first_name;
+                        usr.last_name = u.last_name;
+                        pdf.user = usr;
                         //Generate PDF
                         pdfengine.generate(pdf, printDialog1);
+                        //Transaction Failed
+                        MessageBox.Show("Saved");
+                    }
+                    else
+                    {
+                        //Transaction Failed
+                        MessageBox.Show("Transaction Failed");
+                        scope.Dispose();
                     }
 
-                    //Transaction Failed
-                    MessageBox.Show("Saved");
                 }
                 else
                 {
                     //Transaction Failed
                     MessageBox.Show("Transaction Failed");
+                    scope.Dispose();
                 }
             }
+            return success;
         }
+
     }
 }

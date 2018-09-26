@@ -230,7 +230,7 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO GET ID OF THE DEALER OR CUSTOMER BASED ON NAME
-        public DeaCustBLL GetDeaCustIDFromName(string Name)
+        public DeaCustBLL GetDeaCustIDFromName(string FirstName, string LastName)
         {
             //First Create an Object of DeaCust BLL and REturn it
             DeaCustBLL dc = new DeaCustBLL();
@@ -238,7 +238,7 @@ namespace AnyStore.DAL
             try
             {
                 var erg = from deacusts in db.tbl_dea_cust
-                          where deacusts.first_name == Name || deacusts.last_name == Name
+                          where deacusts.first_name == FirstName && deacusts.last_name == LastName
                           select deacusts;
 
 

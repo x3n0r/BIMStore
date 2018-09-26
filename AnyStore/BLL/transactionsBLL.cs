@@ -18,6 +18,6 @@ namespace AnyStore.BLL
         public decimal discount { get; set; }
         public int added_by { get; set; }
         public DataTable transactionDetails { get; set; }
-
+        public string kontobez { get; set; }
     }
 }

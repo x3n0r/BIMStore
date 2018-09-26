@@ -36,6 +36,28 @@ namespace AnyStore.DAL
             return prod;
         }
         #endregion
+        #region Select method for Product Module with hasqty true
+        public List<tbl_products> SelectHasQTY()
+        {
+            //To hold the data from database 
+            List<tbl_products> prod = new List<tbl_products>();
+
+            try
+            {
+                var erg = from prods in db.tbl_products
+                          where prods.hasqty == true
+                          select prods;
+
+                prod = erg.ToList<tbl_products>();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return prod;
+        }
+        #endregion
         #region Method to Insert Product in database
         public bool Insert(productsBLL p)
         {
@@ -53,6 +75,7 @@ namespace AnyStore.DAL
                 prod.qty = p.qty;
                 prod.added_date = p.added_date;
                 prod.added_by = p.added_by;
+                prod.hasqty = p.hasqty;
                 db.tbl_products.InsertOnSubmit(prod);
                 db.SubmitChanges();
 
@@ -99,6 +122,7 @@ namespace AnyStore.DAL
                     myProd.qty = p.qty;
                     myProd.added_date = p.added_date;
                     myProd.added_by = p.added_by;
+                    myProd.hasqty = p.hasqty;
                     //myProd.Id = p.id;
                     db.SubmitChanges();
                 }
@@ -181,6 +205,7 @@ namespace AnyStore.DAL
                     p.name = myProd.name;
                     p.rate = decimal.Parse(myProd.rate.ToString());
                     p.qty = decimal.Parse(myProd.qty.ToString());
+                    p.hasqty = (bool)myProd.hasqty;
                 }
             }
             catch(Exception ex)
@@ -207,6 +232,7 @@ namespace AnyStore.DAL
                 if (myProd != null)
                 {
                     p.id = myProd.Id;
+                    p.hasqty = (bool)myProd.hasqty;
                 }
             }
             catch (Exception ex)

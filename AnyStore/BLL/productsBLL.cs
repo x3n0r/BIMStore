@@ -17,6 +17,6 @@ namespace AnyStore.BLL
         public decimal qty { get; set; }
         public DateTime added_date { get; set; }
         public int added_by { get; set; }
-
+        public bool hasqty { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[tbl_transactions] (
-    [Id]               INT             NOT NULL IDENTITY,
+    [Id]               INT             IDENTITY (1, 1) NOT NULL,
     [type]             VARCHAR (50)    NULL,
     [dea_cust_id]      INT             NULL,
     [grandTotal]       DECIMAL (18, 2) NULL,
@@ -7,6 +7,7 @@
     [tax]              DECIMAL (18, 2) NULL,
     [discount]         DECIMAL (18, 2) NULL,
     [added_by]         INT             NULL,
+    [kontobez] CHAR(1) NULL, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

@@ -58,6 +58,8 @@
             this.txtStreet = new System.Windows.Forms.TextBox();
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.lblCountry = new System.Windows.Forms.Label();
+            this.txtFormofaddress = new System.Windows.Forms.TextBox();
+            this.lblFormofaddress = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeaCust)).BeginInit();
@@ -71,7 +73,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(835, 33);
+            this.panel1.Size = new System.Drawing.Size(841, 33);
             this.panel1.TabIndex = 3;
             // 
             // pictureBoxClose
@@ -91,7 +93,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(335, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(180, 21);
+            this.lblTop.Size = new System.Drawing.Size(181, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "DEALER and CUSTOMER";
             // 
@@ -111,7 +113,7 @@
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(24, 90);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(35, 17);
+            this.lblType.Size = new System.Drawing.Size(36, 17);
             this.lblType.TabIndex = 5;
             this.lblType.Text = "Type";
             // 
@@ -119,7 +121,7 @@
             // 
             this.lblFirstname.AutoSize = true;
             this.lblFirstname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstname.Location = new System.Drawing.Point(24, 121);
+            this.lblFirstname.Location = new System.Drawing.Point(24, 154);
             this.lblFirstname.Name = "lblFirstname";
             this.lblFirstname.Size = new System.Drawing.Size(71, 17);
             this.lblFirstname.TabIndex = 6;
@@ -129,7 +131,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(24, 186);
+            this.lblEmail.Location = new System.Drawing.Point(24, 219);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(39, 17);
             this.lblEmail.TabIndex = 7;
@@ -139,7 +141,7 @@
             // 
             this.lblStreet.AutoSize = true;
             this.lblStreet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStreet.Location = new System.Drawing.Point(24, 248);
+            this.lblStreet.Location = new System.Drawing.Point(24, 281);
             this.lblStreet.Name = "lblStreet";
             this.lblStreet.Size = new System.Drawing.Size(42, 17);
             this.lblStreet.TabIndex = 9;
@@ -149,7 +151,7 @@
             // 
             this.lblContact.AutoSize = true;
             this.lblContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContact.Location = new System.Drawing.Point(24, 217);
+            this.lblContact.Location = new System.Drawing.Point(24, 250);
             this.lblContact.Name = "lblContact";
             this.lblContact.Size = new System.Drawing.Size(52, 17);
             this.lblContact.TabIndex = 8;
@@ -162,7 +164,7 @@
             this.txtDeaCustID.Name = "txtDeaCustID";
             this.txtDeaCustID.ReadOnly = true;
             this.txtDeaCustID.Size = new System.Drawing.Size(245, 25);
-            this.txtDeaCustID.TabIndex = 10;
+            this.txtDeaCustID.TabIndex = 99;
             // 
             // cmbDeaCust
             // 
@@ -174,41 +176,41 @@
             this.cmbDeaCust.Location = new System.Drawing.Point(133, 90);
             this.cmbDeaCust.Name = "cmbDeaCust";
             this.cmbDeaCust.Size = new System.Drawing.Size(245, 25);
-            this.cmbDeaCust.TabIndex = 11;
+            this.cmbDeaCust.TabIndex = 1;
             // 
             // txtFirstname
             // 
             this.txtFirstname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstname.Location = new System.Drawing.Point(133, 121);
+            this.txtFirstname.Location = new System.Drawing.Point(133, 154);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.Size = new System.Drawing.Size(245, 25);
-            this.txtFirstname.TabIndex = 12;
+            this.txtFirstname.TabIndex = 3;
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(133, 183);
+            this.txtEmail.Location = new System.Drawing.Point(133, 216);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(245, 25);
-            this.txtEmail.TabIndex = 13;
+            this.txtEmail.TabIndex = 5;
             // 
             // txtContact
             // 
             this.txtContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(133, 214);
+            this.txtContact.Location = new System.Drawing.Point(133, 247);
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(245, 25);
-            this.txtContact.TabIndex = 14;
+            this.txtContact.TabIndex = 6;
             // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.ForestGreen;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(276, 378);
+            this.btnAdd.Location = new System.Drawing.Point(276, 411);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(102, 47);
-            this.btnAdd.TabIndex = 16;
+            this.btnAdd.TabIndex = 11;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -218,10 +220,10 @@
             this.btnUpdate.BackColor = System.Drawing.Color.Chartreuse;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(384, 378);
+            this.btnUpdate.Location = new System.Drawing.Point(384, 411);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(102, 47);
-            this.btnUpdate.TabIndex = 17;
+            this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -232,10 +234,10 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(492, 378);
+            this.btnDelete.Location = new System.Drawing.Point(492, 411);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(102, 47);
-            this.btnDelete.TabIndex = 18;
+            this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -245,7 +247,7 @@
             this.dgvDeaCust.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDeaCust.Location = new System.Drawing.Point(399, 98);
             this.dgvDeaCust.Name = "dgvDeaCust";
-            this.dgvDeaCust.Size = new System.Drawing.Size(409, 265);
+            this.dgvDeaCust.Size = new System.Drawing.Size(409, 298);
             this.dgvDeaCust.TabIndex = 19;
             this.dgvDeaCust.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDeaCust_RowHeaderMouseClick);
             // 
@@ -271,16 +273,16 @@
             // txtLastname
             // 
             this.txtLastname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastname.Location = new System.Drawing.Point(133, 152);
+            this.txtLastname.Location = new System.Drawing.Point(133, 185);
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.Size = new System.Drawing.Size(245, 25);
-            this.txtLastname.TabIndex = 23;
+            this.txtLastname.TabIndex = 4;
             // 
             // lblLastname
             // 
             this.lblLastname.AutoSize = true;
             this.lblLastname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastname.Location = new System.Drawing.Point(24, 152);
+            this.lblLastname.Location = new System.Drawing.Point(24, 185);
             this.lblLastname.Name = "lblLastname";
             this.lblLastname.Size = new System.Drawing.Size(70, 17);
             this.lblLastname.TabIndex = 22;
@@ -289,16 +291,16 @@
             // txtPostcode
             // 
             this.txtPostcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPostcode.Location = new System.Drawing.Point(133, 276);
+            this.txtPostcode.Location = new System.Drawing.Point(133, 309);
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(245, 25);
-            this.txtPostcode.TabIndex = 25;
+            this.txtPostcode.TabIndex = 8;
             // 
             // lblPostcode
             // 
             this.lblPostcode.AutoSize = true;
             this.lblPostcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPostcode.Location = new System.Drawing.Point(24, 279);
+            this.lblPostcode.Location = new System.Drawing.Point(24, 312);
             this.lblPostcode.Name = "lblPostcode";
             this.lblPostcode.Size = new System.Drawing.Size(62, 17);
             this.lblPostcode.TabIndex = 24;
@@ -307,16 +309,16 @@
             // txtCity
             // 
             this.txtCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.Location = new System.Drawing.Point(133, 307);
+            this.txtCity.Location = new System.Drawing.Point(133, 340);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(245, 25);
-            this.txtCity.TabIndex = 27;
+            this.txtCity.TabIndex = 9;
             // 
             // lblCity
             // 
             this.lblCity.AutoSize = true;
             this.lblCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCity.Location = new System.Drawing.Point(24, 310);
+            this.lblCity.Location = new System.Drawing.Point(24, 343);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(29, 17);
             this.lblCity.TabIndex = 26;
@@ -325,35 +327,55 @@
             // txtStreet
             // 
             this.txtStreet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStreet.Location = new System.Drawing.Point(133, 245);
+            this.txtStreet.Location = new System.Drawing.Point(133, 278);
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(245, 25);
-            this.txtStreet.TabIndex = 28;
+            this.txtStreet.TabIndex = 7;
             // 
             // txtCountry
             // 
             this.txtCountry.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCountry.Location = new System.Drawing.Point(133, 338);
+            this.txtCountry.Location = new System.Drawing.Point(133, 371);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(245, 25);
-            this.txtCountry.TabIndex = 30;
+            this.txtCountry.TabIndex = 10;
             // 
             // lblCountry
             // 
             this.lblCountry.AutoSize = true;
             this.lblCountry.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountry.Location = new System.Drawing.Point(24, 341);
+            this.lblCountry.Location = new System.Drawing.Point(24, 374);
             this.lblCountry.Name = "lblCountry";
             this.lblCountry.Size = new System.Drawing.Size(53, 17);
             this.lblCountry.TabIndex = 29;
             this.lblCountry.Text = "Country";
+            // 
+            // txtFormofaddress
+            // 
+            this.txtFormofaddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFormofaddress.Location = new System.Drawing.Point(133, 121);
+            this.txtFormofaddress.Name = "txtFormofaddress";
+            this.txtFormofaddress.Size = new System.Drawing.Size(245, 25);
+            this.txtFormofaddress.TabIndex = 2;
+            // 
+            // lblFormofaddress
+            // 
+            this.lblFormofaddress.AutoSize = true;
+            this.lblFormofaddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFormofaddress.Location = new System.Drawing.Point(24, 121);
+            this.lblFormofaddress.Name = "lblFormofaddress";
+            this.lblFormofaddress.Size = new System.Drawing.Size(106, 17);
+            this.lblFormofaddress.TabIndex = 31;
+            this.lblFormofaddress.Text = "Form of Address";
             // 
             // frmDeaCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(835, 437);
+            this.ClientSize = new System.Drawing.Size(841, 475);
+            this.Controls.Add(this.txtFormofaddress);
+            this.Controls.Add(this.lblFormofaddress);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.lblCountry);
             this.Controls.Add(this.txtStreet);
@@ -426,5 +448,7 @@
         private System.Windows.Forms.TextBox txtStreet;
         private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.Label lblCountry;
+        private System.Windows.Forms.TextBox txtFormofaddress;
+        private System.Windows.Forms.Label lblFormofaddress;
     }
 }
