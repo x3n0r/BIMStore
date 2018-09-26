@@ -103,3 +103,6 @@ E:\VeriStore\VeriStore\AnyStore\obj\Debug\AnyStore.pdb
 E:\VeriStore\VeriStore\AnyStore\bin\Debug\DataClasses1.designer.cs
 E:\VeriStore\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml
 E:\VeriStore\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml.layout
+C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.designer.cs
+C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml
+C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml.layout

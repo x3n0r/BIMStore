@@ -26,14 +26,14 @@ namespace AnyStore.DAL
         private String Firmenslogan;
         private String Firmenstr;
         //private String Firmenhnr;
-        //private int Firmenplz;
+        private int Firmenplz;
         private String Firmenort;
-        //private String Anrede;
+        private String Anrede;
         private String Vorname;
-        //private String Nachname;
+        private String Nachname;
         private String Straße;
         //private int Hausnummer;
-        //private int Postleitzahl;
+        private int Postleitzahl;
         private String Ort;
         private PrintDialog dialog;
         private int Rechnungsnr;
@@ -83,23 +83,22 @@ namespace AnyStore.DAL
             try { // Das "try" hat den Hintergund, das im falle einer fehlerhaften Datenbankinteraktion eine Fehlermeldung erscheint.
                 Firmenname = pdf.companyname;
                 Firmenslogan = pdf.slogan;
-                Firmenstr = pdf.companyaddress.address;
-                //Firmenhnr = "42";
-                //Firmenplz = 12345;
-                Firmenort = pdf.companyaddress.country;// "Mustershausen";
-                //Anrede = "Herr";
-                Vorname = pdf.customeraddress.name;// "Maximilian";
-                //Nachname = "Mustermann";
-                Straße = pdf.customeraddress.address;// "Musterstraße";
+                Firmenstr = pdf.companyaddress.address_street;
+                Firmenplz = Convert.ToInt32(pdf.companyaddress.address_postcode);
+                Firmenort = pdf.companyaddress.address_city;// "Mustershausen";
+                Anrede = pdf.customeraddress.form_of_address;
+                Vorname = pdf.customeraddress.first_name;// "Maximilian";
+                Nachname = pdf.customeraddress.last_name;
+                Straße = pdf.customeraddress.address_street;// "Musterstraße";
                 //Versandkosten = 10.30;
                 //Hausnummer = 123;
-                //Postleitzahl = 32132;
-                Ort = pdf.customeraddress.country;// "Musterdorf";
+                Postleitzahl = Convert.ToInt32(pdf.customeraddress.address_postcode);
+                Ort = pdf.customeraddress.address_city;// "Musterdorf";
                 Rechnungsnr = pdf.invoicenumber;// 1234567890;
                 Rechnungsdatum = pdf.invoicedate;
-                Mailaddr = pdf.companyaddress.email;//"erika@musterfrau.tld";
+                Mailaddr = pdf.companyaddress.contact_mail;//"erika@musterfrau.tld";
                 Sachbearbeiter = "Erika Musterfrau";
-                Telefonnr = pdf.companyaddress.telnb;// "+49 123 3215 - 10";
+                Telefonnr = pdf.companyaddress.contact_phone;// "+49 123 3215 - 10";
                 //Faxnr = "+49 123 3215 - 20";
                 IBAN = pdf.IBAN;// "DE42 4242 0420 0000 0424 29";
                 //Steuernr = 04242424200;
@@ -252,7 +251,7 @@ namespace AnyStore.DAL
            
              //Anschreiben
             String Anschreiben;
-            Anschreiben = "Sehr geehrte(r) " + Vorname + ",||anbei erhalten Sie die Rechnung nummer " + Rechnungsnr + ".|Nachfolgend eine Detailauftellung Ihrer Bestellung:";
+            Anschreiben = "Sehr geehrte(r) "+ Anrede + " " + Nachname + ",||anbei erhalten Sie die Rechnung nummer " + Rechnungsnr + ".|Nachfolgend eine Detailauftellung Ihrer Bestellung:";
             Anschreiben = Anschreiben.Replace("|", Environment.NewLine);
             e.Graphics.DrawString(Anschreiben, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 400));
 

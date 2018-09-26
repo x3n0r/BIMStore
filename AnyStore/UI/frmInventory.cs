@@ -22,7 +22,7 @@ namespace AnyStore.UI
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             //Addd Functionality to Close this form
-            this.Hide();
+            this.Close();
         }
 
         private void frmInventory_Load(object sender, EventArgs e)

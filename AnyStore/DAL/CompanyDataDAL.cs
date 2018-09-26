@@ -54,10 +54,12 @@ namespace AnyStore.DAL
                     //Passing Value using cmd
                     myCompData.name = cd.name;
                     myCompData.slogan = cd.slogan;
-                    myCompData.address = cd.address;
-                    myCompData.country = cd.country;
-                    myCompData.telnb = cd.telnb;
-                    myCompData.email = cd.email;
+                    myCompData.address_street = cd.address_street;
+                    myCompData.address_postcode = cd.address_postcode;
+                    myCompData.address_country = cd.address_country;
+                    myCompData.address_city = cd.address_city;
+                    myCompData.contact_phone = cd.contact_phone;
+                    myCompData.contact_email = cd.contact_mail;
                     myCompData.IBAN = cd.IBAN;
                     myCompData.BIC = cd.BIC;
                     //myCompData.Id = c.id;

@@ -1,12 +1,15 @@
 ﻿CREATE TABLE [dbo].[tbl_dea_cust] (
-    [Id]         INT           NOT NULL IDENTITY,
-    [type]       VARCHAR (50)  NULL,
-    [name]       VARCHAR (150) NULL,
-    [email]      VARCHAR (150) NULL,
-    [contact]    VARCHAR (15)  NULL,
-    [address]    VARCHAR(MAX)          NULL,
-    [added_date] DATETIME      NULL,
-    [added_by]   INT           NULL,
+    [Id]         INT           IDENTITY (1, 1) NOT NULL,
+    [type]       VARCHAR (64)  NULL,
+    [first_name] VARCHAR(128) NULL, 
+    [last_name] VARCHAR(128) NULL, 
+    [form_of_address] VARCHAR(64) NULL, 
+    [address_street] VARCHAR(64) NULL, 
+    [address_postcode] VARCHAR(64) NULL, 
+    [address_city] VARCHAR(64) NULL, 
+    [address_country] VARCHAR(64) NULL, 
+    [contact_phone] VARCHAR(64) NULL, 
+    [contact_mail] VARCHAR(64) NULL, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

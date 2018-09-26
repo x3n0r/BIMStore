@@ -19,17 +19,23 @@ namespace AnyStore.BLL
 
         public struct customer
         {
-            public string name;
-            public string address;
-            public string country;
+            public string first_name { get; set; }
+            public string last_name { get; set; }
+            public string form_of_address { get; set; }
+            public string address_street { get; set; }
+            public string address_postcode { get; set; }
+            public string address_city { get; set; }
+            public string address_country { get; set; }
         }
 
         public struct company
         {
-            public string address;
-            public string country;
-            public string telnb;
-            public string email;
+            public string address_street { get; set; }
+            public string address_postcode { get; set; }
+            public string address_city { get; set; }
+            public string address_country { get; set; }
+            public string contact_phone { get; set; }
+            public string contact_mail { get; set; }
         }
 
         public string companyname { get; set; }

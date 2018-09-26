@@ -46,12 +46,15 @@ namespace AnyStore.DAL
                 tbl_dea_cust deacust = new tbl_dea_cust();
                 //Passing the values using Parameters
                 deacust.type = dc.type;
-                deacust.name = dc.name;
-                deacust.email = dc.email;
-                deacust.contact = dc.contact;
-                deacust.address = dc.address;
-                deacust.added_date = dc.added_date;
-                deacust.added_by = dc.added_by;
+                deacust.first_name = dc.first_name;
+                deacust.last_name = dc.last_name;
+                deacust.form_of_address = dc.form_of_address;
+                deacust.contact_mail = dc.contact_mail;
+                deacust.contact_phone = dc.contact_phone;
+                deacust.address_street = dc.address_street;
+                deacust.address_postcode = dc.address_postcode;
+                deacust.address_city = dc.address_city;
+                deacust.address_country = dc.address_country;
                 db.tbl_dea_cust.InsertOnSubmit(deacust);
                 db.SubmitChanges();
 
@@ -81,7 +84,7 @@ namespace AnyStore.DAL
             try
             {
                 var erg = from deacust in db.tbl_dea_cust
-                          where deacust.Id == dc.id
+                          where deacust.Id == dc.Id
                           select deacust;
 
                 tbl_dea_cust myDeaCust = erg.FirstOrDefault();
@@ -89,12 +92,15 @@ namespace AnyStore.DAL
                 {
                     //Passing the values through parameters
                     myDeaCust.type = dc.type;
-                    myDeaCust.name = dc.name;
-                    myDeaCust.email = dc.email;
-                    myDeaCust.contact = dc.contact;
-                    myDeaCust.address = dc.address;
-                    myDeaCust.added_date = dc.added_date;
-                    myDeaCust.added_by = dc.added_by;
+                    myDeaCust.first_name = dc.first_name;
+                    myDeaCust.last_name = dc.last_name;
+                    myDeaCust.form_of_address = dc.form_of_address;
+                    myDeaCust.contact_mail = dc.contact_mail;
+                    myDeaCust.contact_phone = dc.contact_phone;
+                    myDeaCust.address_street = dc.address_street;
+                    myDeaCust.address_postcode = dc.address_postcode;
+                    myDeaCust.address_city = dc.address_city;
+                    myDeaCust.address_country = dc.address_country;
                     //myDeaCust.Id = dc.id;
                     db.SubmitChanges();
                 }
@@ -118,7 +124,7 @@ namespace AnyStore.DAL
             try
             {
                 var erg = from deacust in db.tbl_dea_cust
-                          where deacust.Id == dc.id
+                          where deacust.Id == dc.Id
                           select deacust;
 
                 db.tbl_dea_cust.DeleteOnSubmit(erg.FirstOrDefault());
@@ -144,7 +150,8 @@ namespace AnyStore.DAL
             {
                 var erg = from deacusts in db.tbl_dea_cust
                           where SqlMethods.Like(deacusts.type, "%" + keyword + "%") ||
-                                SqlMethods.Like(deacusts.name, "%" + keyword + "%")
+                                SqlMethods.Like(deacusts.first_name, "%" + keyword + "%") ||
+                                SqlMethods.Like(deacusts.last_name, "%" + keyword + "%")
                           select deacusts;
 
                 deacust = erg.ToList<tbl_dea_cust>();
@@ -192,7 +199,8 @@ namespace AnyStore.DAL
             try
             {
                 var erg = from deacusts in db.tbl_dea_cust
-                          where SqlMethods.Like(deacusts.name, "%" + keyword + "%") &&
+                          where ( SqlMethods.Like(deacusts.first_name, "%" + keyword + "%") ||
+                          SqlMethods.Like(deacusts.last_name, "%" + keyword + "%") ) &&
                           SqlMethods.Like(deacusts.type,"%"+ dict[deacustnothing] + "%")                           
                           select deacusts;
 
@@ -200,11 +208,17 @@ namespace AnyStore.DAL
                 //If we have values on myDeaCust we need to save it in dealerCustomer BLL
                 if (myDeaCust != null)
                 {
-                    dc.id = myDeaCust.Id;
-                    dc.name = myDeaCust.name;
-                    dc.email = myDeaCust.email;
-                    dc.contact = myDeaCust.contact;
-                    dc.address = myDeaCust.address;
+                    dc.Id = myDeaCust.Id;
+                    dc.type = myDeaCust.type;
+                    dc.first_name = myDeaCust.first_name;
+                    dc.last_name = myDeaCust.last_name;
+                    dc.form_of_address = myDeaCust.form_of_address;
+                    dc.contact_mail = myDeaCust.contact_mail;
+                    dc.contact_phone = myDeaCust.contact_phone;
+                    dc.address_street = myDeaCust.address_street;
+                    dc.address_postcode = myDeaCust.address_postcode;
+                    dc.address_city = myDeaCust.address_city;
+                    dc.address_country = myDeaCust.address_country;
                 }
             }
             catch(Exception ex)
@@ -224,18 +238,24 @@ namespace AnyStore.DAL
             try
             {
                 var erg = from deacusts in db.tbl_dea_cust
-                          where deacusts.name == Name
+                          where deacusts.first_name == Name || deacusts.last_name == Name
                           select deacusts;
 
 
                 tbl_dea_cust myDeaCust = erg.FirstOrDefault();
                 if (myDeaCust != null)
                 {
-                    dc.id = myDeaCust.Id;
-                    dc.name = myDeaCust.name;
-                    dc.email = myDeaCust.email;
-                    dc.contact = myDeaCust.contact;
-                    dc.address = myDeaCust.address;
+                    dc.Id = myDeaCust.Id;
+                    dc.type = myDeaCust.type;
+                    dc.first_name = myDeaCust.first_name;
+                    dc.last_name = myDeaCust.last_name;
+                    dc.form_of_address = myDeaCust.form_of_address;
+                    dc.contact_mail = myDeaCust.contact_mail;
+                    dc.contact_phone = myDeaCust.contact_phone;
+                    dc.address_street = myDeaCust.address_street;
+                    dc.address_postcode = myDeaCust.address_postcode;
+                    dc.address_city = myDeaCust.address_city;
+                    dc.address_country = myDeaCust.address_country;
                 }
             }
             catch(Exception ex)

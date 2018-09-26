@@ -22,7 +22,7 @@ namespace AnyStore.UI
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             //Write the code to close this form
-            this.Hide();
+            this.Close();
         }
 
         DeaCustBLL dc = new DeaCustBLL();
@@ -33,15 +33,17 @@ namespace AnyStore.UI
         {
             //Get the Values from Form
             dc.type = cmbDeaCust.Text;
-            dc.name = txtName.Text;
-            dc.email = txtEmail.Text;
-            dc.contact = txtContact.Text;
-            dc.address = txtAddress.Text;
-            dc.added_date = DateTime.Now;
+            dc.first_name = txtFirstname.Text;
+            dc.last_name = txtLastname.Text;
+            dc.contact_mail = txtEmail.Text;
+            dc.contact_phone = txtContact.Text;
+            dc.address_street = txtStreet.Text;
+            dc.address_city = txtCity.Text;
+            dc.address_country = txtCountry.Text;
+            dc.address_postcode = txtPostcode.Text;
             //Getting the ID to Logged in user and passign its value in dealer or cutomer module
             string loggedUsr = frmLogin.loggedIn;
             userBLL usr = uDal.GetIDFromUsername(loggedUsr);
-            dc.added_by = usr.id;
 
             //Creating boolean variable to check whether the dealer or cutomer is added or not
             bool success = dcDal.Insert(dc);
@@ -63,10 +65,14 @@ namespace AnyStore.UI
         public void Clear()
         {
             txtDeaCustID.Text = "";
-            txtName.Text = "";
+            txtFirstname.Text = "";
+            txtLastname.Text = "";
             txtEmail.Text = "";
             txtContact.Text = "";
-            txtAddress.Text = "";
+            txtStreet.Text = "";
+            txtCity.Text = "";
+            txtPostcode.Text = "";
+            txtCountry.Text = "";
             txtSearch.Text = "";
         }
 
@@ -84,26 +90,29 @@ namespace AnyStore.UI
 
             txtDeaCustID.Text = dgvDeaCust.Rows[rowIndex].Cells[0].Value.ToString();
             cmbDeaCust.Text = dgvDeaCust.Rows[rowIndex].Cells[1].Value.ToString();
-            txtName.Text = dgvDeaCust.Rows[rowIndex].Cells[2].Value.ToString();
-            txtEmail.Text = dgvDeaCust.Rows[rowIndex].Cells[3].Value.ToString();
-            txtContact.Text = dgvDeaCust.Rows[rowIndex].Cells[4].Value.ToString();
-            txtAddress.Text = dgvDeaCust.Rows[rowIndex].Cells[5].Value.ToString();
+            txtFirstname.Text = dgvDeaCust.Rows[rowIndex].Cells[2].Value.ToString();
+            txtLastname.Text = dgvDeaCust.Rows[rowIndex].Cells[3].Value.ToString();
+            txtEmail.Text = dgvDeaCust.Rows[rowIndex].Cells[10].Value.ToString();
+            txtContact.Text = dgvDeaCust.Rows[rowIndex].Cells[9].Value.ToString();
+            txtStreet.Text = dgvDeaCust.Rows[rowIndex].Cells[5].Value.ToString();
+            txtPostcode.Text = dgvDeaCust.Rows[rowIndex].Cells[6].Value.ToString();
+            txtCity.Text = dgvDeaCust.Rows[rowIndex].Cells[7].Value.ToString();
+            txtCountry.Text = dgvDeaCust.Rows[rowIndex].Cells[8].Value.ToString();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //Get the values from Form
-            dc.id = int.Parse(txtDeaCustID.Text);
+            dc.Id = int.Parse(txtDeaCustID.Text);
             dc.type = cmbDeaCust.Text;
-            dc.name = txtName.Text;
-            dc.email = txtEmail.Text;
-            dc.contact = txtContact.Text;
-            dc.address = txtAddress.Text;
-            dc.added_date = DateTime.Now;
-            //Getting the ID to Logged in user and passign its value in dealer or cutomer module
-            string loggedUsr = frmLogin.loggedIn;
-            userBLL usr = uDal.GetIDFromUsername(loggedUsr);
-            dc.added_by = usr.id;
+            dc.first_name = txtFirstname.Text;
+            dc.last_name = txtLastname.Text;
+            dc.contact_mail = txtEmail.Text;
+            dc.contact_phone = txtContact.Text;
+            dc.address_street = txtStreet.Text;
+            dc.address_city = txtCity.Text;
+            dc.address_country = txtCountry.Text;
+            dc.address_postcode = txtPostcode.Text;
 
             //create boolean variable to check whether the dealer or customer is updated or not
             bool success = dcDal.Update(dc);
@@ -127,7 +136,7 @@ namespace AnyStore.UI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //Get the id of the user to be deleted from form
-            dc.id = int.Parse(txtDeaCustID.Text);
+            dc.Id = int.Parse(txtDeaCustID.Text);
 
             //Create boolean variable to check wheteher the dealer or customer is deleted or not
             bool success = dcDal.Delete(dc);

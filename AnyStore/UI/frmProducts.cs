@@ -22,7 +22,7 @@ namespace AnyStore.UI
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             //Add code to hide this form
-            this.Hide();
+            this.Close();
         }
 
         categoriesDAL cdal = new categoriesDAL();

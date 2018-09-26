@@ -8,14 +8,16 @@ namespace AnyStore.BLL
 {
     class DeaCustBLL
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string type { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public string contact { get; set; }
-        public string address { get; set; }
-        public DateTime added_date { get; set; }
-        public int added_by { get; set; }
-
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public string form_of_address { get; set; }
+        public string address_street;
+        public string address_postcode;
+        public string address_city;
+        public string address_country;
+        public string contact_phone { get; set; }
+        public string contact_mail { get; set; }
     }
 }

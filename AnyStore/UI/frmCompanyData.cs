@@ -21,7 +21,7 @@ namespace AnyStore.UI
 
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         CompanyDataBLL cd = new CompanyDataBLL();
@@ -35,10 +35,12 @@ namespace AnyStore.UI
             txtCompanyDataID.Text = dt[0].Id.ToString();
             txtName.Text = dt[0].name;
             txtSlogan.Text = dt[0].slogan;
-            txtAddress.Text = dt[0].address;
-            txtCountry.Text = dt[0].country;
-            txtTelno.Text = dt[0].telnb;
-            txteMail.Text = dt[0].email;
+            txtStreet.Text = dt[0].address_street;
+            txtCity.Text = dt[0].address_city;
+            txtPostcode.Text = dt[0].address_postcode;
+            txtCountry.Text = dt[0].address_country;
+            txtTelno.Text = dt[0].contact_phone;
+            txteMail.Text = dt[0].contact_email;
             txtIBAN.Text = dt[0].IBAN;
             txtBIC.Text = dt[0].BIC;
         }
@@ -49,10 +51,12 @@ namespace AnyStore.UI
             cd.Id = int.Parse(txtCompanyDataID.Text);
             cd.name = txtName.Text;
             cd.slogan = txtSlogan.Text;
-            cd.address = txtAddress.Text;
-            cd.country = txtCountry.Text;
-            cd.telnb = txtTelno.Text;
-            cd.email = txteMail.Text;
+            cd.address_street = txtStreet.Text;
+            cd.address_country = txtCountry.Text;
+            cd.address_city = txtCity.Text;
+            cd.address_postcode = txtPostcode.Text;
+            cd.contact_phone = txtTelno.Text;
+            cd.contact_mail = txteMail.Text;
             cd.IBAN = txtIBAN.Text;
             cd.BIC = txtBIC.Text;
 

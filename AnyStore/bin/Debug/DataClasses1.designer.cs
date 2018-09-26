@@ -33,9 +33,6 @@ namespace AnyStore
     partial void Inserttbl_categories(tbl_categories instance);
     partial void Updatetbl_categories(tbl_categories instance);
     partial void Deletetbl_categories(tbl_categories instance);
-    partial void Inserttbl_dea_cust(tbl_dea_cust instance);
-    partial void Updatetbl_dea_cust(tbl_dea_cust instance);
-    partial void Deletetbl_dea_cust(tbl_dea_cust instance);
     partial void Inserttbl_products(tbl_products instance);
     partial void Updatetbl_products(tbl_products instance);
     partial void Deletetbl_products(tbl_products instance);
@@ -51,6 +48,9 @@ namespace AnyStore
     partial void Inserttbl_companydata(tbl_companydata instance);
     partial void Updatetbl_companydata(tbl_companydata instance);
     partial void Deletetbl_companydata(tbl_companydata instance);
+    partial void Inserttbl_dea_cust(tbl_dea_cust instance);
+    partial void Updatetbl_dea_cust(tbl_dea_cust instance);
+    partial void Deletetbl_dea_cust(tbl_dea_cust instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -91,14 +91,6 @@ namespace AnyStore
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_dea_cust> tbl_dea_cust
-		{
-			get
-			{
-				return this.GetTable<tbl_dea_cust>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_products> tbl_products
 		{
 			get
@@ -136,6 +128,14 @@ namespace AnyStore
 			get
 			{
 				return this.GetTable<tbl_companydata>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_dea_cust> tbl_dea_cust
+		{
+			get
+			{
+				return this.GetTable<tbl_dea_cust>();
 			}
 		}
 	}
@@ -233,236 +233,6 @@ namespace AnyStore
 					this._description = value;
 					this.SendPropertyChanged("description");
 					this.OndescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> added_date
-		{
-			get
-			{
-				return this._added_date;
-			}
-			set
-			{
-				if ((this._added_date != value))
-				{
-					this.Onadded_dateChanging(value);
-					this.SendPropertyChanging();
-					this._added_date = value;
-					this.SendPropertyChanged("added_date");
-					this.Onadded_dateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_by", DbType="Int")]
-		public System.Nullable<int> added_by
-		{
-			get
-			{
-				return this._added_by;
-			}
-			set
-			{
-				if ((this._added_by != value))
-				{
-					this.Onadded_byChanging(value);
-					this.SendPropertyChanging();
-					this._added_by = value;
-					this.SendPropertyChanged("added_by");
-					this.Onadded_byChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_dea_cust")]
-	public partial class tbl_dea_cust : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _type;
-		
-		private string _name;
-		
-		private string _email;
-		
-		private string _contact;
-		
-		private string _address;
-		
-		private System.Nullable<System.DateTime> _added_date;
-		
-		private System.Nullable<int> _added_by;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OntypeChanging(string value);
-    partial void OntypeChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnemailChanging(string value);
-    partial void OnemailChanged();
-    partial void OncontactChanging(string value);
-    partial void OncontactChanged();
-    partial void OnaddressChanging(string value);
-    partial void OnaddressChanged();
-    partial void Onadded_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Onadded_dateChanged();
-    partial void Onadded_byChanging(System.Nullable<int> value);
-    partial void Onadded_byChanged();
-    #endregion
-		
-		public tbl_dea_cust()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="VarChar(50)")]
-		public string type
-		{
-			get
-			{
-				return this._type;
-			}
-			set
-			{
-				if ((this._type != value))
-				{
-					this.OntypeChanging(value);
-					this.SendPropertyChanging();
-					this._type = value;
-					this.SendPropertyChanged("type");
-					this.OntypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(150)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(150)")]
-		public string email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				if ((this._email != value))
-				{
-					this.OnemailChanging(value);
-					this.SendPropertyChanging();
-					this._email = value;
-					this.SendPropertyChanged("email");
-					this.OnemailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact", DbType="VarChar(15)")]
-		public string contact
-		{
-			get
-			{
-				return this._contact;
-			}
-			set
-			{
-				if ((this._contact != value))
-				{
-					this.OncontactChanging(value);
-					this.SendPropertyChanging();
-					this._contact = value;
-					this.SendPropertyChanged("contact");
-					this.OncontactChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="VarChar(MAX)")]
-		public string address
-		{
-			get
-			{
-				return this._address;
-			}
-			set
-			{
-				if ((this._address != value))
-				{
-					this.OnaddressChanging(value);
-					this.SendPropertyChanging();
-					this._address = value;
-					this.SendPropertyChanged("address");
-					this.OnaddressChanged();
 				}
 			}
 		}
@@ -1556,17 +1326,21 @@ namespace AnyStore
 		
 		private string _slogan;
 		
-		private string _address;
+		private string _contact_phone;
 		
-		private string _country;
-		
-		private string _telnb;
-		
-		private string _email;
+		private string _contact_email;
 		
 		private string _IBAN;
 		
 		private string _BIC;
+		
+		private string _address_street;
+		
+		private string _address_postcode;
+		
+		private string _address_city;
+		
+		private string _address_country;
 		
     #region Definitionen der Erweiterungsmethoden
     partial void OnLoaded();
@@ -1578,18 +1352,22 @@ namespace AnyStore
     partial void OnnameChanged();
     partial void OnsloganChanging(string value);
     partial void OnsloganChanged();
-    partial void OnaddressChanging(string value);
-    partial void OnaddressChanged();
-    partial void OncountryChanging(string value);
-    partial void OncountryChanged();
-    partial void OntelnbChanging(string value);
-    partial void OntelnbChanged();
-    partial void OnemailChanging(string value);
-    partial void OnemailChanged();
+    partial void Oncontact_phoneChanging(string value);
+    partial void Oncontact_phoneChanged();
+    partial void Oncontact_emailChanging(string value);
+    partial void Oncontact_emailChanged();
     partial void OnIBANChanging(string value);
     partial void OnIBANChanged();
     partial void OnBICChanging(string value);
     partial void OnBICChanged();
+    partial void Onaddress_streetChanging(string value);
+    partial void Onaddress_streetChanged();
+    partial void Onaddress_postcodeChanging(string value);
+    partial void Onaddress_postcodeChanged();
+    partial void Onaddress_cityChanging(string value);
+    partial void Onaddress_cityChanged();
+    partial void Onaddress_countryChanging(string value);
+    partial void Onaddress_countryChanged();
     #endregion
 		
 		public tbl_companydata()
@@ -1657,82 +1435,42 @@ namespace AnyStore
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="VarChar(MAX)")]
-		public string address
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_phone", DbType="VarChar(50)")]
+		public string contact_phone
 		{
 			get
 			{
-				return this._address;
+				return this._contact_phone;
 			}
 			set
 			{
-				if ((this._address != value))
+				if ((this._contact_phone != value))
 				{
-					this.OnaddressChanging(value);
+					this.Oncontact_phoneChanging(value);
 					this.SendPropertyChanging();
-					this._address = value;
-					this.SendPropertyChanged("address");
-					this.OnaddressChanged();
+					this._contact_phone = value;
+					this.SendPropertyChanged("contact_phone");
+					this.Oncontact_phoneChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_country", DbType="VarChar(MAX)")]
-		public string country
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_email", DbType="VarChar(50)")]
+		public string contact_email
 		{
 			get
 			{
-				return this._country;
+				return this._contact_email;
 			}
 			set
 			{
-				if ((this._country != value))
+				if ((this._contact_email != value))
 				{
-					this.OncountryChanging(value);
+					this.Oncontact_emailChanging(value);
 					this.SendPropertyChanging();
-					this._country = value;
-					this.SendPropertyChanged("country");
-					this.OncountryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telnb", DbType="VarChar(50)")]
-		public string telnb
-		{
-			get
-			{
-				return this._telnb;
-			}
-			set
-			{
-				if ((this._telnb != value))
-				{
-					this.OntelnbChanging(value);
-					this.SendPropertyChanging();
-					this._telnb = value;
-					this.SendPropertyChanged("telnb");
-					this.OntelnbChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(50)")]
-		public string email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				if ((this._email != value))
-				{
-					this.OnemailChanging(value);
-					this.SendPropertyChanging();
-					this._email = value;
-					this.SendPropertyChanged("email");
-					this.OnemailChanged();
+					this._contact_email = value;
+					this.SendPropertyChanged("contact_email");
+					this.Oncontact_emailChanged();
 				}
 			}
 		}
@@ -1773,6 +1511,388 @@ namespace AnyStore
 					this._BIC = value;
 					this.SendPropertyChanged("BIC");
 					this.OnBICChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_street", DbType="VarChar(64)")]
+		public string address_street
+		{
+			get
+			{
+				return this._address_street;
+			}
+			set
+			{
+				if ((this._address_street != value))
+				{
+					this.Onaddress_streetChanging(value);
+					this.SendPropertyChanging();
+					this._address_street = value;
+					this.SendPropertyChanged("address_street");
+					this.Onaddress_streetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_postcode", DbType="VarChar(64)")]
+		public string address_postcode
+		{
+			get
+			{
+				return this._address_postcode;
+			}
+			set
+			{
+				if ((this._address_postcode != value))
+				{
+					this.Onaddress_postcodeChanging(value);
+					this.SendPropertyChanging();
+					this._address_postcode = value;
+					this.SendPropertyChanged("address_postcode");
+					this.Onaddress_postcodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_city", DbType="VarChar(64)")]
+		public string address_city
+		{
+			get
+			{
+				return this._address_city;
+			}
+			set
+			{
+				if ((this._address_city != value))
+				{
+					this.Onaddress_cityChanging(value);
+					this.SendPropertyChanging();
+					this._address_city = value;
+					this.SendPropertyChanged("address_city");
+					this.Onaddress_cityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_country", DbType="VarChar(64)")]
+		public string address_country
+		{
+			get
+			{
+				return this._address_country;
+			}
+			set
+			{
+				if ((this._address_country != value))
+				{
+					this.Onaddress_countryChanging(value);
+					this.SendPropertyChanging();
+					this._address_country = value;
+					this.SendPropertyChanged("address_country");
+					this.Onaddress_countryChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_dea_cust")]
+	public partial class tbl_dea_cust : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _type;
+		
+		private string _first_name;
+		
+		private string _last_name;
+		
+		private string _form_of_address;
+		
+		private string _address_street;
+		
+		private string _address_postcode;
+		
+		private string _address_city;
+		
+		private string _address_country;
+		
+		private string _contact_phone;
+		
+		private string _contact_mail;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OntypeChanging(string value);
+    partial void OntypeChanged();
+    partial void Onfirst_nameChanging(string value);
+    partial void Onfirst_nameChanged();
+    partial void Onlast_nameChanging(string value);
+    partial void Onlast_nameChanged();
+    partial void Onform_of_addressChanging(string value);
+    partial void Onform_of_addressChanged();
+    partial void Onaddress_streetChanging(string value);
+    partial void Onaddress_streetChanged();
+    partial void Onaddress_postcodeChanging(string value);
+    partial void Onaddress_postcodeChanged();
+    partial void Onaddress_cityChanging(string value);
+    partial void Onaddress_cityChanged();
+    partial void Onaddress_countryChanging(string value);
+    partial void Onaddress_countryChanged();
+    partial void Oncontact_phoneChanging(string value);
+    partial void Oncontact_phoneChanged();
+    partial void Oncontact_mailChanging(string value);
+    partial void Oncontact_mailChanged();
+    #endregion
+		
+		public tbl_dea_cust()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="VarChar(64)")]
+		public string type
+		{
+			get
+			{
+				return this._type;
+			}
+			set
+			{
+				if ((this._type != value))
+				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="VarChar(128)")]
+		public string first_name
+		{
+			get
+			{
+				return this._first_name;
+			}
+			set
+			{
+				if ((this._first_name != value))
+				{
+					this.Onfirst_nameChanging(value);
+					this.SendPropertyChanging();
+					this._first_name = value;
+					this.SendPropertyChanged("first_name");
+					this.Onfirst_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_last_name", DbType="VarChar(128)")]
+		public string last_name
+		{
+			get
+			{
+				return this._last_name;
+			}
+			set
+			{
+				if ((this._last_name != value))
+				{
+					this.Onlast_nameChanging(value);
+					this.SendPropertyChanging();
+					this._last_name = value;
+					this.SendPropertyChanged("last_name");
+					this.Onlast_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_form_of_address", DbType="VarChar(64)")]
+		public string form_of_address
+		{
+			get
+			{
+				return this._form_of_address;
+			}
+			set
+			{
+				if ((this._form_of_address != value))
+				{
+					this.Onform_of_addressChanging(value);
+					this.SendPropertyChanging();
+					this._form_of_address = value;
+					this.SendPropertyChanged("form_of_address");
+					this.Onform_of_addressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_street", DbType="VarChar(64)")]
+		public string address_street
+		{
+			get
+			{
+				return this._address_street;
+			}
+			set
+			{
+				if ((this._address_street != value))
+				{
+					this.Onaddress_streetChanging(value);
+					this.SendPropertyChanging();
+					this._address_street = value;
+					this.SendPropertyChanged("address_street");
+					this.Onaddress_streetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_postcode", DbType="VarChar(64)")]
+		public string address_postcode
+		{
+			get
+			{
+				return this._address_postcode;
+			}
+			set
+			{
+				if ((this._address_postcode != value))
+				{
+					this.Onaddress_postcodeChanging(value);
+					this.SendPropertyChanging();
+					this._address_postcode = value;
+					this.SendPropertyChanged("address_postcode");
+					this.Onaddress_postcodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_city", DbType="VarChar(64)")]
+		public string address_city
+		{
+			get
+			{
+				return this._address_city;
+			}
+			set
+			{
+				if ((this._address_city != value))
+				{
+					this.Onaddress_cityChanging(value);
+					this.SendPropertyChanging();
+					this._address_city = value;
+					this.SendPropertyChanged("address_city");
+					this.Onaddress_cityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_country", DbType="VarChar(64)")]
+		public string address_country
+		{
+			get
+			{
+				return this._address_country;
+			}
+			set
+			{
+				if ((this._address_country != value))
+				{
+					this.Onaddress_countryChanging(value);
+					this.SendPropertyChanging();
+					this._address_country = value;
+					this.SendPropertyChanged("address_country");
+					this.Onaddress_countryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_phone", DbType="VarChar(64)")]
+		public string contact_phone
+		{
+			get
+			{
+				return this._contact_phone;
+			}
+			set
+			{
+				if ((this._contact_phone != value))
+				{
+					this.Oncontact_phoneChanging(value);
+					this.SendPropertyChanging();
+					this._contact_phone = value;
+					this.SendPropertyChanged("contact_phone");
+					this.Oncontact_phoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_mail", DbType="VarChar(64)")]
+		public string contact_mail
+		{
+			get
+			{
+				return this._contact_mail;
+			}
+			set
+			{
+				if ((this._contact_mail != value))
+				{
+					this.Oncontact_mailChanging(value);
+					this.SendPropertyChanging();
+					this._contact_mail = value;
+					this.SendPropertyChanged("contact_mail");
+					this.Oncontact_mailChanged();
 				}
 			}
 		}

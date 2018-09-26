@@ -26,7 +26,7 @@ namespace AnyStore.UI
 
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
         DeaCustDAL dcDAL = new DeaCustDAL();
         productsDAL pDAL = new productsDAL();
@@ -79,10 +79,10 @@ namespace AnyStore.UI
             }
 
             //Now transfer or set the value from DeCustBLL to textboxes
-            txtName.Text = dc.name;
-            txtEmail.Text = dc.email;
-            txtContact.Text = dc.contact;
-            txtAddress.Text = dc.address;
+            txtName.Text = dc.first_name + " " + dc.last_name;
+            txtEmail.Text = dc.contact_mail;
+            txtContact.Text = dc.contact_phone;
+            txtAddress.Text = dc.address_street + Environment.NewLine + dc.address_postcode + " " + dc.address_city + Environment.NewLine  + dc.address_country;
         }
 
         private void txtSearchProduct_TextChanged(object sender, EventArgs e)
@@ -229,7 +229,7 @@ namespace AnyStore.UI
             string deaCustName = txtName.Text;
             DeaCustBLL dc = dcDAL.GetDeaCustIDFromName(deaCustName);
 
-            transaction.dea_cust_id = dc.id;
+            transaction.dea_cust_id = dc.Id;
             transaction.grandTotal = Math.Round(decimal.Parse(txtGrandTotal.Text),2);
             transaction.transaction_date = DateTime.Now;
             if (txtVat.Text != "")
@@ -273,7 +273,7 @@ namespace AnyStore.UI
                     transactionDetail.rate = decimal.Parse(transactionDT.Rows[i][1].ToString());
                     transactionDetail.qty = decimal.Parse(transactionDT.Rows[i][2].ToString());
                     transactionDetail.total = Math.Round(decimal.Parse(transactionDT.Rows[i][3].ToString()),2);
-                    transactionDetail.dea_cust_id = dc.id;
+                    transactionDetail.dea_cust_id = dc.Id;
                     transactionDetail.added_date = DateTime.Now;
                     transactionDetail.added_by = u.id;
 
@@ -372,10 +372,13 @@ namespace AnyStore.UI
                         pdf.slogan = cd[0].slogan;
                         //companyaddress
                         company comp = new company();
-                        comp.address = cd[0].address;
-                        comp.country = cd[0].country;
-                        comp.email = cd[0].email;
-                        comp.telnb = cd[0].telnb;
+                        comp.address_city = cd[0].address_city;
+                        comp.address_country = cd[0].address_country;
+                        comp.address_postcode = cd[0].address_postcode;
+                        comp.address_street = cd[0].address_street;
+                        comp.contact_mail = cd[0].contact_email;
+                        comp.contact_phone = cd[0].contact_phone;
+                        
                         pdf.companyaddress = comp;
 
                         pdf.IBAN = cd[0].IBAN;
@@ -383,9 +386,12 @@ namespace AnyStore.UI
 
                         //customeradrress
                         customer cust = new customer();
-                        cust.name = dc.name;
-                        cust.address = dc.address;
-                        cust.country = "1210 Wien";
+                        cust.first_name = dc.first_name;
+                        cust.last_name = dc.last_name;
+                        cust.address_city = dc.address_city;
+                        cust.address_country = dc.address_country;
+                        cust.address_postcode = dc.address_postcode;
+                        cust.address_street = dc.address_street;
                         pdf.customeraddress = cust;
 
                         //fill product listitems

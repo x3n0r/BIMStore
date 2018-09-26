@@ -21,7 +21,7 @@ namespace AnyStore.UI
         transactionDAL tdal = new transactionDAL();
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void frmTransactions_Load(object sender, EventArgs e)
