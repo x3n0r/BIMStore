@@ -1,26 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AnyStore" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AnyStore.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="AnyStore.Properties.Settings" SettingsPropertyName="AnyStoreConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tbl_categories" Member="tbl_categories">
-    <Type Name="tbl_categories">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tbl_transaction_detail" Member="tbl_transaction_detail">
-    <Type Name="tbl_transaction_detail">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="product_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="rate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="qty" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="total" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="dea_cust_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tbl_users" Member="tbl_users">
     <Type Name="tbl_users">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -91,6 +70,39 @@
       <Column Name="discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="kontobez" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_categories" Member="tbl_categories">
+    <Type Name="tbl_categories">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tax" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_animal" Member="tbl_animal">
+    <Type Name="tbl_animal">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="species" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="race" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="date_of_birth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cust_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_transaction_detail" Member="tbl_transaction_detail">
+    <Type Name="tbl_transaction_detail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="qty" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="total" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="dea_cust_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

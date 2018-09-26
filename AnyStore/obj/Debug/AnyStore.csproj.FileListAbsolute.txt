@@ -106,3 +106,4 @@ E:\VeriStore\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml.layout
 C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.designer.cs
 C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml
 C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml.layout
+C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmTest.resources

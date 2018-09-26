@@ -89,5 +89,11 @@ namespace AnyStore
             frmCompanyData companydata = new frmCompanyData();
             companydata.Show();
         }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTest test = new frmTest();
+            test.Show();
+        }
     }
 }

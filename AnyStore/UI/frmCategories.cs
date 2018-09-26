@@ -38,6 +38,7 @@ namespace AnyStore.UI
             c.title = txtTitle.Text;
             c.description = txtDescription.Text;
             c.added_date = DateTime.Now;
+            c.tax = Convert.ToDecimal(txtTax.Text);
 
             //Getting ID in Added by field
             string loggedUser = frmLogin.loggedIn;
@@ -70,6 +71,7 @@ namespace AnyStore.UI
             txtTitle.Text = "";
             txtDescription.Text = "";
             txtSearch.Text = "";
+            txtTax.Text = "";
         }
 
         private void frmCategories_Load(object sender, EventArgs e)
@@ -99,6 +101,7 @@ namespace AnyStore.UI
             c.title = txtTitle.Text;
             c.description = txtDescription.Text;
             c.added_date = DateTime.Now;
+            c.tax = Convert.ToDecimal(txtTax.Text);
             //Getting ID in Added by field
             string loggedUser = frmLogin.loggedIn;
             userBLL usr = udal.GetIDFromUsername(loggedUser);

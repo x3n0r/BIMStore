@@ -30,6 +30,7 @@ namespace AnyStore.UI
         }
         DeaCustDAL dcDAL = new DeaCustDAL();
         productsDAL pDAL = new productsDAL();
+        categoriesDAL cDAL = new categoriesDAL();
         userDAL uDAL = new userDAL();
         transactionDAL tDAL = new transactionDAL();
         transactionDetailDAL tdDAL = new transactionDetailDAL();
@@ -98,7 +99,8 @@ namespace AnyStore.UI
                 txtProductName.Text = "";
                 txtInventory.Text = "";
                 txtRate.Text = "";
-                TxtQty.Text = "";
+                txtTax.Text = "";
+                txtQty.Text = "";
                 return;
             }
 
@@ -109,6 +111,8 @@ namespace AnyStore.UI
             txtProductName.Text = p.name;
             txtInventory.Text = p.qty.ToString();
             txtRate.Text = p.rate.ToString();
+            categoriesBLL c = cDAL.Search(p.id);
+            txtTax.Text = c.tax.ToString();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -120,15 +124,15 @@ namespace AnyStore.UI
                 return;
             }
             //Get Product Name, Rate and Qty customer wants to buy
-            if (TxtQty.Text == "" || txtRate.Text == "" || txtProductName.Text == "")
+            if (txtQty.Text == "" || txtRate.Text == "" || txtProductName.Text == "")
             {
                 return;
             }
             string productName = txtProductName.Text;
             decimal Rate = decimal.Parse(txtRate.Text);
-            decimal Qty = decimal.Parse(TxtQty.Text);
+            decimal Qty = decimal.Parse(txtQty.Text);
             decimal Total = Rate * Qty; //Total=RatexQty
-
+            decimal tax = Convert.ToDecimal(txtTax.Text);
             //Display the Subtotal in textbox
             //Get the subtotal value from textbox
             decimal subTotal = decimal.Parse(txtSubTotal.Text);
@@ -155,7 +159,8 @@ namespace AnyStore.UI
                 txtProductName.Text = "";
                 txtInventory.Text = "0";
                 txtRate.Text = "0.00";
-                TxtQty.Text = "0";
+                txtQty.Text = "0";
+                txtTax.Text = "0";
                 count_prod += 1;
             }
         }
@@ -185,28 +190,6 @@ namespace AnyStore.UI
             
         }
 
-        private void txtVat_TextChanged(object sender, EventArgs e)
-        {
-            //Check if the grandTotal has value or not if it has not value then calculate the discount first
-            string check = txtGrandTotal.Text;
-            if(check=="")
-            {
-                //Deisplay the error message to calcuate discount
-                MessageBox.Show("Calculate the discount and set the Grand Total First.");
-            }
-            else
-            {
-                //Calculate VAT
-                //Getting the VAT Percent first
-                decimal previousGT = decimal.Parse(txtGrandTotal.Text);
-                decimal vat = decimal.Parse(txtVat.Text);
-                decimal grandTotalWithVAT=((100+vat)/100)*previousGT;
-
-                //Displaying new grand total with vat
-                txtGrandTotal.Text = grandTotalWithVAT.ToString();
-            }
-        }
-
         private void txtPaidAmount_TextChanged(object sender, EventArgs e)
         {
             //Get the paid amount and grand total
@@ -220,7 +203,7 @@ namespace AnyStore.UI
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnBook_Click(object sender, EventArgs e)
         {
 
             bool h = H_booking();
@@ -248,7 +231,6 @@ namespace AnyStore.UI
             transaction.dea_cust_id = dc.Id;
             transaction.grandTotal = Math.Round(decimal.Parse(txtPaidAmount.Text), 2);
             transaction.transaction_date = DateTime.Now;
-            transaction.tax = 0;
             transaction.discount = 0;
 
             //Get the Username of Logged in user
@@ -288,14 +270,6 @@ namespace AnyStore.UI
             transaction.dea_cust_id = dc.Id;
             transaction.grandTotal = Math.Round(decimal.Parse(txtGrandTotal.Text), 2);
             transaction.transaction_date = DateTime.Now;
-            if (txtVat.Text != "")
-            {
-                transaction.tax = decimal.Parse(txtVat.Text);
-            }
-            else
-            {
-                transaction.tax = 0;
-            }
             transaction.discount = decimal.Parse(txtDiscount.Text);
 
             //Get the Username of Logged in user
@@ -321,6 +295,8 @@ namespace AnyStore.UI
 
                 List<items> lit = new List<items>();
 
+                Dictionary<string, decimal> tmptaxes = new Dictionary<string, decimal>();
+
                 //Use for loop to insert Transaction Details
                 for (int i = 0; i < transactionDT.Rows.Count; i++)
                 {
@@ -329,11 +305,12 @@ namespace AnyStore.UI
                     //Get the Product name and convert it to id
                     string ProductName = transactionDT.Rows[i][0].ToString();
                     productsBLL p = pDAL.GetProductIDFromName(ProductName);
+                    categoriesBLL c = cDAL.Search(p.category);
 
                     bool producthasqty = p.hasqty;
 
                     transactionDetail.product_id = p.id;
-                    transactionDetail.rate = decimal.Parse(transactionDT.Rows[i][1].ToString());
+                    transactionDetail.price = decimal.Parse(transactionDT.Rows[i][1].ToString());
                     transactionDetail.qty = decimal.Parse(transactionDT.Rows[i][2].ToString());
                     transactionDetail.total = Math.Round(decimal.Parse(transactionDT.Rows[i][3].ToString()), 2);
                     transactionDetail.dea_cust_id = dc.Id;
@@ -341,14 +318,15 @@ namespace AnyStore.UI
                     transactionDetail.added_by = u.id;
 
                     //listitems
-
                     items it = new items();
                     it.amount = Convert.ToInt32(transactionDetail.qty);
                     it.productnumber = transactionDetail.product_id;
                     it.name = transactionDT.Rows[i][0].ToString();
-                    it.price = transactionDetail.rate;
+                    it.price = transactionDetail.price;
                     it.total = 0;
                     lit.Add(it);
+
+                    tmptaxes.Add(c.title,c.tax);
 
                     //Here Increase or Decrease Product Quantity based on Purchase or sales
                     //Lets check whether we are on Purchase or Sales
@@ -385,43 +363,6 @@ namespace AnyStore.UI
                     //Transaction Complete
                     scope.Complete();
 
-                    //Code to Print Bill
-                    /*
-                    DGVPrinter printer = new DGVPrinter();
-
-                    printer.Title = "\r\n\r\n\r\n ANYSTORE PVT. LTD. \r\n\r\n";
-                    printer.SubTitle = "Kathmandu, Nepal \r\n Phone: 01-045XXXX \r\n\r\n";
-                    printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-                    printer.PageNumbers = true;
-                    printer.PageNumberInHeader = false;
-                    printer.PorportionalColumns = true;
-                    printer.HeaderCellAlignment = StringAlignment.Near;
-                    printer.Footer = "Discount: "+ txtDiscount.Text +"% \r\n" + "VAT: " + txtVat.Text + "% \r\n" + "Grand Total: "+ txtGrandTotal.Text + "\r\n\r\n" +"Thank you for doing business with us.";
-                    printer.FooterSpacing = 15;
-                    printer.PrintDataGridView(dgvAddedProducts);
-
-                    MessageBox.Show("Transaction Completed Sucessfully");
-                    //Celar the Data Grid View and Clear all the TExtboxes
-                    dgvAddedProducts.DataSource = null;
-                    dgvAddedProducts.Rows.Clear();
-
-                    txtSearch.Text = "";
-                    txtName.Text = "";
-                    txtEmail.Text = "";
-                    txtContact.Text = "";
-                    txtAddress.Text = "";
-                    txtSearchProduct.Text = "";
-                    txtProductName.Text = "";
-                    txtInventory.Text = "0";
-                    txtRate.Text = "0";
-                    TxtQty.Text = "0";
-                    txtSubTotal.Text = "0";
-                    txtDiscount.Text = "0";
-                    txtVat.Text = "0";
-                    txtGrandTotal.Text = "0";
-                    txtPaidAmount.Text = "0";
-                    txtReturnAmount.Text = "0";
-                    */
 
                     /* PDF */
                     // Hier wird der Aufruf aus der GUI-Simuliert mit allen übergebenen Variablen/Parameter
@@ -431,9 +372,9 @@ namespace AnyStore.UI
                     { //Prüfen, ob auf Abbrechen im Druckdialog gedrückt wurde
                         PDF pdfengine = new PDF();
                         PDFBLL pdf = new PDFBLL();
-
                         //start pdf struct filling
 
+                        pdf.taxes = tmptaxes;
                         //COMPANY ITEMS
                         pdf.companyname = cd[0].name;
                         pdf.slogan = cd[0].slogan;
@@ -501,5 +442,9 @@ namespace AnyStore.UI
             return success;
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

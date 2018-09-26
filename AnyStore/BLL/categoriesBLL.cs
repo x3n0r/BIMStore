@@ -13,6 +13,7 @@ namespace AnyStore.BLL
         public string description { get; set; }
         public DateTime added_date { get; set; }
         public int added_by { get; set; }
+        public decimal tax { get; set; }
 
     }
 }

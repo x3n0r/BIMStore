@@ -233,6 +233,7 @@ namespace AnyStore.DAL
                 {
                     p.id = myProd.Id;
                     p.hasqty = (bool)myProd.hasqty;
+                    p.category = (int)myProd.category;
                 }
             }
             catch (Exception ex)

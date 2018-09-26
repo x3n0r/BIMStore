@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[tbl_transaction_detail] (
-    [Id]          INT             NOT NULL IDENTITY,
+    [Id]          INT             IDENTITY (1, 1) NOT NULL,
     [product_id]  INT             NULL,
-    [rate]        DECIMAL (18, 2) NULL,
+    [price]        DECIMAL (18, 2) NULL,
     [qty]         DECIMAL (18, 2) NULL,
     [total]       DECIMAL (18, 2) NULL,
     [dea_cust_id] INT             NULL,

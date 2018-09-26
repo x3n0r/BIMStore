@@ -14,7 +14,9 @@ namespace AnyStore.BLL
             public int productnumber;
             public string name;
             public decimal price;
-            public decimal total;
+            public decimal sum;  // = price * amount
+            public decimal tax; //percent
+            public decimal total; // = sum + tax(amount)
         }
 
         public struct customer
@@ -57,5 +59,6 @@ namespace AnyStore.BLL
         public decimal total { get; set; }
         public string IBAN { get; set; }
         public string BIC { get; set; }
+        public Dictionary<string, decimal> taxes { get; set; }
     }
 }

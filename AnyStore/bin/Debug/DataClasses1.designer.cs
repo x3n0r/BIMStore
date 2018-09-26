@@ -30,12 +30,6 @@ namespace AnyStore
 		
     #region Definitionen der Erweiterungsmethoden
     partial void OnCreated();
-    partial void Inserttbl_categories(tbl_categories instance);
-    partial void Updatetbl_categories(tbl_categories instance);
-    partial void Deletetbl_categories(tbl_categories instance);
-    partial void Inserttbl_transaction_detail(tbl_transaction_detail instance);
-    partial void Updatetbl_transaction_detail(tbl_transaction_detail instance);
-    partial void Deletetbl_transaction_detail(tbl_transaction_detail instance);
     partial void Inserttbl_users(tbl_users instance);
     partial void Updatetbl_users(tbl_users instance);
     partial void Deletetbl_users(tbl_users instance);
@@ -51,6 +45,15 @@ namespace AnyStore
     partial void Inserttbl_transactions(tbl_transactions instance);
     partial void Updatetbl_transactions(tbl_transactions instance);
     partial void Deletetbl_transactions(tbl_transactions instance);
+    partial void Inserttbl_categories(tbl_categories instance);
+    partial void Updatetbl_categories(tbl_categories instance);
+    partial void Deletetbl_categories(tbl_categories instance);
+    partial void Inserttbl_animal(tbl_animal instance);
+    partial void Updatetbl_animal(tbl_animal instance);
+    partial void Deletetbl_animal(tbl_animal instance);
+    partial void Inserttbl_transaction_detail(tbl_transaction_detail instance);
+    partial void Updatetbl_transaction_detail(tbl_transaction_detail instance);
+    partial void Deletetbl_transaction_detail(tbl_transaction_detail instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -81,22 +84,6 @@ namespace AnyStore
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<tbl_categories> tbl_categories
-		{
-			get
-			{
-				return this.GetTable<tbl_categories>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tbl_transaction_detail> tbl_transaction_detail
-		{
-			get
-			{
-				return this.GetTable<tbl_transaction_detail>();
-			}
 		}
 		
 		public System.Data.Linq.Table<tbl_users> tbl_users
@@ -138,392 +125,28 @@ namespace AnyStore
 				return this.GetTable<tbl_transactions>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_categories")]
-	public partial class tbl_categories : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _title;
-		
-		private string _description;
-		
-		private System.Nullable<System.DateTime> _added_date;
-		
-		private System.Nullable<int> _added_by;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OntitleChanging(string value);
-    partial void OntitleChanged();
-    partial void OndescriptionChanging(string value);
-    partial void OndescriptionChanged();
-    partial void Onadded_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Onadded_dateChanged();
-    partial void Onadded_byChanging(System.Nullable<int> value);
-    partial void Onadded_byChanged();
-    #endregion
-		
-		public tbl_categories()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		public System.Data.Linq.Table<tbl_categories> tbl_categories
 		{
 			get
 			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
+				return this.GetTable<tbl_categories>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="VarChar(50)")]
-		public string title
+		public System.Data.Linq.Table<tbl_animal> tbl_animal
 		{
 			get
 			{
-				return this._title;
-			}
-			set
-			{
-				if ((this._title != value))
-				{
-					this.OntitleChanging(value);
-					this.SendPropertyChanging();
-					this._title = value;
-					this.SendPropertyChanged("title");
-					this.OntitleChanged();
-				}
+				return this.GetTable<tbl_animal>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="VarChar(MAX)")]
-		public string description
+		public System.Data.Linq.Table<tbl_transaction_detail> tbl_transaction_detail
 		{
 			get
 			{
-				return this._description;
-			}
-			set
-			{
-				if ((this._description != value))
-				{
-					this.OndescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._description = value;
-					this.SendPropertyChanged("description");
-					this.OndescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> added_date
-		{
-			get
-			{
-				return this._added_date;
-			}
-			set
-			{
-				if ((this._added_date != value))
-				{
-					this.Onadded_dateChanging(value);
-					this.SendPropertyChanging();
-					this._added_date = value;
-					this.SendPropertyChanged("added_date");
-					this.Onadded_dateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_by", DbType="Int")]
-		public System.Nullable<int> added_by
-		{
-			get
-			{
-				return this._added_by;
-			}
-			set
-			{
-				if ((this._added_by != value))
-				{
-					this.Onadded_byChanging(value);
-					this.SendPropertyChanging();
-					this._added_by = value;
-					this.SendPropertyChanged("added_by");
-					this.Onadded_byChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_transaction_detail")]
-	public partial class tbl_transaction_detail : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _product_id;
-		
-		private System.Nullable<decimal> _rate;
-		
-		private System.Nullable<decimal> _qty;
-		
-		private System.Nullable<decimal> _total;
-		
-		private System.Nullable<int> _dea_cust_id;
-		
-		private System.Nullable<System.DateTime> _added_date;
-		
-		private System.Nullable<int> _added_by;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void Onproduct_idChanging(System.Nullable<int> value);
-    partial void Onproduct_idChanged();
-    partial void OnrateChanging(System.Nullable<decimal> value);
-    partial void OnrateChanged();
-    partial void OnqtyChanging(System.Nullable<decimal> value);
-    partial void OnqtyChanged();
-    partial void OntotalChanging(System.Nullable<decimal> value);
-    partial void OntotalChanged();
-    partial void Ondea_cust_idChanging(System.Nullable<int> value);
-    partial void Ondea_cust_idChanged();
-    partial void Onadded_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Onadded_dateChanged();
-    partial void Onadded_byChanging(System.Nullable<int> value);
-    partial void Onadded_byChanged();
-    #endregion
-		
-		public tbl_transaction_detail()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int")]
-		public System.Nullable<int> product_id
-		{
-			get
-			{
-				return this._product_id;
-			}
-			set
-			{
-				if ((this._product_id != value))
-				{
-					this.Onproduct_idChanging(value);
-					this.SendPropertyChanging();
-					this._product_id = value;
-					this.SendPropertyChanged("product_id");
-					this.Onproduct_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rate", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> rate
-		{
-			get
-			{
-				return this._rate;
-			}
-			set
-			{
-				if ((this._rate != value))
-				{
-					this.OnrateChanging(value);
-					this.SendPropertyChanging();
-					this._rate = value;
-					this.SendPropertyChanged("rate");
-					this.OnrateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_qty", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> qty
-		{
-			get
-			{
-				return this._qty;
-			}
-			set
-			{
-				if ((this._qty != value))
-				{
-					this.OnqtyChanging(value);
-					this.SendPropertyChanging();
-					this._qty = value;
-					this.SendPropertyChanged("qty");
-					this.OnqtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> total
-		{
-			get
-			{
-				return this._total;
-			}
-			set
-			{
-				if ((this._total != value))
-				{
-					this.OntotalChanging(value);
-					this.SendPropertyChanging();
-					this._total = value;
-					this.SendPropertyChanged("total");
-					this.OntotalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dea_cust_id", DbType="Int")]
-		public System.Nullable<int> dea_cust_id
-		{
-			get
-			{
-				return this._dea_cust_id;
-			}
-			set
-			{
-				if ((this._dea_cust_id != value))
-				{
-					this.Ondea_cust_idChanging(value);
-					this.SendPropertyChanging();
-					this._dea_cust_id = value;
-					this.SendPropertyChanged("dea_cust_id");
-					this.Ondea_cust_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> added_date
-		{
-			get
-			{
-				return this._added_date;
-			}
-			set
-			{
-				if ((this._added_date != value))
-				{
-					this.Onadded_dateChanging(value);
-					this.SendPropertyChanging();
-					this._added_date = value;
-					this.SendPropertyChanged("added_date");
-					this.Onadded_dateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_by", DbType="Int")]
-		public System.Nullable<int> added_by
-		{
-			get
-			{
-				return this._added_by;
-			}
-			set
-			{
-				if ((this._added_by != value))
-				{
-					this.Onadded_byChanging(value);
-					this.SendPropertyChanging();
-					this._added_by = value;
-					this.SendPropertyChanged("added_by");
-					this.Onadded_byChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<tbl_transaction_detail>();
 			}
 		}
 	}
@@ -1941,6 +1564,624 @@ namespace AnyStore
 					this._kontobez = value;
 					this.SendPropertyChanged("kontobez");
 					this.OnkontobezChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_categories")]
+	public partial class tbl_categories : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _title;
+		
+		private string _description;
+		
+		private System.Nullable<System.DateTime> _added_date;
+		
+		private System.Nullable<int> _added_by;
+		
+		private System.Nullable<decimal> _tax;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OntitleChanging(string value);
+    partial void OntitleChanged();
+    partial void OndescriptionChanging(string value);
+    partial void OndescriptionChanged();
+    partial void Onadded_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onadded_dateChanged();
+    partial void Onadded_byChanging(System.Nullable<int> value);
+    partial void Onadded_byChanged();
+    partial void OntaxChanging(System.Nullable<decimal> value);
+    partial void OntaxChanged();
+    #endregion
+		
+		public tbl_categories()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="VarChar(50)")]
+		public string title
+		{
+			get
+			{
+				return this._title;
+			}
+			set
+			{
+				if ((this._title != value))
+				{
+					this.OntitleChanging(value);
+					this.SendPropertyChanging();
+					this._title = value;
+					this.SendPropertyChanged("title");
+					this.OntitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="VarChar(MAX)")]
+		public string description
+		{
+			get
+			{
+				return this._description;
+			}
+			set
+			{
+				if ((this._description != value))
+				{
+					this.OndescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._description = value;
+					this.SendPropertyChanged("description");
+					this.OndescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> added_date
+		{
+			get
+			{
+				return this._added_date;
+			}
+			set
+			{
+				if ((this._added_date != value))
+				{
+					this.Onadded_dateChanging(value);
+					this.SendPropertyChanging();
+					this._added_date = value;
+					this.SendPropertyChanged("added_date");
+					this.Onadded_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_by", DbType="Int")]
+		public System.Nullable<int> added_by
+		{
+			get
+			{
+				return this._added_by;
+			}
+			set
+			{
+				if ((this._added_by != value))
+				{
+					this.Onadded_byChanging(value);
+					this.SendPropertyChanging();
+					this._added_by = value;
+					this.SendPropertyChanged("added_by");
+					this.Onadded_byChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tax", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> tax
+		{
+			get
+			{
+				return this._tax;
+			}
+			set
+			{
+				if ((this._tax != value))
+				{
+					this.OntaxChanging(value);
+					this.SendPropertyChanging();
+					this._tax = value;
+					this.SendPropertyChanged("tax");
+					this.OntaxChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_animal")]
+	public partial class tbl_animal : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+		private string _species;
+		
+		private string _race;
+		
+		private System.Nullable<System.DateTime> _date_of_birth;
+		
+		private string _notes;
+		
+		private System.Nullable<int> _cust_id;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnspeciesChanging(string value);
+    partial void OnspeciesChanged();
+    partial void OnraceChanging(string value);
+    partial void OnraceChanged();
+    partial void Ondate_of_birthChanging(System.Nullable<System.DateTime> value);
+    partial void Ondate_of_birthChanged();
+    partial void OnnotesChanging(string value);
+    partial void OnnotesChanged();
+    partial void Oncust_idChanging(System.Nullable<int> value);
+    partial void Oncust_idChanged();
+    #endregion
+		
+		public tbl_animal()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(64)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_species", DbType="VarChar(64)")]
+		public string species
+		{
+			get
+			{
+				return this._species;
+			}
+			set
+			{
+				if ((this._species != value))
+				{
+					this.OnspeciesChanging(value);
+					this.SendPropertyChanging();
+					this._species = value;
+					this.SendPropertyChanged("species");
+					this.OnspeciesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_race", DbType="VarChar(64)")]
+		public string race
+		{
+			get
+			{
+				return this._race;
+			}
+			set
+			{
+				if ((this._race != value))
+				{
+					this.OnraceChanging(value);
+					this.SendPropertyChanging();
+					this._race = value;
+					this.SendPropertyChanged("race");
+					this.OnraceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_of_birth", DbType="DateTime")]
+		public System.Nullable<System.DateTime> date_of_birth
+		{
+			get
+			{
+				return this._date_of_birth;
+			}
+			set
+			{
+				if ((this._date_of_birth != value))
+				{
+					this.Ondate_of_birthChanging(value);
+					this.SendPropertyChanging();
+					this._date_of_birth = value;
+					this.SendPropertyChanged("date_of_birth");
+					this.Ondate_of_birthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_notes", DbType="VarChar(MAX)")]
+		public string notes
+		{
+			get
+			{
+				return this._notes;
+			}
+			set
+			{
+				if ((this._notes != value))
+				{
+					this.OnnotesChanging(value);
+					this.SendPropertyChanging();
+					this._notes = value;
+					this.SendPropertyChanged("notes");
+					this.OnnotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cust_id", DbType="Int")]
+		public System.Nullable<int> cust_id
+		{
+			get
+			{
+				return this._cust_id;
+			}
+			set
+			{
+				if ((this._cust_id != value))
+				{
+					this.Oncust_idChanging(value);
+					this.SendPropertyChanging();
+					this._cust_id = value;
+					this.SendPropertyChanged("cust_id");
+					this.Oncust_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_transaction_detail")]
+	public partial class tbl_transaction_detail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _product_id;
+		
+		private System.Nullable<decimal> _price;
+		
+		private System.Nullable<decimal> _qty;
+		
+		private System.Nullable<decimal> _total;
+		
+		private System.Nullable<int> _dea_cust_id;
+		
+		private System.Nullable<System.DateTime> _added_date;
+		
+		private System.Nullable<int> _added_by;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void Onproduct_idChanging(System.Nullable<int> value);
+    partial void Onproduct_idChanged();
+    partial void OnpriceChanging(System.Nullable<decimal> value);
+    partial void OnpriceChanged();
+    partial void OnqtyChanging(System.Nullable<decimal> value);
+    partial void OnqtyChanged();
+    partial void OntotalChanging(System.Nullable<decimal> value);
+    partial void OntotalChanged();
+    partial void Ondea_cust_idChanging(System.Nullable<int> value);
+    partial void Ondea_cust_idChanged();
+    partial void Onadded_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onadded_dateChanged();
+    partial void Onadded_byChanging(System.Nullable<int> value);
+    partial void Onadded_byChanged();
+    #endregion
+		
+		public tbl_transaction_detail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int")]
+		public System.Nullable<int> product_id
+		{
+			get
+			{
+				return this._product_id;
+			}
+			set
+			{
+				if ((this._product_id != value))
+				{
+					this.Onproduct_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_id = value;
+					this.SendPropertyChanged("product_id");
+					this.Onproduct_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> price
+		{
+			get
+			{
+				return this._price;
+			}
+			set
+			{
+				if ((this._price != value))
+				{
+					this.OnpriceChanging(value);
+					this.SendPropertyChanging();
+					this._price = value;
+					this.SendPropertyChanged("price");
+					this.OnpriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_qty", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> qty
+		{
+			get
+			{
+				return this._qty;
+			}
+			set
+			{
+				if ((this._qty != value))
+				{
+					this.OnqtyChanging(value);
+					this.SendPropertyChanging();
+					this._qty = value;
+					this.SendPropertyChanged("qty");
+					this.OnqtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> total
+		{
+			get
+			{
+				return this._total;
+			}
+			set
+			{
+				if ((this._total != value))
+				{
+					this.OntotalChanging(value);
+					this.SendPropertyChanging();
+					this._total = value;
+					this.SendPropertyChanged("total");
+					this.OntotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dea_cust_id", DbType="Int")]
+		public System.Nullable<int> dea_cust_id
+		{
+			get
+			{
+				return this._dea_cust_id;
+			}
+			set
+			{
+				if ((this._dea_cust_id != value))
+				{
+					this.Ondea_cust_idChanging(value);
+					this.SendPropertyChanging();
+					this._dea_cust_id = value;
+					this.SendPropertyChanged("dea_cust_id");
+					this.Ondea_cust_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> added_date
+		{
+			get
+			{
+				return this._added_date;
+			}
+			set
+			{
+				if ((this._added_date != value))
+				{
+					this.Onadded_dateChanging(value);
+					this.SendPropertyChanging();
+					this._added_date = value;
+					this.SendPropertyChanged("added_date");
+					this.Onadded_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_by", DbType="Int")]
+		public System.Nullable<int> added_by
+		{
+			get
+			{
+				return this._added_by;
+			}
+			set
+			{
+				if ((this._added_by != value))
+				{
+					this.Onadded_byChanging(value);
+					this.SendPropertyChanging();
+					this._added_by = value;
+					this.SendPropertyChanged("added_by");
+					this.Onadded_byChanged();
 				}
 			}
 		}

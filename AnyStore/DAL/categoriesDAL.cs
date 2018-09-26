@@ -50,6 +50,7 @@ namespace AnyStore.DAL
                 cat.description = c.description;
                 cat.added_date = c.added_date;
                 cat.added_by = c.added_by;
+                cat.tax = c.tax;
                 db.tbl_categories.InsertOnSubmit(cat);
                 db.SubmitChanges();
 
@@ -93,6 +94,7 @@ namespace AnyStore.DAL
                     myCat.description = c.description;
                     myCat.added_date = c.added_date;
                     myCat.added_by = c.added_by;
+                    myCat.tax = c.tax;
                     //myCat.Id = c.id;
                     db.SubmitChanges();
                 }
@@ -156,6 +158,35 @@ namespace AnyStore.DAL
             }
 
             return cats;
+        }
+        #endregion
+        #region Method for Search Functionality
+        public categoriesBLL Search(int catid)
+        {
+            //To hold the data from database 
+            categoriesBLL category = new categoriesBLL();
+            try
+            {
+                var erg = from cat in db.tbl_categories
+                          where cat.Id == catid
+                          select cat;
+                tbl_categories cats = erg.FirstOrDefault();
+                //If we have values on myDeaCust we need to save it in dealerCustomer BLL
+                if (cats != null)
+                {
+                    category.id = cats.Id;
+                    category.tax = (decimal)cats.tax;
+                    category.description = cats.description;
+                    category.title = cats.title;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return category;
         }
         #endregion
     }

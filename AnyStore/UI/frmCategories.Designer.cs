@@ -44,6 +44,8 @@
             this.dgvCategories = new System.Windows.Forms.DataGridView();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtTax = new System.Windows.Forms.TextBox();
+            this.lblTax = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
@@ -77,7 +79,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(398, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(100, 21);
+            this.lblTop.Size = new System.Drawing.Size(99, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "CATEGORIES";
             // 
@@ -105,7 +107,7 @@
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(12, 140);
+            this.lblDescription.Location = new System.Drawing.Point(12, 160);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(74, 17);
             this.lblDescription.TabIndex = 4;
@@ -113,6 +115,7 @@
             // 
             // txtCategoryID
             // 
+            this.txtCategoryID.Enabled = false;
             this.txtCategoryID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCategoryID.Location = new System.Drawing.Point(145, 62);
             this.txtCategoryID.Name = "txtCategoryID";
@@ -131,10 +134,10 @@
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(145, 140);
+            this.txtDescription.Location = new System.Drawing.Point(145, 160);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(217, 122);
+            this.txtDescription.Size = new System.Drawing.Size(217, 102);
             this.txtDescription.TabIndex = 7;
             // 
             // btnADD
@@ -205,12 +208,32 @@
             this.txtSearch.TabIndex = 13;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // txtTax
+            // 
+            this.txtTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTax.Location = new System.Drawing.Point(145, 129);
+            this.txtTax.Name = "txtTax";
+            this.txtTax.Size = new System.Drawing.Size(217, 25);
+            this.txtTax.TabIndex = 15;
+            // 
+            // lblTax
+            // 
+            this.lblTax.AutoSize = true;
+            this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTax.Location = new System.Drawing.Point(12, 132);
+            this.lblTax.Name = "lblTax";
+            this.lblTax.Size = new System.Drawing.Size(27, 17);
+            this.lblTax.TabIndex = 14;
+            this.lblTax.Text = "Tax";
+            // 
             // frmCategories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(846, 350);
+            this.Controls.Add(this.txtTax);
+            this.Controls.Add(this.lblTax);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.dgvCategories);
@@ -255,5 +278,7 @@
         private System.Windows.Forms.DataGridView dgvCategories;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtTax;
+        private System.Windows.Forms.Label lblTax;
     }
 }

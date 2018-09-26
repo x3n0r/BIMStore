@@ -27,7 +27,7 @@ namespace AnyStore.DAL
                 tbl_transaction_detail transdet = new tbl_transaction_detail();
                 //Passing the values using cmd
                 transdet.product_id = td.product_id;
-                transdet.rate = td.rate;
+                transdet.price = td.price;
                 transdet.qty = td.qty;
                 transdet.total = td.total;
                 transdet.dea_cust_id = td.dea_cust_id;

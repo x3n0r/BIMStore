@@ -32,7 +32,6 @@ namespace AnyStore.DAL
                 trans.dea_cust_id = t.dea_cust_id;
                 trans.grandTotal = t.grandTotal;
                 trans.transaction_date = t.transaction_date;
-                trans.tax = t.tax;
                 trans.discount = t.discount;
                 trans.added_by = t.added_by;
                 db.tbl_transactions.InsertOnSubmit(trans);
