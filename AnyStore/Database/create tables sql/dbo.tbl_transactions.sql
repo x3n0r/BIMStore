@@ -7,7 +7,7 @@
     [tax]              DECIMAL (18, 2) NULL,
     [discount]         DECIMAL (18, 2) NULL,
     [added_by]         INT             NULL,
-    [kontobez] CHAR(1) NULL, 
+    [kontobez]         VARCHAR        NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

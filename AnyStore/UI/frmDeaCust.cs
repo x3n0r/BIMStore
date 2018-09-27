@@ -29,6 +29,7 @@ namespace AnyStore.UI
         DeaCustDAL dcDal = new DeaCustDAL();
 
         userDAL uDal = new userDAL();
+        public static int cust_id;
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //Get the Values from Form
@@ -180,5 +181,12 @@ namespace AnyStore.UI
             }
         }
 
+        private void btnPets_Click(object sender, EventArgs e)
+        {
+            cust_id = int.Parse(txtDeaCustID.Text);
+            frmAnimals animals = new frmAnimals();
+            this.Hide();
+            animals.Show();
+        }
     }
 }

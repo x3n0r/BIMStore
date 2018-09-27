@@ -60,6 +60,7 @@
             this.lblCountry = new System.Windows.Forms.Label();
             this.txtFormofaddress = new System.Windows.Forms.TextBox();
             this.lblFormofaddress = new System.Windows.Forms.Label();
+            this.btnPets = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeaCust)).BeginInit();
@@ -93,7 +94,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(335, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(180, 21);
+            this.lblTop.Size = new System.Drawing.Size(181, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "DEALER and CUSTOMER";
             // 
@@ -113,7 +114,7 @@
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(24, 90);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(35, 17);
+            this.lblType.Size = new System.Drawing.Size(36, 17);
             this.lblType.TabIndex = 5;
             this.lblType.Text = "Type";
             // 
@@ -369,12 +370,26 @@
             this.lblFormofaddress.TabIndex = 31;
             this.lblFormofaddress.Text = "Form of Address";
             // 
+            // btnPets
+            // 
+            this.btnPets.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.btnPets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPets.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPets.Location = new System.Drawing.Point(27, 411);
+            this.btnPets.Name = "btnPets";
+            this.btnPets.Size = new System.Drawing.Size(102, 47);
+            this.btnPets.TabIndex = 100;
+            this.btnPets.Text = "ADD Pets";
+            this.btnPets.UseVisualStyleBackColor = false;
+            this.btnPets.Click += new System.EventHandler(this.btnPets_Click);
+            // 
             // frmDeaCust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(841, 475);
+            this.Controls.Add(this.btnPets);
             this.Controls.Add(this.txtFormofaddress);
             this.Controls.Add(this.lblFormofaddress);
             this.Controls.Add(this.txtCountry);
@@ -451,5 +466,6 @@
         private System.Windows.Forms.Label lblCountry;
         private System.Windows.Forms.TextBox txtFormofaddress;
         private System.Windows.Forms.Label lblFormofaddress;
+        private System.Windows.Forms.Button btnPets;
     }
 }

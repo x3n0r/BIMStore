@@ -49,6 +49,8 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblDeaCustTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtTax = new System.Windows.Forms.TextBox();
+            this.lblTax = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.txtQty = new System.Windows.Forms.TextBox();
@@ -65,6 +67,8 @@
             this.dgvAddedProducts = new System.Windows.Forms.DataGridView();
             this.lblDGVTtitle = new System.Windows.Forms.Label();
             this.pnlCalculation = new System.Windows.Forms.Panel();
+            this.txtTaxCalc = new System.Windows.Forms.TextBox();
+            this.lblTaxCalc = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnBook = new System.Windows.Forms.Button();
             this.txtReturnAmount = new System.Windows.Forms.TextBox();
@@ -78,8 +82,6 @@
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.lblcalculationTitle = new System.Windows.Forms.Label();
-            this.txtTax = new System.Windows.Forms.TextBox();
-            this.lblTax = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             this.pnlDeaCust.SuspendLayout();
@@ -312,6 +314,26 @@
             this.panel2.Size = new System.Drawing.Size(1205, 96);
             this.panel2.TabIndex = 4;
             // 
+            // txtTax
+            // 
+            this.txtTax.Enabled = false;
+            this.txtTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTax.Location = new System.Drawing.Point(479, 57);
+            this.txtTax.Name = "txtTax";
+            this.txtTax.ReadOnly = true;
+            this.txtTax.Size = new System.Drawing.Size(145, 25);
+            this.txtTax.TabIndex = 7;
+            // 
+            // lblTax
+            // 
+            this.lblTax.AutoSize = true;
+            this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTax.Location = new System.Drawing.Point(439, 57);
+            this.lblTax.Name = "lblTax";
+            this.lblTax.Size = new System.Drawing.Size(28, 17);
+            this.lblTax.TabIndex = 8;
+            this.lblTax.Text = "Tax";
+            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.SpringGreen;
@@ -462,6 +484,8 @@
             // 
             // pnlCalculation
             // 
+            this.pnlCalculation.Controls.Add(this.txtTaxCalc);
+            this.pnlCalculation.Controls.Add(this.lblTaxCalc);
             this.pnlCalculation.Controls.Add(this.btnSave);
             this.pnlCalculation.Controls.Add(this.btnBook);
             this.pnlCalculation.Controls.Add(this.txtReturnAmount);
@@ -479,6 +503,26 @@
             this.pnlCalculation.Name = "pnlCalculation";
             this.pnlCalculation.Size = new System.Drawing.Size(588, 331);
             this.pnlCalculation.TabIndex = 6;
+            // 
+            // txtTaxCalc
+            // 
+            this.txtTaxCalc.Enabled = false;
+            this.txtTaxCalc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTaxCalc.Location = new System.Drawing.Point(134, 71);
+            this.txtTaxCalc.Name = "txtTaxCalc";
+            this.txtTaxCalc.ReadOnly = true;
+            this.txtTaxCalc.Size = new System.Drawing.Size(394, 25);
+            this.txtTaxCalc.TabIndex = 11;
+            // 
+            // lblTaxCalc
+            // 
+            this.lblTaxCalc.AutoSize = true;
+            this.lblTaxCalc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxCalc.Location = new System.Drawing.Point(7, 74);
+            this.lblTaxCalc.Name = "lblTaxCalc";
+            this.lblTaxCalc.Size = new System.Drawing.Size(28, 17);
+            this.lblTaxCalc.TabIndex = 12;
+            this.lblTaxCalc.Text = "Tax";
             // 
             // btnSave
             // 
@@ -540,7 +584,7 @@
             // txtDiscount
             // 
             this.txtDiscount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscount.Location = new System.Drawing.Point(134, 71);
+            this.txtDiscount.Location = new System.Drawing.Point(134, 108);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(394, 25);
             this.txtDiscount.TabIndex = 6;
@@ -583,7 +627,7 @@
             this.lblGrandTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGrandTotal.Location = new System.Drawing.Point(7, 149);
             this.lblGrandTotal.Name = "lblGrandTotal";
-            this.lblGrandTotal.Size = new System.Drawing.Size(76, 17);
+            this.lblGrandTotal.Size = new System.Drawing.Size(77, 17);
             this.lblGrandTotal.TabIndex = 4;
             this.lblGrandTotal.Text = "Grand Total";
             // 
@@ -591,7 +635,7 @@
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscount.Location = new System.Drawing.Point(7, 74);
+            this.lblDiscount.Location = new System.Drawing.Point(7, 111);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(81, 17);
             this.lblDiscount.TabIndex = 2;
@@ -603,7 +647,7 @@
             this.lblSubTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.Location = new System.Drawing.Point(7, 35);
             this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(62, 17);
+            this.lblSubTotal.Size = new System.Drawing.Size(63, 17);
             this.lblSubTotal.TabIndex = 1;
             this.lblSubTotal.Text = "Sub Total";
             // 
@@ -616,26 +660,6 @@
             this.lblcalculationTitle.Size = new System.Drawing.Size(124, 17);
             this.lblcalculationTitle.TabIndex = 0;
             this.lblcalculationTitle.Text = "Calculation Details";
-            // 
-            // txtTax
-            // 
-            this.txtTax.Enabled = false;
-            this.txtTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTax.Location = new System.Drawing.Point(479, 57);
-            this.txtTax.Name = "txtTax";
-            this.txtTax.ReadOnly = true;
-            this.txtTax.Size = new System.Drawing.Size(145, 25);
-            this.txtTax.TabIndex = 7;
-            // 
-            // lblTax
-            // 
-            this.lblTax.AutoSize = true;
-            this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTax.Location = new System.Drawing.Point(439, 57);
-            this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(27, 17);
-            this.lblTax.TabIndex = 8;
-            this.lblTax.Text = "Tax";
             // 
             // frmPurchaseAndSales
             // 
@@ -722,5 +746,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtTax;
         private System.Windows.Forms.Label lblTax;
+        private System.Windows.Forms.TextBox txtTaxCalc;
+        private System.Windows.Forms.Label lblTaxCalc;
     }
 }

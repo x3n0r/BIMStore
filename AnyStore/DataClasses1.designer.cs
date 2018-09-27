@@ -42,9 +42,6 @@ namespace AnyStore
     partial void Inserttbl_products(tbl_products instance);
     partial void Updatetbl_products(tbl_products instance);
     partial void Deletetbl_products(tbl_products instance);
-    partial void Inserttbl_transactions(tbl_transactions instance);
-    partial void Updatetbl_transactions(tbl_transactions instance);
-    partial void Deletetbl_transactions(tbl_transactions instance);
     partial void Inserttbl_categories(tbl_categories instance);
     partial void Updatetbl_categories(tbl_categories instance);
     partial void Deletetbl_categories(tbl_categories instance);
@@ -54,6 +51,9 @@ namespace AnyStore
     partial void Inserttbl_transaction_detail(tbl_transaction_detail instance);
     partial void Updatetbl_transaction_detail(tbl_transaction_detail instance);
     partial void Deletetbl_transaction_detail(tbl_transaction_detail instance);
+    partial void Inserttbl_transactions(tbl_transactions instance);
+    partial void Updatetbl_transactions(tbl_transactions instance);
+    partial void Deletetbl_transactions(tbl_transactions instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -118,14 +118,6 @@ namespace AnyStore
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_transactions> tbl_transactions
-		{
-			get
-			{
-				return this.GetTable<tbl_transactions>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_categories> tbl_categories
 		{
 			get
@@ -147,6 +139,14 @@ namespace AnyStore
 			get
 			{
 				return this.GetTable<tbl_transaction_detail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_transactions> tbl_transactions
+		{
+			get
+			{
+				return this.GetTable<tbl_transactions>();
 			}
 		}
 	}
@@ -1335,260 +1335,6 @@ namespace AnyStore
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_transactions")]
-	public partial class tbl_transactions : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _type;
-		
-		private System.Nullable<int> _dea_cust_id;
-		
-		private System.Nullable<decimal> _grandTotal;
-		
-		private System.Nullable<System.DateTime> _transaction_date;
-		
-		private System.Nullable<decimal> _tax;
-		
-		private System.Nullable<decimal> _discount;
-		
-		private System.Nullable<int> _added_by;
-		
-		private System.Nullable<char> _kontobez;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OntypeChanging(string value);
-    partial void OntypeChanged();
-    partial void Ondea_cust_idChanging(System.Nullable<int> value);
-    partial void Ondea_cust_idChanged();
-    partial void OngrandTotalChanging(System.Nullable<decimal> value);
-    partial void OngrandTotalChanged();
-    partial void Ontransaction_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Ontransaction_dateChanged();
-    partial void OntaxChanging(System.Nullable<decimal> value);
-    partial void OntaxChanged();
-    partial void OndiscountChanging(System.Nullable<decimal> value);
-    partial void OndiscountChanged();
-    partial void Onadded_byChanging(System.Nullable<int> value);
-    partial void Onadded_byChanged();
-    partial void OnkontobezChanging(System.Nullable<char> value);
-    partial void OnkontobezChanged();
-    #endregion
-		
-		public tbl_transactions()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="VarChar(50)")]
-		public string type
-		{
-			get
-			{
-				return this._type;
-			}
-			set
-			{
-				if ((this._type != value))
-				{
-					this.OntypeChanging(value);
-					this.SendPropertyChanging();
-					this._type = value;
-					this.SendPropertyChanged("type");
-					this.OntypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dea_cust_id", DbType="Int")]
-		public System.Nullable<int> dea_cust_id
-		{
-			get
-			{
-				return this._dea_cust_id;
-			}
-			set
-			{
-				if ((this._dea_cust_id != value))
-				{
-					this.Ondea_cust_idChanging(value);
-					this.SendPropertyChanging();
-					this._dea_cust_id = value;
-					this.SendPropertyChanged("dea_cust_id");
-					this.Ondea_cust_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_grandTotal", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> grandTotal
-		{
-			get
-			{
-				return this._grandTotal;
-			}
-			set
-			{
-				if ((this._grandTotal != value))
-				{
-					this.OngrandTotalChanging(value);
-					this.SendPropertyChanging();
-					this._grandTotal = value;
-					this.SendPropertyChanged("grandTotal");
-					this.OngrandTotalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_transaction_date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> transaction_date
-		{
-			get
-			{
-				return this._transaction_date;
-			}
-			set
-			{
-				if ((this._transaction_date != value))
-				{
-					this.Ontransaction_dateChanging(value);
-					this.SendPropertyChanging();
-					this._transaction_date = value;
-					this.SendPropertyChanged("transaction_date");
-					this.Ontransaction_dateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tax", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> tax
-		{
-			get
-			{
-				return this._tax;
-			}
-			set
-			{
-				if ((this._tax != value))
-				{
-					this.OntaxChanging(value);
-					this.SendPropertyChanging();
-					this._tax = value;
-					this.SendPropertyChanged("tax");
-					this.OntaxChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_discount", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> discount
-		{
-			get
-			{
-				return this._discount;
-			}
-			set
-			{
-				if ((this._discount != value))
-				{
-					this.OndiscountChanging(value);
-					this.SendPropertyChanging();
-					this._discount = value;
-					this.SendPropertyChanged("discount");
-					this.OndiscountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_by", DbType="Int")]
-		public System.Nullable<int> added_by
-		{
-			get
-			{
-				return this._added_by;
-			}
-			set
-			{
-				if ((this._added_by != value))
-				{
-					this.Onadded_byChanging(value);
-					this.SendPropertyChanging();
-					this._added_by = value;
-					this.SendPropertyChanged("added_by");
-					this.Onadded_byChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kontobez", DbType="Char(1)")]
-		public System.Nullable<char> kontobez
-		{
-			get
-			{
-				return this._kontobez;
-			}
-			set
-			{
-				if ((this._kontobez != value))
-				{
-					this.OnkontobezChanging(value);
-					this.SendPropertyChanging();
-					this._kontobez = value;
-					this.SendPropertyChanged("kontobez");
-					this.OnkontobezChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_categories")]
 	public partial class tbl_categories : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2182,6 +1928,260 @@ namespace AnyStore
 					this._added_by = value;
 					this.SendPropertyChanged("added_by");
 					this.Onadded_byChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_transactions")]
+	public partial class tbl_transactions : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _type;
+		
+		private System.Nullable<int> _dea_cust_id;
+		
+		private System.Nullable<decimal> _grandTotal;
+		
+		private System.Nullable<System.DateTime> _transaction_date;
+		
+		private System.Nullable<decimal> _tax;
+		
+		private System.Nullable<decimal> _discount;
+		
+		private System.Nullable<int> _added_by;
+		
+		private string _kontobez;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OntypeChanging(string value);
+    partial void OntypeChanged();
+    partial void Ondea_cust_idChanging(System.Nullable<int> value);
+    partial void Ondea_cust_idChanged();
+    partial void OngrandTotalChanging(System.Nullable<decimal> value);
+    partial void OngrandTotalChanged();
+    partial void Ontransaction_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Ontransaction_dateChanged();
+    partial void OntaxChanging(System.Nullable<decimal> value);
+    partial void OntaxChanged();
+    partial void OndiscountChanging(System.Nullable<decimal> value);
+    partial void OndiscountChanged();
+    partial void Onadded_byChanging(System.Nullable<int> value);
+    partial void Onadded_byChanged();
+    partial void OnkontobezChanging(string value);
+    partial void OnkontobezChanged();
+    #endregion
+		
+		public tbl_transactions()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="VarChar(50)")]
+		public string type
+		{
+			get
+			{
+				return this._type;
+			}
+			set
+			{
+				if ((this._type != value))
+				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dea_cust_id", DbType="Int")]
+		public System.Nullable<int> dea_cust_id
+		{
+			get
+			{
+				return this._dea_cust_id;
+			}
+			set
+			{
+				if ((this._dea_cust_id != value))
+				{
+					this.Ondea_cust_idChanging(value);
+					this.SendPropertyChanging();
+					this._dea_cust_id = value;
+					this.SendPropertyChanged("dea_cust_id");
+					this.Ondea_cust_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_grandTotal", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> grandTotal
+		{
+			get
+			{
+				return this._grandTotal;
+			}
+			set
+			{
+				if ((this._grandTotal != value))
+				{
+					this.OngrandTotalChanging(value);
+					this.SendPropertyChanging();
+					this._grandTotal = value;
+					this.SendPropertyChanged("grandTotal");
+					this.OngrandTotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_transaction_date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> transaction_date
+		{
+			get
+			{
+				return this._transaction_date;
+			}
+			set
+			{
+				if ((this._transaction_date != value))
+				{
+					this.Ontransaction_dateChanging(value);
+					this.SendPropertyChanging();
+					this._transaction_date = value;
+					this.SendPropertyChanged("transaction_date");
+					this.Ontransaction_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tax", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> tax
+		{
+			get
+			{
+				return this._tax;
+			}
+			set
+			{
+				if ((this._tax != value))
+				{
+					this.OntaxChanging(value);
+					this.SendPropertyChanging();
+					this._tax = value;
+					this.SendPropertyChanged("tax");
+					this.OntaxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_discount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> discount
+		{
+			get
+			{
+				return this._discount;
+			}
+			set
+			{
+				if ((this._discount != value))
+				{
+					this.OndiscountChanging(value);
+					this.SendPropertyChanging();
+					this._discount = value;
+					this.SendPropertyChanged("discount");
+					this.OndiscountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_added_by", DbType="Int")]
+		public System.Nullable<int> added_by
+		{
+			get
+			{
+				return this._added_by;
+			}
+			set
+			{
+				if ((this._added_by != value))
+				{
+					this.Onadded_byChanging(value);
+					this.SendPropertyChanging();
+					this._added_by = value;
+					this.SendPropertyChanged("added_by");
+					this.Onadded_byChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kontobez", DbType="VarChar(1)")]
+		public string kontobez
+		{
+			get
+			{
+				return this._kontobez;
+			}
+			set
+			{
+				if ((this._kontobez != value))
+				{
+					this.OnkontobezChanging(value);
+					this.SendPropertyChanging();
+					this._kontobez = value;
+					this.SendPropertyChanged("kontobez");
+					this.OnkontobezChanged();
 				}
 			}
 		}

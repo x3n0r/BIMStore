@@ -32,14 +32,13 @@ namespace AnyStore.UI
                 PDFBLL pdf = new PDFBLL();
                 //start pdf struct filling
                 Dictionary<string, decimal> tmptaxes = new Dictionary<string, decimal>();
-
-                pdf.taxes = tmptaxes;
+                
                 //COMPANY ITEMS
                 pdf.companyname = "ANyStore";
                 pdf.slogan = "fucking slogan";
                 //companyaddress
                 company comp = new company();
-                comp.address_city = "Burgenland";
+                comp.address_city = "Mönchhof";
                 comp.address_country = "österreich";
                 comp.address_postcode = "1111";
                 comp.address_street = "Baumschulgasse 1/1" ;
@@ -73,13 +72,28 @@ namespace AnyStore.UI
                 it.name = "prod1";
                 it.price = 1;
                 it.total = 2;
+                it.tax = 10.00M;
                 lit.Add(it);
 
-                pdf.sum =3;
-                pdf.total = 4;
-                pdf.discount = pdf.sum - pdf.total;
-                tmptaxes.Add("Mwst10%", 10);
-                tmptaxes.Add("Mwst20%", 20);
+                it = new items();
+                it.amount = 2;
+                it.productnumber = 3;
+                it.name = "prod2";
+                it.price = 1;
+                it.total = 2;
+                it.tax = 20.00M;
+                lit.Add(it);
+
+
+
+                pdf.sum = 4.00M;
+
+                tmptaxes.Add("Mwst10%", 0.40M);
+                tmptaxes.Add("Mwst20%", 0.80M);
+
+                pdf.taxes = tmptaxes;
+                pdf.total = 2.60M;
+                pdf.discount = (pdf.sum + 0.40M + 0.80M) - pdf.total;
 
                 //fill product listitems
                 pdf.listitems = lit;

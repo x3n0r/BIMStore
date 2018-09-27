@@ -1,6 +1,5 @@
 ﻿using AnyStore.BLL;
 using AnyStore.DAL;
-using DGVPrinterHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +35,8 @@ namespace AnyStore.UI
         transactionDetailDAL tdDAL = new transactionDetailDAL();
 
         DataTable transactionDT = new DataTable();
+        Dictionary<string, decimal> tmptaxes = new Dictionary<string, decimal>();
+
         private void frmPurchaseAndSales_Load(object sender, EventArgs e)
         {
             //Get the transactionType value from frmUserDashboard
@@ -132,14 +133,29 @@ namespace AnyStore.UI
             decimal Rate = decimal.Parse(txtRate.Text);
             decimal Qty = decimal.Parse(txtQty.Text);
             decimal Total = Rate * Qty; //Total=RatexQty
-            decimal tax = Convert.ToDecimal(txtTax.Text);
+            decimal taxpercent = Convert.ToDecimal(txtTax.Text);
             //Display the Subtotal in textbox
             //Get the subtotal value from textbox
             decimal subTotal = decimal.Parse(txtSubTotal.Text);
             subTotal = subTotal + Total;
+            decimal taxcalc = 0;
+            decimal.TryParse(txtTaxCalc.Text,out taxcalc);
+            decimal ntax  = (Total / 100) * taxpercent;
+            taxcalc += ntax;
+            productsBLL p = pDAL.GetProductIDFromName(productName);
+            categoriesBLL c = cDAL.Search(p.category);
+
+            if (tmptaxes.ContainsKey(c.title))
+            {
+                tmptaxes[c.title] = tmptaxes[c.title] + ntax;
+            }
+            else
+            {
+                tmptaxes.Add(c.title, ntax);
+            }
 
             //Check whether the product is selected or not
-            if(productName=="")
+            if (productName=="")
             {
                 //Display error MEssage
                 MessageBox.Show("Select the product first. Try Again.");
@@ -153,7 +169,7 @@ namespace AnyStore.UI
                 dgvAddedProducts.DataSource = transactionDT;
                 //Display the Subtotal in textbox
                 txtSubTotal.Text = subTotal.ToString();
-
+                txtTaxCalc.Text = taxcalc.ToString();
                 //Clear the Textboxes
                 txtSearchProduct.Text = "";
                 txtProductName.Text = "";
@@ -276,7 +292,6 @@ namespace AnyStore.UI
             string username = frmLogin.loggedIn;
             userBLL u = uDAL.GetIDFromUsername(username);
 
-
             string transactionType = lblTop.Text;
 
             transaction.kontobez = "H";
@@ -294,8 +309,6 @@ namespace AnyStore.UI
                 bool w = tDAL.Insert_Transaction(transaction, out transactionID);
 
                 List<items> lit = new List<items>();
-
-                Dictionary<string, decimal> tmptaxes = new Dictionary<string, decimal>();
 
                 //Use for loop to insert Transaction Details
                 for (int i = 0; i < transactionDT.Rows.Count; i++)
@@ -323,10 +336,9 @@ namespace AnyStore.UI
                     it.productnumber = transactionDetail.product_id;
                     it.name = transactionDT.Rows[i][0].ToString();
                     it.price = transactionDetail.price;
-                    it.total = 0;
+                    it.total = it.amount * it.price;
+                    it.tax = c.tax;
                     lit.Add(it);
-
-                    tmptaxes.Add(c.title,c.tax);
 
                     //Here Increase or Decrease Product Quantity based on Purchase or sales
                     //Lets check whether we are on Purchase or Sales
@@ -374,6 +386,7 @@ namespace AnyStore.UI
                         PDFBLL pdf = new PDFBLL();
                         //start pdf struct filling
 
+                        //fill taxes struct
                         pdf.taxes = tmptaxes;
                         //COMPANY ITEMS
                         pdf.companyname = cd[0].name;
@@ -413,6 +426,10 @@ namespace AnyStore.UI
 
                         pdf.sum = Convert.ToDecimal(txtSubTotal.Text);
                         pdf.total = Convert.ToDecimal(txtGrandTotal.Text);
+                        foreach (var value in pdf.taxes)
+                        {
+                            pdf.total += value.Value;
+                        }
                         pdf.discount = Convert.ToDecimal(txtSubTotal.Text) - Convert.ToDecimal(txtGrandTotal.Text);
 
                         companyuser usr = new companyuser();
@@ -446,5 +463,6 @@ namespace AnyStore.UI
         {
 
         }
+
     }
 }

@@ -34,6 +34,7 @@ namespace AnyStore.DAL
                 trans.transaction_date = t.transaction_date;
                 trans.discount = t.discount;
                 trans.added_by = t.added_by;
+                trans.kontobez = t.kontobez;
                 db.tbl_transactions.InsertOnSubmit(trans);
                 db.SubmitChanges();
 

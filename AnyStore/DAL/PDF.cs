@@ -21,7 +21,6 @@ namespace AnyStore.DAL
     class PDF
     {
         //Wichtige Variablen definieren
-        private bool debug = false;
         private String Firmenname;
         private String Firmenslogan;
         private String Firmenstr;
@@ -48,7 +47,7 @@ namespace AnyStore.DAL
         //private Int64 Steuernr;
         private int tabellentiefe;
         private int anzahlDatensätze;
-
+        private string Documentname;
         private Dictionary<string, decimal> taxes;
 
         /*
@@ -56,8 +55,7 @@ namespace AnyStore.DAL
      private double mwst19;
      private double mwst7;
      */
-        private double Zwischensumme;
-        private double rabatt;
+        //private double Zwischensumme;
 
         private double sum;
         private double discount;
@@ -68,14 +66,9 @@ namespace AnyStore.DAL
         {
                 
             //Diese Methode wird von der GUI aus angesteuert und übergibt das Ergebnis des Printdialogs und die Rechnungsnummer.
-            Rechnungsnr = pdf.invoicenumber; // Die Variable Rechnungsnr wird mit der mitgegebenen Rechnungsnummer gefüllt.
             this.dialog = dialog; //Der lokale Printdialog wird mit den mitgelieferten Ergebnissen des Druckdialogs gefüllt.
             DBIO(pdf);//Hier wird die Methode DBIO aufgerufen, welche die Variablen mit den passenden Datenbankeinträgen füllt.
             ausdruck(pdf);//Dieser Methodenaufruf startet den Druckvorgang der 1.Seite
-            if (debug)
-            { // Für Debugzwecke wird am Ende jeder Verarbeitung eine Meldung ausgegeben.
-                MessageBox.Show("Ihr Druck wurde erfolgreich auf dem Drucker: " + dialog.PrinterSettings.PrinterName.ToString() + " gedruckt!");
-            }
          }
        
         private void DBIO(PDFBLL pdf)
@@ -88,6 +81,7 @@ namespace AnyStore.DAL
             //MOCK-Daten füllen
             //Bis die Interaktion mit der Datenbank funktioniert, wird hier der Datenbankzugriff simuliert, also Beispielwerte gesetzt.
             try { // Das "try" hat den Hintergund, das im falle einer fehlerhaften Datenbankinteraktion eine Fehlermeldung erscheint.
+                Rechnungsnr = pdf.invoicenumber; 
                 Firmenname = pdf.companyname;
                 Firmenslogan = pdf.slogan;
                 Firmenstr = pdf.companyaddress.address_street;
@@ -119,11 +113,13 @@ namespace AnyStore.DAL
                 sum = Convert.ToDouble(pdf.sum);
                 total = Convert.ToDouble(pdf.total);
 
+                Documentname = Rechnungsnr + "_" + Nachname + "_" + Vorname;
+
                 //Tabelle füllen
                 tabelle.Columns.Add("Menge");
-                tabelle.Columns.Add("Artikelnummer");
-                tabelle.Columns.Add("Beschreibung");
-                tabelle.Columns.Add("Einzelpreis Netto");
+                tabelle.Columns.Add("Artikelnr");
+                tabelle.Columns.Add("Name");
+                tabelle.Columns.Add("Einzelpreis");
                 tabelle.Columns.Add("MwSt");
 
                 foreach ( var value in pdf.listitems)
@@ -146,8 +142,10 @@ namespace AnyStore.DAL
 
             // Hier wird der Druckdialog angebunden.
             // Der passende Drucker wird von dem Druckdialog ausgelesen und dementsprechend benutzt.
+            
             PrintDoc.PrinterSettings.PrinterName = dialog.PrinterSettings.PrinterName;
             PrintDoc.PrinterSettings.Copies = dialog.PrinterSettings.Copies;
+            PrintDoc.DocumentName = Documentname;
             PrintDoc.PrintPage += new PrintPageEventHandler(ersteSeite); //Aufruf der ersten Seite
             PrintDoc.Print();
         }
@@ -207,24 +205,21 @@ namespace AnyStore.DAL
 
             //Obere Leiste der Tabelle
             e.Graphics.DrawString("Menge", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, Zeichenhöhe - 20));
-            e.Graphics.DrawString("Artikelnummer", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(145, Zeichenhöhe - 20));
-            e.Graphics.DrawString("Name", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(265, Zeichenhöhe - 20));
+            e.Graphics.DrawString("Artikelnr.", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(145, Zeichenhöhe - 20));
+            e.Graphics.DrawString("Name", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(215, Zeichenhöhe - 20));
             e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(430, Zeichenhöhe - 20));
-            //e.Graphics.DrawString("Einzelpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(490, Zeichenhöhe - 20));
             e.Graphics.DrawString("Mwst", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(523, Zeichenhöhe - 20));
             e.Graphics.DrawString("Gesamtpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(620, Zeichenhöhe - 20));
-            //e.Graphics.DrawString("Gesamtpreis", new Font("Courier", 10), new SolidBrush(Color.Black), new Point(585, Zeichenhöhe - 20));
             e.Graphics.DrawLine(new Pen(Color.Black, 2), new Point(87, Zeichenhöhe), new Point(735, Zeichenhöhe)); // Trennung der Tabelle waagerecht
-            //Folgende Reihenfolge wird in der Tabelle benutzt (vom Kunde vorgegeben): Menge, Artikelnummer, Name, Einzelpreis Netto, Mwst, Gesamtpreis netto
+            //Folgende Reihenfolge wird in der Tabelle benutzt (vom Kunde vorgegeben): Menge, Artikelnr., Name, Einzelpreis, Mwst, Gesamtpreis
 
             //Abspaltungen der Tabelle waagerecht
             //Die Tabelle ist dynamisch nach anzahl der Bestellungen generiert
             tabellentiefe = Convert.ToInt32(Zeichenhöhe + (15.5f * anzahlDatensätze));
             
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(140, Zeichenhöhe), new Point(140, tabellentiefe));//nach Menge
-            e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(260, Zeichenhöhe), new Point(260, tabellentiefe));//nach Artikelnummer
+            e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(210, Zeichenhöhe), new Point(210, tabellentiefe));//nach Artikelnummer
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(420, Zeichenhöhe), new Point(420, tabellentiefe));//nach Name
-            //e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(390, Zeichenhöhe), new Point(390, tabellentiefe));//nach Name
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(510, Zeichenhöhe), new Point(510, tabellentiefe));//nach Einzelpris Netto
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(570, Zeichenhöhe), new Point(570, tabellentiefe));//nach MWS
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(87, tabellentiefe), new Point(735, tabellentiefe));//Endlinie
@@ -251,7 +246,7 @@ namespace AnyStore.DAL
             foreach (DataRow row in tabelle.Rows)
             {
                 Object item = row.ItemArray[2]; //Spalte Name einfügen
-                e.Graphics.DrawString(item.ToString(), new Font("Cournier", 10), new SolidBrush(Color.Black), new Point(265, Zeichenhöhe));
+                e.Graphics.DrawString(item.ToString(), new Font("Cournier", 10), new SolidBrush(Color.Black), new Point(215, Zeichenhöhe));
                 Zeichenhöhe = Zeichenhöhe + 15;
             }
 
@@ -276,7 +271,7 @@ namespace AnyStore.DAL
                 string Eintrag = item.ToString() + " %";
                 SizeF stringSize = new SizeF();
                 stringSize = e.Graphics.MeasureString(Eintrag, new Font("Courier", 10));
-                e.Graphics.DrawString(Eintrag, new Font("Courier", 10), Brushes.Black, new PointF(562 - stringSize.Width, Zeichenhöhe));
+                e.Graphics.DrawString(Eintrag, new Font("Courier", 10), Brushes.Black, new PointF(570 - stringSize.Width, Zeichenhöhe));
                 Zeichenhöhe = Zeichenhöhe + 15;
                 
             }
@@ -288,28 +283,14 @@ namespace AnyStore.DAL
                 //Hier wird die Produktsumme ermittelt
                     double menge = Convert.ToDouble(row.ItemArray[0]);
                     double preis = Convert.ToDouble(row.ItemArray[3]);
-                    double produktsumme = menge * preis; fehler
+                    double produktsumme = menge * preis;
                 
                 string Eintrag = produktsumme.ToString("n2") + " €"; // Hier wird eine spezielle Geldformatierung ausgewählt. (n2)
                 SizeF stringSize = new SizeF();
                 stringSize = e.Graphics.MeasureString(Eintrag, new Font("Courier", 10));
                 e.Graphics.DrawString(Eintrag, new Font("Courier", 10), Brushes.Black, new PointF(706 - stringSize.Width, Zeichenhöhe));
                 Zeichenhöhe = Zeichenhöhe + 15;
-                Zwischensumme = Zwischensumme + produktsumme; //Wir berechnen in dieser Schleife die Summe aller Artikel
-
-                // - Berechnung MWST - Wir müssen in dieser Schleife die MWST berechnen, da nur hier die Produktsumme in Verbindung mit den verschiedenen MWST-Sätzen steht.
-                /*
-                Object mwstcheck = row.ItemArray[4]; //Auslesen der MWST des derzeitigen Produkts
-                if (mwstcheck.ToString() == "19") //Abfrage, welcher Mehrwertsteuersatz genutzt wird. Kundenvorgabe sind 2 verschiedene Sätze.
-                {
-                    //mwst19 = mwst19 + (produktsumme * 0.19d); //Hier wird die Mehrwertsteuer 19% des derzeitigen Produkts zu den anderen MWST-Sätzen addiert, wenn das Produkt 19% enthält.
-                }
-                if (mwstcheck.ToString() == "7")
-                {
-
-                   // mwst7 = mwst7 + (produktsumme * 0.07d);//Hier wird die Mehrwertsteuer 7% des derzeitigen Produkts zu den anderen MWST-Sätzen addiert, wenn das Produkt 7% enthält.
-                }
-                */
+               // Zwischensumme = Zwischensumme + produktsumme; //Wir berechnen in dieser Schleife die Summe aller Artikel
              }
 
             //Rechnungszusammenfassung
@@ -322,37 +303,6 @@ namespace AnyStore.DAL
             e.Graphics.DrawString(Zwischensumme_string, new Font("Courier", 10), Brushes.Black, new PointF(706 - Zwischensumme_setting.Width, tabellentiefe +3));//An entsprechnder Tabelle unterhalb der Tabelle schreiben
             e.Graphics.DrawLine(new Pen(Color.Gray, 1), new Point(575, tabellentiefe + 20), new Point(735, tabellentiefe + 20));//Zwischensumme Linie
             e.Graphics.DrawString("Zwischensumme: ", new Font("Courier", 10), Brushes.Black, new Point(265, tabellentiefe + 3)); //Beschreibung der Zahlen
-
-
-            /*
-            // - Versandkosten
-            string Versandkosten_string = Versandkosten.ToString("n2") + " €";
-            SizeF Versandkosten_setting = new SizeF();
-            Versandkosten_setting = e.Graphics.MeasureString(Versandkosten_string, new Font("Courier", 10));
-            e.Graphics.DrawString(Versandkosten_string, new Font("Courier", 10), Brushes.Black, new PointF(706 - Versandkosten_setting.Width, tabellentiefe + 20));
-            e.Graphics.DrawLine(new Pen(Color.Gray, 1), new Point(575, tabellentiefe + 35), new Point(735, tabellentiefe + 35));//Versandkosten
-            e.Graphics.DrawString("Versandkosten: ", new Font("Courier", 10), Brushes.Black, new Point(265, tabellentiefe + 20));
-            */
-
-            /*
-            // - MwSt gesamt ermitteln
-            double mwstges = mwst7 + mwst19;
-            string mwstges_string = mwstges.ToString("n2") + " €";
-            SizeF mwstges_setting = new SizeF();
-            mwstges_setting = e.Graphics.MeasureString(mwstges_string, new Font("Courier", 10));
-            e.Graphics.DrawString(mwstges_string, new Font("Courier", 10), Brushes.Black, new PointF(706 - mwstges_setting.Width, tabellentiefe + 65));
-            e.Graphics.DrawString("MwSt. gesamt: ", new Font("Courier", 10), Brushes.Black, new Point(265, tabellentiefe + 65));
-            e.Graphics.DrawLine(new Pen(Color.Gray, 1), new Point(575, tabellentiefe + 80), new Point(735, tabellentiefe + 80));//Linie über Summe
-            
-
-            // - Summe ermitteln
-            double summe = Zwischensumme; // + Versandkosten + mwstges;
-            string summe_string = summe.ToString("n2") + " €";
-            SizeF summe_setting = new SizeF();
-            summe_setting = e.Graphics.MeasureString(summe_string, new Font("Courier", 10));
-            e.Graphics.DrawString(summe_string, new Font("Courier", 10, FontStyle.Bold), Brushes.Black, new PointF(706 - summe_setting.Width, tabellentiefe + 80));
-            e.Graphics.DrawString("Summe: ", new Font("Courier", 10, FontStyle.Bold), Brushes.Black, new Point(265, tabellentiefe + 80));
-            */
 
             // - Rabatt ausrechnen & schreiben
             //string rabatt_string = rabatt.ToString("n2") + " €";
@@ -377,9 +327,10 @@ namespace AnyStore.DAL
             }
 
             // - Gesamt
-            mytabellentiefe += 20;
+            mytabellentiefe += 18;
             e.Graphics.DrawLine(new Pen(Color.Black, 1), new Point(575, tabellentiefe + mytabellentiefe), new Point(735, tabellentiefe + mytabellentiefe));//Linie über gesamt
-            double gesamt = Zwischensumme - rabatt; //Gesamtbetrag ausrechnen
+            mytabellentiefe += 2;
+            //double gesamt = Zwischensumme - rabatt; //Gesamtbetrag ausrechnen
             //string gesamt_string = gesamt.ToString("n2") + " €";
             string gesamt_string = total.ToString("n2") + " €"; 
             SizeF gesamt_setting = new SizeF();
