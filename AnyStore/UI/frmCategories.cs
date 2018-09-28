@@ -76,6 +76,7 @@ namespace AnyStore.UI
 
         private void frmCategories_Load(object sender, EventArgs e)
         {
+            check_btns();
             //Here write the code to display all the categries in DAta Grid View
             List<tbl_categories> dt = dal.Select();
             dgvCategories.DataSource = dt;
@@ -88,6 +89,7 @@ namespace AnyStore.UI
             txtCategoryID.Text = dgvCategories.Rows[RowIndex].Cells[0].Value.ToString();
             txtTitle.Text = dgvCategories.Rows[RowIndex].Cells[1].Value.ToString();
             txtDescription.Text = dgvCategories.Rows[RowIndex].Cells[2].Value.ToString();
+            txtTax.Text = dgvCategories.Rows[RowIndex].Cells[5].Value.ToString();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -173,6 +175,27 @@ namespace AnyStore.UI
                 //Use Select Method to Display All Categories
                 List<tbl_categories> cats = dal.Select();
                 dgvCategories.DataSource = cats;
+            }
+        }
+
+        private void txtCategoryID_TextChanged(object sender, EventArgs e)
+        {
+            check_btns();
+        }
+
+        public void check_btns()
+        {
+            if (txtCategoryID.Text == "")
+            {
+                btnADD.Visible = true;
+                btnDelete.Visible = false;
+                btnUpdate.Visible = false;
+            }
+            else
+            {
+                btnADD.Visible = false;
+                btnDelete.Visible = true;
+                btnUpdate.Visible = true;
             }
         }
     }

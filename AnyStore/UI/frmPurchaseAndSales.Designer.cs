@@ -154,6 +154,7 @@
             this.txtLastname.ReadOnly = true;
             this.txtLastname.Size = new System.Drawing.Size(223, 25);
             this.txtLastname.TabIndex = 7;
+            this.txtLastname.TabStop = false;
             // 
             // label1
             // 
@@ -182,6 +183,7 @@
             this.txtFirstname.ReadOnly = true;
             this.txtFirstname.Size = new System.Drawing.Size(223, 25);
             this.txtFirstname.TabIndex = 0;
+            this.txtFirstname.TabStop = false;
             // 
             // txtContact
             // 
@@ -192,6 +194,7 @@
             this.txtContact.ReadOnly = true;
             this.txtContact.Size = new System.Drawing.Size(223, 25);
             this.txtContact.TabIndex = 0;
+            this.txtContact.TabStop = false;
             // 
             // txtAddress
             // 
@@ -203,6 +206,7 @@
             this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(223, 54);
             this.txtAddress.TabIndex = 0;
+            this.txtAddress.TabStop = false;
             // 
             // txtEmail
             // 
@@ -213,6 +217,7 @@
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(223, 25);
             this.txtEmail.TabIndex = 0;
+            this.txtEmail.TabStop = false;
             // 
             // txtSearch
             // 
@@ -323,6 +328,7 @@
             this.txtTax.ReadOnly = true;
             this.txtTax.Size = new System.Drawing.Size(145, 25);
             this.txtTax.TabIndex = 7;
+            this.txtTax.TabStop = false;
             // 
             // lblTax
             // 
@@ -356,6 +362,7 @@
             this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(145, 25);
             this.txtRate.TabIndex = 0;
+            this.txtRate.TabStop = false;
             // 
             // txtQty
             // 
@@ -374,6 +381,7 @@
             this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(145, 25);
             this.txtProductName.TabIndex = 0;
+            this.txtProductName.TabStop = false;
             // 
             // txtInventory
             // 
@@ -384,6 +392,7 @@
             this.txtInventory.ReadOnly = true;
             this.txtInventory.Size = new System.Drawing.Size(145, 25);
             this.txtInventory.TabIndex = 0;
+            this.txtInventory.TabStop = false;
             // 
             // txtSearchProduct
             // 
@@ -471,6 +480,7 @@
             this.dgvAddedProducts.Name = "dgvAddedProducts";
             this.dgvAddedProducts.Size = new System.Drawing.Size(578, 282);
             this.dgvAddedProducts.TabIndex = 0;
+            this.dgvAddedProducts.TabStop = false;
             // 
             // lblDGVTtitle
             // 
@@ -513,6 +523,7 @@
             this.txtTaxCalc.ReadOnly = true;
             this.txtTaxCalc.Size = new System.Drawing.Size(394, 25);
             this.txtTaxCalc.TabIndex = 11;
+            this.txtTaxCalc.TabStop = false;
             // 
             // lblTaxCalc
             // 
@@ -546,7 +557,7 @@
             this.btnBook.Location = new System.Drawing.Point(311, 276);
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(217, 40);
-            this.btnBook.TabIndex = 9;
+            this.btnBook.TabIndex = 8;
             this.btnBook.Text = "Book";
             this.btnBook.UseVisualStyleBackColor = false;
             this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
@@ -561,6 +572,7 @@
             this.txtReturnAmount.ReadOnly = true;
             this.txtReturnAmount.Size = new System.Drawing.Size(394, 39);
             this.txtReturnAmount.TabIndex = 0;
+            this.txtReturnAmount.TabStop = false;
             // 
             // txtPaidAmount
             // 
@@ -568,7 +580,7 @@
             this.txtPaidAmount.Location = new System.Drawing.Point(134, 186);
             this.txtPaidAmount.Name = "txtPaidAmount";
             this.txtPaidAmount.Size = new System.Drawing.Size(394, 25);
-            this.txtPaidAmount.TabIndex = 8;
+            this.txtPaidAmount.TabIndex = 7;
             this.txtPaidAmount.TextChanged += new System.EventHandler(this.txtPaidAmount_TextChanged);
             // 
             // txtGrandTotal
@@ -580,6 +592,7 @@
             this.txtGrandTotal.ReadOnly = true;
             this.txtGrandTotal.Size = new System.Drawing.Size(394, 25);
             this.txtGrandTotal.TabIndex = 0;
+            this.txtGrandTotal.TabStop = false;
             // 
             // txtDiscount
             // 
@@ -599,6 +612,7 @@
             this.txtSubTotal.ReadOnly = true;
             this.txtSubTotal.Size = new System.Drawing.Size(394, 25);
             this.txtSubTotal.TabIndex = 0;
+            this.txtSubTotal.TabStop = false;
             this.txtSubTotal.Text = "0";
             // 
             // lblReturnAmount

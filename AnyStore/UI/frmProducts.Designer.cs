@@ -145,6 +145,7 @@
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(224, 25);
             this.txtID.TabIndex = 8;
+            this.txtID.TabStop = false;
             // 
             // txtName
             // 
@@ -152,7 +153,7 @@
             this.txtName.Location = new System.Drawing.Point(120, 100);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(224, 25);
-            this.txtName.TabIndex = 9;
+            this.txtName.TabIndex = 1;
             // 
             // cmbCategory
             // 
@@ -161,7 +162,7 @@
             this.cmbCategory.Location = new System.Drawing.Point(120, 131);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(224, 25);
-            this.cmbCategory.TabIndex = 10;
+            this.cmbCategory.TabIndex = 2;
             // 
             // txtDescription
             // 
@@ -170,7 +171,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(224, 102);
-            this.txtDescription.TabIndex = 11;
+            this.txtDescription.TabIndex = 3;
             // 
             // txtRate
             // 
@@ -178,7 +179,7 @@
             this.txtRate.Location = new System.Drawing.Point(120, 270);
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(224, 25);
-            this.txtRate.TabIndex = 12;
+            this.txtRate.TabIndex = 4;
             // 
             // dgvProducts
             // 
@@ -187,6 +188,7 @@
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.Size = new System.Drawing.Size(418, 227);
             this.dgvProducts.TabIndex = 99;
+            this.dgvProducts.TabStop = false;
             this.dgvProducts.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProducts_RowHeaderMouseClick);
             // 
             // txtSearch
@@ -196,6 +198,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(368, 25);
             this.txtSearch.TabIndex = 98;
+            this.txtSearch.TabStop = false;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch
@@ -216,7 +219,7 @@
             this.btnAdd.Location = new System.Drawing.Point(266, 358);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(119, 50);
-            this.btnAdd.TabIndex = 16;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -229,7 +232,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(395, 358);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(119, 50);
-            this.btnUpdate.TabIndex = 17;
+            this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -243,7 +246,7 @@
             this.btnDelete.Location = new System.Drawing.Point(524, 358);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(119, 50);
-            this.btnDelete.TabIndex = 18;
+            this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -256,7 +259,7 @@
             this.chbHasQTY.Location = new System.Drawing.Point(120, 301);
             this.chbHasQTY.Name = "chbHasQTY";
             this.chbHasQTY.Size = new System.Drawing.Size(87, 17);
-            this.chbHasQTY.TabIndex = 13;
+            this.chbHasQTY.TabIndex = 5;
             this.chbHasQTY.Text = "Has Quantity";
             this.chbHasQTY.UseVisualStyleBackColor = true;
             // 

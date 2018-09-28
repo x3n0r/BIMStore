@@ -28,10 +28,12 @@ namespace AnyStore.UI
         DeaCustBLL dc = new DeaCustBLL();
         DeaCustDAL dcDal = new DeaCustDAL();
 
+        public bool cameoverpets = false;
         userDAL uDal = new userDAL();
         public static int cust_id;
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (txtDeaCustID.Text != "") { return; }
             //Get the Values from Form
             dc.type = cmbDeaCust.Text;
             dc.first_name = txtFirstname.Text;
@@ -48,13 +50,20 @@ namespace AnyStore.UI
             userBLL usr = uDal.GetIDFromUsername(loggedUsr);
 
             //Creating boolean variable to check whether the dealer or cutomer is added or not
-            bool success = dcDal.Insert(dc);
+            int tmpdeacustid = -1;
+            bool success = dcDal.Insert(dc,out tmpdeacustid);
 
             if(success==true)
             {
                 //Dealer or Cutomer inserted successfully 
-                MessageBox.Show("Dealer or Customer Added Successfully");
-                Clear();
+                if (cameoverpets == false)
+                {
+                    MessageBox.Show("Dealer or Customer Added Successfully");
+                    Clear();
+                } else
+                {
+                    txtDeaCustID.Text = tmpdeacustid.ToString();
+                }
                 //Refresh Data Grid View
                 List<tbl_dea_cust> deacust = dcDal.Select();
                 dgvDeaCust.DataSource = deacust;
@@ -62,7 +71,9 @@ namespace AnyStore.UI
             else
             {
                 //failed to insert dealer or customer
+                MessageBox.Show("Failed to Add Dealer or Customer");
             }
+            cameoverpets = false;
         }
         public void Clear()
         {
@@ -84,6 +95,7 @@ namespace AnyStore.UI
             //Refresh Data Grid View
             List<tbl_dea_cust> deacust = dcDal.Select();
             dgvDeaCust.DataSource = deacust;
+            check_btnPets();
         }
 
         private void dgvDeaCust_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -103,14 +115,7 @@ namespace AnyStore.UI
             txtCity.Text = dgvDeaCust.Rows[rowIndex].Cells[7].Value.ToString();
             txtCountry.Text = dgvDeaCust.Rows[rowIndex].Cells[8].Value.ToString();
 
-            if (cmbDeaCust.SelectedItem.ToString() == "Customer" && txtDeaCustID.Text != "")
-            {
-                btnPets.Enabled = true;
-            }
-            else
-            {
-                btnPets.Enabled = false;
-            }
+            check_btnPets();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -145,6 +150,7 @@ namespace AnyStore.UI
                 //Failed to udate Dealer or Customer
                 MessageBox.Show("Failed to Udpate Dealer or Customer");
             }
+            check_btnPets();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -169,6 +175,7 @@ namespace AnyStore.UI
                 //Dealer or Customer Failed to Delete
                 MessageBox.Show("Failed to Delete Dealer or Customer");
             }
+            check_btnPets();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -192,6 +199,9 @@ namespace AnyStore.UI
 
         private void btnPets_Click(object sender, EventArgs e)
         {
+            if ( cmbDeaCust.SelectedItem.ToString() != "Customer" && (txtFirstname.Text != "" || txtLastname.Text != "") ) { return; }
+            cameoverpets = true;
+            btnAdd.PerformClick();
             cust_id = int.Parse(txtDeaCustID.Text);
             frmAnimals animals = new frmAnimals();
             //this.Hide();
@@ -200,12 +210,29 @@ namespace AnyStore.UI
 
         private void cmbDeaCust_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbDeaCust.SelectedItem.ToString() == "Customer" && txtDeaCustID.Text != "") {
+            check_btnPets();
+        }
+
+        private void check_btnPets()
+        {
+            if (cmbDeaCust.SelectedItem.ToString() == "Customer" && (txtFirstname.Text != "" || txtLastname.Text != ""))
+            {
                 btnPets.Enabled = true;
-            } else
+            }
+            else
             {
                 btnPets.Enabled = false;
             }
+        }
+
+        private void txtFirstname_Leave(object sender, EventArgs e)
+        {
+            check_btnPets();
+        }
+
+        private void txtLastname_Leave(object sender, EventArgs e)
+        {
+            check_btnPets();
         }
     }
 }

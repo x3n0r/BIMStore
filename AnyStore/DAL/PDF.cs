@@ -10,7 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,7 +51,7 @@ namespace AnyStore.DAL
         private int anzahlDatensätze;
         private string Documentname;
         private Dictionary<string, decimal> taxes;
-
+        private string filename;
         /*
      private double Versandkosten;
      private double mwst19;
@@ -95,7 +97,7 @@ namespace AnyStore.DAL
                 Straße = pdf.customeraddress.address_street;// "Musterstraße";
                 Postleitzahl = Convert.ToInt32(pdf.customeraddress.address_postcode);
                 Ort = pdf.customeraddress.address_city;// "Musterdorf";
-
+                filename = pdf.logo;
                 //Versandkosten = 10.30;
                 //Hausnummer = 123;
                 taxes = pdf.taxes;
@@ -150,20 +152,42 @@ namespace AnyStore.DAL
             PrintDoc.Print();
         }
 
+        private Bitmap ImageFilenameToResizedImage(float width, float height,string filename)
+        {
+
+            var image = new Bitmap(filename);
+            float scale = Math.Min(width / image.Width, height / image.Height);
+
+            var bmp = new Bitmap((int)width, (int)height);
+            var graph = Graphics.FromImage(bmp);
+
+            // uncomment for higher quality output
+            graph.InterpolationMode = InterpolationMode.High;
+            graph.CompositingQuality = CompositingQuality.HighQuality;
+            graph.SmoothingMode = SmoothingMode.AntiAlias;
+
+            var scaleWidth = (int)(image.Width * scale);
+            var scaleHeight = (int)(image.Height * scale);
+            graph.DrawImage(image, ((int)width - scaleWidth) / 2, ((int)height - scaleHeight) / 2, scaleWidth, scaleHeight);
+            return bmp;
+        }
+
         void ersteSeite(object sender, PrintPageEventArgs e)
         {
             //!! Maximal 19 Einträge können gedruckt werden
 
-            //Logo einfügen
-            /*
-            Image newImage = AnyStore.Properties.Resources.samplecustomer;
-            Bitmap logo = new Bitmap(newImage);
-            logo.SetResolution(400, 400);
-            */
             // Header
-            e.Graphics.DrawString(Firmenname, new Font("Courier", 25), new SolidBrush(Color.Black), new Point(453, 25));
-            e.Graphics.DrawString(Firmenslogan, new Font("Courier", 12), new SolidBrush(Color.Black), new Point(490, 65));
-            //e.Graphics.DrawImageUnscaled(logo, new Point(592, 105));
+            //Logo einfügen
+            if (!string.IsNullOrEmpty(filename))
+            {
+                Bitmap logo = ImageFilenameToResizedImage(250f, 180f, filename);
+                e.Graphics.DrawImage(logo, new Point(453, 5));
+            }
+            else
+            {
+                e.Graphics.DrawString(Firmenname, new Font("Courier", 25), new SolidBrush(Color.Black), new Point(453, 25));
+                e.Graphics.DrawString(Firmenslogan, new Font("Courier", 12), new SolidBrush(Color.Black), new Point(490, 65));
+            }
             e.Graphics.DrawString(Firmenname + "  -  " + Firmenstr + " " + " " + Firmenort, new Font("Courier", 7, FontStyle.Underline), new SolidBrush(Color.DarkGreen), new Point(87, 170)); //30 - 225
            
             // Empfängeradresse
@@ -348,7 +372,7 @@ namespace AnyStore.DAL
             String Fußzeile = "IBAN: " + IBAN +"       BIC: "+  BIC ;
             Fußzeile = Fußzeile.Replace("|", Environment.NewLine);
             e.Graphics.DrawLine(new Pen(Color.Gray, 1), new Point(87, 1100), new Point(735, 1100)); // Trennung der Fußzeile
-            e.Graphics.DrawString(Fußzeile, new Font("Courier", 10), new SolidBrush(Color.Gray), new Point(87, 1110));
+            e.Graphics.DrawString(Fußzeile, new Font("Courier", 10), new SolidBrush(Color.Gray), new Point(265, 1110));
             }
 
 

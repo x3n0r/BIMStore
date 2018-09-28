@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.lblFooter = new System.Windows.Forms.Label();
             this.menuStripTop = new System.Windows.Forms.MenuStrip();
             this.companydataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,36 +39,24 @@
             this.purchaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblLoggedInUser = new System.Windows.Forms.Label();
-            this.lblAppFName = new System.Windows.Forms.Label();
-            this.lblLName = new System.Windows.Forms.Label();
             this.lblSHead = new System.Windows.Forms.Label();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlFooter.SuspendLayout();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStripTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlFooter
             // 
-            this.pnlFooter.BackColor = System.Drawing.Color.Teal;
-            this.pnlFooter.Controls.Add(this.lblFooter);
+            this.pnlFooter.BackColor = System.Drawing.Color.LightSeaGreen;
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooter.Location = new System.Drawing.Point(0, 417);
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(1192, 34);
             this.pnlFooter.TabIndex = 0;
-            // 
-            // lblFooter
-            // 
-            this.lblFooter.AutoSize = true;
-            this.lblFooter.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFooter.ForeColor = System.Drawing.Color.White;
-            this.lblFooter.Location = new System.Drawing.Point(586, 8);
-            this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(167, 17);
-            this.lblFooter.TabIndex = 0;
-            this.lblFooter.Text = "Developed By: VIJAY THAPA";
             // 
             // menuStripTop
             // 
@@ -149,15 +136,22 @@
             // transactionToolStripMenuItem
             // 
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.transactionToolStripMenuItem.Text = "Transaction";
             this.transactionToolStripMenuItem.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // lblUser
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(13, 41);
+            this.lblUser.Location = new System.Drawing.Point(43, 90);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(42, 17);
             this.lblUser.TabIndex = 2;
@@ -168,57 +162,59 @@
             this.lblLoggedInUser.AutoSize = true;
             this.lblLoggedInUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoggedInUser.ForeColor = System.Drawing.Color.LimeGreen;
-            this.lblLoggedInUser.Location = new System.Drawing.Point(47, 41);
+            this.lblLoggedInUser.Location = new System.Drawing.Point(91, 90);
             this.lblLoggedInUser.Name = "lblLoggedInUser";
-            this.lblLoggedInUser.Size = new System.Drawing.Size(0, 17);
+            this.lblLoggedInUser.Size = new System.Drawing.Size(34, 17);
             this.lblLoggedInUser.TabIndex = 3;
-            // 
-            // lblAppFName
-            // 
-            this.lblAppFName.AutoSize = true;
-            this.lblAppFName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppFName.Location = new System.Drawing.Point(598, 266);
-            this.lblAppFName.Name = "lblAppFName";
-            this.lblAppFName.Size = new System.Drawing.Size(69, 37);
-            this.lblAppFName.TabIndex = 4;
-            this.lblAppFName.Text = "ANY";
-            // 
-            // lblLName
-            // 
-            this.lblLName.AutoSize = true;
-            this.lblLName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLName.Location = new System.Drawing.Point(656, 266);
-            this.lblLName.Name = "lblLName";
-            this.lblLName.Size = new System.Drawing.Size(99, 37);
-            this.lblLName.TabIndex = 5;
-            this.lblLName.Text = "STORE";
+            this.lblLoggedInUser.Text = "user";
             // 
             // lblSHead
             // 
             this.lblSHead.AutoSize = true;
             this.lblSHead.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSHead.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.lblSHead.Location = new System.Drawing.Point(525, 303);
+            this.lblSHead.Location = new System.Drawing.Point(40, 61);
             this.lblSHead.Name = "lblSHead";
-            this.lblSHead.Size = new System.Drawing.Size(311, 25);
+            this.lblSHead.Size = new System.Drawing.Size(310, 25);
             this.lblSHead.TabIndex = 6;
             this.lblSHead.Text = "Billing and Inventory Management";
             // 
-            // testToolStripMenuItem
+            // panel3
             // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.testToolStripMenuItem.Text = "Test";
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            this.panel3.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(1158, 58);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(34, 359);
+            this.panel3.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 58);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(34, 359);
+            this.panel2.TabIndex = 17;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1192, 34);
+            this.panel1.TabIndex = 16;
             // 
             // frmAdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 451);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblSHead);
-            this.Controls.Add(this.lblLName);
-            this.Controls.Add(this.lblAppFName);
             this.Controls.Add(this.lblLoggedInUser);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.pnlFooter);
@@ -230,8 +226,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAdminDashboard_FormClosed);
             this.Load += new System.EventHandler(this.frmAdminDashboard_Load);
-            this.pnlFooter.ResumeLayout(false);
-            this.pnlFooter.PerformLayout();
             this.menuStripTop.ResumeLayout(false);
             this.menuStripTop.PerformLayout();
             this.ResumeLayout(false);
@@ -242,7 +236,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlFooter;
-        private System.Windows.Forms.Label lblFooter;
         private System.Windows.Forms.MenuStrip menuStripTop;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;
@@ -250,8 +243,6 @@
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblLoggedInUser;
-        private System.Windows.Forms.Label lblAppFName;
-        private System.Windows.Forms.Label lblLName;
         private System.Windows.Forms.Label lblSHead;
         private System.Windows.Forms.ToolStripMenuItem deealerAndCustomerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
@@ -259,6 +250,9 @@
         private System.Windows.Forms.ToolStripMenuItem salesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem companydataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

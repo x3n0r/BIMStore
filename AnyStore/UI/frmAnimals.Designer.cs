@@ -138,6 +138,7 @@
             this.txtAnimalID.ReadOnly = true;
             this.txtAnimalID.Size = new System.Drawing.Size(245, 25);
             this.txtAnimalID.TabIndex = 99;
+            this.txtAnimalID.TabStop = false;
             // 
             // txtSpecies
             // 
@@ -145,7 +146,7 @@
             this.txtSpecies.Location = new System.Drawing.Point(133, 165);
             this.txtSpecies.Name = "txtSpecies";
             this.txtSpecies.Size = new System.Drawing.Size(245, 25);
-            this.txtSpecies.TabIndex = 3;
+            this.txtSpecies.TabIndex = 2;
             // 
             // txtNotes
             // 
@@ -163,7 +164,7 @@
             this.btnAdd.Location = new System.Drawing.Point(276, 411);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(102, 47);
-            this.btnAdd.TabIndex = 11;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -176,7 +177,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(384, 411);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(102, 47);
-            this.btnUpdate.TabIndex = 12;
+            this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -190,7 +191,7 @@
             this.btnDelete.Location = new System.Drawing.Point(492, 411);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(102, 47);
-            this.btnDelete.TabIndex = 13;
+            this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -202,6 +203,7 @@
             this.dgvDeaCust.Name = "dgvDeaCust";
             this.dgvDeaCust.Size = new System.Drawing.Size(409, 298);
             this.dgvDeaCust.TabIndex = 19;
+            this.dgvDeaCust.TabStop = false;
             this.dgvDeaCust.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDeaCust_RowHeaderMouseClick);
             // 
             // txtSearch
@@ -211,6 +213,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(359, 25);
             this.txtSearch.TabIndex = 21;
+            this.txtSearch.TabStop = false;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch
@@ -229,7 +232,7 @@
             this.txtRace.Location = new System.Drawing.Point(133, 196);
             this.txtRace.Name = "txtRace";
             this.txtRace.Size = new System.Drawing.Size(245, 25);
-            this.txtRace.TabIndex = 4;
+            this.txtRace.TabIndex = 3;
             // 
             // lblRace
             // 
@@ -247,7 +250,7 @@
             this.txtName.Location = new System.Drawing.Point(133, 132);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(245, 25);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // lblName
             // 
@@ -268,6 +271,7 @@
             this.txtCustId.ReadOnly = true;
             this.txtCustId.Size = new System.Drawing.Size(245, 25);
             this.txtCustId.TabIndex = 100;
+            this.txtCustId.TabStop = false;
             // 
             // dtpDateOfBirth
             // 
@@ -275,7 +279,7 @@
             this.dtpDateOfBirth.Location = new System.Drawing.Point(133, 227);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(245, 25);
-            this.dtpDateOfBirth.TabIndex = 101;
+            this.dtpDateOfBirth.TabIndex = 4;
             // 
             // lblDateOfBirth
             // 

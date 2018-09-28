@@ -95,5 +95,18 @@ namespace AnyStore
             frmTest test = new frmTest();
             test.Show();
         }
+
+        private void rectangleShape1_Click(object sender, EventArgs e)
+        {
+            frmCompanyData companydata = new frmCompanyData();
+            companydata.Show();
+        }
+
+
+        private void lblbtnCompanyData_Click(object sender, EventArgs e)
+        {
+            frmCompanyData companydata = new frmCompanyData();
+            companydata.Show();
+        }
     }
 }

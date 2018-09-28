@@ -37,8 +37,9 @@ namespace AnyStore.DAL
         }
         #endregion
         #region INSERT Method to Add details fo Dealer or Customer
-        public bool Insert(DeaCustBLL dc)
+        public bool Insert(DeaCustBLL dc, out int DeaCustID)
         {
+            DeaCustID = -1;
             //Create and Boolean value and set its default value to false
             bool isSuccess = false;
             try
@@ -63,6 +64,7 @@ namespace AnyStore.DAL
                 {
                     //Query Sucessfull
                     isSuccess = true;
+                    DeaCustID = deacust.Id;
                 }
                 else
                 {
@@ -74,6 +76,7 @@ namespace AnyStore.DAL
             {
                 MessageBox.Show(ex.Message);
             }
+            
             return isSuccess;
         }
         #endregion
@@ -259,6 +262,43 @@ namespace AnyStore.DAL
                 }
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return dc;
+        }
+        #endregion
+        #region METHOD TO GET ID OF THE DEALER OR CUSTOMER BASED ON NAME
+        public DeaCustBLL GetDeaCustIDFromID(int DeaCustID)
+        {
+            //First Create an Object of DeaCust BLL and REturn it
+            DeaCustBLL dc = new DeaCustBLL();
+
+            try
+            {
+                var erg = from deacusts in db.tbl_dea_cust
+                          where deacusts.Id == DeaCustID
+                          select deacusts;
+
+
+                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
+                if (myDeaCust != null)
+                {
+                    dc.Id = myDeaCust.Id;
+                    dc.type = myDeaCust.type;
+                    dc.first_name = myDeaCust.first_name;
+                    dc.last_name = myDeaCust.last_name;
+                    dc.form_of_address = myDeaCust.form_of_address;
+                    dc.contact_mail = myDeaCust.contact_mail;
+                    dc.contact_phone = myDeaCust.contact_phone;
+                    dc.address_street = myDeaCust.address_street;
+                    dc.address_postcode = myDeaCust.address_postcode;
+                    dc.address_city = myDeaCust.address_city;
+                    dc.address_country = myDeaCust.address_country;
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

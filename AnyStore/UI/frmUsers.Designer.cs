@@ -112,7 +112,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(117, 80);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(171, 25);
-            this.txtFirstName.TabIndex = 2;
+            this.txtFirstName.TabIndex = 1;
             // 
             // txtLastName
             // 
@@ -121,7 +121,7 @@
             this.txtLastName.Location = new System.Drawing.Point(117, 113);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(171, 25);
-            this.txtLastName.TabIndex = 4;
+            this.txtLastName.TabIndex = 2;
             // 
             // lblLastName
             // 
@@ -140,7 +140,7 @@
             this.txtEmail.Location = new System.Drawing.Point(117, 148);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(171, 25);
-            this.txtEmail.TabIndex = 6;
+            this.txtEmail.TabIndex = 3;
             // 
             // lblEmail
             // 
@@ -159,7 +159,7 @@
             this.txtUsername.Location = new System.Drawing.Point(117, 183);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(171, 25);
-            this.txtUsername.TabIndex = 8;
+            this.txtUsername.TabIndex = 4;
             // 
             // lblUsername
             // 
@@ -178,7 +178,7 @@
             this.txtPassword.Location = new System.Drawing.Point(117, 215);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(171, 25);
-            this.txtPassword.TabIndex = 10;
+            this.txtPassword.TabIndex = 5;
             // 
             // lblPassword
             // 
@@ -197,7 +197,7 @@
             this.txtContact.Location = new System.Drawing.Point(117, 247);
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(171, 25);
-            this.txtContact.TabIndex = 12;
+            this.txtContact.TabIndex = 6;
             // 
             // lblContact
             // 
@@ -217,7 +217,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(171, 75);
-            this.txtAddress.TabIndex = 14;
+            this.txtAddress.TabIndex = 7;
             // 
             // lblAddress
             // 
@@ -250,7 +250,7 @@
             this.cmbGender.Location = new System.Drawing.Point(117, 365);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(171, 25);
-            this.cmbGender.TabIndex = 16;
+            this.cmbGender.TabIndex = 8;
             // 
             // cmbUserType
             // 
@@ -262,7 +262,7 @@
             this.cmbUserType.Location = new System.Drawing.Point(117, 400);
             this.cmbUserType.Name = "cmbUserType";
             this.cmbUserType.Size = new System.Drawing.Size(171, 25);
-            this.cmbUserType.TabIndex = 18;
+            this.cmbUserType.TabIndex = 9;
             // 
             // lblUserType
             // 
@@ -277,12 +277,14 @@
             // txtUserID
             // 
             this.txtUserID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserID.Enabled = false;
             this.txtUserID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserID.Location = new System.Drawing.Point(117, 46);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.ReadOnly = true;
             this.txtUserID.Size = new System.Drawing.Size(171, 25);
             this.txtUserID.TabIndex = 20;
+            this.txtUserID.TabStop = false;
             // 
             // lblUserID
             // 
@@ -301,6 +303,7 @@
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.Size = new System.Drawing.Size(492, 345);
             this.dgvUsers.TabIndex = 21;
+            this.dgvUsers.TabStop = false;
             this.dgvUsers.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsers_RowHeaderMouseClick);
             // 
             // txtSearch
@@ -311,6 +314,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(442, 25);
             this.txtSearch.TabIndex = 23;
+            this.txtSearch.TabStop = false;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch
@@ -331,7 +335,7 @@
             this.btnAdd.Location = new System.Drawing.Point(117, 446);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(171, 38);
-            this.btnAdd.TabIndex = 24;
+            this.btnAdd.TabIndex = 10;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -344,7 +348,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(314, 446);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(171, 38);
-            this.btnUpdate.TabIndex = 25;
+            this.btnUpdate.TabIndex = 11;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -358,7 +362,7 @@
             this.btnDelete.Location = new System.Drawing.Point(508, 446);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(171, 38);
-            this.btnDelete.TabIndex = 26;
+            this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);

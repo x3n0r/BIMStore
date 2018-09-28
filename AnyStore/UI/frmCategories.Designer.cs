@@ -79,7 +79,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(398, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(99, 21);
+            this.lblTop.Size = new System.Drawing.Size(100, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "CATEGORIES";
             // 
@@ -122,6 +122,8 @@
             this.txtCategoryID.ReadOnly = true;
             this.txtCategoryID.Size = new System.Drawing.Size(217, 25);
             this.txtCategoryID.TabIndex = 5;
+            this.txtCategoryID.TabStop = false;
+            this.txtCategoryID.TextChanged += new System.EventHandler(this.txtCategoryID_TextChanged);
             // 
             // txtTitle
             // 
@@ -129,7 +131,7 @@
             this.txtTitle.Location = new System.Drawing.Point(145, 99);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(217, 25);
-            this.txtTitle.TabIndex = 6;
+            this.txtTitle.TabIndex = 1;
             // 
             // txtDescription
             // 
@@ -138,7 +140,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(217, 102);
-            this.txtDescription.TabIndex = 7;
+            this.txtDescription.TabIndex = 3;
             // 
             // btnADD
             // 
@@ -148,7 +150,7 @@
             this.btnADD.Location = new System.Drawing.Point(232, 280);
             this.btnADD.Name = "btnADD";
             this.btnADD.Size = new System.Drawing.Size(130, 44);
-            this.btnADD.TabIndex = 8;
+            this.btnADD.TabIndex = 4;
             this.btnADD.Text = "ADD";
             this.btnADD.UseVisualStyleBackColor = false;
             this.btnADD.Click += new System.EventHandler(this.btnADD_Click);
@@ -161,7 +163,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(368, 280);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(130, 44);
-            this.btnUpdate.TabIndex = 9;
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -175,7 +177,7 @@
             this.btnDelete.Location = new System.Drawing.Point(504, 280);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(130, 44);
-            this.btnDelete.TabIndex = 10;
+            this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -187,6 +189,7 @@
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.Size = new System.Drawing.Size(411, 163);
             this.dgvCategories.TabIndex = 11;
+            this.dgvCategories.TabStop = false;
             this.dgvCategories.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCategories_RowHeaderMouseClick);
             // 
             // lblSearch
@@ -206,6 +209,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(366, 25);
             this.txtSearch.TabIndex = 13;
+            this.txtSearch.TabStop = false;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // txtTax
@@ -214,7 +218,7 @@
             this.txtTax.Location = new System.Drawing.Point(145, 129);
             this.txtTax.Name = "txtTax";
             this.txtTax.Size = new System.Drawing.Size(217, 25);
-            this.txtTax.TabIndex = 15;
+            this.txtTax.TabIndex = 2;
             // 
             // lblTax
             // 
@@ -222,7 +226,7 @@
             this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(12, 132);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(27, 17);
+            this.lblTax.Size = new System.Drawing.Size(28, 17);
             this.lblTax.TabIndex = 14;
             this.lblTax.Text = "Tax";
             // 

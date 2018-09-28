@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace AnyStore.UI
         CompanyDataBLL cd = new CompanyDataBLL();
         CompanyDataDAL dal = new CompanyDataDAL();
 
-        private void frmCategories_Load(object sender, EventArgs e)
+        private void frmCompanyData_Load(object sender, EventArgs e)
         {
             //Here write the code to display all the categries in DAta Grid View
             List<tbl_companydata> dt = dal.Select();
@@ -42,6 +43,11 @@ namespace AnyStore.UI
             txtTelno.Text = dt[0].contact_phone;
             txteMail.Text = dt[0].contact_email;
             txtIBAN.Text = dt[0].IBAN;
+            txtLogo.Text = dt[0].logo;
+            if (txtLogo.Text != "")
+            {
+                LoadImage(txtLogo.Text);
+            }
             txtBIC.Text = dt[0].BIC;
         }
 
@@ -58,6 +64,7 @@ namespace AnyStore.UI
             cd.contact_phone = txtTelno.Text;
             cd.contact_mail = txteMail.Text;
             cd.IBAN = txtIBAN.Text;
+            cd.logo = txtLogo.Text;
             cd.BIC = txtBIC.Text;
 
             //Creating Boolean variable to update categories and check 
@@ -72,6 +79,28 @@ namespace AnyStore.UI
             {
                 //FAiled to Update Category
                 MessageBox.Show("Failed to Update Company Data");
+            }
+        }
+
+        private void btnLoadLogo_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = "Open Image";
+            dlg.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                LoadImage(dlg.FileName);
+                txtLogo.Text = dlg.FileName;
+            }
+            dlg.Dispose();
+        }
+
+        private void LoadImage(String Filename)
+        {
+            FileInfo file = new FileInfo(Filename);
+            if (file.Exists)
+            {
+                pbLogo.Image = Image.FromFile(Filename);
             }
         }
     }

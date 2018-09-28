@@ -36,6 +36,7 @@ namespace AnyStore.UI
                 //COMPANY ITEMS
                 pdf.companyname = "ANyStore";
                 pdf.slogan = "fucking slogan";
+                pdf.logo = "C:/Users/A3270/Pictures/test2.png";
                 //companyaddress
                 company comp = new company();
                 comp.address_city = "Mönchhof";

@@ -30,23 +30,57 @@ namespace AnyStore.UI
             Environment.Exit(0);
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void Calculate(int i)
         {
+            double pow = Math.Pow(i, i);
+        }
+
+        public void DoWork(IProgress<int> progress)
+        {
+            // This method is executed in the context of
+            // another thread (different than the main UI thread),
+            // so use only thread-safe code
+            for (int j = 0; j < 10000; j++)
+            {
+                Calculate(j);
+
+                // Use progress to notify UI thread that progress has
+                // changed
+                if (progress != null)
+                    progress.Report((j + 1) * 100 / 10000);
+            }
+        }
+
+        private async void btnLogin_Click(object sender, EventArgs e)
+        {
+
+            progressBar1.Maximum = 100;
+            progressBar1.Step = 1;
+
+            var progress = new Progress<int>(v =>
+            {
+                // This lambda is executed in context of UI thread,
+                // so it can safely update form controls
+                progressBar1.Value = v;
+            });
+
+            // Run operation in another thread
+            await Task.Run(() => DoWork(progress));
+
             l.username = txtUsername.Text.Trim();
             l.password = txtPassword.Text.Trim();
             //l.user_type = cmbUserType.Text.Trim();
 
             //Checking the login credentials
             userBLL usr = dal.loginCheck(l);
-            if(usr!=null)
+            if (usr != null)
             {
                 l.user_type = usr.user_type;
 
                 //Login Successfull
-                MessageBox.Show("Login Successful.");
                 loggedIn = l.username;
                 //Need to open Respective Forms based on User Type
-                switch(l.user_type)
+                switch (l.user_type)
                 {
                     case "Admin":
                         {
@@ -78,6 +112,15 @@ namespace AnyStore.UI
             {
                 //login Failed
                 MessageBox.Show("Login Failed. Try Again");
+            }
+
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(this, new EventArgs());
             }
         }
     }

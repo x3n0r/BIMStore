@@ -391,6 +391,7 @@ namespace AnyStore.UI
                         //COMPANY ITEMS
                         pdf.companyname = cd[0].name;
                         pdf.slogan = cd[0].slogan;
+                        pdf.logo = cd[0].logo;
                         //companyaddress
                         company comp = new company();
                         comp.address_city = cd[0].address_city;

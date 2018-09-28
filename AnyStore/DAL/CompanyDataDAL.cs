@@ -62,6 +62,7 @@ namespace AnyStore.DAL
                     myCompData.contact_email = cd.contact_mail;
                     myCompData.IBAN = cd.IBAN;
                     myCompData.BIC = cd.BIC;
+                    myCompData.logo = cd.logo;
                     //myCompData.Id = c.id;
                     db.SubmitChanges();
                 }

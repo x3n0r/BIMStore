@@ -16,21 +16,6 @@
       <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_companydata" Member="tbl_companydata">
-    <Type Name="tbl_companydata">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="slogan" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="contact_phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="contact_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="IBAN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="BIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="address_street" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-      <Column Name="address_postcode" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-      <Column Name="address_city" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-      <Column Name="address_country" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tbl_dea_cust" Member="tbl_dea_cust">
     <Type Name="tbl_dea_cust">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -103,6 +88,22 @@
       <Column Name="date_of_birth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="cust_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_companydata" Member="tbl_companydata">
+    <Type Name="tbl_companydata">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="slogan" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="contact_phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contact_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IBAN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="address_street" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="address_postcode" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="address_city" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="address_country" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="logo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

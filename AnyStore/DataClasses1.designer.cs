@@ -33,9 +33,6 @@ namespace AnyStore
     partial void Inserttbl_users(tbl_users instance);
     partial void Updatetbl_users(tbl_users instance);
     partial void Deletetbl_users(tbl_users instance);
-    partial void Inserttbl_companydata(tbl_companydata instance);
-    partial void Updatetbl_companydata(tbl_companydata instance);
-    partial void Deletetbl_companydata(tbl_companydata instance);
     partial void Inserttbl_dea_cust(tbl_dea_cust instance);
     partial void Updatetbl_dea_cust(tbl_dea_cust instance);
     partial void Deletetbl_dea_cust(tbl_dea_cust instance);
@@ -54,6 +51,9 @@ namespace AnyStore
     partial void Inserttbl_animal(tbl_animal instance);
     partial void Updatetbl_animal(tbl_animal instance);
     partial void Deletetbl_animal(tbl_animal instance);
+    partial void Inserttbl_companydata(tbl_companydata instance);
+    partial void Updatetbl_companydata(tbl_companydata instance);
+    partial void Deletetbl_companydata(tbl_companydata instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -91,14 +91,6 @@ namespace AnyStore
 			get
 			{
 				return this.GetTable<tbl_users>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tbl_companydata> tbl_companydata
-		{
-			get
-			{
-				return this.GetTable<tbl_companydata>();
 			}
 		}
 		
@@ -147,6 +139,14 @@ namespace AnyStore
 			get
 			{
 				return this.GetTable<tbl_animal>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_companydata> tbl_companydata
+		{
+			get
+			{
+				return this.GetTable<tbl_companydata>();
 			}
 		}
 	}
@@ -452,308 +452,6 @@ namespace AnyStore
 					this._added_by = value;
 					this.SendPropertyChanged("added_by");
 					this.Onadded_byChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_companydata")]
-	public partial class tbl_companydata : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _name;
-		
-		private string _slogan;
-		
-		private string _contact_phone;
-		
-		private string _contact_email;
-		
-		private string _IBAN;
-		
-		private string _BIC;
-		
-		private string _address_street;
-		
-		private string _address_postcode;
-		
-		private string _address_city;
-		
-		private string _address_country;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnsloganChanging(string value);
-    partial void OnsloganChanged();
-    partial void Oncontact_phoneChanging(string value);
-    partial void Oncontact_phoneChanged();
-    partial void Oncontact_emailChanging(string value);
-    partial void Oncontact_emailChanged();
-    partial void OnIBANChanging(string value);
-    partial void OnIBANChanged();
-    partial void OnBICChanging(string value);
-    partial void OnBICChanged();
-    partial void Onaddress_streetChanging(string value);
-    partial void Onaddress_streetChanged();
-    partial void Onaddress_postcodeChanging(string value);
-    partial void Onaddress_postcodeChanged();
-    partial void Onaddress_cityChanging(string value);
-    partial void Onaddress_cityChanged();
-    partial void Onaddress_countryChanging(string value);
-    partial void Onaddress_countryChanged();
-    #endregion
-		
-		public tbl_companydata()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(MAX)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_slogan", DbType="VarChar(MAX)")]
-		public string slogan
-		{
-			get
-			{
-				return this._slogan;
-			}
-			set
-			{
-				if ((this._slogan != value))
-				{
-					this.OnsloganChanging(value);
-					this.SendPropertyChanging();
-					this._slogan = value;
-					this.SendPropertyChanged("slogan");
-					this.OnsloganChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_phone", DbType="VarChar(50)")]
-		public string contact_phone
-		{
-			get
-			{
-				return this._contact_phone;
-			}
-			set
-			{
-				if ((this._contact_phone != value))
-				{
-					this.Oncontact_phoneChanging(value);
-					this.SendPropertyChanging();
-					this._contact_phone = value;
-					this.SendPropertyChanged("contact_phone");
-					this.Oncontact_phoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_email", DbType="VarChar(50)")]
-		public string contact_email
-		{
-			get
-			{
-				return this._contact_email;
-			}
-			set
-			{
-				if ((this._contact_email != value))
-				{
-					this.Oncontact_emailChanging(value);
-					this.SendPropertyChanging();
-					this._contact_email = value;
-					this.SendPropertyChanged("contact_email");
-					this.Oncontact_emailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IBAN", DbType="VarChar(50)")]
-		public string IBAN
-		{
-			get
-			{
-				return this._IBAN;
-			}
-			set
-			{
-				if ((this._IBAN != value))
-				{
-					this.OnIBANChanging(value);
-					this.SendPropertyChanging();
-					this._IBAN = value;
-					this.SendPropertyChanged("IBAN");
-					this.OnIBANChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BIC", DbType="VarChar(50)")]
-		public string BIC
-		{
-			get
-			{
-				return this._BIC;
-			}
-			set
-			{
-				if ((this._BIC != value))
-				{
-					this.OnBICChanging(value);
-					this.SendPropertyChanging();
-					this._BIC = value;
-					this.SendPropertyChanged("BIC");
-					this.OnBICChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_street", DbType="VarChar(64)")]
-		public string address_street
-		{
-			get
-			{
-				return this._address_street;
-			}
-			set
-			{
-				if ((this._address_street != value))
-				{
-					this.Onaddress_streetChanging(value);
-					this.SendPropertyChanging();
-					this._address_street = value;
-					this.SendPropertyChanged("address_street");
-					this.Onaddress_streetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_postcode", DbType="VarChar(64)")]
-		public string address_postcode
-		{
-			get
-			{
-				return this._address_postcode;
-			}
-			set
-			{
-				if ((this._address_postcode != value))
-				{
-					this.Onaddress_postcodeChanging(value);
-					this.SendPropertyChanging();
-					this._address_postcode = value;
-					this.SendPropertyChanged("address_postcode");
-					this.Onaddress_postcodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_city", DbType="VarChar(64)")]
-		public string address_city
-		{
-			get
-			{
-				return this._address_city;
-			}
-			set
-			{
-				if ((this._address_city != value))
-				{
-					this.Onaddress_cityChanging(value);
-					this.SendPropertyChanging();
-					this._address_city = value;
-					this.SendPropertyChanged("address_city");
-					this.Onaddress_cityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_country", DbType="VarChar(64)")]
-		public string address_country
-		{
-			get
-			{
-				return this._address_country;
-			}
-			set
-			{
-				if ((this._address_country != value))
-				{
-					this.Onaddress_countryChanging(value);
-					this.SendPropertyChanging();
-					this._address_country = value;
-					this.SendPropertyChanged("address_country");
-					this.Onaddress_countryChanged();
 				}
 			}
 		}
@@ -2182,6 +1880,332 @@ namespace AnyStore
 					this._cust_id = value;
 					this.SendPropertyChanged("cust_id");
 					this.Oncust_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_companydata")]
+	public partial class tbl_companydata : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+		private string _slogan;
+		
+		private string _contact_phone;
+		
+		private string _contact_email;
+		
+		private string _IBAN;
+		
+		private string _BIC;
+		
+		private string _address_street;
+		
+		private string _address_postcode;
+		
+		private string _address_city;
+		
+		private string _address_country;
+		
+		private string _logo;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnsloganChanging(string value);
+    partial void OnsloganChanged();
+    partial void Oncontact_phoneChanging(string value);
+    partial void Oncontact_phoneChanged();
+    partial void Oncontact_emailChanging(string value);
+    partial void Oncontact_emailChanged();
+    partial void OnIBANChanging(string value);
+    partial void OnIBANChanged();
+    partial void OnBICChanging(string value);
+    partial void OnBICChanged();
+    partial void Onaddress_streetChanging(string value);
+    partial void Onaddress_streetChanged();
+    partial void Onaddress_postcodeChanging(string value);
+    partial void Onaddress_postcodeChanged();
+    partial void Onaddress_cityChanging(string value);
+    partial void Onaddress_cityChanged();
+    partial void Onaddress_countryChanging(string value);
+    partial void Onaddress_countryChanged();
+    partial void OnlogoChanging(string value);
+    partial void OnlogoChanged();
+    #endregion
+		
+		public tbl_companydata()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(MAX)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_slogan", DbType="VarChar(MAX)")]
+		public string slogan
+		{
+			get
+			{
+				return this._slogan;
+			}
+			set
+			{
+				if ((this._slogan != value))
+				{
+					this.OnsloganChanging(value);
+					this.SendPropertyChanging();
+					this._slogan = value;
+					this.SendPropertyChanged("slogan");
+					this.OnsloganChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_phone", DbType="VarChar(50)")]
+		public string contact_phone
+		{
+			get
+			{
+				return this._contact_phone;
+			}
+			set
+			{
+				if ((this._contact_phone != value))
+				{
+					this.Oncontact_phoneChanging(value);
+					this.SendPropertyChanging();
+					this._contact_phone = value;
+					this.SendPropertyChanged("contact_phone");
+					this.Oncontact_phoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_email", DbType="VarChar(50)")]
+		public string contact_email
+		{
+			get
+			{
+				return this._contact_email;
+			}
+			set
+			{
+				if ((this._contact_email != value))
+				{
+					this.Oncontact_emailChanging(value);
+					this.SendPropertyChanging();
+					this._contact_email = value;
+					this.SendPropertyChanged("contact_email");
+					this.Oncontact_emailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IBAN", DbType="VarChar(50)")]
+		public string IBAN
+		{
+			get
+			{
+				return this._IBAN;
+			}
+			set
+			{
+				if ((this._IBAN != value))
+				{
+					this.OnIBANChanging(value);
+					this.SendPropertyChanging();
+					this._IBAN = value;
+					this.SendPropertyChanged("IBAN");
+					this.OnIBANChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BIC", DbType="VarChar(50)")]
+		public string BIC
+		{
+			get
+			{
+				return this._BIC;
+			}
+			set
+			{
+				if ((this._BIC != value))
+				{
+					this.OnBICChanging(value);
+					this.SendPropertyChanging();
+					this._BIC = value;
+					this.SendPropertyChanged("BIC");
+					this.OnBICChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_street", DbType="VarChar(64)")]
+		public string address_street
+		{
+			get
+			{
+				return this._address_street;
+			}
+			set
+			{
+				if ((this._address_street != value))
+				{
+					this.Onaddress_streetChanging(value);
+					this.SendPropertyChanging();
+					this._address_street = value;
+					this.SendPropertyChanged("address_street");
+					this.Onaddress_streetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_postcode", DbType="VarChar(64)")]
+		public string address_postcode
+		{
+			get
+			{
+				return this._address_postcode;
+			}
+			set
+			{
+				if ((this._address_postcode != value))
+				{
+					this.Onaddress_postcodeChanging(value);
+					this.SendPropertyChanging();
+					this._address_postcode = value;
+					this.SendPropertyChanged("address_postcode");
+					this.Onaddress_postcodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_city", DbType="VarChar(64)")]
+		public string address_city
+		{
+			get
+			{
+				return this._address_city;
+			}
+			set
+			{
+				if ((this._address_city != value))
+				{
+					this.Onaddress_cityChanging(value);
+					this.SendPropertyChanging();
+					this._address_city = value;
+					this.SendPropertyChanged("address_city");
+					this.Onaddress_cityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address_country", DbType="VarChar(64)")]
+		public string address_country
+		{
+			get
+			{
+				return this._address_country;
+			}
+			set
+			{
+				if ((this._address_country != value))
+				{
+					this.Onaddress_countryChanging(value);
+					this.SendPropertyChanging();
+					this._address_country = value;
+					this.SendPropertyChanged("address_country");
+					this.Onaddress_countryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_logo", DbType="VarChar(MAX)")]
+		public string logo
+		{
+			get
+			{
+				return this._logo;
+			}
+			set
+			{
+				if ((this._logo != value))
+				{
+					this.OnlogoChanging(value);
+					this.SendPropertyChanging();
+					this._logo = value;
+					this.SendPropertyChanged("logo");
+					this.OnlogoChanged();
 				}
 			}
 		}

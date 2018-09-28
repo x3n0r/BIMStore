@@ -25,10 +25,11 @@ namespace AnyStore.BLL
         public string IBAN { get; set; }
         public string BIC { get; set; }
         // public company companyaddress { get; set; }
-        public string address_street;
-        public string address_postcode;
-        public string address_city;
-        public string address_country;
+        public string address_street { get; set; }
+        public string address_postcode { get; set; }
+        public string address_city { get; set; }
+        public string address_country { get; set; }
+        public string logo { get; set; }
 
     }
 }

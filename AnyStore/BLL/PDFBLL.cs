@@ -47,6 +47,7 @@ namespace AnyStore.BLL
 
         public string companyname { get; set; }
         public string slogan { get; set; }
+        public string logo { get; set; }
         public customer customeraddress { get; set; }
         public company companyaddress { get; set; }
         public companyuser user { get; set; }

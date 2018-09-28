@@ -39,6 +39,7 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblHeader = new System.Windows.Forms.Label();
             this.pboxClose = new System.Windows.Forms.PictureBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxClose)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.progressBar1);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.cmbUserType);
             this.panel1.Controls.Add(this.txtPassword);
@@ -95,6 +97,7 @@
             this.txtPassword.PasswordChar = 'x';
             this.txtPassword.Size = new System.Drawing.Size(191, 25);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // txtUsername
             // 
@@ -111,7 +114,7 @@
             this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserType.Location = new System.Drawing.Point(38, 176);
             this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(55, 13);
+            this.lblUserType.Size = new System.Drawing.Size(56, 13);
             this.lblUserType.TabIndex = 3;
             this.lblUserType.Text = "User Type";
             this.lblUserType.Visible = false;
@@ -157,6 +160,13 @@
             this.pboxClose.TabStop = false;
             this.pboxClose.Click += new System.EventHandler(this.pboxClose_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(41, 176);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(191, 23);
+            this.progressBar1.TabIndex = 8;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,5 +198,6 @@
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.PictureBox pboxClose;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
