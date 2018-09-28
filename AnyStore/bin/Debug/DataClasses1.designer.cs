@@ -45,15 +45,15 @@ namespace AnyStore
     partial void Inserttbl_categories(tbl_categories instance);
     partial void Updatetbl_categories(tbl_categories instance);
     partial void Deletetbl_categories(tbl_categories instance);
-    partial void Inserttbl_animal(tbl_animal instance);
-    partial void Updatetbl_animal(tbl_animal instance);
-    partial void Deletetbl_animal(tbl_animal instance);
     partial void Inserttbl_transaction_detail(tbl_transaction_detail instance);
     partial void Updatetbl_transaction_detail(tbl_transaction_detail instance);
     partial void Deletetbl_transaction_detail(tbl_transaction_detail instance);
     partial void Inserttbl_transactions(tbl_transactions instance);
     partial void Updatetbl_transactions(tbl_transactions instance);
     partial void Deletetbl_transactions(tbl_transactions instance);
+    partial void Inserttbl_animal(tbl_animal instance);
+    partial void Updatetbl_animal(tbl_animal instance);
+    partial void Deletetbl_animal(tbl_animal instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -126,14 +126,6 @@ namespace AnyStore
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_animal> tbl_animal
-		{
-			get
-			{
-				return this.GetTable<tbl_animal>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_transaction_detail> tbl_transaction_detail
 		{
 			get
@@ -147,6 +139,14 @@ namespace AnyStore
 			get
 			{
 				return this.GetTable<tbl_transactions>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_animal> tbl_animal
+		{
+			get
+			{
+				return this.GetTable<tbl_animal>();
 			}
 		}
 	}
@@ -1517,212 +1517,6 @@ namespace AnyStore
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_animal")]
-	public partial class tbl_animal : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _name;
-		
-		private string _species;
-		
-		private string _race;
-		
-		private System.Nullable<System.DateTime> _date_of_birth;
-		
-		private string _notes;
-		
-		private System.Nullable<int> _cust_id;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnspeciesChanging(string value);
-    partial void OnspeciesChanged();
-    partial void OnraceChanging(string value);
-    partial void OnraceChanged();
-    partial void Ondate_of_birthChanging(System.Nullable<System.DateTime> value);
-    partial void Ondate_of_birthChanged();
-    partial void OnnotesChanging(string value);
-    partial void OnnotesChanged();
-    partial void Oncust_idChanging(System.Nullable<int> value);
-    partial void Oncust_idChanged();
-    #endregion
-		
-		public tbl_animal()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(64)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_species", DbType="VarChar(64)")]
-		public string species
-		{
-			get
-			{
-				return this._species;
-			}
-			set
-			{
-				if ((this._species != value))
-				{
-					this.OnspeciesChanging(value);
-					this.SendPropertyChanging();
-					this._species = value;
-					this.SendPropertyChanged("species");
-					this.OnspeciesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_race", DbType="VarChar(64)")]
-		public string race
-		{
-			get
-			{
-				return this._race;
-			}
-			set
-			{
-				if ((this._race != value))
-				{
-					this.OnraceChanging(value);
-					this.SendPropertyChanging();
-					this._race = value;
-					this.SendPropertyChanged("race");
-					this.OnraceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_of_birth", DbType="DateTime")]
-		public System.Nullable<System.DateTime> date_of_birth
-		{
-			get
-			{
-				return this._date_of_birth;
-			}
-			set
-			{
-				if ((this._date_of_birth != value))
-				{
-					this.Ondate_of_birthChanging(value);
-					this.SendPropertyChanging();
-					this._date_of_birth = value;
-					this.SendPropertyChanged("date_of_birth");
-					this.Ondate_of_birthChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_notes", DbType="VarChar(MAX)")]
-		public string notes
-		{
-			get
-			{
-				return this._notes;
-			}
-			set
-			{
-				if ((this._notes != value))
-				{
-					this.OnnotesChanging(value);
-					this.SendPropertyChanging();
-					this._notes = value;
-					this.SendPropertyChanged("notes");
-					this.OnnotesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cust_id", DbType="Int")]
-		public System.Nullable<int> cust_id
-		{
-			get
-			{
-				return this._cust_id;
-			}
-			set
-			{
-				if ((this._cust_id != value))
-				{
-					this.Oncust_idChanging(value);
-					this.SendPropertyChanging();
-					this._cust_id = value;
-					this.SendPropertyChanged("cust_id");
-					this.Oncust_idChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_transaction_detail")]
 	public partial class tbl_transaction_detail : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2182,6 +1976,212 @@ namespace AnyStore
 					this._kontobez = value;
 					this.SendPropertyChanged("kontobez");
 					this.OnkontobezChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_animal")]
+	public partial class tbl_animal : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+		private string _species;
+		
+		private string _race;
+		
+		private System.Nullable<System.DateTime> _date_of_birth;
+		
+		private string _notes;
+		
+		private System.Nullable<int> _cust_id;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnspeciesChanging(string value);
+    partial void OnspeciesChanged();
+    partial void OnraceChanging(string value);
+    partial void OnraceChanged();
+    partial void Ondate_of_birthChanging(System.Nullable<System.DateTime> value);
+    partial void Ondate_of_birthChanged();
+    partial void OnnotesChanging(string value);
+    partial void OnnotesChanged();
+    partial void Oncust_idChanging(System.Nullable<int> value);
+    partial void Oncust_idChanged();
+    #endregion
+		
+		public tbl_animal()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(64)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_species", DbType="VarChar(64)")]
+		public string species
+		{
+			get
+			{
+				return this._species;
+			}
+			set
+			{
+				if ((this._species != value))
+				{
+					this.OnspeciesChanging(value);
+					this.SendPropertyChanging();
+					this._species = value;
+					this.SendPropertyChanged("species");
+					this.OnspeciesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_race", DbType="VarChar(64)")]
+		public string race
+		{
+			get
+			{
+				return this._race;
+			}
+			set
+			{
+				if ((this._race != value))
+				{
+					this.OnraceChanging(value);
+					this.SendPropertyChanging();
+					this._race = value;
+					this.SendPropertyChanged("race");
+					this.OnraceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_of_birth", DbType="DateTime")]
+		public System.Nullable<System.DateTime> date_of_birth
+		{
+			get
+			{
+				return this._date_of_birth;
+			}
+			set
+			{
+				if ((this._date_of_birth != value))
+				{
+					this.Ondate_of_birthChanging(value);
+					this.SendPropertyChanging();
+					this._date_of_birth = value;
+					this.SendPropertyChanged("date_of_birth");
+					this.Ondate_of_birthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_notes", DbType="VarChar(MAX)")]
+		public string notes
+		{
+			get
+			{
+				return this._notes;
+			}
+			set
+			{
+				if ((this._notes != value))
+				{
+					this.OnnotesChanging(value);
+					this.SendPropertyChanging();
+					this._notes = value;
+					this.SendPropertyChanged("notes");
+					this.OnnotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cust_id", DbType="Int")]
+		public System.Nullable<int> cust_id
+		{
+			get
+			{
+				return this._cust_id;
+			}
+			set
+			{
+				if ((this._cust_id != value))
+				{
+					this.Oncust_idChanging(value);
+					this.SendPropertyChanging();
+					this._cust_id = value;
+					this.SendPropertyChanged("cust_id");
+					this.Oncust_idChanged();
 				}
 			}
 		}

@@ -109,3 +109,4 @@ C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml.la
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmTest.resources
 E:\VeriStore\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmTest.resources
 E:\VeriStore\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmAnimals.resources
+C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmAnimals.resources

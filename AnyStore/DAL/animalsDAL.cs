@@ -142,15 +142,16 @@ namespace AnyStore.DAL
         }
         #endregion
         #region Method for Search Functionality
-        public List<tbl_animal> Search(string keywords)
+        public List<tbl_animal> Search(int custid, string keywords)
         {
             //To hold the data from database 
             List<tbl_animal> anms = new List<tbl_animal>();
             try
             {
                 var erg = from anm in db.tbl_animal
-                          where SqlMethods.Like(anm.name, "%" + keywords + "%") ||
-                                SqlMethods.Like(anm.notes, "%" + keywords + "%")
+                          where anm.Id == custid && 
+                                ( SqlMethods.Like(anm.name, "%" + keywords + "%") ||
+                                SqlMethods.Like(anm.notes, "%" + keywords + "%") )
                           select anm;
 
                 anms = erg.ToList<tbl_animal>();
@@ -163,7 +164,6 @@ namespace AnyStore.DAL
             return anms;
         }
         #endregion
-
         #region Select method for Product Module with cust_id
         public List<tbl_animal> SelectCustId(int cust_id)
         {

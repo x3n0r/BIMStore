@@ -94,7 +94,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(335, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(181, 21);
+            this.lblTop.Size = new System.Drawing.Size(180, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "DEALER and CUSTOMER";
             // 
@@ -114,7 +114,7 @@
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(24, 90);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(36, 17);
+            this.lblType.Size = new System.Drawing.Size(35, 17);
             this.lblType.TabIndex = 5;
             this.lblType.Text = "Type";
             // 
@@ -179,6 +179,7 @@
             this.cmbDeaCust.Name = "cmbDeaCust";
             this.cmbDeaCust.Size = new System.Drawing.Size(245, 25);
             this.cmbDeaCust.TabIndex = 1;
+            this.cmbDeaCust.SelectedIndexChanged += new System.EventHandler(this.cmbDeaCust_SelectedIndexChanged);
             // 
             // txtFirstname
             // 
@@ -373,6 +374,7 @@
             // btnPets
             // 
             this.btnPets.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.btnPets.Enabled = false;
             this.btnPets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPets.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPets.Location = new System.Drawing.Point(27, 411);

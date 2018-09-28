@@ -102,6 +102,15 @@ namespace AnyStore.UI
             txtPostcode.Text = dgvDeaCust.Rows[rowIndex].Cells[6].Value.ToString();
             txtCity.Text = dgvDeaCust.Rows[rowIndex].Cells[7].Value.ToString();
             txtCountry.Text = dgvDeaCust.Rows[rowIndex].Cells[8].Value.ToString();
+
+            if (cmbDeaCust.SelectedItem.ToString() == "Customer" && txtDeaCustID.Text != "")
+            {
+                btnPets.Enabled = true;
+            }
+            else
+            {
+                btnPets.Enabled = false;
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -185,8 +194,18 @@ namespace AnyStore.UI
         {
             cust_id = int.Parse(txtDeaCustID.Text);
             frmAnimals animals = new frmAnimals();
-            this.Hide();
+            //this.Hide();
             animals.Show();
+        }
+
+        private void cmbDeaCust_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDeaCust.SelectedItem.ToString() == "Customer" && txtDeaCustID.Text != "") {
+                btnPets.Enabled = true;
+            } else
+            {
+                btnPets.Enabled = false;
+            }
         }
     }
 }

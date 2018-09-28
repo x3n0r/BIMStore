@@ -32,11 +32,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.lblTop = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
+            this.lblAnimalID = new System.Windows.Forms.Label();
             this.lblSpecies = new System.Windows.Forms.Label();
             this.lblNotes = new System.Windows.Forms.Label();
             this.lblCustId = new System.Windows.Forms.Label();
-            this.txtDeaCustID = new System.Windows.Forms.TextBox();
+            this.txtAnimalID = new System.Windows.Forms.TextBox();
             this.txtSpecies = new System.Windows.Forms.TextBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -89,15 +89,15 @@
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "Animals";
             // 
-            // lblID
+            // lblAnimalID
             // 
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(24, 59);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(72, 17);
-            this.lblID.TabIndex = 4;
-            this.lblID.Text = "DeaCust ID";
+            this.lblAnimalID.AutoSize = true;
+            this.lblAnimalID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnimalID.Location = new System.Drawing.Point(24, 59);
+            this.lblAnimalID.Name = "lblAnimalID";
+            this.lblAnimalID.Size = new System.Drawing.Size(63, 17);
+            this.lblAnimalID.TabIndex = 4;
+            this.lblAnimalID.Text = "Animal ID";
             // 
             // lblSpecies
             // 
@@ -129,15 +129,15 @@
             this.lblCustId.TabIndex = 8;
             this.lblCustId.Text = "Customer ID";
             // 
-            // txtDeaCustID
+            // txtAnimalID
             // 
-            this.txtDeaCustID.Enabled = false;
-            this.txtDeaCustID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeaCustID.Location = new System.Drawing.Point(133, 59);
-            this.txtDeaCustID.Name = "txtDeaCustID";
-            this.txtDeaCustID.ReadOnly = true;
-            this.txtDeaCustID.Size = new System.Drawing.Size(245, 25);
-            this.txtDeaCustID.TabIndex = 99;
+            this.txtAnimalID.Enabled = false;
+            this.txtAnimalID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnimalID.Location = new System.Drawing.Point(133, 59);
+            this.txtAnimalID.Name = "txtAnimalID";
+            this.txtAnimalID.ReadOnly = true;
+            this.txtAnimalID.Size = new System.Drawing.Size(245, 25);
+            this.txtAnimalID.TabIndex = 99;
             // 
             // txtSpecies
             // 
@@ -308,17 +308,17 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.txtSpecies);
-            this.Controls.Add(this.txtDeaCustID);
+            this.Controls.Add(this.txtAnimalID);
             this.Controls.Add(this.lblCustId);
             this.Controls.Add(this.lblNotes);
             this.Controls.Add(this.lblSpecies);
-            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.lblAnimalID);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAnimals";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmDeaCust";
-            this.Load += new System.EventHandler(this.frmDeaCust_Load);
+            this.Text = "frmAnimals";
+            this.Load += new System.EventHandler(this.frmAnimals_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
@@ -333,11 +333,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBoxClose;
         private System.Windows.Forms.Label lblTop;
-        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.Label lblAnimalID;
         private System.Windows.Forms.Label lblSpecies;
         private System.Windows.Forms.Label lblNotes;
         private System.Windows.Forms.Label lblCustId;
-        private System.Windows.Forms.TextBox txtDeaCustID;
+        private System.Windows.Forms.TextBox txtAnimalID;
         private System.Windows.Forms.TextBox txtSpecies;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Button btnAdd;

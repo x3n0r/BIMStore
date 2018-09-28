@@ -38,7 +38,7 @@ namespace AnyStore.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //Get the Values from Form
-            a.date_of_birth = dtpDateOfBirth.Value.ToShortDateString();
+            a.date_of_birth = dtpDateOfBirth.Value;
             a.cust_id = Convert.ToInt32(txtCustId.Text);
             a.name = txtName.Text;
             a.notes = txtNotes.Text;
@@ -62,36 +62,36 @@ namespace AnyStore.UI
             }
             else
             {
-                //failed to insert dealer or customer
+                //failed to insert Pet
             }
         }
         public void Clear()
         {
-            txtDeaCustID.Text = "";
+            txtAnimalID.Text = "";
             txtSpecies.Text = "";
             txtRace.Text = "";
             txtNotes.Text = "";
             txtSearch.Text = "";
             txtName.Text = "";
         }
-
+        /*
         private void frmDeaCust_Load(object sender, EventArgs e)
         {
             //Refresh Data Grid View
             List<tbl_animal> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
             dgvDeaCust.DataSource = anms;
         }
-
+        */
         private void dgvDeaCust_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //int variable to get the identityof row clicked
             int rowIndex = e.RowIndex;
 
-            txtDeaCustID.Text = dgvDeaCust.Rows[rowIndex].Cells[0].Value.ToString();
+            txtAnimalID.Text = dgvDeaCust.Rows[rowIndex].Cells[0].Value.ToString();
             txtName.Text = dgvDeaCust.Rows[rowIndex].Cells[1].Value.ToString();
             txtSpecies.Text = dgvDeaCust.Rows[rowIndex].Cells[2].Value.ToString();
             txtRace.Text = dgvDeaCust.Rows[rowIndex].Cells[3].Value.ToString();
-            dtpDateOfBirth
+            dtpDateOfBirth.Value = Convert.ToDateTime(dgvDeaCust.Rows[rowIndex].Cells[4].Value);
             txtNotes.Text = dgvDeaCust.Rows[rowIndex].Cells[5].Value.ToString();
 
         }
@@ -99,58 +99,53 @@ namespace AnyStore.UI
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //Get the values from Form
-            dc.Id = int.Parse(txtDeaCustID.Text);
-            dc.type = cmbDeaCust.Text;
-            dc.first_name = txtSpecies.Text;
-            dc.last_name = txtRace.Text;
-            dc.contact_mail = txtNotes.Text;
-            dc.contact_phone = txtContact.Text;
-            dc.address_street = txtStreet.Text;
-            dc.address_city = txtCity.Text;
-            dc.address_country = txtCountry.Text;
-            dc.address_postcode = txtPostcode.Text;
-            dc.form_of_address = txtName.Text;
+            a.Id = int.Parse(txtAnimalID.Text);
+            a.cust_id = int.Parse(txtCustId.Text);
+            a.species = txtSpecies.Text;
+            a.race = txtRace.Text;
+            a.notes = txtNotes.Text;
+            a.name = txtName.Text;
 
-            //create boolean variable to check whether the dealer or customer is updated or not
-            bool success = dcDal.Update(dc);
+            //create boolean variable to check whether the Pet is updated or not
+            bool success = aDal.Update(a);
             
             if(success==true)
             {
                 //Dealer and Customer update Successfully
-                MessageBox.Show("Dealer or Customer updated Successfully");
+                MessageBox.Show("Pet updated Successfully");
                 Clear();
                 //Refresh the Data Grid View
-                List<tbl_dea_cust> deacust = dcDal.Select();
-                dgvDeaCust.DataSource = deacust;
+                List<tbl_animal> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
+                dgvDeaCust.DataSource = anms;
             }
             else
             {
-                //Failed to udate Dealer or Customer
-                MessageBox.Show("Failed to Udpate Dealer or Customer");
+                //Failed to udate Pet
+                MessageBox.Show("Failed to Udpate Pet");
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //Get the id of the user to be deleted from form
-            dc.Id = int.Parse(txtDeaCustID.Text);
+            a.Id = int.Parse(txtAnimalID.Text);
 
-            //Create boolean variable to check wheteher the dealer or customer is deleted or not
-            bool success = dcDal.Delete(dc);
+            //Create boolean variable to check wheteher the Pet is deleted or not
+            bool success = aDal.Delete(a);
 
             if(success==true)
             {
-                //Dealer or Customer Deleted Successfully
-                MessageBox.Show("Dealer or Customer Deleted Successfully");
+                //Pet Deleted Successfully
+                MessageBox.Show("Pet Deleted Successfully");
                 Clear();
                 //Refresh the Data Grid View
-                List<tbl_dea_cust> deacust = dcDal.Select();
+                List<tbl_animal> deacust = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
                 dgvDeaCust.DataSource = deacust;
             }
             else
             {
-                //Dealer or Customer Failed to Delete
-                MessageBox.Show("Failed to Delete Dealer or Customer");
+                //Pet Failed to Delete
+                MessageBox.Show("Failed to Delete Pet");
             }
         }
 
@@ -161,14 +156,14 @@ namespace AnyStore.UI
 
             if(keyword!=null)
             {
-                //Search the Dealer or Customer
-                List<tbl_dea_cust> deacust = dcDal.Search(keyword);
+                //Search the Pet
+                List<tbl_animal> deacust = aDal.Search(Convert.ToInt32(txtCustId.Text),keyword);
                 dgvDeaCust.DataSource = deacust;
             }
             else
             {
-                //Show all the Dealer or Customer
-                List<tbl_dea_cust> deacust = dcDal.Select();
+                //Show all the Pet
+                List<tbl_animal> deacust = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
                 dgvDeaCust.DataSource = deacust;
             }
         }

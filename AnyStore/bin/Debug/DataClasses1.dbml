@@ -69,17 +69,6 @@
       <Column Name="tax" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_animal" Member="tbl_animal">
-    <Type Name="tbl_animal">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-      <Column Name="species" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-      <Column Name="race" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-      <Column Name="date_of_birth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="cust_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tbl_transaction_detail" Member="tbl_transaction_detail">
     <Type Name="tbl_transaction_detail">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -103,6 +92,17 @@
       <Column Name="discount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="kontobez" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_animal" Member="tbl_animal">
+    <Type Name="tbl_animal">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="species" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="race" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="date_of_birth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cust_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
