@@ -51,6 +51,12 @@ namespace AnyStore.UI
             btnBook.Visible = false;
             btnSave.Visible = true;
             btnAdd.Enabled = false;
+            txtSearch.Enabled = false;
+            txtSearchProduct.Enabled = false;
+            txtDiscount.Enabled = false;
+            txtPaidAmount.Enabled = false;
+            dtpBillDate.Enabled = false;
+            txtQty.Enabled = false;
             transactionsBLL trans = tDAL.SearchByID(transaction_id);
 
             lblTop.Text = trans.type;
@@ -197,7 +203,7 @@ namespace AnyStore.UI
             {
                 ClearProduct();
             }
-
+            CalculateGrandTotal();
         }
 
         private bool CalculateProductAndShow(string productName, decimal Rate, decimal Qty, 
@@ -266,13 +272,17 @@ namespace AnyStore.UI
 
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
+            CalculateGrandTotal();
+        }
+
+        private void CalculateGrandTotal ()
+        {
             //Get the value fro discount textbox
             string value = txtDiscount.Text;
 
-            if(value=="")
+            if (value == "")
             {
-                //Display Error Message
-                MessageBox.Show("Please Add Discount First");
+                txtDiscount.Text = "0";
             }
             else
             {
@@ -286,14 +296,17 @@ namespace AnyStore.UI
                 //Display the GrandTotla in TextBox
                 txtGrandTotal.Text = grandTotal.ToString();
             }
-            
         }
 
         private void txtPaidAmount_TextChanged(object sender, EventArgs e)
         {
-            //Get the paid amount and grand total
             decimal grandTotal = decimal.Parse(txtGrandTotal.Text);
-            decimal paidAmount = decimal.Parse(txtPaidAmount.Text);
+            decimal paidAmount = 0;
+            //Get the paid amount and grand total
+            if ( txtPaidAmount.Text != "")
+            {
+               paidAmount = decimal.Parse(txtPaidAmount.Text);
+            }
 
             decimal returnAmount = paidAmount - grandTotal;
 
@@ -384,102 +397,94 @@ namespace AnyStore.UI
             //Lets Create a Boolean Variable and set its value to false
             bool success = false;
 
-            //Actual Code to Insert Transaction And Transaction Details
-            using (TransactionScope scope = new TransactionScope())
+
+            int transactionID = -1;
+            //Create aboolean value and insert transaction 
+            bool w = tDAL.Insert_Transaction(transaction, out transactionID);
+
+            CompanyDataDAL cdDAL = new CompanyDataDAL();
+            tbl_companydata cd = cdDAL.Select();
+
+            List<items> lit = new List<items>();
+
+            //Use for loop to insert Transaction Details
+            for (int i = 0; i < transactionDT.Rows.Count; i++)
             {
-                int transactionID = -1;
-                //Create aboolean value and insert transaction 
-                bool w = tDAL.Insert_Transaction(transaction, out transactionID);
+                //Get all the details of the product
+                transactionDetailBLL transactionDetail = new transactionDetailBLL();
+                //Get the Product name and convert it to id
+                string ProductName = transactionDT.Rows[i][0].ToString();
+                productsBLL p = pDAL.GetProductIDFromName(ProductName);
+                categoriesBLL c = cDAL.Search(p.category);
 
-                List<items> lit = new List<items>();
+                bool producthasqty = p.hasqty;
 
-                //Use for loop to insert Transaction Details
-                for (int i = 0; i < transactionDT.Rows.Count; i++)
+                transactionDetail.product_id = p.id;
+                transactionDetail.price = decimal.Parse(transactionDT.Rows[i][1].ToString());
+                transactionDetail.qty = decimal.Parse(transactionDT.Rows[i][2].ToString());
+                transactionDetail.total = Math.Round(decimal.Parse(transactionDT.Rows[i][3].ToString()), 2);
+                transactionDetail.dea_cust_id = transactionID;
+                transactionDetail.added_date = DateTime.Now;
+                transactionDetail.added_by = u.id;
+
+                //listitems
+                items it = new items();
+                it.amount = Convert.ToInt32(transactionDetail.qty);
+                it.productnumber = transactionDetail.product_id;
+                it.name = transactionDT.Rows[i][0].ToString();
+                it.price = transactionDetail.price;
+                it.total = it.amount * it.price;
+                it.tax = c.tax;
+                lit.Add(it);
+
+                //Here Increase or Decrease Product Quantity based on Purchase or sales
+                //Lets check whether we are on Purchase or Sales
+                bool x = false;
+                if (producthasqty)
                 {
-                    //Get all the details of the product
-                    transactionDetailBLL transactionDetail = new transactionDetailBLL();
-                    //Get the Product name and convert it to id
-                    string ProductName = transactionDT.Rows[i][0].ToString();
-                    productsBLL p = pDAL.GetProductIDFromName(ProductName);
-                    categoriesBLL c = cDAL.Search(p.category);
-
-                    bool producthasqty = p.hasqty;
-
-                    transactionDetail.product_id = p.id;
-                    transactionDetail.price = decimal.Parse(transactionDT.Rows[i][1].ToString());
-                    transactionDetail.qty = decimal.Parse(transactionDT.Rows[i][2].ToString());
-                    transactionDetail.total = Math.Round(decimal.Parse(transactionDT.Rows[i][3].ToString()), 2);
-                    transactionDetail.dea_cust_id = transactionID;
-                    transactionDetail.added_date = DateTime.Now;
-                    transactionDetail.added_by = u.id;
-
-                    //listitems
-                    items it = new items();
-                    it.amount = Convert.ToInt32(transactionDetail.qty);
-                    it.productnumber = transactionDetail.product_id;
-                    it.name = transactionDT.Rows[i][0].ToString();
-                    it.price = transactionDetail.price;
-                    it.total = it.amount * it.price;
-                    it.tax = c.tax;
-                    lit.Add(it);
-
-                    //Here Increase or Decrease Product Quantity based on Purchase or sales
-                    //Lets check whether we are on Purchase or Sales
-                    bool x = false;
-                    if (producthasqty)
+                    if (transactionType == "Purchase")
                     {
-                        if (transactionType == "Purchase")
-                        {
-                            //Increase the Product
-                            x = pDAL.IncreaseProduct(transactionDetail.product_id, transactionDetail.qty);
-                        }
-                        else if (transactionType == "Sales")
-                        {
-                            //Decrease the Product Quntiyt
-                            x = pDAL.DecreaseProduct(transactionDetail.product_id, transactionDetail.qty);
-                        }
+                        //Increase the Product
+                        x = pDAL.IncreaseProduct(transactionDetail.product_id, transactionDetail.qty);
                     }
-                    else
+                    else if (transactionType == "Sales")
                     {
-                        x = true;
+                        //Decrease the Product Quntiyt
+                        x = pDAL.DecreaseProduct(transactionDetail.product_id, transactionDetail.qty);
                     }
-                    //Insert Transaction Details inside the database
-                    bool y = tdDAL.InsertTransactionDetail(transactionDetail);
-                    success = w && x && y;
                 }
-
-                if (success == true)
+                else
                 {
-                    /* DGVPrinter*/
-                    //Transaction Complete
-                    scope.Complete();
+                    x = true;
+                }
+                //Insert Transaction Details inside the database
+                bool y = tdDAL.InsertTransactionDetail(transactionDetail);
+                success = w && x && y;
+            }
 
-                    bool pdfsuccess = false;
-                    pdfsuccess = FillPDF(transaction,dc,lit);
-                    if (pdfsuccess == true)
-                    {
-                        //Transaction Failed
-                        MessageBox.Show("Saved");
-                    }
-                    else
-                    {
-                        //Transaction Failed
-                        MessageBox.Show("Transaction Failed");
-                        scope.Dispose();
-                    }
+            if (success == true)
+            {
+                bool pdfsuccess = false;
+                pdfsuccess = FillPDF(cd,transaction,dc,lit);
+                if (pdfsuccess == true)
+                {
+                    //Transaction Failed
+                    MessageBox.Show("Saved");
+                }
+                else
+                {
+                    //Transaction Failed
+                    MessageBox.Show("Transaction Failed");
                 }
             }
             return success;
         }
 
-        private bool FillPDF(transactionsBLL transaction, DeaCustBLL dc, List<items> lit)
+        private bool FillPDF(tbl_companydata cd, transactionsBLL transaction, DeaCustBLL dc, List<items> lit)
         {
 
             bool pdfsuccess = false;
 
-
-            CompanyDataDAL cdDAL = new CompanyDataDAL();
-            List<tbl_companydata> cd = cdDAL.Select();
             /* PDF */
             // Hier wird der Aufruf aus der GUI-Simuliert mit allen übergebenen Variablen/Parameter
             PrintDialog printDialog1 = new PrintDialog();
@@ -493,22 +498,22 @@ namespace AnyStore.UI
                 //fill taxes struct
                 pdf.taxes = tmptaxes;
                 //COMPANY ITEMS
-                pdf.companyname = cd[0].name;
-                pdf.slogan = cd[0].slogan;
-                pdf.logo = cd[0].logo;
+                pdf.companyname = cd.name;
+                pdf.slogan = cd.slogan;
+                pdf.logo = cd.logo;
                 //companyaddress
                 company comp = new company();
-                comp.address_city = cd[0].address_city;
-                comp.address_country = cd[0].address_country;
-                comp.address_postcode = cd[0].address_postcode;
-                comp.address_street = cd[0].address_street;
-                comp.contact_mail = cd[0].contact_email;
-                comp.contact_phone = cd[0].contact_phone;
+                comp.address_city = cd.address_city;
+                comp.address_country = cd.address_country;
+                comp.address_postcode = cd.address_postcode;
+                comp.address_street = cd.address_street;
+                comp.contact_mail = cd.contact_email;
+                comp.contact_phone = cd.contact_phone;
 
                 pdf.companyaddress = comp;
 
-                pdf.IBAN = cd[0].IBAN;
-                pdf.BIC = cd[0].BIC;
+                pdf.IBAN = cd.IBAN;
+                pdf.BIC = cd.BIC;
 
                 //customeradrress
                 customer cust = new customer();
@@ -554,8 +559,11 @@ namespace AnyStore.UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            CompanyDataDAL cdDAL = new CompanyDataDAL();
+            tbl_companydata cd = cdDAL.Select();
+
             bool pdfsuccess = false;
-            pdfsuccess = FillPDF(sbtnh.transaction, sbtnh.dea_cust, sbtnh.lit);
+            pdfsuccess = FillPDF(cd,sbtnh.transaction, sbtnh.dea_cust, sbtnh.lit);
             if (pdfsuccess == true)
             {
                 //Transaction Failed

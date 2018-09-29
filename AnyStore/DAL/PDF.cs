@@ -154,7 +154,6 @@ namespace AnyStore.DAL
 
         private Bitmap ImageFilenameToResizedImage(float width, float height,string filename)
         {
-
             var image = new Bitmap(filename);
             float scale = Math.Min(width / image.Width, height / image.Height);
 
@@ -178,7 +177,7 @@ namespace AnyStore.DAL
 
             // Header
             //Logo einfügen
-            if (!string.IsNullOrEmpty(filename))//TODO && filename exists
+            if (!string.IsNullOrEmpty(filename) && File.Exists(filename))
             {
                 Bitmap logo = ImageFilenameToResizedImage(250f, 180f, filename);
                 e.Graphics.DrawImage(logo, new Point(453, 5));

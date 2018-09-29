@@ -18,7 +18,7 @@ namespace AnyStore.DAL
         static DataClasses1DataContext db = new DataClasses1DataContext();
 
         #region Select Method
-        public List<tbl_companydata> Select()
+        public tbl_companydata Select()
         {
             //To hold the data from database 
             List<tbl_companydata> compdata = new List<tbl_companydata>();
@@ -33,7 +33,7 @@ namespace AnyStore.DAL
                 MessageBox.Show(ex.Message);
             }
 
-            return compdata;
+            return compdata[0];
         }
         #endregion
         #region Update Method

@@ -31,24 +31,24 @@ namespace AnyStore.UI
         private void frmCompanyData_Load(object sender, EventArgs e)
         {
             //Here write the code to display all the categries in DAta Grid View
-            List<tbl_companydata> dt = dal.Select();
+            tbl_companydata dt = dal.Select();
             //dgvCategories.DataSource = dt;
-            txtCompanyDataID.Text = dt[0].Id.ToString();
-            txtName.Text = dt[0].name;
-            txtSlogan.Text = dt[0].slogan;
-            txtStreet.Text = dt[0].address_street;
-            txtCity.Text = dt[0].address_city;
-            txtPostcode.Text = dt[0].address_postcode;
-            txtCountry.Text = dt[0].address_country;
-            txtTelno.Text = dt[0].contact_phone;
-            txteMail.Text = dt[0].contact_email;
-            txtIBAN.Text = dt[0].IBAN;
-            txtLogo.Text = dt[0].logo;
+            txtCompanyDataID.Text = dt.Id.ToString();
+            txtName.Text = dt.name;
+            txtSlogan.Text = dt.slogan;
+            txtStreet.Text = dt.address_street;
+            txtCity.Text = dt.address_city;
+            txtPostcode.Text = dt.address_postcode;
+            txtCountry.Text = dt.address_country;
+            txtTelno.Text = dt.contact_phone;
+            txteMail.Text = dt.contact_email;
+            txtIBAN.Text = dt.IBAN;
+            txtLogo.Text = dt.logo;
             if (txtLogo.Text != "")
             {
                 LoadImage(txtLogo.Text);
             }
-            txtBIC.Text = dt[0].BIC;
+            txtBIC.Text = dt.BIC;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -102,6 +102,12 @@ namespace AnyStore.UI
             {
                 pbLogo.Image = Image.FromFile(Filename);
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            txtLogo.Text = "";
+            pbLogo.Image = null;
         }
     }
 }
