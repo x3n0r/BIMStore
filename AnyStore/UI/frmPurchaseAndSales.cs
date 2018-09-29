@@ -36,17 +36,71 @@ namespace AnyStore.UI
 
         DataTable transactionDT = new DataTable();
         Dictionary<string, decimal> tmptaxes = new Dictionary<string, decimal>();
+        savebtnhelper sbtnh = new savebtnhelper();
+        public string transactionType {get; set;}
+
+        private struct savebtnhelper
+        {
+            public transactionsBLL transaction;
+            public DeaCustBLL dea_cust;
+            public List<items> lit;
+        }
+
+        public void LoadTransaction(int transaction_id)
+        {
+            btnBook.Visible = false;
+            btnSave.Visible = true;
+            btnAdd.Enabled = false;
+            transactionsBLL trans = tDAL.SearchByID(transaction_id);
+
+            lblTop.Text = trans.type;
+            txtDiscount.Text = trans.discount.ToString();
+            txtGrandTotal.Text = trans.grandTotal.ToString();
+
+            DeaCustBLL deacust = dcDAL.GetDeaCustIDFromID(trans.dea_cust_id);
+            FillDeaCust(deacust);
+
+            //gettransactiondetail list
+            List<tbl_transaction_detail> transdets = tdDAL.SearchByID(transaction_id);
+            //foreach transactdet 
+            List<items> lit = new List<items>();
+            foreach ( var transdet in transdets)
+            {
+
+                if (count_prod >= 26)
+                {
+                    //Display error MEssage
+                    MessageBox.Show("Not more than 26 Products allowed.");
+                    return;
+                }
+
+                productsBLL p = pDAL.GetProductFromID((int)transdet.product_id);
+                categoriesBLL c = cDAL.Search((int)transdet.product_id);
+                
+                items it = new items();
+                it.amount = Convert.ToInt32(transdet.qty);
+                it.productnumber = (int)transdet.product_id;
+                it.name = p.name;
+                it.price = (decimal)transdet.price;
+                it.total = it.amount * it.price;
+                it.tax = c.tax;
+                lit.Add(it);
+
+                bool cpas = false;
+                cpas = CalculateProductAndShow(p.name, (decimal)transdet.price, (decimal)transdet.qty, c.tax);
+            }
+
+            sbtnh.dea_cust = deacust;
+            sbtnh.transaction = trans;
+            sbtnh.lit = lit;
+
+        }
 
         private void frmPurchaseAndSales_Load(object sender, EventArgs e)
         {
-            //Get the transactionType value from frmUserDashboard
-            string type = frmUserDashboard.transactionType;
-            if (type == "" || type == null)
-            {
-                type = frmAdminDashboard.transactionType;
-            }
+
             //Set the value on lblTop
-            lblTop.Text = type;
+            lblTop.Text = transactionType;
 
             //Specify Columns for our TransactionDataTable
             transactionDT.Columns.Add("Product Name");
@@ -82,11 +136,17 @@ namespace AnyStore.UI
             }
 
             //Now transfer or set the value from DeCustBLL to textboxes
+            FillDeaCust(dc);
+        }
+
+        private void FillDeaCust(DeaCustBLL dc)
+        {
             txtFirstname.Text = dc.first_name;
             txtLastname.Text = dc.last_name;
             txtEmail.Text = dc.contact_mail;
             txtContact.Text = dc.contact_phone;
-            txtAddress.Text = dc.address_street + Environment.NewLine + dc.address_postcode + " " + dc.address_city + Environment.NewLine  + dc.address_country;
+            txtAddress.Text = dc.address_street + Environment.NewLine + dc.address_postcode + " " + dc.address_city + Environment.NewLine + dc.address_country;
+
         }
 
         private void txtSearchProduct_TextChanged(object sender, EventArgs e)
@@ -129,18 +189,32 @@ namespace AnyStore.UI
             {
                 return;
             }
-            string productName = txtProductName.Text;
-            decimal Rate = decimal.Parse(txtRate.Text);
-            decimal Qty = decimal.Parse(txtQty.Text);
+
+            bool cpas = false;
+            cpas = CalculateProductAndShow(txtProductName.Text, decimal.Parse(txtRate.Text),
+                decimal.Parse(txtQty.Text), Convert.ToDecimal(txtTax.Text));
+            if ( cpas == true )
+            {
+                ClearProduct();
+            }
+
+        }
+
+        private bool CalculateProductAndShow(string productName, decimal Rate, decimal Qty, 
+            decimal taxpercent)
+        {
+
+            bool success = false;
+
             decimal Total = Rate * Qty; //Total=RatexQty
-            decimal taxpercent = Convert.ToDecimal(txtTax.Text);
+            decimal subTotal = decimal.Parse(txtSubTotal.Text);
             //Display the Subtotal in textbox
             //Get the subtotal value from textbox
-            decimal subTotal = decimal.Parse(txtSubTotal.Text);
+
             subTotal = subTotal + Total;
             decimal taxcalc = 0;
-            decimal.TryParse(txtTaxCalc.Text,out taxcalc);
-            decimal ntax  = (Total / 100) * taxpercent;
+            decimal.TryParse(txtTaxCalc.Text, out taxcalc);
+            decimal ntax = (Total / 100) * taxpercent;
             taxcalc += ntax;
             productsBLL p = pDAL.GetProductIDFromName(productName);
             categoriesBLL c = cDAL.Search(p.category);
@@ -155,7 +229,7 @@ namespace AnyStore.UI
             }
 
             //Check whether the product is selected or not
-            if (productName=="")
+            if (productName == "")
             {
                 //Display error MEssage
                 MessageBox.Show("Select the product first. Try Again.");
@@ -163,22 +237,31 @@ namespace AnyStore.UI
             else
             {
                 //Add product to the dAta Grid View
-                transactionDT.Rows.Add(productName,Rate,Qty,Total);
+                transactionDT.Rows.Add(productName, Rate, Qty, Total);
 
                 //Show in DAta Grid View
                 dgvAddedProducts.DataSource = transactionDT;
                 //Display the Subtotal in textbox
                 txtSubTotal.Text = subTotal.ToString();
                 txtTaxCalc.Text = taxcalc.ToString();
-                //Clear the Textboxes
-                txtSearchProduct.Text = "";
-                txtProductName.Text = "";
-                txtInventory.Text = "0";
-                txtRate.Text = "0.00";
-                txtQty.Text = "0";
-                txtTax.Text = "0";
+
                 count_prod += 1;
+                success = true;
             }
+
+            return success;
+        }
+
+        private void ClearProduct()
+        {
+
+            //Clear product Textboxes
+            txtSearchProduct.Text = "";
+            txtProductName.Text = "";
+            txtInventory.Text = "0";
+            txtRate.Text = "0.00";
+            txtQty.Text = "0";
+            txtTax.Text = "0";
         }
 
         private void txtDiscount_TextChanged(object sender, EventArgs e)
@@ -326,7 +409,7 @@ namespace AnyStore.UI
                     transactionDetail.price = decimal.Parse(transactionDT.Rows[i][1].ToString());
                     transactionDetail.qty = decimal.Parse(transactionDT.Rows[i][2].ToString());
                     transactionDetail.total = Math.Round(decimal.Parse(transactionDT.Rows[i][3].ToString()), 2);
-                    transactionDetail.dea_cust_id = dc.Id;
+                    transactionDetail.dea_cust_id = transactionID;
                     transactionDetail.added_date = DateTime.Now;
                     transactionDetail.added_by = u.id;
 
@@ -367,78 +450,14 @@ namespace AnyStore.UI
 
                 if (success == true)
                 {
-
-                    CompanyDataDAL cdDAL = new CompanyDataDAL();
-                    List<tbl_companydata> cd = cdDAL.Select();
-
                     /* DGVPrinter*/
                     //Transaction Complete
                     scope.Complete();
 
-
-                    /* PDF */
-                    // Hier wird der Aufruf aus der GUI-Simuliert mit allen übergebenen Variablen/Parameter
-                    PrintDialog printDialog1 = new PrintDialog();
-                    DialogResult result = printDialog1.ShowDialog();
-                    if (result == DialogResult.OK)
-                    { //Prüfen, ob auf Abbrechen im Druckdialog gedrückt wurde
-                        PDF pdfengine = new PDF();
-                        PDFBLL pdf = new PDFBLL();
-                        //start pdf struct filling
-
-                        //fill taxes struct
-                        pdf.taxes = tmptaxes;
-                        //COMPANY ITEMS
-                        pdf.companyname = cd[0].name;
-                        pdf.slogan = cd[0].slogan;
-                        pdf.logo = cd[0].logo;
-                        //companyaddress
-                        company comp = new company();
-                        comp.address_city = cd[0].address_city;
-                        comp.address_country = cd[0].address_country;
-                        comp.address_postcode = cd[0].address_postcode;
-                        comp.address_street = cd[0].address_street;
-                        comp.contact_mail = cd[0].contact_email;
-                        comp.contact_phone = cd[0].contact_phone;
-
-                        pdf.companyaddress = comp;
-
-                        pdf.IBAN = cd[0].IBAN;
-                        pdf.BIC = cd[0].BIC;
-
-                        //customeradrress
-                        customer cust = new customer();
-                        cust.first_name = dc.first_name;
-                        cust.last_name = dc.last_name;
-                        cust.address_city = dc.address_city;
-                        cust.address_country = dc.address_country;
-                        cust.address_postcode = dc.address_postcode;
-                        cust.address_street = dc.address_street;
-                        cust.form_of_address = dc.form_of_address;
-                        pdf.customeraddress = cust;
-
-                        //fill product listitems
-                        pdf.listitems = lit;
-
-                        pdf.invoicenumber = transactionID;
-                        //TODO
-                        pdf.invoicedate =
-                        pdf.invoicedate = new DateTime(transaction.transaction_date.Year, transaction.transaction_date.Month, transaction.transaction_date.Day);
-
-                        pdf.sum = Convert.ToDecimal(txtSubTotal.Text);
-                        pdf.total = Convert.ToDecimal(txtGrandTotal.Text);
-                        foreach (var value in pdf.taxes)
-                        {
-                            pdf.total += value.Value;
-                        }
-                        pdf.discount = Convert.ToDecimal(txtSubTotal.Text) - Convert.ToDecimal(txtGrandTotal.Text);
-
-                        companyuser usr = new companyuser();
-                        usr.first_name = u.first_name;
-                        usr.last_name = u.last_name;
-                        pdf.user = usr;
-                        //Generate PDF
-                        pdfengine.generate(pdf, printDialog1);
+                    bool pdfsuccess = false;
+                    pdfsuccess = FillPDF(transaction,dc,lit);
+                    if (pdfsuccess == true)
+                    {
                         //Transaction Failed
                         MessageBox.Show("Saved");
                     }
@@ -448,21 +467,105 @@ namespace AnyStore.UI
                         MessageBox.Show("Transaction Failed");
                         scope.Dispose();
                     }
-
-                }
-                else
-                {
-                    //Transaction Failed
-                    MessageBox.Show("Transaction Failed");
-                    scope.Dispose();
                 }
             }
             return success;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private bool FillPDF(transactionsBLL transaction, DeaCustBLL dc, List<items> lit)
         {
 
+            bool pdfsuccess = false;
+
+
+            CompanyDataDAL cdDAL = new CompanyDataDAL();
+            List<tbl_companydata> cd = cdDAL.Select();
+            /* PDF */
+            // Hier wird der Aufruf aus der GUI-Simuliert mit allen übergebenen Variablen/Parameter
+            PrintDialog printDialog1 = new PrintDialog();
+            DialogResult result = printDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            { //Prüfen, ob auf Abbrechen im Druckdialog gedrückt wurde
+                PDF pdfengine = new PDF();
+                PDFBLL pdf = new PDFBLL();
+                //start pdf struct filling
+
+                //fill taxes struct
+                pdf.taxes = tmptaxes;
+                //COMPANY ITEMS
+                pdf.companyname = cd[0].name;
+                pdf.slogan = cd[0].slogan;
+                pdf.logo = cd[0].logo;
+                //companyaddress
+                company comp = new company();
+                comp.address_city = cd[0].address_city;
+                comp.address_country = cd[0].address_country;
+                comp.address_postcode = cd[0].address_postcode;
+                comp.address_street = cd[0].address_street;
+                comp.contact_mail = cd[0].contact_email;
+                comp.contact_phone = cd[0].contact_phone;
+
+                pdf.companyaddress = comp;
+
+                pdf.IBAN = cd[0].IBAN;
+                pdf.BIC = cd[0].BIC;
+
+                //customeradrress
+                customer cust = new customer();
+                cust.first_name = dc.first_name;
+                cust.last_name = dc.last_name;
+                cust.address_city = dc.address_city;
+                cust.address_country = dc.address_country;
+                cust.address_postcode = dc.address_postcode;
+                cust.address_street = dc.address_street;
+                cust.form_of_address = dc.form_of_address;
+                pdf.customeraddress = cust;
+
+                //fill product listitems
+                pdf.listitems = lit;
+
+                pdf.invoicenumber = transaction.id;
+                //TODO
+                pdf.invoicedate =
+                pdf.invoicedate = new DateTime(transaction.transaction_date.Year, transaction.transaction_date.Month, transaction.transaction_date.Day);
+
+                pdf.sum = Convert.ToDecimal(txtSubTotal.Text);
+                pdf.total = Convert.ToDecimal(txtGrandTotal.Text);
+                foreach (var value in pdf.taxes)
+                {
+                    pdf.total += value.Value;
+                }
+                pdf.discount = Convert.ToDecimal(txtSubTotal.Text) - Convert.ToDecimal(txtGrandTotal.Text);
+
+                //Get the Username of Logged in user
+                string username = frmLogin.loggedIn;
+                userBLL u = uDAL.GetIDFromUsername(username);
+
+                companyuser usr = new companyuser();
+                usr.first_name = u.first_name;
+                usr.last_name = u.last_name;
+                pdf.user = usr;
+                //Generate PDF
+                pdfengine.generate(pdf, printDialog1);
+                pdfsuccess = true;
+            }
+            return pdfsuccess;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            bool pdfsuccess = false;
+            pdfsuccess = FillPDF(sbtnh.transaction, sbtnh.dea_cust, sbtnh.lit);
+            if (pdfsuccess == true)
+            {
+                //Transaction Failed
+                MessageBox.Show("Saved");
+            }
+            else
+            {
+                //Transaction Failed
+                MessageBox.Show("Transaction Failed");
+            }
         }
 
     }

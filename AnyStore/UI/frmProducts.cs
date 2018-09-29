@@ -31,6 +31,7 @@ namespace AnyStore.UI
         userDAL udal = new userDAL();
         private void frmProducts_Load(object sender, EventArgs e)
         {
+            check_btns();
             //Creating DAta Table to hold the categories from Database
             List<tbl_categories> categoriesDT = cdal.Select();
             //Specify DataSource for Category ComboBox
@@ -82,7 +83,7 @@ namespace AnyStore.UI
         }
         public void Clear()
         {
-            txtID.Text = "";
+            txtProductID.Text = "";
             txtName.Text = "";
             txtDescription.Text = "";
             txtRate.Text = "";
@@ -95,7 +96,7 @@ namespace AnyStore.UI
             //Create integer variable to know which product was clicked
             int rowIndex = e.RowIndex;
             //Display the Value on Respective TextBoxes
-            txtID.Text = dgvProducts.Rows[rowIndex].Cells[0].Value.ToString();
+            txtProductID.Text = dgvProducts.Rows[rowIndex].Cells[0].Value.ToString();
             txtName.Text = dgvProducts.Rows[rowIndex].Cells[1].Value.ToString();
             cmbCategory.Text = dgvProducts.Rows[rowIndex].Cells[2].Value.ToString();
             txtDescription.Text = dgvProducts.Rows[rowIndex].Cells[3].Value.ToString();
@@ -113,7 +114,7 @@ namespace AnyStore.UI
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //Get the Values from UI or Product Form
-            p.id = int.Parse(txtID.Text);
+            p.id = int.Parse(txtProductID.Text);
             p.name = txtName.Text;
             p.category = Convert.ToInt32(cmbCategory.SelectedValue);
             p.description = txtDescription.Text;
@@ -148,7 +149,7 @@ namespace AnyStore.UI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //GEt the ID of the product to be deleted
-            p.id = int.Parse(txtID.Text);
+            p.id = int.Parse(txtProductID.Text);
 
             //Create Bool VAriable to Check if the product is deleted or not
             bool success = pdal.Delete(p);
@@ -187,6 +188,16 @@ namespace AnyStore.UI
                 List<tbl_products> prod = pdal.Select();
                 dgvProducts.DataSource = prod;
             }
+        }
+
+        private void txtProductID_TextChanged(object sender, EventArgs e)
+        {
+            check_btns();
+        }
+
+        public void check_btns()
+        {
+            helperDAL.check_buttons(txtProductID, btnAdd, btnDelete, btnUpdate);
         }
     }
 }

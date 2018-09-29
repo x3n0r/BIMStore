@@ -70,6 +70,7 @@ namespace AnyStore.UI
 
         private void frmUsers_Load(object sender, EventArgs e)
         {
+            check_btns();
             List<tbl_users> users = dal.Select();
             dgvUsers.DataSource = users;
         }
@@ -180,6 +181,16 @@ namespace AnyStore.UI
                 List<tbl_users> users = dal.Select();
                 dgvUsers.DataSource = users;
             }
+        }
+
+        private void txtUserID_TextChanged(object sender, EventArgs e)
+        {
+            check_btns();
+        }
+
+        public void check_btns()
+        {
+            helperDAL.check_buttons(txtUserID, btnAdd, btnDelete, btnUpdate);
         }
     }
 }

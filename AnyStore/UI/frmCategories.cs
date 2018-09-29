@@ -185,18 +185,8 @@ namespace AnyStore.UI
 
         public void check_btns()
         {
-            if (txtCategoryID.Text == "")
-            {
-                btnADD.Visible = true;
-                btnDelete.Visible = false;
-                btnUpdate.Visible = false;
-            }
-            else
-            {
-                btnADD.Visible = false;
-                btnDelete.Visible = true;
-                btnUpdate.Visible = true;
-            }
+            helperDAL.check_buttons(txtCategoryID, btnAdd, btnDelete, btnUpdate);
         }
+
     }
 }

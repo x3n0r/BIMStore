@@ -38,7 +38,7 @@
             this.txtCategoryID = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
-            this.btnADD = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvCategories = new System.Windows.Forms.DataGridView();
@@ -79,7 +79,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(398, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(100, 21);
+            this.lblTop.Size = new System.Drawing.Size(99, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "CATEGORIES";
             // 
@@ -142,18 +142,18 @@
             this.txtDescription.Size = new System.Drawing.Size(217, 102);
             this.txtDescription.TabIndex = 3;
             // 
-            // btnADD
+            // btnAdd
             // 
-            this.btnADD.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnADD.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnADD.Location = new System.Drawing.Point(232, 280);
-            this.btnADD.Name = "btnADD";
-            this.btnADD.Size = new System.Drawing.Size(130, 44);
-            this.btnADD.TabIndex = 4;
-            this.btnADD.Text = "ADD";
-            this.btnADD.UseVisualStyleBackColor = false;
-            this.btnADD.Click += new System.EventHandler(this.btnADD_Click);
+            this.btnAdd.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(232, 280);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(130, 44);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "ADD";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnADD_Click);
             // 
             // btnUpdate
             // 
@@ -198,9 +198,9 @@
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.Location = new System.Drawing.Point(419, 65);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(41, 17);
+            this.lblSearch.Size = new System.Drawing.Size(47, 17);
             this.lblSearch.TabIndex = 12;
-            this.lblSearch.Text = "Searh";
+            this.lblSearch.Text = "Search";
             // 
             // txtSearch
             // 
@@ -226,7 +226,7 @@
             this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(12, 132);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(28, 17);
+            this.lblTax.Size = new System.Drawing.Size(27, 17);
             this.lblTax.TabIndex = 14;
             this.lblTax.Text = "Tax";
             // 
@@ -243,7 +243,7 @@
             this.Controls.Add(this.dgvCategories);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnADD);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtCategoryID);
@@ -276,7 +276,7 @@
         private System.Windows.Forms.TextBox txtCategoryID;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.Button btnADD;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvCategories;

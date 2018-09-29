@@ -37,7 +37,7 @@
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblRate = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtProductID = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -136,16 +136,17 @@
             this.lblRate.TabIndex = 7;
             this.lblRate.Text = "Price";
             // 
-            // txtID
+            // txtProductID
             // 
-            this.txtID.Enabled = false;
-            this.txtID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(120, 60);
-            this.txtID.Name = "txtID";
-            this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(224, 25);
-            this.txtID.TabIndex = 8;
-            this.txtID.TabStop = false;
+            this.txtProductID.Enabled = false;
+            this.txtProductID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductID.Location = new System.Drawing.Point(120, 60);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.ReadOnly = true;
+            this.txtProductID.Size = new System.Drawing.Size(224, 25);
+            this.txtProductID.TabIndex = 8;
+            this.txtProductID.TabStop = false;
+            this.txtProductID.TextChanged += new System.EventHandler(this.txtProductID_TextChanged);
             // 
             // txtName
             // 
@@ -280,7 +281,7 @@
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.txtProductID);
             this.Controls.Add(this.lblRate);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblCategory);
@@ -311,7 +312,7 @@
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblRate;
-        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtProductID;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.TextBox txtDescription;

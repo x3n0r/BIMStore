@@ -34,7 +34,7 @@ namespace AnyStore.DAL
         private String Nachname;
         private String Straße;
         //private int Hausnummer;
-        private int Postleitzahl;
+        private String Postleitzahl;
         private String Ort;
         private PrintDialog dialog;
         private int Rechnungsnr;
@@ -95,7 +95,7 @@ namespace AnyStore.DAL
                 Vorname = pdf.customeraddress.first_name;// "Maximilian";
                 Nachname = pdf.customeraddress.last_name;
                 Straße = pdf.customeraddress.address_street;// "Musterstraße";
-                Postleitzahl = Convert.ToInt32(pdf.customeraddress.address_postcode);
+                Postleitzahl = pdf.customeraddress.address_postcode;
                 Ort = pdf.customeraddress.address_city;// "Musterdorf";
                 filename = pdf.logo;
                 //Versandkosten = 10.30;
@@ -178,7 +178,7 @@ namespace AnyStore.DAL
 
             // Header
             //Logo einfügen
-            if (!string.IsNullOrEmpty(filename))
+            if (!string.IsNullOrEmpty(filename))//TODO && filename exists
             {
                 Bitmap logo = ImageFilenameToResizedImage(250f, 180f, filename);
                 e.Graphics.DrawImage(logo, new Point(453, 5));

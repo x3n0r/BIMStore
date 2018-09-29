@@ -29,10 +29,13 @@ namespace AnyStore.UI
         animalsDAL aDal = new animalsDAL();
         private void frmAnimals_Load(object sender, EventArgs e)
         {
+            check_btns();
             //Get the transactionType value from frmUserDashboard
             int custid = frmDeaCust.cust_id;
             //Set the value on lblTop
             txtCustId.Text = custid.ToString();
+            List<tbl_animal> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
+            dgvDeaCust.DataSource = anms;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -168,5 +171,14 @@ namespace AnyStore.UI
             }
         }
 
+        private void txtAnimalID_TextChanged(object sender, EventArgs e)
+        {
+            check_btns();
+        }
+
+        public void check_btns()
+        {
+            helperDAL.check_buttons(txtAnimalID, btnAdd, btnDelete, btnUpdate);
+        }
     }
 }

@@ -101,5 +101,38 @@ namespace AnyStore.DAL
             return trans;
         }
         #endregion
+        #region Search BY TRANSACTION-ID 
+        public transactionsBLL SearchByID(int transID)
+        {
+            //To hold the data from database 
+            transactionsBLL trans = new transactionsBLL();
+
+            try
+            {
+                //Write SQL Query
+                var erg = from tran in db.tbl_transactions
+                          where tran.Id == transID
+                          select tran;
+                tbl_transactions tra = erg.FirstOrDefault();
+                if ( tra != null )
+                {
+                    trans.id = tra.Id;
+                    trans.grandTotal = (decimal)tra.grandTotal;
+                    trans.kontobez = tra.kontobez;
+                    trans.transaction_date = (DateTime)tra.transaction_date;
+                    trans.type = tra.type;
+                    trans.discount = (decimal) tra.discount;
+                    trans.dea_cust_id = (int)tra.dea_cust_id;
+                    trans.added_by = (int)tra.added_by;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return trans;
+        }
+        #endregion
     }
 }

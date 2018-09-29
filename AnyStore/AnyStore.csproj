@@ -77,6 +77,7 @@
     <Compile Include="BLL\transactionsBLL.cs" />
     <Compile Include="BLL\userBLL.cs" />
     <Compile Include="DAL\animalsDAL.cs" />
+    <Compile Include="DAL\helperDAL.cs" />
     <Compile Include="DAL\CompanyDataDAL.cs" />
     <Compile Include="DAL\categoriesDAL.cs" />
     <Compile Include="DAL\DeaCustDAL.cs" />

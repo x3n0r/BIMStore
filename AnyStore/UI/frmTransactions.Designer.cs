@@ -80,6 +80,7 @@
             this.dgvTransactions.Name = "dgvTransactions";
             this.dgvTransactions.Size = new System.Drawing.Size(819, 339);
             this.dgvTransactions.TabIndex = 3;
+            this.dgvTransactions.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTransactions_RowHeaderMouseClick);
             // 
             // lblTransactionType
             // 
@@ -87,7 +88,7 @@
             this.lblTransactionType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTransactionType.Location = new System.Drawing.Point(12, 70);
             this.lblTransactionType.Name = "lblTransactionType";
-            this.lblTransactionType.Size = new System.Drawing.Size(107, 17);
+            this.lblTransactionType.Size = new System.Drawing.Size(105, 17);
             this.lblTransactionType.TabIndex = 4;
             this.lblTransactionType.Text = "Transaction Type";
             // 

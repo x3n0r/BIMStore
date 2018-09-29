@@ -46,5 +46,21 @@ namespace AnyStore.UI
             List<tbl_transactions> trans = tdal.DisplayAllTransactions();
             dgvTransactions.DataSource = trans;
         }
+
+        private void dgvTransactions_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //int variable to get the identityof row clicked
+            int rowIndex = e.RowIndex;
+            //0=id 1=type 2=
+            string kontobez = dgvTransactions.Rows[rowIndex].Cells[8].Value.ToString();
+            if ( kontobez != "H" ) { return; }
+            frmPurchaseAndSales purchase = new frmPurchaseAndSales();
+            purchase.transactionType = dgvTransactions.Rows[rowIndex].Cells[1].Value.ToString();
+            purchase.Show();
+            purchase.LoadTransaction(Convert.ToInt32(dgvTransactions.Rows[rowIndex].Cells[0].Value));
+            //show sales 
+            //hide this
+            // sales hide btn book show btn print
+        }
     }
 }

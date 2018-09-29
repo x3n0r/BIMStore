@@ -94,7 +94,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(335, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(181, 21);
+            this.lblTop.Size = new System.Drawing.Size(180, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "DEALER and CUSTOMER";
             // 
@@ -114,7 +114,7 @@
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(24, 90);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(36, 17);
+            this.lblType.Size = new System.Drawing.Size(35, 17);
             this.lblType.TabIndex = 5;
             this.lblType.Text = "Type";
             // 
@@ -168,6 +168,7 @@
             this.txtDeaCustID.Size = new System.Drawing.Size(245, 25);
             this.txtDeaCustID.TabIndex = 99;
             this.txtDeaCustID.TabStop = false;
+            this.txtDeaCustID.TextChanged += new System.EventHandler(this.txtDeaCustID_TextChanged);
             // 
             // cmbDeaCust
             // 

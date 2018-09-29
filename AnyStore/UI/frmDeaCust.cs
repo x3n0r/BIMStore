@@ -92,6 +92,7 @@ namespace AnyStore.UI
 
         private void frmDeaCust_Load(object sender, EventArgs e)
         {
+            check_btns();
             //Refresh Data Grid View
             List<tbl_dea_cust> deacust = dcDal.Select();
             dgvDeaCust.DataSource = deacust;
@@ -215,7 +216,7 @@ namespace AnyStore.UI
 
         private void check_btnPets()
         {
-            if (cmbDeaCust.SelectedItem.ToString() == "Customer" && (txtFirstname.Text != "" || txtLastname.Text != ""))
+            if (cmbDeaCust.SelectedItem != null && ( cmbDeaCust.SelectedItem.ToString() == "Customer" && (txtFirstname.Text != "" || txtLastname.Text != "") ))
             {
                 btnPets.Enabled = true;
             }
@@ -233,6 +234,16 @@ namespace AnyStore.UI
         private void txtLastname_Leave(object sender, EventArgs e)
         {
             check_btnPets();
+        }
+
+        private void txtDeaCustID_TextChanged(object sender, EventArgs e)
+        {
+            check_btns();
+        }
+
+        public void check_btns()
+        {
+            helperDAL.check_buttons(txtDeaCustID, btnAdd, btnDelete, btnUpdate);
         }
     }
 }

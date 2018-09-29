@@ -149,7 +149,7 @@ namespace AnyStore.DAL
             try
             {
                 var erg = from anm in db.tbl_animal
-                          where anm.Id == custid && 
+                          where anm.cust_id == custid && 
                                 ( SqlMethods.Like(anm.name, "%" + keywords + "%") ||
                                 SqlMethods.Like(anm.notes, "%" + keywords + "%") )
                           select anm;

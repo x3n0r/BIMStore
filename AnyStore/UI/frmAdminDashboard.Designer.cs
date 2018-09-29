@@ -108,8 +108,8 @@
             // deealerAndCustomerToolStripMenuItem
             // 
             this.deealerAndCustomerToolStripMenuItem.Name = "deealerAndCustomerToolStripMenuItem";
-            this.deealerAndCustomerToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
-            this.deealerAndCustomerToolStripMenuItem.Text = "Deealer and Customer";
+            this.deealerAndCustomerToolStripMenuItem.Size = new System.Drawing.Size(130, 20);
+            this.deealerAndCustomerToolStripMenuItem.Text = "Dealer and Customer";
             this.deealerAndCustomerToolStripMenuItem.Click += new System.EventHandler(this.deealerAndCustomerToolStripMenuItem_Click);
             // 
             // inventoryToolStripMenuItem
@@ -136,14 +136,14 @@
             // transactionToolStripMenuItem
             // 
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.transactionToolStripMenuItem.Text = "Transaction";
             this.transactionToolStripMenuItem.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -175,7 +175,7 @@
             this.lblSHead.ForeColor = System.Drawing.Color.MediumSeaGreen;
             this.lblSHead.Location = new System.Drawing.Point(40, 61);
             this.lblSHead.Name = "lblSHead";
-            this.lblSHead.Size = new System.Drawing.Size(310, 25);
+            this.lblSHead.Size = new System.Drawing.Size(311, 25);
             this.lblSHead.TabIndex = 6;
             this.lblSHead.Text = "Billing and Inventory Management";
             // 

@@ -244,6 +244,40 @@ namespace AnyStore.DAL
             return p;
         }
         #endregion
+        #region METHOD TO GET PRODUCT BASED ON PRODUCT ID
+        public productsBLL GetProductFromID(int productID)
+        {
+            //First Create an Object of DeaCust BLL and REturn it
+            productsBLL p = new productsBLL();
+
+            try
+            {
+                var erg = from prods in db.tbl_products
+                          where prods.Id == productID
+                          select prods;
+
+                tbl_products myProd = erg.FirstOrDefault();
+                if (myProd != null)
+                {
+                    p.id = myProd.Id;
+                    p.added_by = (int)myProd.added_by;
+                    p.description = myProd.description;
+                    p.hasqty = (bool)myProd.hasqty;
+                    p.category = (int)myProd.category;
+                    p.rate = (decimal)myProd.rate;
+                    p.qty = (decimal)myProd.qty;
+                    p.name = myProd.name;
+                        
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return p;
+        }
+        #endregion
         #region METHOD TO GET CURRENT QUantity from the Database based on Product ID
         public decimal GetProductQty(int ProductID)
         {

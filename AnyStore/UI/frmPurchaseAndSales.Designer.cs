@@ -336,7 +336,7 @@
             this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(439, 57);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(28, 17);
+            this.lblTax.Size = new System.Drawing.Size(27, 17);
             this.lblTax.TabIndex = 8;
             this.lblTax.Text = "Tax";
             // 
@@ -531,14 +531,13 @@
             this.lblTaxCalc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxCalc.Location = new System.Drawing.Point(7, 74);
             this.lblTaxCalc.Name = "lblTaxCalc";
-            this.lblTaxCalc.Size = new System.Drawing.Size(28, 17);
+            this.lblTaxCalc.Size = new System.Drawing.Size(27, 17);
             this.lblTaxCalc.TabIndex = 12;
             this.lblTaxCalc.Text = "Tax";
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Teal;
-            this.btnSave.Enabled = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(88, 277);
@@ -641,7 +640,7 @@
             this.lblGrandTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGrandTotal.Location = new System.Drawing.Point(7, 149);
             this.lblGrandTotal.Name = "lblGrandTotal";
-            this.lblGrandTotal.Size = new System.Drawing.Size(77, 17);
+            this.lblGrandTotal.Size = new System.Drawing.Size(76, 17);
             this.lblGrandTotal.TabIndex = 4;
             this.lblGrandTotal.Text = "Grand Total";
             // 
@@ -661,7 +660,7 @@
             this.lblSubTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.Location = new System.Drawing.Point(7, 35);
             this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(63, 17);
+            this.lblSubTotal.Size = new System.Drawing.Size(62, 17);
             this.lblSubTotal.TabIndex = 1;
             this.lblSubTotal.Text = "Sub Total";
             // 

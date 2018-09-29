@@ -139,6 +139,7 @@
             this.txtAnimalID.Size = new System.Drawing.Size(245, 25);
             this.txtAnimalID.TabIndex = 99;
             this.txtAnimalID.TabStop = false;
+            this.txtAnimalID.TextChanged += new System.EventHandler(this.txtAnimalID_TextChanged);
             // 
             // txtSpecies
             // 

@@ -270,7 +270,7 @@
             this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserType.Location = new System.Drawing.Point(12, 400);
             this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(67, 17);
+            this.lblUserType.Size = new System.Drawing.Size(66, 17);
             this.lblUserType.TabIndex = 17;
             this.lblUserType.Text = "User Type";
             // 
@@ -285,6 +285,7 @@
             this.txtUserID.Size = new System.Drawing.Size(171, 25);
             this.txtUserID.TabIndex = 20;
             this.txtUserID.TabStop = false;
+            this.txtUserID.TextChanged += new System.EventHandler(this.txtUserID_TextChanged);
             // 
             // lblUserID
             // 

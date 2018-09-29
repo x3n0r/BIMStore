@@ -56,5 +56,28 @@ namespace AnyStore.DAL
             return isSuccess;
         }
         #endregion
+        #region Search BY TRANSACTION-ID 
+        public List<tbl_transaction_detail> SearchByID(int transID)
+        {
+            //To hold the data from database 
+            List<tbl_transaction_detail> transd = new List<tbl_transaction_detail>();
+
+            try
+            {
+                //Write SQL Query
+                var erg = from trand in db.tbl_transaction_detail
+                          where trand.dea_cust_id == transID
+                          select trand;
+
+                transd = erg.ToList<tbl_transaction_detail>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return transd;
+        }
+        #endregion
     }
 }
