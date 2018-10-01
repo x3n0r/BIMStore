@@ -63,7 +63,6 @@ C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmDeaCu
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmInventory.resources
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmLogin.resources
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmProducts.resources
-C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmPurchaseAndSales.resources
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmTransactions.resources
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.frmUserDashboard.resources
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.Properties.Resources.resources
@@ -114,3 +113,4 @@ E:\VeriStore\VeriStore\AnyStore\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
 E:\VeriStore\VeriStore\AnyStore\bin\Debug\de\Microsoft.VisualBasic.PowerPacks.resources.dll
 C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\de\Microsoft.VisualBasic.PowerPacks.resources.dll
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.csproj.CopyComplete
+C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmPurchaseAndSale.resources

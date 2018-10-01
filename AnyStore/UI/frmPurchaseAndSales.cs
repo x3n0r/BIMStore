@@ -14,9 +14,9 @@ using static AnyStore.BLL.PDFBLL;
 
 namespace AnyStore.UI
 {
-    public partial class frmPurchaseAndSales : Form
+    public partial class frmPurchaseAndSale : Form
     {
-        public frmPurchaseAndSales()
+        public frmPurchaseAndSale()
         {
             InitializeComponent();
         }
@@ -62,6 +62,7 @@ namespace AnyStore.UI
             lblTop.Text = trans.type;
             txtDiscount.Text = trans.discount.ToString();
             txtGrandTotal.Text = trans.grandTotal.ToString();
+            dtpBillDate.Value = trans.transaction_date;
 
             DeaCustBLL deacust = dcDAL.GetDeaCustIDFromID(trans.dea_cust_id);
             FillDeaCust(deacust);
@@ -102,7 +103,7 @@ namespace AnyStore.UI
 
         }
 
-        private void frmPurchaseAndSales_Load(object sender, EventArgs e)
+        private void frmPurchaseAndSale_Load(object sender, EventArgs e)
         {
 
             //Set the value on lblTop
@@ -329,7 +330,7 @@ namespace AnyStore.UI
         /*ausgleichsbuchung*/
         private bool S_booking()
         {
-            //Get the Values from PurchaseSales Form First
+            //Get the Values from PurchaseSale Form First
             transactionsBLL transaction = new transactionsBLL();
 
             transaction.type = lblTop.Text;
@@ -368,7 +369,7 @@ namespace AnyStore.UI
         /* With transaction details */
         private bool H_booking()
         {
-            //Get the Values from PurchaseSales Form First
+            //Get the Values from PurchaseSale Form First
             transactionsBLL transaction = new transactionsBLL();
 
             transaction.type = lblTop.Text;
@@ -401,6 +402,7 @@ namespace AnyStore.UI
             int transactionID = -1;
             //Create aboolean value and insert transaction 
             bool w = tDAL.Insert_Transaction(transaction, out transactionID);
+            transaction.id = transactionID;
 
             CompanyDataDAL cdDAL = new CompanyDataDAL();
             tbl_companydata cd = cdDAL.Select();
@@ -437,8 +439,8 @@ namespace AnyStore.UI
                 it.tax = c.tax;
                 lit.Add(it);
 
-                //Here Increase or Decrease Product Quantity based on Purchase or sales
-                //Lets check whether we are on Purchase or Sales
+                //Here Increase or Decrease Product Quantity based on Purchase or sale
+                //Lets check whether we are on Purchase or Sale
                 bool x = false;
                 if (producthasqty)
                 {
@@ -447,7 +449,7 @@ namespace AnyStore.UI
                         //Increase the Product
                         x = pDAL.IncreaseProduct(transactionDetail.product_id, transactionDetail.qty);
                     }
-                    else if (transactionType == "Sales")
+                    else if (transactionType == "Sale")
                     {
                         //Decrease the Product Quntiyt
                         x = pDAL.DecreaseProduct(transactionDetail.product_id, transactionDetail.qty);

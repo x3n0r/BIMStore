@@ -18,7 +18,7 @@ namespace AnyStore
             InitializeComponent();
         }
 
-        //Set a public static method to specify whether the form is purchase or sales
+        //Set a public static method to specify whether the form is purchase or sale
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUsers user = new frmUsers();
@@ -67,22 +67,6 @@ namespace AnyStore
             inventory.Show();
         }
 
-        private void purchaseToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            //set value on transactionType static method
-            frmPurchaseAndSales purchase = new frmPurchaseAndSales();
-            purchase.transactionType = "Purchase";
-            purchase.Show();
-        }
-
-        private void salesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Set the value to transacionType method to sales
-            frmPurchaseAndSales sales = new frmPurchaseAndSales();
-            sales.transactionType = "Sales";
-            sales.Show();
-        }
-
         private void companydataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCompanyData companydata = new frmCompanyData();
@@ -106,6 +90,27 @@ namespace AnyStore
         {
             frmCompanyData companydata = new frmCompanyData();
             companydata.Show();
+        }
+
+        private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //set value on transactionType static method
+            frmPurchaseAndSale purchase = new frmPurchaseAndSale();
+            purchase.transactionType = "Purchase";
+            purchase.Show();
+        }
+
+        private void saleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Set the value to transacionType method to sale
+            frmPurchaseAndSale sale = new frmPurchaseAndSale();
+            sale.transactionType = "Sale";
+            sale.Show();
+        }
+
+        private void bookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

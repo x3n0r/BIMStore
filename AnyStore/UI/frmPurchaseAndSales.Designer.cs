@@ -1,6 +1,6 @@
 ﻿namespace AnyStore.UI
 {
-    partial class frmPurchaseAndSales
+    partial class frmPurchaseAndSale
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchaseAndSales));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchaseAndSale));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.lblTop = new System.Windows.Forms.Label();
@@ -121,7 +121,7 @@
             this.lblTop.Name = "lblTop";
             this.lblTop.Size = new System.Drawing.Size(173, 21);
             this.lblTop.TabIndex = 0;
-            this.lblTop.Text = "PURCHASE AND SALES";
+            this.lblTop.Text = "PURCHASE AND SALE";
             // 
             // pnlDeaCust
             // 
@@ -675,7 +675,7 @@
             this.lblcalculationTitle.TabIndex = 0;
             this.lblcalculationTitle.Text = "Calculation Details";
             // 
-            // frmPurchaseAndSales
+            // frmPurchaseAndSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -687,10 +687,10 @@
             this.Controls.Add(this.pnlDeaCust);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmPurchaseAndSales";
+            this.Name = "frmPurchaseAndSale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Purchase and Sales";
-            this.Load += new System.EventHandler(this.frmPurchaseAndSales_Load);
+            this.Text = "Purchase and Sale";
+            this.Load += new System.EventHandler(this.frmPurchaseAndSale_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

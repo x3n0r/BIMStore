@@ -98,7 +98,7 @@
             this.cmbTransactionType.FormattingEnabled = true;
             this.cmbTransactionType.Items.AddRange(new object[] {
             "Purchase",
-            "Sales"});
+            "Sale"});
             this.cmbTransactionType.Location = new System.Drawing.Point(140, 70);
             this.cmbTransactionType.Name = "cmbTransactionType";
             this.cmbTransactionType.Size = new System.Drawing.Size(309, 25);

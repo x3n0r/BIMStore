@@ -54,13 +54,10 @@ namespace AnyStore.UI
             //0=id 1=type 2=
             string kontobez = dgvTransactions.Rows[rowIndex].Cells[8].Value.ToString();
             if ( kontobez != "H" ) { return; }
-            frmPurchaseAndSales purchase = new frmPurchaseAndSales();
+            frmPurchaseAndSale purchase = new frmPurchaseAndSale();
             purchase.transactionType = dgvTransactions.Rows[rowIndex].Cells[1].Value.ToString();
             purchase.Show();
             purchase.LoadTransaction(Convert.ToInt32(dgvTransactions.Rows[rowIndex].Cells[0].Value));
-            //show sales 
-            //hide this
-            // sales hide btn book show btn print
         }
     }
 }

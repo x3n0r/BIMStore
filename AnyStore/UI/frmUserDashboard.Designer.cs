@@ -30,7 +30,7 @@
         {
             this.menuStripTop = new System.Windows.Forms.MenuStrip();
             this.purchaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salesFormsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saleFormsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dealerAndCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblSHead = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             // 
             this.menuStripTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.purchaseToolStripMenuItem,
-            this.salesFormsToolStripMenuItem,
+            this.saleFormsToolStripMenuItem,
             this.inventoryToolStripMenuItem,
             this.dealerAndCustomerToolStripMenuItem});
             this.menuStripTop.Location = new System.Drawing.Point(0, 0);
@@ -63,12 +63,12 @@
             this.purchaseToolStripMenuItem.Text = "Purchase";
             this.purchaseToolStripMenuItem.Click += new System.EventHandler(this.purchaseToolStripMenuItem_Click);
             // 
-            // salesFormsToolStripMenuItem
+            // saleFormsToolStripMenuItem
             // 
-            this.salesFormsToolStripMenuItem.Name = "salesFormsToolStripMenuItem";
-            this.salesFormsToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.salesFormsToolStripMenuItem.Text = "Sales";
-            this.salesFormsToolStripMenuItem.Click += new System.EventHandler(this.salesFormsToolStripMenuItem_Click);
+            this.saleFormsToolStripMenuItem.Name = "saleFormsToolStripMenuItem";
+            this.saleFormsToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.saleFormsToolStripMenuItem.Text = "Sale";
+            this.saleFormsToolStripMenuItem.Click += new System.EventHandler(this.saleFormsToolStripMenuItem_Click);
             // 
             // inventoryToolStripMenuItem
             // 
@@ -183,7 +183,7 @@
 
         private System.Windows.Forms.MenuStrip menuStripTop;
         private System.Windows.Forms.ToolStripMenuItem purchaseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salesFormsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saleFormsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.Label lblSHead;
         private System.Windows.Forms.Label lblLoggedInUser;

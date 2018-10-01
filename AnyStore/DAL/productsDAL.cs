@@ -374,7 +374,7 @@ namespace AnyStore.DAL
                 //Get the Current product Quantity
                 decimal currentQty = GetProductQty(ProductID);
 
-                //Decrease the Product Quantity based on product sales
+                //Decrease the Product Quantity based on product sale
                 decimal NewQty = currentQty - Qty;
 
                 //Update Product in Database
