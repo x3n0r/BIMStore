@@ -46,6 +46,28 @@ namespace AnyStore.UI
             public List<items> lit;
         }
 
+        public void LoadBooking()
+        {
+            btnBook.Visible = true;
+            btnSave.Visible = false;
+            btnAdd.Enabled = false;
+            txtSearch.Enabled = true;
+            txtSearchProduct.Enabled = false;
+            txtDiscount.Enabled = false;
+            txtPaidAmount.Enabled = true;
+            txtQty.Enabled = false;
+        }
+
+        public void LoadBooking(int transaction_id)
+        {
+            LoadBooking();
+            transactionsBLL trans = tDAL.SearchByID(transaction_id);
+            txtPaidAmount.Text = trans.grandTotal.ToString();
+            DeaCustBLL deacust = dcDAL.GetDeaCustIDFromID(trans.dea_cust_id);
+            lblTop.Text = "Booking";
+            FillDeaCust(deacust);
+        }
+
         public void LoadTransaction(int transaction_id)
         {
             btnBook.Visible = false;
@@ -301,8 +323,12 @@ namespace AnyStore.UI
 
         private void txtPaidAmount_TextChanged(object sender, EventArgs e)
         {
-            decimal grandTotal = decimal.Parse(txtGrandTotal.Text);
             decimal paidAmount = 0;
+            if (txtGrandTotal.Text == "")
+            {
+                return;
+            }
+            decimal grandTotal = decimal.Parse(txtGrandTotal.Text);
             //Get the paid amount and grand total
             if ( txtPaidAmount.Text != "")
             {
@@ -318,13 +344,28 @@ namespace AnyStore.UI
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-
-            bool h = H_booking();
-            if (h == true && decimal.Parse(txtPaidAmount.Text) > 0)
+            string transactionType = lblTop.Text;
+            if (transactionType == "Booking")
             {
                 bool s = S_booking();
+                if ( s )
+                {
+                    //Transaction Failed
+                    MessageBox.Show("Saved");
+                } else
+                {
+                    //Transaction Failed
+                    MessageBox.Show("Transaction Failed");
+                }
             }
-
+            else
+            {
+                bool h = H_booking();
+                if (h == true && txtPaidAmount.Text != "" && decimal.Parse(txtPaidAmount.Text) > 0)
+                {
+                    bool s = S_booking();
+                }
+            }
         }
 
         /*ausgleichsbuchung*/
@@ -333,13 +374,13 @@ namespace AnyStore.UI
             //Get the Values from PurchaseSale Form First
             transactionsBLL transaction = new transactionsBLL();
 
-            transaction.type = lblTop.Text;
-
             //Get the ID of Dealer or Customer Here
             //Lets get name of the dealer or customer first
             string deaCustFirstName = txtFirstname.Text;
             string deaCustLastName = txtLastname.Text;
             DeaCustBLL dc = dcDAL.GetDeaCustIDFromName(deaCustFirstName, deaCustLastName);
+
+            transaction.type = helperDAL.DeaCustToPurchaseSale[dc.type];
 
             transaction.dea_cust_id = dc.Id;
             transaction.grandTotal = Math.Round(decimal.Parse(txtPaidAmount.Text), 2);

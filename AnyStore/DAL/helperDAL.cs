@@ -25,5 +25,11 @@ namespace AnyStore.DAL
                 btnupdate.Visible = true;
             }
         }
+
+        public static Dictionary<string, string> DeaCustToPurchaseSale = new Dictionary<string, string>()
+            {
+                { "Dealer", "Purchase" },
+                { "Customer", "Sale" }
+            };
     }
 }

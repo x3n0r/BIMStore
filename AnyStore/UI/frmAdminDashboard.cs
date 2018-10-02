@@ -110,7 +110,11 @@ namespace AnyStore
 
         private void bookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //Set the value to transacionType method to sale
+            frmPurchaseAndSale sale = new frmPurchaseAndSale();
+            sale.transactionType = "Booking";
+            sale.LoadBooking();
+            sale.Show();
         }
     }
 }

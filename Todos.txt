@@ -1,6 +1,2 @@
--Transaction
-	Adding Dealer Cust Search ( search for that)
--Booking
-	Add this to Payment Tab for S-Booking ( auslgeichsbuchung )
-	CLone purchase salse frm and change
--
+-Sales
+	Gewinn oder Verlust

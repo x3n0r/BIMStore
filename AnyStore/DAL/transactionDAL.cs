@@ -59,6 +59,32 @@ namespace AnyStore.DAL
             return isSuccess;
         }
         #endregion
+        #region Method to Delete Transaction with kontobez S from Database
+        public bool Delete(int TransID)
+        {
+            //Create Boolean Variable and Set its default value to false
+            bool isSuccess = false;
+
+            try
+            {
+                var erg = from trans in db.tbl_transactions
+                          where trans.Id == TransID && trans.kontobez == "S"
+                          select trans;
+
+                db.tbl_transactions.DeleteOnSubmit(erg.FirstOrDefault());
+                db.SubmitChanges();
+
+                isSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                isSuccess = false;
+            }
+
+            return isSuccess;
+        }
+        #endregion
         #region METHOD TO DISPLAY ALL THE TRANSACTION
         public List<tbl_transactions> DisplayAllTransactions()
         {
@@ -134,5 +160,27 @@ namespace AnyStore.DAL
             return trans;
         }
         #endregion
-    }
+        #region Search BY TRANSACTION-ID 
+        public List<tbl_transactions> SearchByDeaCust(int DeaCustID)
+        {
+            //To hold the data from database 
+            List<tbl_transactions> trans = new List<tbl_transactions>();
+
+            try
+            {
+                //Write SQL Query
+                var erg = from tran in db.tbl_transactions
+                          where tran.dea_cust_id == DeaCustID
+                          select tran;
+                trans = erg.ToList<tbl_transactions>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return trans;
+        }
+        #endregion
+}
 }
