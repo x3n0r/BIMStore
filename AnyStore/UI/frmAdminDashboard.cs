@@ -95,7 +95,7 @@ namespace AnyStore
         private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //set value on transactionType static method
-            frmPurchaseAndSale purchase = new frmPurchaseAndSale();
+            frmPurchaseAndSales purchase = new frmPurchaseAndSales();
             purchase.transactionType = "Purchase";
             purchase.Show();
         }
@@ -103,7 +103,7 @@ namespace AnyStore
         private void saleToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //Set the value to transacionType method to sale
-            frmPurchaseAndSale sale = new frmPurchaseAndSale();
+            frmPurchaseAndSales sale = new frmPurchaseAndSales();
             sale.transactionType = "Sale";
             sale.Show();
         }
@@ -111,10 +111,16 @@ namespace AnyStore
         private void bookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Set the value to transacionType method to sale
-            frmPurchaseAndSale sale = new frmPurchaseAndSale();
+            frmPurchaseAndSales sale = new frmPurchaseAndSales();
             sale.transactionType = "Booking";
             sale.LoadBooking();
             sale.Show();
+        }
+
+        private void salesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSales sales = new frmSales();
+            sales.Show();
         }
     }
 }

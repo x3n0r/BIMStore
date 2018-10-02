@@ -14,9 +14,9 @@ using static AnyStore.BLL.PDFBLL;
 
 namespace AnyStore.UI
 {
-    public partial class frmPurchaseAndSale : Form
+    public partial class frmPurchaseAndSales : Form
     {
-        public frmPurchaseAndSale()
+        public frmPurchaseAndSales()
         {
             InitializeComponent();
         }
@@ -505,7 +505,7 @@ namespace AnyStore.UI
                 success = w && x && y;
             }
 
-            if (success == true)
+            if (success == true && transaction.type == "Sale" )
             {
                 bool pdfsuccess = false;
                 pdfsuccess = FillPDF(cd,transaction,dc,lit);

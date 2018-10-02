@@ -99,6 +99,12 @@
     <Compile Include="UI\frmAnimals.Designer.cs">
       <DependentUpon>frmAnimals.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmSales.Designer.cs">
+      <DependentUpon>frmSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmSales.resx">
+      <DependentUpon>frmSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmPurchaseAndSales.resx">
       <DependentUpon>frmPurchaseAndSales.cs</DependentUpon>

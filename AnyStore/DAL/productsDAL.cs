@@ -296,6 +296,7 @@ namespace AnyStore.DAL
                 {
                     myProd.Id = myProd.Id;
                     myProd.qty = decimal.Parse(myProd.qty.ToString());
+                    qty = (decimal)myProd.qty;
                 }
             }
             catch(Exception ex)

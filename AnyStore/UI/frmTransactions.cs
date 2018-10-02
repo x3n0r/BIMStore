@@ -115,7 +115,7 @@ namespace AnyStore.UI
 
         private void LoadBill(int rowIndex)
         {
-            frmPurchaseAndSale purchase = new frmPurchaseAndSale();
+            frmPurchaseAndSales purchase = new frmPurchaseAndSales();
             purchase.transactionType = dgvTransactions.Rows[rowIndex].Cells[1].Value.ToString();
             purchase.Show();
             purchase.LoadTransaction(Convert.ToInt32(dgvTransactions.Rows[rowIndex].Cells[0].Value));
@@ -197,11 +197,10 @@ namespace AnyStore.UI
 
         private void LoadPayBooking(int rowIndex)
         {
-            frmPurchaseAndSale purchase = new frmPurchaseAndSale();
+            frmPurchaseAndSales purchase = new frmPurchaseAndSales();
             purchase.transactionType = dgvTransactions.Rows[rowIndex].Cells[1].Value.ToString();
             purchase.Show();
             purchase.LoadBooking(Convert.ToInt32(dgvTransactions.Rows[rowIndex].Cells[0].Value));
-
         }
     }
 }

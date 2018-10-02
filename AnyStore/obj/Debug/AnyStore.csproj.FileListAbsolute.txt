@@ -113,4 +113,5 @@ E:\VeriStore\VeriStore\AnyStore\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
 E:\VeriStore\VeriStore\AnyStore\bin\Debug\de\Microsoft.VisualBasic.PowerPacks.resources.dll
 C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\de\Microsoft.VisualBasic.PowerPacks.resources.dll
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.csproj.CopyComplete
-C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmPurchaseAndSale.resources
+C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmPurchaseAndSales.resources
+C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmSales.resources

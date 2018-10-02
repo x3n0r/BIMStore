@@ -40,7 +40,7 @@ namespace AnyStore
         private void purchaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //set value on transactionType static method
-            frmPurchaseAndSale purchase = new frmPurchaseAndSale();
+            frmPurchaseAndSales purchase = new frmPurchaseAndSales();
             purchase.transactionType = "Purchase";
             purchase.Show();
             
@@ -49,7 +49,7 @@ namespace AnyStore
         private void saleFormsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Set the value to transacionType method to sale
-            frmPurchaseAndSale sale = new frmPurchaseAndSale();
+            frmPurchaseAndSales sale = new frmPurchaseAndSales();
             sale.transactionType = "Sale";
             sale.Show();
             
