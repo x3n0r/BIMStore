@@ -205,6 +205,30 @@ namespace AnyStore.DAL
             return trans;
         }
         #endregion
+        #region Search BY DATEFROM DATETO and Kontobez = H
+        public List<tbl_transactions> SearchCustByDate(DateTime FromDate, DateTime ToDate)
+        {
+            //To hold the data from database 
+            List<tbl_transactions> trans = new List<tbl_transactions>();
+
+            try
+            {
+                //Write SQL Query
+                var erg = from tran in db.tbl_transactions
+                          where tran.transaction_date >= FromDate && tran.transaction_date <= ToDate &&
+                          tran.type == "Sale" &&
+                          tran.kontobez == "H"
+                          select tran;
+                trans = erg.ToList<tbl_transactions>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return trans;
+        }
+        #endregion
 
         #region Search BY DeaCustID and GranTotal and Kontobez = S
         public tbl_transactions SearchByGrandTotal(int DeaCustID, decimal GrandTotal)

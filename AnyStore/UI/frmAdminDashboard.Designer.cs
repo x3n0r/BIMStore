@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.menuStripTop = new System.Windows.Forms.MenuStrip();
             this.companydataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,14 +45,15 @@
             this.bookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblLoggedInUser = new System.Windows.Forms.Label();
             this.lblSHead = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStripTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFooter
@@ -72,8 +76,7 @@
             this.inventoryToolStripMenuItem,
             this.paymentToolStripMenuItem,
             this.transactionToolStripMenuItem,
-            this.salesToolStripMenuItem,
-            this.testToolStripMenuItem});
+            this.salesToolStripMenuItem});
             this.menuStripTop.Location = new System.Drawing.Point(0, 0);
             this.menuStripTop.Name = "menuStripTop";
             this.menuStripTop.Size = new System.Drawing.Size(1192, 24);
@@ -167,13 +170,6 @@
             this.salesToolStripMenuItem.Text = "Sales";
             this.salesToolStripMenuItem.Click += new System.EventHandler(this.salesToolStripMenuItem_Click);
             // 
-            // testToolStripMenuItem
-            // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.testToolStripMenuItem.Text = "Test";
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
-            // 
             // lblUser
             // 
             this.lblUser.AutoSize = true;
@@ -233,11 +229,31 @@
             this.panel1.Size = new System.Drawing.Size(1192, 34);
             this.panel1.TabIndex = 16;
             // 
+            // Chart
+            // 
+            this.Chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Chart.Legends.Add(legend1);
+            this.Chart.Location = new System.Drawing.Point(40, 110);
+            this.Chart.Name = "Chart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.Chart.Series.Add(series1);
+            this.Chart.Size = new System.Drawing.Size(1112, 301);
+            this.Chart.TabIndex = 19;
+            this.Chart.Text = "chart1";
+            // 
             // frmAdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 451);
+            this.Controls.Add(this.Chart);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -251,10 +267,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmAdminDashboard_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAdminDashboard_FormClosed);
             this.Load += new System.EventHandler(this.frmAdminDashboard_Load);
             this.menuStripTop.ResumeLayout(false);
             this.menuStripTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,7 +292,6 @@
         private System.Windows.Forms.ToolStripMenuItem deealerAndCustomerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem companydataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
@@ -283,6 +300,7 @@
         private System.Windows.Forms.ToolStripMenuItem saleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesToolStripMenuItem;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
     }
 }
 

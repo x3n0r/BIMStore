@@ -351,7 +351,7 @@ namespace AnyStore.UI
                 if ( s )
                 {
                     //Transaction Failed
-                    MessageBox.Show("Saved");
+                    MessageBox.Show("Transaction Saved");
                 } else
                 {
                     //Transaction Failed
@@ -364,6 +364,16 @@ namespace AnyStore.UI
                 if (h == true && txtPaidAmount.Text != "" && decimal.Parse(txtPaidAmount.Text) > 0)
                 {
                     bool s = S_booking();
+                }
+                if (h == true)
+                {
+                    //Transaction Failed
+                    MessageBox.Show("Transaction Saved");
+                }
+                else
+                {
+                    //Transaction Failed
+                    MessageBox.Show("Transaction Failed");
                 }
             }
         }
@@ -512,12 +522,12 @@ namespace AnyStore.UI
                 if (pdfsuccess == true)
                 {
                     //Transaction Failed
-                    MessageBox.Show("Saved");
+                    MessageBox.Show("PDF Saved");
                 }
                 else
                 {
                     //Transaction Failed
-                    MessageBox.Show("Transaction Failed");
+                    MessageBox.Show("PDF Failed");
                 }
             }
             return success;

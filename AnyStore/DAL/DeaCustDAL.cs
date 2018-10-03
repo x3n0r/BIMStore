@@ -167,6 +167,27 @@ namespace AnyStore.DAL
             return deacust;
         }
         #endregion
+        #region SEARCH METHOD for Dealer and Customer Module
+        public List<tbl_dea_cust> SearchAllDeaOrCust(string keyword)
+        {
+            //To hold the data from database 
+            List<tbl_dea_cust> deacust = new List<tbl_dea_cust>();
+            try
+            {
+                var erg = from deacusts in db.tbl_dea_cust
+                          where SqlMethods.Like(deacusts.type, "%" + keyword + "%")
+                          select deacusts;
+
+                deacust = erg.ToList<tbl_dea_cust>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return deacust;
+        }
+        #endregion
         #region METHOD TO SAERCH DEALER Or CUSTOMER FOR TRANSACTON MODULE
         public DeaCustBLL SearchDealerCustomerForTransaction(string keyword,string DeaorCust)
         {
@@ -269,7 +290,7 @@ namespace AnyStore.DAL
             return dc;
         }
         #endregion
-        #region METHOD TO GET ID OF THE DEALER OR CUSTOMER BASED ON NAME
+        #region METHOD TO GET ID OF THE DEALER OR CUSTOMER BASED ON ID
         public DeaCustBLL GetDeaCustIDFromID(int DeaCustID)
         {
             //First Create an Object of DeaCust BLL and REturn it

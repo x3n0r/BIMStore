@@ -30,7 +30,10 @@ namespace AnyStore.UI
 
         private void frmSales_Load(object sender, EventArgs e)
         {
-            LoadStatistics();
+            DateTime Today = DateTime.Now;
+            dtpDateFrom.Value = new DateTime(Today.Year, Today.Month, 01);
+            dtpDateTo.Value = new DateTime(Today.Year, Today.Month, DateTime.DaysInMonth(Today.Year, Today.Month));
+            //LoadStatistics();
         }
 
         private void dtpDateFrom_ValueChanged(object sender, EventArgs e)
@@ -113,5 +116,6 @@ namespace AnyStore.UI
 
 
         }
+
     }
 }
