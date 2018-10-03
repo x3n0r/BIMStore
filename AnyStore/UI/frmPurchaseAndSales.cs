@@ -433,7 +433,8 @@ namespace AnyStore.UI
 
             transaction.dea_cust_id = dc.Id;
             transaction.grandTotal = Math.Round(decimal.Parse(txtGrandTotal.Text), 2);
-            transaction.transaction_date = DateTime.Now;
+            DateTime now = DateTime.Now;
+            transaction.transaction_date = new DateTime(dtpBillDate.Value.Year,dtpBillDate.Value.Month,dtpBillDate.Value.Day,now.Hour,now.Minute,now.Second);
             transaction.discount = decimal.Parse(txtDiscount.Text);
 
             //Get the Username of Logged in user
@@ -584,7 +585,6 @@ namespace AnyStore.UI
 
                 pdf.invoicenumber = transaction.id;
                 //TODO
-                pdf.invoicedate =
                 pdf.invoicedate = new DateTime(transaction.transaction_date.Year, transaction.transaction_date.Month, transaction.transaction_date.Day);
 
                 pdf.sum = Convert.ToDecimal(txtSubTotal.Text);

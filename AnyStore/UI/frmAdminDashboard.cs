@@ -195,13 +195,13 @@ namespace AnyStore
 
             foreach (var point in seriesTI.Points)
             {
-                point.ToolTip = point.YValues[0].ToString();
+                point.ToolTip = point.YValues[0].ToString() + " €";
             }
             foreach (var cust in custs)
             {
                 foreach (var point in custsprofit[cust.Id].Points)
                 {
-                    point.ToolTip = point.YValues[0].ToString();
+                    point.ToolTip = point.YValues[0].ToString() + " €";
                 }
 
             }
