@@ -151,7 +151,7 @@ namespace AnyStore
                 custsprofit.Add(cust.Id, seriesXY);
             }
 
-            int Year = 2018;
+            int Year = DateTime.Now.Year;
             DateTime target = new DateTime(Year, 12, 31);
             DateTime now = new DateTime(Year, 01, 01);
 
