@@ -86,6 +86,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -110,6 +118,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -234,7 +250,7 @@
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
+            "Permanent" = "11:TRUE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
@@ -298,16 +314,16 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AnyStore"
-        "ProductCode" = "8:{6D247061-10FE-47BA-9ABA-B4742ED36000}"
-        "PackageCode" = "8:{97395E8C-8906-4C04-96E7-A0EEE9CA6758}"
-        "UpgradeCode" = "8:{3A2D7538-1AD9-40EA-927F-51D2F49B7AE4}"
+        "ProductCode" = "8:{6296234B-CDBA-4774-82F4-431F67ACF334}"
+        "PackageCode" = "8:{0A80466F-5095-42FC-9D78-187A20382C05}"
+        "UpgradeCode" = "8:{113CBECA-C0A5-4CEF-991C-347E93EB34BD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
-        "Manufacturer" = "8:Allianz"
+        "ProductVersion" = "8:1.0.3"
+        "Manufacturer" = "8:x3n0r"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Setup"
@@ -834,7 +850,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_97FAEE8D2D4E436A9E5A7DE70A0AEDF7"
             {
-            "SourcePath" = "8:..\\AnyStore\\obj\\Debug\\AnyStore.exe"
+            "SourcePath" = "8:..\\AnyStore\\obj\\Release\\AnyStore.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_117BC093DD024A14B55E9DAF5D039F50"
