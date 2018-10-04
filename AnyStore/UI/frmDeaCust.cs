@@ -245,5 +245,10 @@ namespace AnyStore.UI
         {
             helperDAL.check_buttons(txtDeaCustID, btnAdd, btnDelete, btnUpdate);
         }
+
+        private void txtPostcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            helperDAL.txtBoxCheckNumber(e, txtPostcode);
+        }
     }
 }

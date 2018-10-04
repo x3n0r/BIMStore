@@ -109,5 +109,10 @@ namespace AnyStore.UI
             txtLogo.Text = "";
             pbLogo.Image = null;
         }
+
+        private void txtPostcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            helperDAL.txtBoxCheckNumber(e, txtPostcode);
+        }
     }
 }

@@ -1,21 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AnyStore" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AnyStore.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="AnyStore.Properties.Settings" SettingsPropertyName="AnyStoreConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tbl_users" Member="tbl_users">
-    <Type Name="tbl_users">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="first_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="last_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="email" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="contact" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="user_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tbl_dea_cust" Member="tbl_dea_cust">
     <Type Name="tbl_dea_cust">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -104,6 +88,22 @@
       <Column Name="address_city" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
       <Column Name="address_country" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
       <Column Name="logo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_users" Member="tbl_users">
+    <Type Name="tbl_users">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contact" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="user_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="added_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

@@ -199,5 +199,11 @@ namespace AnyStore.UI
         {
             helperDAL.check_buttons(txtProductID, btnAdd, btnDelete, btnUpdate);
         }
+
+        private void txtRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            helperDAL.txtBoxCheckDecimal(e, txtRate);
+        }
+
     }
 }

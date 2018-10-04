@@ -105,10 +105,10 @@ E:\VeriStore\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml.layout
 C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.designer.cs
 C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml
 C:\Users\Christopher\Documents\VeriStore\AnyStore\bin\Debug\DataClasses1.dbml.layout
-E:\VeriStore\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmTest.resources
 E:\VeriStore\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmAnimals.resources
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmAnimals.resources
 E:\VeriStore\VeriStore\AnyStore\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
 E:\VeriStore\VeriStore\AnyStore\bin\Debug\de\Microsoft.VisualBasic.PowerPacks.resources.dll
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmPurchaseAndSales.resources
 C:\Users\Christopher\Documents\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmSales.resources
+E:\VeriStore\VeriStore\AnyStore\obj\Debug\AnyStore.UI.frmSales.resources

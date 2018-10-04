@@ -119,7 +119,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(529, 3);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(173, 21);
+            this.lblTop.Size = new System.Drawing.Size(164, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "PURCHASE AND SALE";
             // 
@@ -223,6 +223,7 @@
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(77, 28);
+            this.txtSearch.MaxLength = 64;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(223, 25);
             this.txtSearch.TabIndex = 1;
@@ -336,7 +337,7 @@
             this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(439, 57);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(27, 17);
+            this.lblTax.Size = new System.Drawing.Size(28, 17);
             this.lblTax.TabIndex = 8;
             this.lblTax.Text = "Tax";
             // 
@@ -371,6 +372,7 @@
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(145, 25);
             this.txtQty.TabIndex = 4;
+            this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
             // 
             // txtProductName
             // 
@@ -398,6 +400,7 @@
             // 
             this.txtSearchProduct.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchProduct.Location = new System.Drawing.Point(61, 26);
+            this.txtSearchProduct.MaxLength = 64;
             this.txtSearchProduct.Name = "txtSearchProduct";
             this.txtSearchProduct.Size = new System.Drawing.Size(145, 25);
             this.txtSearchProduct.TabIndex = 3;
@@ -531,7 +534,7 @@
             this.lblTaxCalc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxCalc.Location = new System.Drawing.Point(7, 74);
             this.lblTaxCalc.Name = "lblTaxCalc";
-            this.lblTaxCalc.Size = new System.Drawing.Size(27, 17);
+            this.lblTaxCalc.Size = new System.Drawing.Size(28, 17);
             this.lblTaxCalc.TabIndex = 12;
             this.lblTaxCalc.Text = "Tax";
             // 
@@ -582,6 +585,7 @@
             this.txtPaidAmount.Size = new System.Drawing.Size(394, 25);
             this.txtPaidAmount.TabIndex = 7;
             this.txtPaidAmount.TextChanged += new System.EventHandler(this.txtPaidAmount_TextChanged);
+            this.txtPaidAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidAmount_KeyPress);
             // 
             // txtGrandTotal
             // 
@@ -602,6 +606,7 @@
             this.txtDiscount.Size = new System.Drawing.Size(394, 25);
             this.txtDiscount.TabIndex = 6;
             this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             // 
             // txtSubTotal
             // 
@@ -641,7 +646,7 @@
             this.lblGrandTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGrandTotal.Location = new System.Drawing.Point(7, 149);
             this.lblGrandTotal.Name = "lblGrandTotal";
-            this.lblGrandTotal.Size = new System.Drawing.Size(76, 17);
+            this.lblGrandTotal.Size = new System.Drawing.Size(77, 17);
             this.lblGrandTotal.TabIndex = 4;
             this.lblGrandTotal.Text = "Grand Total";
             // 
@@ -661,7 +666,7 @@
             this.lblSubTotal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.Location = new System.Drawing.Point(7, 35);
             this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(62, 17);
+            this.lblSubTotal.Size = new System.Drawing.Size(63, 17);
             this.lblSubTotal.TabIndex = 1;
             this.lblSubTotal.Text = "Sub Total";
             // 
@@ -675,7 +680,7 @@
             this.lblcalculationTitle.TabIndex = 0;
             this.lblcalculationTitle.Text = "Calculation Details";
             // 
-            // frmPurchaseAndSale
+            // frmPurchaseAndSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -687,7 +692,7 @@
             this.Controls.Add(this.pnlDeaCust);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmPurchaseAndSale";
+            this.Name = "frmPurchaseAndSales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase and Sale";
             this.Load += new System.EventHandler(this.frmPurchaseAndSale_Load);

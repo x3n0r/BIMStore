@@ -145,6 +145,7 @@
             // 
             this.txtSpecies.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSpecies.Location = new System.Drawing.Point(133, 165);
+            this.txtSpecies.MaxLength = 64;
             this.txtSpecies.Name = "txtSpecies";
             this.txtSpecies.Size = new System.Drawing.Size(245, 25);
             this.txtSpecies.TabIndex = 2;
@@ -153,6 +154,7 @@
             // 
             this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNotes.Location = new System.Drawing.Point(133, 258);
+            this.txtNotes.MaxLength = 500;
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(245, 138);
@@ -212,6 +214,7 @@
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(449, 59);
+            this.txtSearch.MaxLength = 64;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(359, 25);
             this.txtSearch.TabIndex = 21;
@@ -232,6 +235,7 @@
             // 
             this.txtRace.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRace.Location = new System.Drawing.Point(133, 196);
+            this.txtRace.MaxLength = 64;
             this.txtRace.Name = "txtRace";
             this.txtRace.Size = new System.Drawing.Size(245, 25);
             this.txtRace.TabIndex = 3;
@@ -250,6 +254,7 @@
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(133, 132);
+            this.txtName.MaxLength = 64;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(245, 25);
             this.txtName.TabIndex = 1;

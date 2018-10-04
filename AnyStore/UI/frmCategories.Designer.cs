@@ -79,7 +79,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(398, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(99, 21);
+            this.lblTop.Size = new System.Drawing.Size(100, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "CATEGORIES";
             // 
@@ -208,7 +208,7 @@
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(467, 65);
-            this.txtSearch.MaxLength = 50;
+            this.txtSearch.MaxLength = 64;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(366, 25);
             this.txtSearch.TabIndex = 13;
@@ -222,6 +222,7 @@
             this.txtTax.Name = "txtTax";
             this.txtTax.Size = new System.Drawing.Size(217, 25);
             this.txtTax.TabIndex = 2;
+            this.txtTax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTax_KeyPress);
             // 
             // lblTax
             // 
@@ -229,7 +230,7 @@
             this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(12, 132);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(27, 17);
+            this.lblTax.Size = new System.Drawing.Size(28, 17);
             this.lblTax.TabIndex = 14;
             this.lblTax.Text = "Tax";
             // 

@@ -104,7 +104,7 @@
             this.lblTransactionType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTransactionType.Location = new System.Drawing.Point(10, 43);
             this.lblTransactionType.Name = "lblTransactionType";
-            this.lblTransactionType.Size = new System.Drawing.Size(105, 17);
+            this.lblTransactionType.Size = new System.Drawing.Size(107, 17);
             this.lblTransactionType.TabIndex = 4;
             this.lblTransactionType.Text = "Transaction Type";
             // 
@@ -116,6 +116,7 @@
             "Purchase",
             "Sale"});
             this.cmbTransactionType.Location = new System.Drawing.Point(138, 43);
+            this.cmbTransactionType.MaxLength = 50;
             this.cmbTransactionType.Name = "cmbTransactionType";
             this.cmbTransactionType.Size = new System.Drawing.Size(309, 25);
             this.cmbTransactionType.TabIndex = 5;
@@ -157,6 +158,7 @@
             this.txtLastname.Enabled = false;
             this.txtLastname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastname.Location = new System.Drawing.Point(77, 90);
+            this.txtLastname.MaxLength = 128;
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.ReadOnly = true;
             this.txtLastname.Size = new System.Drawing.Size(223, 25);
@@ -178,6 +180,7 @@
             this.txtFirstname.Enabled = false;
             this.txtFirstname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstname.Location = new System.Drawing.Point(77, 59);
+            this.txtFirstname.MaxLength = 128;
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.ReadOnly = true;
             this.txtFirstname.Size = new System.Drawing.Size(223, 25);
@@ -189,6 +192,7 @@
             this.txtContact.Enabled = false;
             this.txtContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.Location = new System.Drawing.Point(383, 59);
+            this.txtContact.MaxLength = 64;
             this.txtContact.Name = "txtContact";
             this.txtContact.ReadOnly = true;
             this.txtContact.Size = new System.Drawing.Size(223, 25);
@@ -212,6 +216,7 @@
             this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(383, 28);
+            this.txtEmail.MaxLength = 64;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(223, 25);
@@ -222,6 +227,7 @@
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(77, 28);
+            this.txtSearch.MaxLength = 64;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(223, 25);
             this.txtSearch.TabIndex = 1;

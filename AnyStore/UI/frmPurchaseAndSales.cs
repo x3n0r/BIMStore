@@ -629,5 +629,19 @@ namespace AnyStore.UI
             }
         }
 
+        private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            helperDAL.txtBoxCheckNumber(e, txtQty);
+        }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            helperDAL.txtBoxCheckDecimal(e, txtDiscount);
+        }
+
+        private void txtPaidAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            helperDAL.txtBoxCheckDecimal(e, txtPaidAmount);
+        }
     }
 }

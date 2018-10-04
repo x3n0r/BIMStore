@@ -200,7 +200,7 @@
             this.txtContact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.Location = new System.Drawing.Point(117, 247);
-            this.txtContact.MaxLength = 15;
+            this.txtContact.MaxLength = 64;
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(171, 25);
             this.txtContact.TabIndex = 6;
@@ -255,6 +255,7 @@
             "Female",
             "Not Specified"});
             this.cmbGender.Location = new System.Drawing.Point(117, 365);
+            this.cmbGender.MaxLength = 50;
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(171, 25);
             this.cmbGender.TabIndex = 8;
@@ -267,6 +268,7 @@
             "User",
             "Admin"});
             this.cmbUserType.Location = new System.Drawing.Point(117, 400);
+            this.cmbUserType.MaxLength = 50;
             this.cmbUserType.Name = "cmbUserType";
             this.cmbUserType.Size = new System.Drawing.Size(171, 25);
             this.cmbUserType.TabIndex = 9;
@@ -277,7 +279,7 @@
             this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserType.Location = new System.Drawing.Point(12, 400);
             this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(66, 17);
+            this.lblUserType.Size = new System.Drawing.Size(67, 17);
             this.lblUserType.TabIndex = 17;
             this.lblUserType.Text = "User Type";
             // 

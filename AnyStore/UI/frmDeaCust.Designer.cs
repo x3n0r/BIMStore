@@ -94,7 +94,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(335, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(180, 21);
+            this.lblTop.Size = new System.Drawing.Size(181, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "DEALER and CUSTOMER";
             // 
@@ -114,7 +114,7 @@
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(24, 90);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(35, 17);
+            this.lblType.Size = new System.Drawing.Size(36, 17);
             this.lblType.TabIndex = 5;
             this.lblType.Text = "Type";
             // 
@@ -178,6 +178,7 @@
             "Dealer",
             "Customer"});
             this.cmbDeaCust.Location = new System.Drawing.Point(133, 90);
+            this.cmbDeaCust.MaxLength = 64;
             this.cmbDeaCust.Name = "cmbDeaCust";
             this.cmbDeaCust.Size = new System.Drawing.Size(245, 25);
             this.cmbDeaCust.TabIndex = 1;
@@ -187,6 +188,7 @@
             // 
             this.txtFirstname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstname.Location = new System.Drawing.Point(133, 154);
+            this.txtFirstname.MaxLength = 128;
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.Size = new System.Drawing.Size(245, 25);
             this.txtFirstname.TabIndex = 3;
@@ -196,6 +198,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(133, 216);
+            this.txtEmail.MaxLength = 64;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(245, 25);
             this.txtEmail.TabIndex = 5;
@@ -204,6 +207,7 @@
             // 
             this.txtContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.Location = new System.Drawing.Point(133, 247);
+            this.txtContact.MaxLength = 64;
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(245, 25);
             this.txtContact.TabIndex = 6;
@@ -262,6 +266,7 @@
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(449, 59);
+            this.txtSearch.MaxLength = 64;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(359, 25);
             this.txtSearch.TabIndex = 21;
@@ -282,6 +287,7 @@
             // 
             this.txtLastname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastname.Location = new System.Drawing.Point(133, 185);
+            this.txtLastname.MaxLength = 128;
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.Size = new System.Drawing.Size(245, 25);
             this.txtLastname.TabIndex = 4;
@@ -301,9 +307,11 @@
             // 
             this.txtPostcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPostcode.Location = new System.Drawing.Point(133, 309);
+            this.txtPostcode.MaxLength = 64;
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(245, 25);
             this.txtPostcode.TabIndex = 8;
+            this.txtPostcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPostcode_KeyPress);
             // 
             // lblPostcode
             // 
@@ -319,6 +327,7 @@
             // 
             this.txtCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.Location = new System.Drawing.Point(133, 340);
+            this.txtCity.MaxLength = 64;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(245, 25);
             this.txtCity.TabIndex = 9;
@@ -337,6 +346,7 @@
             // 
             this.txtStreet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStreet.Location = new System.Drawing.Point(133, 278);
+            this.txtStreet.MaxLength = 64;
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(245, 25);
             this.txtStreet.TabIndex = 7;
@@ -345,6 +355,7 @@
             // 
             this.txtCountry.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountry.Location = new System.Drawing.Point(133, 371);
+            this.txtCountry.MaxLength = 64;
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(245, 25);
             this.txtCountry.TabIndex = 10;
@@ -363,6 +374,7 @@
             // 
             this.txtFormofaddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFormofaddress.Location = new System.Drawing.Point(133, 121);
+            this.txtFormofaddress.MaxLength = 64;
             this.txtFormofaddress.Name = "txtFormofaddress";
             this.txtFormofaddress.Size = new System.Drawing.Size(245, 25);
             this.txtFormofaddress.TabIndex = 2;

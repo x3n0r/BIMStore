@@ -57,7 +57,6 @@
             this.lblCity = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnLoadLogo = new System.Windows.Forms.Button();
-            this.lblLogo = new System.Windows.Forms.Label();
             this.txtLogo = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -144,6 +143,7 @@
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(145, 99);
+            this.txtName.MaxLength = 500;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(217, 25);
             this.txtName.TabIndex = 1;
@@ -152,6 +152,7 @@
             // 
             this.txtSlogan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSlogan.Location = new System.Drawing.Point(145, 130);
+            this.txtSlogan.MaxLength = 500;
             this.txtSlogan.Name = "txtSlogan";
             this.txtSlogan.Size = new System.Drawing.Size(217, 25);
             this.txtSlogan.TabIndex = 2;
@@ -173,6 +174,7 @@
             // 
             this.txtStreet.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStreet.Location = new System.Drawing.Point(584, 62);
+            this.txtStreet.MaxLength = 64;
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(217, 25);
             this.txtStreet.TabIndex = 7;
@@ -191,6 +193,7 @@
             // 
             this.txtCountry.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountry.Location = new System.Drawing.Point(584, 155);
+            this.txtCountry.MaxLength = 64;
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(217, 25);
             this.txtCountry.TabIndex = 10;
@@ -209,6 +212,7 @@
             // 
             this.txtTelno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelno.Location = new System.Drawing.Point(145, 161);
+            this.txtTelno.MaxLength = 50;
             this.txtTelno.Name = "txtTelno";
             this.txtTelno.Size = new System.Drawing.Size(217, 25);
             this.txtTelno.TabIndex = 3;
@@ -219,7 +223,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 161);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 17);
+            this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 14;
             this.label3.Text = "Tel.no.";
             // 
@@ -227,6 +231,7 @@
             // 
             this.txteMail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txteMail.Location = new System.Drawing.Point(145, 192);
+            this.txteMail.MaxLength = 50;
             this.txteMail.Name = "txteMail";
             this.txteMail.Size = new System.Drawing.Size(217, 25);
             this.txteMail.TabIndex = 4;
@@ -245,6 +250,7 @@
             // 
             this.txtIBAN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIBAN.Location = new System.Drawing.Point(145, 223);
+            this.txtIBAN.MaxLength = 50;
             this.txtIBAN.Name = "txtIBAN";
             this.txtIBAN.Size = new System.Drawing.Size(217, 25);
             this.txtIBAN.TabIndex = 5;
@@ -263,6 +269,7 @@
             // 
             this.txtBIC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBIC.Location = new System.Drawing.Point(145, 254);
+            this.txtBIC.MaxLength = 50;
             this.txtBIC.Name = "txtBIC";
             this.txtBIC.Size = new System.Drawing.Size(217, 25);
             this.txtBIC.TabIndex = 6;
@@ -281,9 +288,11 @@
             // 
             this.txtPostcode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPostcode.Location = new System.Drawing.Point(584, 93);
+            this.txtPostcode.MaxLength = 64;
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(217, 25);
             this.txtPostcode.TabIndex = 8;
+            this.txtPostcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPostcode_KeyPress);
             // 
             // lblPostcode
             // 
@@ -299,6 +308,7 @@
             // 
             this.txtCity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.Location = new System.Drawing.Point(584, 124);
+            this.txtCity.MaxLength = 64;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(217, 25);
             this.txtCity.TabIndex = 9;
@@ -334,16 +344,6 @@
             this.btnLoadLogo.Text = "Load";
             this.btnLoadLogo.UseVisualStyleBackColor = false;
             this.btnLoadLogo.Click += new System.EventHandler(this.btnLoadLogo_Click);
-            // 
-            // lblLogo
-            // 
-            this.lblLogo.AutoSize = true;
-            this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogo.Location = new System.Drawing.Point(60, 220);
-            this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(38, 17);
-            this.lblLogo.TabIndex = 102;
-            this.lblLogo.Text = "Logo";
             // 
             // txtLogo
             // 
@@ -391,7 +391,6 @@
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(843, 418);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblLogo);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.lblCity);
             this.Controls.Add(this.txtPostcode);
@@ -462,7 +461,6 @@
         private System.Windows.Forms.Label lblCity;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Button btnLoadLogo;
-        private System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.TextBox txtLogo;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox groupBox1;
