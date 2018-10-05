@@ -118,7 +118,7 @@
             "Purchase",
             "Sale"});
             this.cmbTransactionType.Location = new System.Drawing.Point(138, 43);
-            this.cmbTransactionType.MaxLength = 50;
+            this.cmbTransactionType.MaxLength = 64;
             this.cmbTransactionType.Name = "cmbTransactionType";
             this.cmbTransactionType.Size = new System.Drawing.Size(309, 25);
             this.cmbTransactionType.TabIndex = 5;

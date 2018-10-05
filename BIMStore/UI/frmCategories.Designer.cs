@@ -129,7 +129,7 @@
             // 
             this.txtTitle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(145, 99);
-            this.txtTitle.MaxLength = 50;
+            this.txtTitle.MaxLength = 64;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(217, 25);
             this.txtTitle.TabIndex = 1;

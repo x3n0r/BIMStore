@@ -143,7 +143,7 @@
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(145, 99);
-            this.txtName.MaxLength = 500;
+            this.txtName.MaxLength = 64;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(217, 25);
             this.txtName.TabIndex = 1;
@@ -152,7 +152,7 @@
             // 
             this.txtSlogan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSlogan.Location = new System.Drawing.Point(145, 130);
-            this.txtSlogan.MaxLength = 500;
+            this.txtSlogan.MaxLength = 64;
             this.txtSlogan.Name = "txtSlogan";
             this.txtSlogan.Size = new System.Drawing.Size(217, 25);
             this.txtSlogan.TabIndex = 2;
@@ -212,7 +212,7 @@
             // 
             this.txtTelno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelno.Location = new System.Drawing.Point(145, 161);
-            this.txtTelno.MaxLength = 50;
+            this.txtTelno.MaxLength = 64;
             this.txtTelno.Name = "txtTelno";
             this.txtTelno.Size = new System.Drawing.Size(217, 25);
             this.txtTelno.TabIndex = 3;
@@ -231,7 +231,7 @@
             // 
             this.txteMail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txteMail.Location = new System.Drawing.Point(145, 192);
-            this.txteMail.MaxLength = 50;
+            this.txteMail.MaxLength = 64;
             this.txteMail.Name = "txteMail";
             this.txteMail.Size = new System.Drawing.Size(217, 25);
             this.txteMail.TabIndex = 4;
@@ -250,7 +250,7 @@
             // 
             this.txtIBAN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIBAN.Location = new System.Drawing.Point(145, 223);
-            this.txtIBAN.MaxLength = 50;
+            this.txtIBAN.MaxLength = 48;
             this.txtIBAN.Name = "txtIBAN";
             this.txtIBAN.Size = new System.Drawing.Size(217, 25);
             this.txtIBAN.TabIndex = 5;
@@ -269,7 +269,7 @@
             // 
             this.txtBIC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBIC.Location = new System.Drawing.Point(145, 254);
-            this.txtBIC.MaxLength = 50;
+            this.txtBIC.MaxLength = 48;
             this.txtBIC.Name = "txtBIC";
             this.txtBIC.Size = new System.Drawing.Size(217, 25);
             this.txtBIC.TabIndex = 6;

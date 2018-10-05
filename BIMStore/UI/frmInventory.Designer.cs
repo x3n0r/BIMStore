@@ -98,7 +98,7 @@
             this.cmbCategories.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategories.FormattingEnabled = true;
             this.cmbCategories.Location = new System.Drawing.Point(93, 57);
-            this.cmbCategories.MaxLength = 50;
+            this.cmbCategories.MaxLength = 64;
             this.cmbCategories.Name = "cmbCategories";
             this.cmbCategories.Size = new System.Drawing.Size(298, 25);
             this.cmbCategories.TabIndex = 6;

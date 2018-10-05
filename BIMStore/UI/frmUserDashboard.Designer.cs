@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserDashboard));
             this.menuStripTop = new System.Windows.Forms.MenuStrip();
             this.purchaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saleFormsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +67,7 @@
             // saleFormsToolStripMenuItem
             // 
             this.saleFormsToolStripMenuItem.Name = "saleFormsToolStripMenuItem";
-            this.saleFormsToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.saleFormsToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.saleFormsToolStripMenuItem.Text = "Sale";
             this.saleFormsToolStripMenuItem.Click += new System.EventHandler(this.saleFormsToolStripMenuItem_Click);
             // 
@@ -165,6 +166,7 @@
             this.Controls.Add(this.lblLoggedInUser);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.menuStripTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripTop;
             this.Name = "frmUserDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

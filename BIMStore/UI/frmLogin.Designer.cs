@@ -100,9 +100,9 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(41, 131);
-            this.txtPassword.MaxLength = 50;
+            this.txtPassword.MaxLength = 64;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = 'x';
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(191, 25);
             this.txtPassword.TabIndex = 5;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
@@ -112,7 +112,7 @@
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(41, 73);
-            this.txtUsername.MaxLength = 50;
+            this.txtUsername.MaxLength = 64;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(191, 25);
             this.txtUsername.TabIndex = 4;

@@ -110,7 +110,7 @@
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFirstName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.Location = new System.Drawing.Point(117, 80);
-            this.txtFirstName.MaxLength = 50;
+            this.txtFirstName.MaxLength = 64;
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(171, 25);
             this.txtFirstName.TabIndex = 1;
@@ -120,7 +120,7 @@
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLastName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(117, 113);
-            this.txtLastName.MaxLength = 50;
+            this.txtLastName.MaxLength = 64;
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(171, 25);
             this.txtLastName.TabIndex = 2;
@@ -140,7 +140,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(117, 148);
-            this.txtEmail.MaxLength = 150;
+            this.txtEmail.MaxLength = 64;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(171, 25);
             this.txtEmail.TabIndex = 3;
@@ -160,7 +160,7 @@
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(117, 183);
-            this.txtUsername.MaxLength = 50;
+            this.txtUsername.MaxLength = 64;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(171, 25);
             this.txtUsername.TabIndex = 4;
@@ -180,7 +180,7 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(117, 215);
-            this.txtPassword.MaxLength = 50;
+            this.txtPassword.MaxLength = 64;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(171, 25);
             this.txtPassword.TabIndex = 5;
@@ -220,7 +220,7 @@
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(117, 282);
-            this.txtAddress.MaxLength = 50;
+            this.txtAddress.MaxLength = 64;
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(171, 75);
@@ -257,7 +257,7 @@
             "Female",
             "Not Specified"});
             this.cmbGender.Location = new System.Drawing.Point(117, 365);
-            this.cmbGender.MaxLength = 50;
+            this.cmbGender.MaxLength = 32;
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(171, 25);
             this.cmbGender.TabIndex = 8;
@@ -272,7 +272,7 @@
             "User",
             "Admin"});
             this.cmbUserType.Location = new System.Drawing.Point(117, 400);
-            this.cmbUserType.MaxLength = 50;
+            this.cmbUserType.MaxLength = 32;
             this.cmbUserType.Name = "cmbUserType";
             this.cmbUserType.Size = new System.Drawing.Size(171, 25);
             this.cmbUserType.TabIndex = 9;
@@ -325,6 +325,7 @@
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(382, 44);
+            this.txtSearch.MaxLength = 64;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(442, 25);
             this.txtSearch.TabIndex = 23;
