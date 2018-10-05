@@ -19,9 +19,9 @@ namespace BIMStore.UI
             InitializeComponent();
         }
 
-        loginBLL l = new loginBLL();
         loginDAL dal = new loginDAL();
         public static string loggedIn;
+        bool donotshowfrm = false;
 
         private void pboxClose_Click(object sender, EventArgs e)
         {
@@ -67,12 +67,13 @@ namespace BIMStore.UI
             // Run operation in another thread
             await Task.Run(() => DoWork(progress));
 
+            tbl_users l = new tbl_users();
             l.username = txtUsername.Text.Trim();
             l.password = txtPassword.Text.Trim();
             //l.user_type = cmbUserType.Text.Trim();
 
             //Checking the login credentials
-            userBLL usr = dal.loginCheck(l);
+            tbl_users usr = dal.loginCheck(l);
             if (usr != null)
             {
                 l.user_type = usr.user_type;
@@ -121,6 +122,26 @@ namespace BIMStore.UI
             if (e.KeyCode == Keys.Enter)
             {
                 btnLogin_Click(this, new EventArgs());
+            }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            bool user_available = dal.loginCheckFirst();
+            if ( user_available == false)
+            {
+                frmUsers user = new frmUsers();
+                user.Show();
+                user.FirstLogin();
+                donotshowfrm = true;
+            }
+        }
+
+        private void frmLogin_Activated(object sender, EventArgs e)
+        {
+            if (donotshowfrm)
+            {
+                this.Hide();
             }
         }
     }

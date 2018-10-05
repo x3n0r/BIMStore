@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Linq.SqlClient;
+
 
 namespace BIMStore.DAL
 {
     class userDAL
     {
         //Static String Method for Database Connection String
-        static DataClasses1DataContext db = new DataClasses1DataContext();
+        static Context db = new Context();
 
         #region Select Data from Database
         public List<tbl_users> Select()
@@ -38,31 +38,17 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Insert Data in Database
-        public bool Insert(userBLL u)
+        public bool Insert(tbl_users u)
         {
             bool isSuccess = false;
             try
             {
 
-                tbl_users user = new tbl_users();
-                //Passing Values through parameter
-                user.first_name = u.first_name;
-                user.last_name = u.last_name;
-                user.email = u.email;
-                user.username = u.username;
-                user.password = u.password;
-                user.contact = u.contact;
-                user.address = u.address;
-                user.gender = u.gender;
-                user.user_type = u.user_type;
-                user.added_date = u.added_date;
-                //zeit.ti_duration = (float)Math.Round(duration, 2);
-                user.added_by = u.added_by;
-                db.tbl_users.InsertOnSubmit(user);
-                db.SubmitChanges();
+                db.tbl_users.Add(u);
+                db.SaveChanges();
 
                 //If the query is executed Successfully then the value to rows will be greater than 0 else it will be less than 0
-                if(user.Id>0)
+                if(u.Id>0)
                 {
                     //Query Sucessfull
                     isSuccess = true;
@@ -81,31 +67,31 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Update data in Database
-        public bool Update(userBLL u)
+        public bool Update(tbl_users u)
         {
             bool isSuccess = false;
             try
             {
                 var erg = from user in db.tbl_users
-                          where user.Id == u.id
+                          where user.Id == u.Id
                           select user;
 
-                tbl_users myUser = erg.FirstOrDefault();
+                tbl_users myUser = erg.SingleOrDefault();
                 if (myUser != null)
                 {
                     myUser.first_name = u.first_name;
                     myUser.last_name = u.last_name;
-                    myUser.email = u.email;
+                    myUser.contact_email = u.contact_email;
                     myUser.username = u.username;
                     myUser.password = u.password;
-                    myUser.contact = u.contact;
+                    myUser.contact_phone = u.contact_phone;
                     myUser.address = u.address;
                     myUser.gender = u.gender;
                     myUser.user_type = u.user_type;
                     myUser.added_date = u.added_date;
                     myUser.added_by = u.added_by;
                     //myUser.Id = u.id;
-                    db.SubmitChanges();
+                    db.SaveChanges();
                 }
 
                 isSuccess = true;
@@ -119,7 +105,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Delete Data from Database
-        public bool Delete(userBLL u)
+        public bool Delete(tbl_users u)
         {
             //Create a Boolean Variable and set its default value to false
             bool isSuccess = false;
@@ -127,11 +113,11 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from user in db.tbl_users
-                          where user.Id == u.id
+                          where user.Id == u.Id
                           select user;
 
-                db.tbl_users.DeleteOnSubmit(erg.FirstOrDefault());
-                db.SubmitChanges();
+                db.tbl_users.Remove(erg.SingleOrDefault());
+                db.SaveChanges();
 
                 isSuccess = true;
             }
@@ -151,9 +137,9 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from user in db.tbl_users
-                          where SqlMethods.Like(user.first_name, "%" + keywords + "%") ||
-                                SqlMethods.Like(user.last_name, "%" + keywords + "%")  ||
-                                SqlMethods.Like(user.username, "%" + keywords + "%")
+                          where user.first_name.Contains(keywords) ||
+                                user.last_name.Contains(keywords) ||
+                                user.username.Contains(keywords)
                           select user;
 
                 users = erg.ToList<tbl_users>();
@@ -168,9 +154,9 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Getting User ID from Username
-        public userBLL GetIDFromUsername (string username)
+        public tbl_users GetIDFromUsername (string username)
         {
-            userBLL u = new userBLL();
+            tbl_users u = new tbl_users();
 
             try
             {
@@ -179,15 +165,15 @@ namespace BIMStore.DAL
                           select user;
 
 
-                tbl_users myUser = erg.FirstOrDefault();
+                tbl_users myUser = erg.SingleOrDefault();
                 if (myUser != null)
                 {
-                    u.id = myUser.Id;
+                    u.Id = myUser.Id;
                     u.first_name = myUser.first_name;
                     u.last_name = myUser.last_name;
-                    u.email = myUser.email;
+                    u.contact_email = myUser.contact_email;
                     u.username = myUser.username;
-                    u.contact = myUser.contact;
+                    u.contact_phone = myUser.contact_phone;
                     u.address = myUser.address;
                     u.gender = myUser.gender;
                 }

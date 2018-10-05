@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Linq.SqlClient;
+
 
 namespace BIMStore.DAL
 {
     class categoriesDAL
     {
         //Static String Method for Database Connection String
-        static DataClasses1DataContext db = new DataClasses1DataContext();
+        static Context db = new Context();
 
         #region Select Method
         public List<tbl_categories> Select()
@@ -37,25 +37,18 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Insert New Category
-        public bool Insert(categoriesBLL c)
+        public bool Insert(tbl_categories c)
         {
             //Creating A Boolean VAriable and set its default value to false
             bool isSuccess = false;
 
             try
             {
-                tbl_categories cat = new tbl_categories();
-                //Passing Values through parameter
-                cat.title = c.title;
-                cat.description = c.description;
-                cat.added_date = c.added_date;
-                cat.added_by = c.added_by;
-                cat.tax = c.tax;
-                db.tbl_categories.InsertOnSubmit(cat);
-                db.SubmitChanges();
+                db.tbl_categories.Add(c);
+                db.SaveChanges();
 
                 //If the query is executed Successfully then the value to rows will be greater than 0 else it will be less than 0
-                if (cat.Id > 0)
+                if (c.Id > 0)
                 {
                     //Query Sucessfull
                     isSuccess = true;
@@ -75,7 +68,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Update Method
-        public bool Update(categoriesBLL c)
+        public bool Update(tbl_categories c)
         {
             //Creating Boolean variable and set its default value to false
             bool isSuccess = false;
@@ -83,20 +76,21 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from cat in db.tbl_categories
-                          where cat.Id == c.id
+                          where cat.Id == c.Id
                           select cat;
 
-                tbl_categories myCat = erg.FirstOrDefault();
+                tbl_categories myCat = erg.SingleOrDefault();
                 if (myCat != null)
                 {
                     //Passing Value using cmd
+                    //myCat.Id = c.Id;
                     myCat.title = c.title;
                     myCat.description = c.description;
                     myCat.added_date = c.added_date;
                     myCat.added_by = c.added_by;
                     myCat.tax = c.tax;
-                    //myCat.Id = c.id;
-                    db.SubmitChanges();
+
+                    db.SaveChanges();
                 }
 
                 isSuccess = true;
@@ -112,7 +106,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Delete Category Method
-        public bool Delete(categoriesBLL c)
+        public bool Delete(tbl_categories c)
         {
             //Create a Boolean variable and set its value to false
             bool isSuccess = false;
@@ -121,11 +115,11 @@ namespace BIMStore.DAL
             {
 
                 var erg = from cat in db.tbl_categories
-                          where cat.Id == c.id
+                          where cat.Id == c.Id
                           select cat;
 
-                db.tbl_categories.DeleteOnSubmit(erg.FirstOrDefault());
-                db.SubmitChanges();
+                db.tbl_categories.Remove(erg.SingleOrDefault());
+                db.SaveChanges();
 
                 isSuccess = true;
             }
@@ -146,8 +140,8 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from cat in db.tbl_categories
-                          where SqlMethods.Like(cat.title, "%" + keywords + "%") ||
-                                SqlMethods.Like(cat.description, "%" + keywords + "%")
+                          where cat.title.Contains(keywords) ||
+                                cat.description.Contains(keywords)
                           select cat;
 
                 cats = erg.ToList<tbl_categories>();
@@ -161,21 +155,21 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Method for Search Functionality
-        public categoriesBLL Search(int catid)
+        public tbl_categories Search(int catid)
         {
             //To hold the data from database 
-            categoriesBLL category = new categoriesBLL();
+            tbl_categories category = new tbl_categories();
             try
             {
                 var erg = from cat in db.tbl_categories
                           where cat.Id == catid
                           select cat;
-                tbl_categories cats = erg.FirstOrDefault();
-                //If we have values on myDeaCust we need to save it in dealerCustomer BLL
+                tbl_categories cats = erg.SingleOrDefault();
+                //If we have values on myDeaCust we need to save it
                 if (cats != null)
                 {
-                    category.id = cats.Id;
-                    category.tax = (decimal)cats.tax;
+                    category.Id = cats.Id;
+                    category.tax = cats.tax;
                     category.description = cats.description;
                     category.title = cats.title;
 

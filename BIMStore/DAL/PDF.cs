@@ -84,28 +84,28 @@ namespace BIMStore.DAL
             //Bis die Interaktion mit der Datenbank funktioniert, wird hier der Datenbankzugriff simuliert, also Beispielwerte gesetzt.
             try { // Das "try" hat den Hintergund, das im falle einer fehlerhaften Datenbankinteraktion eine Fehlermeldung erscheint.
                 Rechnungsnr = pdf.invoicenumber; 
-                Firmenname = pdf.companyname;
-                Firmenslogan = pdf.slogan;
-                Firmenstr = pdf.companyaddress.address_street;
-                Firmenplz = Convert.ToInt32(pdf.companyaddress.address_postcode);
-                Firmenort = pdf.companyaddress.address_city;// "Mustershausen";
+                Firmenname = pdf.company_name;
+                Firmenslogan = pdf.company_slogan;
+                Firmenstr = pdf.company_address.address_street;
+                Firmenplz = Convert.ToInt32(pdf.company_address.address_postcode);
+                Firmenort = pdf.company_address.address_city;// "Mustershausen";
 
 
-                Anrede = pdf.customeraddress.form_of_address;
-                Vorname = pdf.customeraddress.first_name;// "Maximilian";
-                Nachname = pdf.customeraddress.last_name;
-                Straße = pdf.customeraddress.address_street;// "Musterstraße";
-                Postleitzahl = pdf.customeraddress.address_postcode;
-                Ort = pdf.customeraddress.address_city;// "Musterdorf";
-                filename = pdf.logo;
+                Anrede = pdf.customer_address.form_of_address;
+                Vorname = pdf.customer_address.first_name;// "Maximilian";
+                Nachname = pdf.customer_address.last_name;
+                Straße = pdf.customer_address.address_street;// "Musterstraße";
+                Postleitzahl = pdf.customer_address.address_postcode;
+                Ort = pdf.customer_address.address_city;// "Musterdorf";
+                filename = pdf.company_logo;
                 //Versandkosten = 10.30;
                 //Hausnummer = 123;
                 taxes = pdf.taxes;
                 Rechnungsnr = pdf.invoicenumber;// 1234567890;
                 Rechnungsdatum = pdf.invoicedate;
-                Mailaddr = pdf.companyaddress.contact_mail;//"erika@musterfrau.tld";
+                Mailaddr = pdf.company_address.contact_mail;//"erika@musterfrau.tld";
                 Sachbearbeiter = pdf.user.first_name + " " + pdf.user.last_name;// "Erika Musterfrau";
-                Telefonnr = pdf.companyaddress.contact_phone;// "+49 123 3215 - 10";
+                Telefonnr = pdf.company_address.contact_phone;// "+49 123 3215 - 10";
                 //Faxnr = "+49 123 3215 - 20";
                 IBAN = pdf.IBAN;// "DE42 4242 0420 0000 0424 29";
                 //Steuernr = 04242424200;
@@ -124,7 +124,7 @@ namespace BIMStore.DAL
                 tabelle.Columns.Add("Einzelpreis");
                 tabelle.Columns.Add("MwSt");
 
-                foreach ( var value in pdf.listitems)
+                foreach ( var value in pdf.items_details)
                 {
                     tabelle.Rows.Add(value.amount, value.productnumber, value.name, value.price, value.tax);
 

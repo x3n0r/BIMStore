@@ -14,10 +14,10 @@ namespace BIMStore.DAL
     class transactionDAL
     {
         //Static String Method for Database Connection String
-        static DataClasses1DataContext db = new DataClasses1DataContext();
+        static Context db = new Context();
 
         #region Insert Transaction Method
-        public bool Insert_Transaction(transactionsBLL t, out int transactionID)
+        public bool Insert_Transaction(tbl_transactions t, out int transactionID)
         {
             //Create a boolean value and set its default value to false
             bool isSuccess = false;
@@ -26,23 +26,14 @@ namespace BIMStore.DAL
 
             try
             {
-                tbl_transactions trans = new tbl_transactions();
-                //Passing the value to sql query using cmd
-                trans.type = t.type;
-                trans.dea_cust_id = t.dea_cust_id;
-                trans.grandTotal = t.grandTotal;
-                trans.transaction_date = t.transaction_date;
-                trans.discount = t.discount;
-                trans.added_by = t.added_by;
-                trans.kontobez = t.kontobez;
-                db.tbl_transactions.InsertOnSubmit(trans);
-                db.SubmitChanges();
+                db.tbl_transactions.Add(t);
+                db.SaveChanges();
 
                 //If the query is executed Successfully then the value to rows will be greater than 0 else it will be less than 0
-                if (trans.Id > 0)
+                if (t.Id > 0)
                 {
                     //Query Sucessfull
-                    transactionID = trans.Id;
+                    transactionID = t.Id;
                     isSuccess = true;
                 }
                 else
@@ -71,8 +62,8 @@ namespace BIMStore.DAL
                           where trans.Id == TransID && trans.kontobez == "S"
                           select trans;
 
-                db.tbl_transactions.DeleteOnSubmit(erg.FirstOrDefault());
-                db.SubmitChanges();
+                db.tbl_transactions.Remove(erg.SingleOrDefault());
+                db.SaveChanges();
 
                 isSuccess = true;
             }
@@ -128,10 +119,10 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Search BY TRANSACTION-ID 
-        public transactionsBLL SearchByID(int transID)
+        public tbl_transactions SearchByID(int transID)
         {
             //To hold the data from database 
-            transactionsBLL trans = new transactionsBLL();
+            tbl_transactions trans = new tbl_transactions();
 
             try
             {
@@ -139,15 +130,15 @@ namespace BIMStore.DAL
                 var erg = from tran in db.tbl_transactions
                           where tran.Id == transID
                           select tran;
-                tbl_transactions tra = erg.FirstOrDefault();
+                tbl_transactions tra = erg.SingleOrDefault();
                 if ( tra != null )
                 {
-                    trans.id = tra.Id;
-                    trans.grandTotal = (decimal)tra.grandTotal;
+                    trans.Id = tra.Id;
+                    trans.grandTotal = tra.grandTotal;
                     trans.kontobez = tra.kontobez;
                     trans.transaction_date = (DateTime)tra.transaction_date;
                     trans.type = tra.type;
-                    trans.discount = (decimal) tra.discount;
+                    trans.discount =  tra.discount;
                     trans.dea_cust_id = (int)tra.dea_cust_id;
                     trans.added_by = (int)tra.added_by;
                 }
@@ -244,7 +235,7 @@ namespace BIMStore.DAL
                           tran.grandTotal == GrandTotal &&
                           tran.kontobez == "S"
                           select tran;
-                trans = erg.FirstOrDefault();
+                trans = erg.SingleOrDefault();
             }
             catch (Exception ex)
             {

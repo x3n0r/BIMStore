@@ -172,6 +172,8 @@
             // 
             // cmbDeaCust
             // 
+            this.cmbDeaCust.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDeaCust.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbDeaCust.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeaCust.FormattingEnabled = true;
             this.cmbDeaCust.Items.AddRange(new object[] {

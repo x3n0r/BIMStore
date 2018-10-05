@@ -25,7 +25,7 @@ namespace BIMStore.UI
             this.Close();
         }
 
-        animalsBLL a = new animalsBLL();
+        tbl_animals a = new tbl_animals();
         animalsDAL aDal = new animalsDAL();
         private void frmAnimals_Load(object sender, EventArgs e)
         {
@@ -34,7 +34,7 @@ namespace BIMStore.UI
             int custid = frmDeaCust.cust_id;
             //Set the value on lblTop
             txtCustId.Text = custid.ToString();
-            List<tbl_animal> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
+            List<tbl_animals> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
             dgvDeaCust.DataSource = anms;
         }
 
@@ -60,7 +60,7 @@ namespace BIMStore.UI
                 MessageBox.Show("Pet Added Successfully");
                 Clear();
                 //Refresh Data Grid View
-                List<tbl_animal> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
+                List<tbl_animals> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
                 dgvDeaCust.DataSource = anms;
             }
             else
@@ -118,7 +118,7 @@ namespace BIMStore.UI
                 MessageBox.Show("Pet updated Successfully");
                 Clear();
                 //Refresh the Data Grid View
-                List<tbl_animal> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
+                List<tbl_animals> anms = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
                 dgvDeaCust.DataSource = anms;
             }
             else
@@ -142,7 +142,7 @@ namespace BIMStore.UI
                 MessageBox.Show("Pet Deleted Successfully");
                 Clear();
                 //Refresh the Data Grid View
-                List<tbl_animal> deacust = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
+                List<tbl_animals> deacust = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
                 dgvDeaCust.DataSource = deacust;
             }
             else
@@ -160,13 +160,13 @@ namespace BIMStore.UI
             if(keyword!=null)
             {
                 //Search the Pet
-                List<tbl_animal> deacust = aDal.Search(Convert.ToInt32(txtCustId.Text),keyword);
+                List<tbl_animals> deacust = aDal.Search(Convert.ToInt32(txtCustId.Text),keyword);
                 dgvDeaCust.DataSource = deacust;
             }
             else
             {
                 //Show all the Pet
-                List<tbl_animal> deacust = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
+                List<tbl_animals> deacust = aDal.SelectCustId(Convert.ToInt32(txtCustId.Text));
                 dgvDeaCust.DataSource = deacust;
             }
         }

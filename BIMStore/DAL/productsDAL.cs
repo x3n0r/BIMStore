@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Linq.SqlClient;
+
 
 namespace BIMStore.DAL
 {
     class productsDAL
     {
         //Static String Method for Database Connection String
-        static DataClasses1DataContext db = new DataClasses1DataContext();
+        static Context db = new Context();
 
         #region Select method for Product Module
         public List<tbl_products> Select()
@@ -59,28 +59,18 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Method to Insert Product in database
-        public bool Insert(productsBLL p)
+        public bool Insert(tbl_products p)
         {
             //Creating Boolean Variable and set its default value to false
             bool isSuccess = false;
 
             try
             {
-                tbl_products prod = new tbl_products();
-                //Passign the values through parameters
-                prod.name = p.name;
-                prod.category = p.category;
-                prod.description = p.description;
-                prod.rate = p.rate;
-                prod.qty = p.qty;
-                prod.added_date = p.added_date;
-                prod.added_by = p.added_by;
-                prod.hasqty = p.hasqty;
-                db.tbl_products.InsertOnSubmit(prod);
-                db.SubmitChanges();
+                db.tbl_products.Add(p);
+                db.SaveChanges();
 
                 //If the query is executed Successfully then the value to rows will be greater than 0 else it will be less than 0
-                if (prod.Id > 0)
+                if (p.Id > 0)
                 {
                     //Query Sucessfull
                     isSuccess = true;
@@ -100,7 +90,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Method to Update Product in Database
-        public bool Update(productsBLL p)
+        public bool Update(tbl_products p)
         {
             //create a boolean variable and set its initial value to false
             bool isSuccess = false;
@@ -108,10 +98,10 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from prods in db.tbl_products
-                          where prods.Id == p.id
+                          where prods.Id == p.Id
                           select prods;
 
-                tbl_products myProd = erg.FirstOrDefault();
+                tbl_products myProd = erg.SingleOrDefault();
                 if (myProd != null)
                 {
                     //Passing the values using parameters and cmd
@@ -124,7 +114,7 @@ namespace BIMStore.DAL
                     myProd.added_by = p.added_by;
                     myProd.hasqty = p.hasqty;
                     //myProd.Id = p.id;
-                    db.SubmitChanges();
+                    db.SaveChanges();
                 }
 
                 isSuccess = true;
@@ -139,7 +129,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Method to Delete Product from Database
-        public bool Delete(productsBLL p)
+        public bool Delete(tbl_products p)
         {
             //Create Boolean Variable and Set its default value to false
             bool isSuccess = false;
@@ -147,11 +137,11 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from prods in db.tbl_products
-                          where prods.Id == p.id
+                          where prods.Id == p.Id
                           select prods;
 
-                db.tbl_products.DeleteOnSubmit(erg.FirstOrDefault());
-                db.SubmitChanges();
+                db.tbl_products.Remove(erg.SingleOrDefault());
+                db.SaveChanges();
 
                 isSuccess = true;
             }
@@ -173,7 +163,7 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from prods in db.tbl_products
-                          where SqlMethods.Like(prods.name, "%" + keywords + "%")
+                          where prods.name.Contains(keywords)
                           select prods;
 
                 prod = erg.ToList<tbl_products>();
@@ -187,21 +177,21 @@ namespace BIMStore.DAL
         }
         #endregion
         #region METHOD TO SEARCH PRODUCT IN TRANSACTION MODULE
-        public productsBLL GetProductsForTransaction(string keyword)
+        public tbl_products GetProductsForTransaction(string keyword)
         {
-            //Create an object of productsBLL and return it
-            productsBLL p = new productsBLL();
+            //Create an object of tbl_products and return it
+            tbl_products p = new tbl_products();
 
             try
             {
                 var erg = from prods in db.tbl_products
-                          where SqlMethods.Like(prods.name, "%" + keyword + "%")
+                          where prods.name.Contains(keyword)
                           select prods;
 
-                tbl_products myProd = erg.FirstOrDefault();
+                tbl_products myProd = erg.SingleOrDefault();
                 if (myProd != null)
                 {
-                    p.id = myProd.Id;
+                    p.Id = myProd.Id;
                     p.name = myProd.name;
                     p.rate = decimal.Parse(myProd.rate.ToString());
                     p.qty = decimal.Parse(myProd.qty.ToString());
@@ -217,21 +207,21 @@ namespace BIMStore.DAL
         }
         #endregion
         #region METHOD TO GET PRODUCT ID BASED ON PRODUCT NAME
-        public productsBLL GetProductIDFromName(string ProductName)
+        public tbl_products GetProductIDFromName(string ProductName)
         {
             //First Create an Object of DeaCust BLL and REturn it
-            productsBLL p = new productsBLL();
+            tbl_products p = new tbl_products();
 
             try
             {
                 var erg = from prods in db.tbl_products
-                          where SqlMethods.Like(prods.name, "%" + ProductName + "%")
+                          where prods.name.Contains(ProductName)
                           select prods;
 
-                tbl_products myProd = erg.FirstOrDefault();
+                tbl_products myProd = erg.SingleOrDefault();
                 if (myProd != null)
                 {
-                    p.id = myProd.Id;
+                    p.Id = myProd.Id;
                     p.hasqty = (bool)myProd.hasqty;
                     p.category = (int)myProd.category;
                 }
@@ -245,10 +235,10 @@ namespace BIMStore.DAL
         }
         #endregion
         #region METHOD TO GET PRODUCT BASED ON PRODUCT ID
-        public productsBLL GetProductFromID(int productID)
+        public tbl_products GetProductFromID(int productID)
         {
             //First Create an Object of DeaCust BLL and REturn it
-            productsBLL p = new productsBLL();
+            tbl_products p = new tbl_products();
 
             try
             {
@@ -256,16 +246,16 @@ namespace BIMStore.DAL
                           where prods.Id == productID
                           select prods;
 
-                tbl_products myProd = erg.FirstOrDefault();
+                tbl_products myProd = erg.SingleOrDefault();
                 if (myProd != null)
                 {
-                    p.id = myProd.Id;
+                    p.Id = myProd.Id;
                     p.added_by = (int)myProd.added_by;
                     p.description = myProd.description;
                     p.hasqty = (bool)myProd.hasqty;
                     p.category = (int)myProd.category;
-                    p.rate = (decimal)myProd.rate;
-                    p.qty = (decimal)myProd.qty;
+                    p.rate = myProd.rate;
+                    p.qty = myProd.qty;
                     p.name = myProd.name;
                         
                 }
@@ -290,13 +280,13 @@ namespace BIMStore.DAL
                           where prods.Id == ProductID
                           select prods;
 
-                tbl_products myProd = erg.FirstOrDefault();
+                tbl_products myProd = erg.SingleOrDefault();
                 //Lets check if the datatable has value or not
                 if (myProd != null)
                 {
                     myProd.Id = myProd.Id;
                     myProd.qty = decimal.Parse(myProd.qty.ToString());
-                    qty = (decimal)myProd.qty;
+                    qty = myProd.qty;
                 }
             }
             catch(Exception ex)
@@ -319,13 +309,13 @@ namespace BIMStore.DAL
                           where prods.Id == ProductID
                           select prods;
 
-                tbl_products myProd = erg.FirstOrDefault();
+                tbl_products myProd = erg.SingleOrDefault();
                 if (myProd != null)
                 {
                     //Passing the VAlue trhough parameters
                     myProd.qty = Qty;
                     //myProd.Id = p.id;
-                    db.SubmitChanges();
+                    db.SaveChanges();
                 }
 
                 success = true;

@@ -1,4 +1,5 @@
-﻿using BIMStore.DAL;
+﻿using BIMStore.BLL;
+using BIMStore.DAL;
 using BIMStore.UI;
 using System;
 using System.Collections.Generic;
@@ -166,14 +167,14 @@ namespace BIMStore
                 decimal profit = 0;
                 foreach ( var tran in trans )
                 {
-                    profit += (decimal)tran.grandTotal;
+                    profit += tran.grandTotal;
 
                     if ( aa.ContainsKey((int)tran.dea_cust_id))
                     {
-                        aa[(int)tran.dea_cust_id] += (decimal)tran.grandTotal;
+                        aa[(int)tran.dea_cust_id] += tran.grandTotal;
                     } else
                     {
-                        aa.Add((int)tran.dea_cust_id, (decimal)tran.grandTotal);
+                        aa.Add((int)tran.dea_cust_id, tran.grandTotal);
                     }
                 }
                 seriesTI.Points.AddXY(Monthname, profit);

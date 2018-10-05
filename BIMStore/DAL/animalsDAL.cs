@@ -8,24 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Linq.SqlClient;
 
 namespace BIMStore.DAL
 {
     class animalsDAL
     {
         //Static String Method for Database Connection String
-        static DataClasses1DataContext db = new DataClasses1DataContext();
+        static Context db = new Context();
 
         #region Select Method
-        public List<tbl_animal> Select()
+        public List<tbl_animals> Select()
         {
             //To hold the data from database 
-            List<tbl_animal> animals = new List<tbl_animal>();
+            List<tbl_animals> animals = new List<tbl_animals>();
             try
             {
                 //Query to Get Data From Database
-                animals = db.tbl_animal.ToList<tbl_animal>();
+                animals = db.tbl_animals.ToList<tbl_animals>();
 
             }
             catch(Exception ex)
@@ -37,27 +36,18 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Insert New Category
-        public bool Insert(animalsBLL a)
+        public bool Insert(tbl_animals a)
         {
             //Creating A Boolean VAriable and set its default value to false
             bool isSuccess = false;
 
             try
             {
-                tbl_animal anm = new tbl_animal();
-                //Passing Values through parameter
-                anm.cust_id = a.cust_id;
-                anm.date_of_birth = a.date_of_birth;
-                //anm.Id = a.Id;
-                anm.name = a.name;
-                anm.notes = a.notes;
-                anm.race = a.race;
-                anm.species = a.species;
-                db.tbl_animal.InsertOnSubmit(anm);
-                db.SubmitChanges();
+                db.tbl_animals.Add(a);
+                db.SaveChanges();
 
                 //If the query is executed Successfully then the value to rows will be greater than 0 else it will be less than 0
-                if (anm.Id > 0)
+                if (a.Id > 0)
                 {
                     //Query Sucessfull
                     isSuccess = true;
@@ -77,29 +67,30 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Update Method
-        public bool Update(animalsBLL a)
+        public bool Update(tbl_animals a)
         {
             //Creating Boolean variable and set its default value to false
             bool isSuccess = false;
 
             try
             {
-                var erg = from anm in db.tbl_animal
+                var erg = from anm in db.tbl_animals
                           where anm.Id == a.Id
                           select anm;
 
-                tbl_animal myAnm = erg.FirstOrDefault();
+                tbl_animals myAnm = erg.SingleOrDefault();
+
                 if (myAnm != null)
                 {
                     //Passing Value using cmd
+                    //myAnm.Id = c.Id;
                     myAnm.date_of_birth = a.date_of_birth;
                     myAnm.name = a.name;
                     myAnm.notes = a.notes;
                     myAnm.race = a.race;
                     myAnm.species = a.species;
                     myAnm.cust_id = a.cust_id;
-                    //myAnm.Id = c.Id;
-                    db.SubmitChanges();
+                    db.SaveChanges();
                 }
 
                 isSuccess = true;
@@ -115,7 +106,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Delete Category Method
-        public bool Delete(animalsBLL a)
+        public bool Delete(tbl_animals a)
         {
             //Create a Boolean variable and set its value to false
             bool isSuccess = false;
@@ -123,12 +114,12 @@ namespace BIMStore.DAL
             try
             {
 
-                var erg = from anm in db.tbl_animal
+                var erg = from anm in db.tbl_animals
                           where anm.Id == a.Id
                           select anm;
 
-                db.tbl_animal.DeleteOnSubmit(erg.FirstOrDefault());
-                db.SubmitChanges();
+                db.tbl_animals.Remove(erg.SingleOrDefault());
+                db.SaveChanges();
 
                 isSuccess = true;
             }
@@ -142,19 +133,18 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Method for Search Functionality
-        public List<tbl_animal> Search(int custid, string keywords)
+        public List<tbl_animals> Search(int custid, string keywords)
         {
             //To hold the data from database 
-            List<tbl_animal> anms = new List<tbl_animal>();
+            List<tbl_animals> anms = new List<tbl_animals>();
             try
             {
-                var erg = from anm in db.tbl_animal
+                var erg = from anm in db.tbl_animals
                           where anm.cust_id == custid && 
-                                ( SqlMethods.Like(anm.name, "%" + keywords + "%") ||
-                                SqlMethods.Like(anm.notes, "%" + keywords + "%") )
+                                ( anm.name.Contains(keywords) || anm.notes.Contains(keywords) )
                           select anm;
 
-                anms = erg.ToList<tbl_animal>();
+                anms = erg.ToList<tbl_animals>();
             }
             catch(Exception ex)
             {
@@ -165,18 +155,18 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Select method for Product Module with cust_id
-        public List<tbl_animal> SelectCustId(int cust_id)
+        public List<tbl_animals> SelectCustId(int cust_id)
         {
             //To hold the data from database 
-            List<tbl_animal> prod = new List<tbl_animal>();
+            List<tbl_animals> prod = new List<tbl_animals>();
 
             try
             {
-                var erg = from anms in db.tbl_animal
+                var erg = from anms in db.tbl_animals
                           where anms.cust_id == cust_id
                           select anms;
 
-                prod = erg.ToList<tbl_animal>();
+                prod = erg.ToList<tbl_animals>();
             }
             catch (Exception ex)
             {

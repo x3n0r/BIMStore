@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Linq.SqlClient;
+
 
 namespace BIMStore.DAL
 {
     class CompanyDataDAL
     {
         //Static String Method for Database Connection String
-        static DataClasses1DataContext db = new DataClasses1DataContext();
+        static Context db = new Context();
 
         #region Select Method
         public tbl_companydata Select()
@@ -37,7 +37,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region Update Method
-        public bool Update(CompanyDataBLL cd)
+        public bool Update(tbl_companydata cd)
         {
             //Creating Boolean variable and set its default value to false
             bool isSuccess = false;
@@ -48,7 +48,7 @@ namespace BIMStore.DAL
                           where compdata.Id == cd.Id
                           select compdata;
 
-                tbl_companydata myCompData = erg.FirstOrDefault();
+                tbl_companydata myCompData = erg.SingleOrDefault();
                 if (myCompData != null)
                 {
                     //Passing Value using cmd
@@ -59,12 +59,12 @@ namespace BIMStore.DAL
                     myCompData.address_country = cd.address_country;
                     myCompData.address_city = cd.address_city;
                     myCompData.contact_phone = cd.contact_phone;
-                    myCompData.contact_email = cd.contact_mail;
+                    myCompData.contact_email = cd.contact_email;
                     myCompData.IBAN = cd.IBAN;
                     myCompData.BIC = cd.BIC;
                     myCompData.logo = cd.logo;
                     //myCompData.Id = c.id;
-                    db.SubmitChanges();
+                    db.SaveChanges();
                 }
 
                 isSuccess = true;

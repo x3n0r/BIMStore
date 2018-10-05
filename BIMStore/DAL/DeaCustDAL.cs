@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Linq.SqlClient;
+
 
 namespace BIMStore.DAL
 {
     class DeaCustDAL
     {
         //Static String Method for Database Connection String
-        static DataClasses1DataContext db = new DataClasses1DataContext();
+        static Context db = new Context();
 
         #region SELECT Method for Dealer and Customer
         public List<tbl_dea_cust> Select()
@@ -37,34 +37,23 @@ namespace BIMStore.DAL
         }
         #endregion
         #region INSERT Method to Add details fo Dealer or Customer
-        public bool Insert(DeaCustBLL dc, out int DeaCustID)
+        public bool Insert(tbl_dea_cust dc, out int DeaCustID)
         {
             DeaCustID = -1;
             //Create and Boolean value and set its default value to false
             bool isSuccess = false;
             try
             {
-                tbl_dea_cust deacust = new tbl_dea_cust();
                 //Passing the values using Parameters
-                deacust.type = dc.type;
-                deacust.first_name = dc.first_name;
-                deacust.last_name = dc.last_name;
-                deacust.form_of_address = dc.form_of_address;
-                deacust.contact_mail = dc.contact_mail;
-                deacust.contact_phone = dc.contact_phone;
-                deacust.address_street = dc.address_street;
-                deacust.address_postcode = dc.address_postcode;
-                deacust.address_city = dc.address_city;
-                deacust.address_country = dc.address_country;
-                db.tbl_dea_cust.InsertOnSubmit(deacust);
-                db.SubmitChanges();
+                db.tbl_dea_cust.Add(dc);
+                db.SaveChanges();
 
                 //If the query is executed Successfully then the value to rows will be greater than 0 else it will be less than 0
-                if (deacust.Id > 0)
+                if (dc.Id > 0)
                 {
                     //Query Sucessfull
                     isSuccess = true;
-                    DeaCustID = deacust.Id;
+                    DeaCustID = dc.Id;
                 }
                 else
                 {
@@ -81,7 +70,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region UPDATE method for Dealer and Customer Module
-        public bool Update(DeaCustBLL dc)
+        public bool Update(tbl_dea_cust dc)
         {
             bool isSuccess = false;
             try
@@ -90,7 +79,7 @@ namespace BIMStore.DAL
                           where deacust.Id == dc.Id
                           select deacust;
 
-                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
+                tbl_dea_cust myDeaCust = erg.SingleOrDefault();
                 if (myDeaCust != null)
                 {
                     //Passing the values through parameters
@@ -105,7 +94,7 @@ namespace BIMStore.DAL
                     myDeaCust.address_city = dc.address_city;
                     myDeaCust.address_country = dc.address_country;
                     //myDeaCust.Id = dc.id;
-                    db.SubmitChanges();
+                    db.SaveChanges();
                 }
                 isSuccess = true;
             }
@@ -119,7 +108,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region DELETE Method for Dealer and Customer Module
-        public bool Delete(DeaCustBLL dc)
+        public bool Delete(tbl_dea_cust dc)
         {
             //Create a Boolean Variable and set its default value to false
             bool isSuccess = false;
@@ -130,8 +119,8 @@ namespace BIMStore.DAL
                           where deacust.Id == dc.Id
                           select deacust;
 
-                db.tbl_dea_cust.DeleteOnSubmit(erg.FirstOrDefault());
-                db.SubmitChanges();
+                db.tbl_dea_cust.Add(erg.SingleOrDefault());
+                db.SaveChanges();
 
                 isSuccess = true;
             }
@@ -152,9 +141,9 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from deacusts in db.tbl_dea_cust
-                          where SqlMethods.Like(deacusts.type, "%" + keyword + "%") ||
-                                SqlMethods.Like(deacusts.first_name, "%" + keyword + "%") ||
-                                SqlMethods.Like(deacusts.last_name, "%" + keyword + "%")
+                          where deacusts.first_name.Contains(keyword) ||
+                                deacusts.last_name.Contains(keyword) ||
+                                deacusts.type.Contains(keyword)
                           select deacusts;
 
                 deacust = erg.ToList<tbl_dea_cust>();
@@ -175,7 +164,7 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from deacusts in db.tbl_dea_cust
-                          where SqlMethods.Like(deacusts.type, "%" + keyword + "%")
+                          where deacusts.type.Contains(keyword)
                           select deacusts;
 
                 deacust = erg.ToList<tbl_dea_cust>();
@@ -189,7 +178,7 @@ namespace BIMStore.DAL
         }
         #endregion
         #region METHOD TO SAERCH DEALER Or CUSTOMER FOR TRANSACTON MODULE
-        public DeaCustBLL SearchDealerCustomerForTransaction(string keyword,string DeaorCust)
+        public tbl_dea_cust SearchDealerCustomerForTransaction(string keyword,string DeaorCust)
         {
             int i = 0;
             if (DeaorCust == "Dealer")
@@ -203,32 +192,32 @@ namespace BIMStore.DAL
         }
         #endregion
         #region METHOD TO SAERCH DEALER Or CUSTOMER FOR TRANSACTON MODULE
-        public DeaCustBLL SearchDealerCustomerForTransaction(string keyword)
+        public tbl_dea_cust SearchDealerCustomerForTransaction(string keyword)
         {
             return SearchDealerCustomerForTransaction(keyword, 0);
         }
         #endregion
         #region METHOD TO SAERCH DEALER Or CUSTOMER FOR TRANSACTON MODULE
         /* 0 nothing 1 dealer 2 customer*/
-        public DeaCustBLL SearchDealerCustomerForTransaction(string keyword,int deacustnothing)
+        public tbl_dea_cust SearchDealerCustomerForTransaction(string keyword,int deacustnothing)
         {
             
             Dictionary<int, string> dict= new Dictionary<int, string>();
             dict.Add(0, "");
             dict.Add(1, "Dealer");
             dict.Add(2, "Customer");
-            //Create an object for DeaCustBLL class
-            DeaCustBLL dc = new DeaCustBLL();
+            //Create an object for tbl_dea_cust class
+            tbl_dea_cust dc = new tbl_dea_cust();
 
             try
             {
                 var erg = from deacusts in db.tbl_dea_cust
-                          where ( SqlMethods.Like(deacusts.first_name, "%" + keyword + "%") ||
-                          SqlMethods.Like(deacusts.last_name, "%" + keyword + "%") ) &&
-                          SqlMethods.Like(deacusts.type,"%"+ dict[deacustnothing] + "%")                           
+                          where ( deacusts.first_name.Contains(keyword) ||
+                                deacusts.last_name.Contains(keyword) ) &&
+                                deacusts.type.Contains(dict[deacustnothing])                       
                           select deacusts;
 
-                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
+                tbl_dea_cust myDeaCust = erg.SingleOrDefault();
                 //If we have values on myDeaCust we need to save it in dealerCustomer BLL
                 if (myDeaCust != null)
                 {
@@ -254,10 +243,10 @@ namespace BIMStore.DAL
         }
         #endregion
         #region METHOD TO GET ID OF THE DEALER OR CUSTOMER BASED ON NAME
-        public DeaCustBLL GetDeaCustIDFromName(string FirstName, string LastName)
+        public tbl_dea_cust GetDeaCustIDFromName(string FirstName, string LastName)
         {
             //First Create an Object of DeaCust BLL and REturn it
-            DeaCustBLL dc = new DeaCustBLL();
+            tbl_dea_cust dc = new tbl_dea_cust();
 
             try
             {
@@ -266,7 +255,7 @@ namespace BIMStore.DAL
                           select deacusts;
 
 
-                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
+                tbl_dea_cust myDeaCust = erg.SingleOrDefault();
                 if (myDeaCust != null)
                 {
                     dc.Id = myDeaCust.Id;
@@ -291,10 +280,10 @@ namespace BIMStore.DAL
         }
         #endregion
         #region METHOD TO GET ID OF THE DEALER OR CUSTOMER BASED ON ID
-        public DeaCustBLL GetDeaCustIDFromID(int DeaCustID)
+        public tbl_dea_cust GetDeaCustIDFromID(int DeaCustID)
         {
             //First Create an Object of DeaCust BLL and REturn it
-            DeaCustBLL dc = new DeaCustBLL();
+            tbl_dea_cust dc = new tbl_dea_cust();
 
             try
             {
@@ -303,7 +292,7 @@ namespace BIMStore.DAL
                           select deacusts;
 
 
-                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
+                tbl_dea_cust myDeaCust = erg.SingleOrDefault();
                 if (myDeaCust != null)
                 {
                     dc.Id = myDeaCust.Id;

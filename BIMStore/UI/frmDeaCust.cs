@@ -25,7 +25,7 @@ namespace BIMStore.UI
             this.Close();
         }
 
-        DeaCustBLL dc = new DeaCustBLL();
+        tbl_dea_cust dc = new tbl_dea_cust();
         DeaCustDAL dcDal = new DeaCustDAL();
 
         public bool cameoverpets = false;
@@ -47,7 +47,7 @@ namespace BIMStore.UI
             dc.form_of_address = txtFormofaddress.Text;
             //Getting the ID to Logged in user and passign its value in dealer or cutomer module
             string loggedUsr = frmLogin.loggedIn;
-            userBLL usr = uDal.GetIDFromUsername(loggedUsr);
+            tbl_users usr = uDal.GetIDFromUsername(loggedUsr);
 
             //Creating boolean variable to check whether the dealer or cutomer is added or not
             int tmpdeacustid = -1;

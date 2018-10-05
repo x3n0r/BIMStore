@@ -19,12 +19,21 @@ namespace BIMStore.UI
             InitializeComponent();
         }
 
-        userBLL u = new userBLL();
+        tbl_users u = new tbl_users();
         userDAL dal = new userDAL();
+        bool firstlogin = false;
 
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void FirstLogin()
+        {
+            cmbUserType.Text = "Admin";
+            MessageBox.Show("This is your first Login, please add an Admin-User first."+ Environment.NewLine +
+                            "After adding Program will be closed");
+            firstlogin = true;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -34,10 +43,10 @@ namespace BIMStore.UI
             //Gettting Data FRom UI
             u.first_name = txtFirstName.Text;
             u.last_name = txtLastName.Text;
-            u.email = txtEmail.Text;
+            u.contact_email = txtEmail.Text;
             u.username = txtUsername.Text;
             u.password = txtPassword.Text;
-            u.contact = txtContact.Text;
+            u.contact_phone = txtContact.Text;
             u.address = txtAddress.Text;
             u.gender = cmbGender.Text;
             u.user_type = cmbUserType.Text;
@@ -45,9 +54,9 @@ namespace BIMStore.UI
 
             //Getting Username of the logged in user
             string loggedUser = frmLogin.loggedIn;
-            userBLL usr = dal.GetIDFromUsername(loggedUser);
+            tbl_users usr = dal.GetIDFromUsername(loggedUser);
 
-            u.added_by = usr.id;
+            u.added_by = usr.Id;
 
             //Inserting Data into DAtabase
             bool success = dal.Insert(u);
@@ -66,6 +75,12 @@ namespace BIMStore.UI
             //Refreshing Data Grid View
             List<tbl_users> users = dal.Select();
             dgvUsers.DataSource = users;
+
+            if (firstlogin)
+            {
+                this.Close();
+                Environment.Exit(0);
+            }
         }
 
         private void frmUsers_Load(object sender, EventArgs e)
@@ -110,10 +125,10 @@ namespace BIMStore.UI
             //u.id = Convert.ToInt32(txtUserID.Text);
             u.first_name = txtFirstName.Text;
             u.last_name = txtLastName.Text;
-            u.email = txtEmail.Text;
+            u.contact_email = txtEmail.Text;
             u.username = txtUsername.Text;
             u.password = txtPassword.Text;
-            u.contact = txtContact.Text;
+            u.contact_phone = txtContact.Text;
             u.address = txtAddress.Text;
             u.gender = cmbGender.Text;
             u.user_type = cmbUserType.Text;
@@ -142,7 +157,7 @@ namespace BIMStore.UI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //Getting User ID from Form
-            u.id = Convert.ToInt32(txtUserID.Text);
+            u.Id = Convert.ToInt32(txtUserID.Text);
 
             bool success = dal.Delete(u);
             //if data is deleted then the value of success will be true else it will be false

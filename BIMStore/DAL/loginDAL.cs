@@ -14,12 +14,12 @@ namespace BIMStore.DAL
     class loginDAL
     {
         private List<tbl_users> users = new List<tbl_users>();
-        DataClasses1DataContext db = new DataClasses1DataContext();
+        static Context db = new Context();
 
         #region check login with username password
-        public userBLL loginCheck(loginBLL l)
+        public tbl_users loginCheck(tbl_users l)
         {
-            userBLL u = new userBLL();
+            tbl_users u = new tbl_users();
 
             //Connecting To DAtabase
             users = db.tbl_users.ToList<tbl_users>();
@@ -40,7 +40,7 @@ namespace BIMStore.DAL
                 //    today_listview.Items.Add(item);
                 //}
 
-                tbl_users myUser = erg.FirstOrDefault();
+                tbl_users myUser = erg.SingleOrDefault();
                 if (myUser != null)
                 {
                     u.user_type = myUser.user_type;
@@ -59,6 +59,33 @@ namespace BIMStore.DAL
             }
 
             return null;
+        }
+        #endregion
+
+        #region check login with username password
+        public bool loginCheckFirst()
+        {
+            List<tbl_users> u = new List<tbl_users>();
+            bool success = false;
+            try
+            {
+                //Connecting To DAtabase
+                u = db.tbl_users.ToList<tbl_users>();
+                if ( u.Count > 0 )
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return success;
         }
         #endregion
     }

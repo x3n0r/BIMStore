@@ -28,9 +28,6 @@ E:\VeriStore\VeriStore\AnyStore\obj\Debug\BIMStore.exe
 E:\VeriStore\VeriStore\AnyStore\obj\Debug\BIMStore.pdb
 E:\VeriStore\VeriStore\BIMStore\bin\Debug\BIMStore.mdf
 E:\VeriStore\VeriStore\BIMStore\bin\Debug\BIMStore_log.ldf
-E:\VeriStore\VeriStore\BIMStore\bin\Debug\DataClasses1.designer.cs
-E:\VeriStore\VeriStore\BIMStore\bin\Debug\DataClasses1.dbml
-E:\VeriStore\VeriStore\BIMStore\bin\Debug\DataClasses1.dbml.layout
 E:\VeriStore\VeriStore\BIMStore\bin\Debug\BIMStore.exe.config
 E:\VeriStore\VeriStore\BIMStore\bin\Debug\BIMStore.exe
 E:\VeriStore\VeriStore\BIMStore\bin\Debug\BIMStore.pdb
@@ -52,3 +49,10 @@ E:\VeriStore\VeriStore\BIMStore\obj\Debug\BIMStore.csproj.GenerateResource.Cache
 E:\VeriStore\VeriStore\BIMStore\obj\Debug\BIMStore.csproj.CoreCompileInputs.cache
 E:\VeriStore\VeriStore\BIMStore\obj\Debug\BIMStore.exe
 E:\VeriStore\VeriStore\BIMStore\obj\Debug\BIMStore.pdb
+E:\VeriStore\VeriStore\BIMStore\obj\Debug\BIMStore.csprojResolveAssemblyReference.cache
+E:\VeriStore\VeriStore\BIMStore\bin\Debug\EntityFramework.dll
+E:\VeriStore\VeriStore\BIMStore\bin\Debug\EntityFramework.SqlServer.dll
+E:\VeriStore\VeriStore\BIMStore\bin\Debug\EntityFramework.xml
+E:\VeriStore\VeriStore\BIMStore\bin\Debug\EntityFramework.SqlServer.xml
+E:\VeriStore\VeriStore\BIMStore\bin\Debug\de\EntityFramework.resources.dll
+E:\VeriStore\VeriStore\BIMStore\obj\Debug\BIMStore.Migrations.v1.resources

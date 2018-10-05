@@ -75,7 +75,7 @@ namespace BIMStore.UI
                     {
                         Einnahmen += tran.grandTotal;
                         Gewinn += tran.grandTotal;
-                        tbl_transactions foundtrans = tDAL.SearchByGrandTotal((int)tran.dea_cust_id, (decimal)tran.grandTotal);
+                        tbl_transactions foundtrans = tDAL.SearchByGrandTotal((int)tran.dea_cust_id, tran.grandTotal);
                         if ( foundtrans != null )
                         {
                             bezhalteCustRechnungenAnz += 1;
@@ -90,7 +90,7 @@ namespace BIMStore.UI
                     {
                         Ausgaben += tran.grandTotal;
                         Gewinn -= tran.grandTotal;
-                        tbl_transactions foundtrans = tDAL.SearchByGrandTotal((int)tran.dea_cust_id, (decimal)tran.grandTotal);
+                        tbl_transactions foundtrans = tDAL.SearchByGrandTotal((int)tran.dea_cust_id, tran.grandTotal);
                         if (foundtrans != null)
                         {
                             bezhalteDeaRechnungenAnz += 1;

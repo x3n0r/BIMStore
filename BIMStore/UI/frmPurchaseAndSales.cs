@@ -41,8 +41,8 @@ namespace BIMStore.UI
 
         private struct savebtnhelper
         {
-            public transactionsBLL transaction;
-            public DeaCustBLL dea_cust;
+            public tbl_transactions transaction;
+            public tbl_dea_cust dea_cust;
             public List<items> lit;
         }
 
@@ -61,9 +61,9 @@ namespace BIMStore.UI
         public void LoadBooking(int transaction_id)
         {
             LoadBooking();
-            transactionsBLL trans = tDAL.SearchByID(transaction_id);
+            tbl_transactions trans = tDAL.SearchByID(transaction_id);
             txtPaidAmount.Text = trans.grandTotal.ToString();
-            DeaCustBLL deacust = dcDAL.GetDeaCustIDFromID(trans.dea_cust_id);
+            tbl_dea_cust deacust = dcDAL.GetDeaCustIDFromID((int)trans.dea_cust_id);
             lblTop.Text = "Booking";
             FillDeaCust(deacust);
         }
@@ -79,14 +79,14 @@ namespace BIMStore.UI
             txtPaidAmount.Enabled = false;
             dtpBillDate.Enabled = false;
             txtQty.Enabled = false;
-            transactionsBLL trans = tDAL.SearchByID(transaction_id);
+            tbl_transactions trans = tDAL.SearchByID(transaction_id);
 
             lblTop.Text = trans.type;
             txtDiscount.Text = trans.discount.ToString();
             txtGrandTotal.Text = trans.grandTotal.ToString();
             dtpBillDate.Value = trans.transaction_date;
 
-            DeaCustBLL deacust = dcDAL.GetDeaCustIDFromID(trans.dea_cust_id);
+            tbl_dea_cust deacust = dcDAL.GetDeaCustIDFromID((int)trans.dea_cust_id);
             FillDeaCust(deacust);
 
             //gettransactiondetail list
@@ -103,20 +103,20 @@ namespace BIMStore.UI
                     return;
                 }
 
-                productsBLL p = pDAL.GetProductFromID((int)transdet.product_id);
-                categoriesBLL c = cDAL.Search((int)transdet.product_id);
+                tbl_products p = pDAL.GetProductFromID((int)transdet.product_id);
+                tbl_categories c = cDAL.Search((int)transdet.product_id);
                 
                 items it = new items();
                 it.amount = Convert.ToInt32(transdet.qty);
                 it.productnumber = (int)transdet.product_id;
                 it.name = p.name;
-                it.price = (decimal)transdet.price;
+                it.price = transdet.price;
                 it.total = it.amount * it.price;
                 it.tax = c.tax;
                 lit.Add(it);
 
                 bool cpas = false;
-                cpas = CalculateProductAndShow(p.name, (decimal)transdet.price, (decimal)transdet.qty, c.tax);
+                cpas = CalculateProductAndShow(p.name, transdet.price, transdet.qty, c.tax);
             }
 
             sbtnh.dea_cust = deacust;
@@ -153,7 +153,7 @@ namespace BIMStore.UI
                 txtAddress.Text = "";
                 return;
             }
-            DeaCustBLL dc = new DeaCustBLL();
+            tbl_dea_cust dc = new tbl_dea_cust();
             //Write the code to get the details and set the value on text boxes
             string transactionType = lblTop.Text;
             if (transactionType == "Purchase") { 
@@ -168,7 +168,7 @@ namespace BIMStore.UI
             FillDeaCust(dc);
         }
 
-        private void FillDeaCust(DeaCustBLL dc)
+        private void FillDeaCust(tbl_dea_cust dc)
         {
             txtFirstname.Text = dc.first_name;
             txtLastname.Text = dc.last_name;
@@ -195,13 +195,13 @@ namespace BIMStore.UI
             }
 
             //Search the product and display on respective textboxes
-            productsBLL p = pDAL.GetProductsForTransaction(keyword);
+            tbl_products p = pDAL.GetProductsForTransaction(keyword);
 
             //Set the values on textboxes based on p object
             txtProductName.Text = p.name;
             txtInventory.Text = p.qty.ToString();
             txtRate.Text = p.rate.ToString();
-            categoriesBLL c = cDAL.Search(p.id);
+            tbl_categories c = cDAL.Search(p.Id);
             txtTax.Text = c.tax.ToString();
         }
 
@@ -245,8 +245,8 @@ namespace BIMStore.UI
             decimal.TryParse(txtTaxCalc.Text, out taxcalc);
             decimal ntax = (Total / 100) * taxpercent;
             taxcalc += ntax;
-            productsBLL p = pDAL.GetProductIDFromName(productName);
-            categoriesBLL c = cDAL.Search(p.category);
+            tbl_products p = pDAL.GetProductIDFromName(productName);
+            tbl_categories c = cDAL.Search((int)p.category);
 
             if (tmptaxes.ContainsKey(c.title))
             {
@@ -382,13 +382,13 @@ namespace BIMStore.UI
         private bool S_booking()
         {
             //Get the Values from PurchaseSale Form First
-            transactionsBLL transaction = new transactionsBLL();
+            tbl_transactions transaction = new tbl_transactions();
 
             //Get the ID of Dealer or Customer Here
             //Lets get name of the dealer or customer first
             string deaCustFirstName = txtFirstname.Text;
             string deaCustLastName = txtLastname.Text;
-            DeaCustBLL dc = dcDAL.GetDeaCustIDFromName(deaCustFirstName, deaCustLastName);
+            tbl_dea_cust dc = dcDAL.GetDeaCustIDFromName(deaCustFirstName, deaCustLastName);
 
             transaction.type = helperDAL.DeaCustToPurchaseSale[dc.type];
 
@@ -399,11 +399,10 @@ namespace BIMStore.UI
 
             //Get the Username of Logged in user
             string username = frmLogin.loggedIn;
-            userBLL u = uDAL.GetIDFromUsername(username);
+            tbl_users u = uDAL.GetIDFromUsername(username);
 
             transaction.kontobez = "S";
-            transaction.added_by = u.id;
-            //transaction.transactionDetails = transactionDT;
+            transaction.added_by = u.Id;
 
             bool w;
             //Actual Code to Insert Transaction And Transaction Details
@@ -421,7 +420,7 @@ namespace BIMStore.UI
         private bool H_booking()
         {
             //Get the Values from PurchaseSale Form First
-            transactionsBLL transaction = new transactionsBLL();
+            tbl_transactions transaction = new tbl_transactions();
 
             transaction.type = lblTop.Text;
 
@@ -429,7 +428,7 @@ namespace BIMStore.UI
             //Lets get name of the dealer or customer first
             string deaCustFirstName = txtFirstname.Text;
             string deaCustLastName = txtLastname.Text;
-            DeaCustBLL dc = dcDAL.GetDeaCustIDFromName(deaCustFirstName, deaCustLastName);
+            tbl_dea_cust dc = dcDAL.GetDeaCustIDFromName(deaCustFirstName, deaCustLastName);
 
             transaction.dea_cust_id = dc.Id;
             transaction.grandTotal = Math.Round(decimal.Parse(txtGrandTotal.Text), 2);
@@ -439,13 +438,13 @@ namespace BIMStore.UI
 
             //Get the Username of Logged in user
             string username = frmLogin.loggedIn;
-            userBLL u = uDAL.GetIDFromUsername(username);
+            tbl_users u = uDAL.GetIDFromUsername(username);
 
             string transactionType = lblTop.Text;
 
             transaction.kontobez = "H";
-            transaction.added_by = u.id;
-            transaction.transactionDetails = transactionDT;
+            transaction.added_by = u.Id;
+            //transaction.transactionDetails = transactionDT;
 
             //Lets Create a Boolean Variable and set its value to false
             bool success = false;
@@ -454,7 +453,7 @@ namespace BIMStore.UI
             int transactionID = -1;
             //Create aboolean value and insert transaction 
             bool w = tDAL.Insert_Transaction(transaction, out transactionID);
-            transaction.id = transactionID;
+            transaction.Id = transactionID;
 
             CompanyDataDAL cdDAL = new CompanyDataDAL();
             tbl_companydata cd = cdDAL.Select();
@@ -465,26 +464,26 @@ namespace BIMStore.UI
             for (int i = 0; i < transactionDT.Rows.Count; i++)
             {
                 //Get all the details of the product
-                transactionDetailBLL transactionDetail = new transactionDetailBLL();
+                tbl_transaction_detail transactionDetail = new tbl_transaction_detail();
                 //Get the Product name and convert it to id
                 string ProductName = transactionDT.Rows[i][0].ToString();
-                productsBLL p = pDAL.GetProductIDFromName(ProductName);
-                categoriesBLL c = cDAL.Search(p.category);
+                tbl_products p = pDAL.GetProductIDFromName(ProductName);
+                tbl_categories c = cDAL.Search((int)p.category);
 
                 bool producthasqty = p.hasqty;
 
-                transactionDetail.product_id = p.id;
+                transactionDetail.product_id = p.Id;
                 transactionDetail.price = decimal.Parse(transactionDT.Rows[i][1].ToString());
                 transactionDetail.qty = decimal.Parse(transactionDT.Rows[i][2].ToString());
                 transactionDetail.total = Math.Round(decimal.Parse(transactionDT.Rows[i][3].ToString()), 2);
                 transactionDetail.dea_cust_id = transactionID;
                 transactionDetail.added_date = DateTime.Now;
-                transactionDetail.added_by = u.id;
+                transactionDetail.added_by = u.Id;
 
                 //listitems
                 items it = new items();
                 it.amount = Convert.ToInt32(transactionDetail.qty);
-                it.productnumber = transactionDetail.product_id;
+                it.productnumber = (int)transactionDetail.product_id;
                 it.name = transactionDT.Rows[i][0].ToString();
                 it.price = transactionDetail.price;
                 it.total = it.amount * it.price;
@@ -499,12 +498,12 @@ namespace BIMStore.UI
                     if (transactionType == "Purchase")
                     {
                         //Increase the Product
-                        x = pDAL.IncreaseProduct(transactionDetail.product_id, transactionDetail.qty);
+                        x = pDAL.IncreaseProduct((int)transactionDetail.product_id, transactionDetail.qty);
                     }
                     else if (transactionType == "Sale")
                     {
                         //Decrease the Product Quntiyt
-                        x = pDAL.DecreaseProduct(transactionDetail.product_id, transactionDetail.qty);
+                        x = pDAL.DecreaseProduct((int)transactionDetail.product_id, transactionDetail.qty);
                     }
                 }
                 else
@@ -534,7 +533,7 @@ namespace BIMStore.UI
             return success;
         }
 
-        private bool FillPDF(tbl_companydata cd, transactionsBLL transaction, DeaCustBLL dc, List<items> lit)
+        private bool FillPDF(tbl_companydata cd, tbl_transactions transaction, tbl_dea_cust dc, List<items> lit)
         {
 
             bool pdfsuccess = false;
@@ -552,9 +551,9 @@ namespace BIMStore.UI
                 //fill taxes struct
                 pdf.taxes = tmptaxes;
                 //COMPANY ITEMS
-                pdf.companyname = cd.name;
-                pdf.slogan = cd.slogan;
-                pdf.logo = cd.logo;
+                pdf.company_name = cd.name;
+                pdf.company_slogan = cd.slogan;
+                pdf.company_logo = cd.logo;
                 //companyaddress
                 company comp = new company();
                 comp.address_city = cd.address_city;
@@ -564,7 +563,7 @@ namespace BIMStore.UI
                 comp.contact_mail = cd.contact_email;
                 comp.contact_phone = cd.contact_phone;
 
-                pdf.companyaddress = comp;
+                pdf.company_address = comp;
 
                 pdf.IBAN = cd.IBAN;
                 pdf.BIC = cd.BIC;
@@ -578,12 +577,12 @@ namespace BIMStore.UI
                 cust.address_postcode = dc.address_postcode;
                 cust.address_street = dc.address_street;
                 cust.form_of_address = dc.form_of_address;
-                pdf.customeraddress = cust;
+                pdf.customer_address = cust;
 
                 //fill product listitems
-                pdf.listitems = lit;
+                pdf.items_details = lit;
 
-                pdf.invoicenumber = transaction.id;
+                pdf.invoicenumber = transaction.Id;
                 //TODO
                 pdf.invoicedate = new DateTime(transaction.transaction_date.Year, transaction.transaction_date.Month, transaction.transaction_date.Day);
 
@@ -597,7 +596,7 @@ namespace BIMStore.UI
 
                 //Get the Username of Logged in user
                 string username = frmLogin.loggedIn;
-                userBLL u = uDAL.GetIDFromUsername(username);
+                tbl_users u = uDAL.GetIDFromUsername(username);
 
                 companyuser usr = new companyuser();
                 usr.first_name = u.first_name;

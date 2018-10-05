@@ -26,7 +26,7 @@ namespace BIMStore.UI
         }
 
         categoriesDAL cdal = new categoriesDAL();
-        productsBLL p = new productsBLL();
+        tbl_products p = new tbl_products();
         productsDAL pdal = new productsDAL();
         userDAL udal = new userDAL();
         private void frmProducts_Load(object sender, EventArgs e)
@@ -58,9 +58,9 @@ namespace BIMStore.UI
             p.added_date = DateTime.Now;
             //Getting username of logged in user
             String loggedUsr = frmLogin.loggedIn;
-            userBLL usr = udal.GetIDFromUsername(loggedUsr);
+            tbl_users usr = udal.GetIDFromUsername(loggedUsr);
 
-            p.added_by = usr.id;
+            p.added_by = usr.Id;
 
             //Create Boolean variable to check if the product is added successfully or not
             bool success = pdal.Insert(p);
@@ -114,7 +114,7 @@ namespace BIMStore.UI
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //Get the Values from UI or Product Form
-            p.id = int.Parse(txtProductID.Text);
+            p.Id = int.Parse(txtProductID.Text);
             p.name = txtName.Text;
             p.category = Convert.ToInt32(cmbCategory.SelectedValue);
             p.description = txtDescription.Text;
@@ -123,9 +123,9 @@ namespace BIMStore.UI
             p.hasqty = chbHasQTY.Checked;
             //Getting Username of logged in user for added by
             String loggedUsr = frmLogin.loggedIn;
-            userBLL usr = udal.GetIDFromUsername(loggedUsr);
+            tbl_users usr = udal.GetIDFromUsername(loggedUsr);
 
-            p.added_by = usr.id;
+            p.added_by = usr.Id;
 
             //Create a boolean variable to check if the product is updated or not
             bool success = pdal.Update(p);
@@ -149,7 +149,7 @@ namespace BIMStore.UI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //GEt the ID of the product to be deleted
-            p.id = int.Parse(txtProductID.Text);
+            p.Id = int.Parse(txtProductID.Text);
 
             //Create Bool VAriable to Check if the product is deleted or not
             bool success = pdal.Delete(p);

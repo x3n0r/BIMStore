@@ -45,15 +45,15 @@ namespace BIMStore.BLL
             public string last_name { get; set; }
         }
 
-        public string companyname { get; set; }
-        public string slogan { get; set; }
-        public string logo { get; set; }
-        public customer customeraddress { get; set; }
-        public company companyaddress { get; set; }
+        public string company_name { get; set; }
+        public string company_slogan { get; set; }
+        public string company_logo { get; set; }
+        public customer customer_address { get; set; }
+        public company company_address { get; set; }
         public companyuser user { get; set; }
         public int invoicenumber { get; set; }
         public DateTime invoicedate { get; set; }
-        public List<items> listitems { get; set; }
+        public List<items> items_details { get; set; }
         public decimal sum { get; set; }
         public decimal discount { get; set; }
         public decimal total { get; set; }

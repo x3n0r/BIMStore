@@ -25,7 +25,7 @@ namespace BIMStore.UI
             this.Close();
         }
 
-        CompanyDataBLL cd = new CompanyDataBLL();
+        tbl_companydata cd = new tbl_companydata();
         CompanyDataDAL dal = new CompanyDataDAL();
 
         private void frmCompanyData_Load(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace BIMStore.UI
             cd.address_city = txtCity.Text;
             cd.address_postcode = txtPostcode.Text;
             cd.contact_phone = txtTelno.Text;
-            cd.contact_mail = txteMail.Text;
+            cd.contact_email = txteMail.Text;
             cd.IBAN = txtIBAN.Text;
             cd.logo = txtLogo.Text;
             cd.BIC = txtBIC.Text;

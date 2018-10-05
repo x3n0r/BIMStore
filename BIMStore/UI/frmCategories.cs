@@ -24,7 +24,7 @@ namespace BIMStore.UI
             this.Close();
         }
 
-        categoriesBLL c = new categoriesBLL();
+        tbl_categories c = new tbl_categories();
         categoriesDAL dal = new categoriesDAL();
         userDAL udal = new userDAL();
 
@@ -42,9 +42,9 @@ namespace BIMStore.UI
 
             //Getting ID in Added by field
             string loggedUser = frmLogin.loggedIn;
-            userBLL usr = udal.GetIDFromUsername(loggedUser);
+            tbl_users usr = udal.GetIDFromUsername(loggedUser);
             //Passign the id of Logged in User in added by field
-            c.added_by = usr.id;
+            c.added_by = usr.Id;
 
             //Creating Boolean Method To insert data into database
             bool success = dal.Insert(c);
@@ -99,16 +99,16 @@ namespace BIMStore.UI
                 return;
             }
             //Get the Values from the CAtegory form
-            c.id = int.Parse(txtCategoryID.Text);
+            c.Id = int.Parse(txtCategoryID.Text);
             c.title = txtTitle.Text;
             c.description = txtDescription.Text;
             c.added_date = DateTime.Now;
             c.tax = Convert.ToDecimal(txtTax.Text);
             //Getting ID in Added by field
             string loggedUser = frmLogin.loggedIn;
-            userBLL usr = udal.GetIDFromUsername(loggedUser);
+            tbl_users usr = udal.GetIDFromUsername(loggedUser);
             //Passign the id of Logged in User in added by field
-            c.added_by = usr.id;
+            c.added_by = usr.Id;
 
             //Creating Boolean variable to update categories and check 
             bool success = dal.Update(c);
@@ -136,7 +136,7 @@ namespace BIMStore.UI
                 return;
             }
             //Get te ID of the Category Which we want to Delete
-            c.id = int.Parse(txtCategoryID.Text);
+            c.Id = int.Parse(txtCategoryID.Text);
 
             //Creating Boolean Variable to Delete The CAtegory
             bool success = dal.Delete(c);
