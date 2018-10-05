@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Setup1"
+"ProjectName" = "8:BIMStoreSetup"
 "LanguageId" = "3:1031"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1031"
@@ -15,50 +15,38 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_089BA3B7F0302515CDC5F27644FF54A7"
-        "OwnerKey" = "8:_97FAEE8D2D4E436A9E5A7DE70A0AEDF7"
+        "MsmKey" = "8:_5AA8A0BEF02C3CF54F1EB1BBCB82D748"
+        "OwnerKey" = "8:_B839C141624D4A12B1A718FF0D25B18D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1547D3017E3B4837807873002A6BC01F"
+        "MsmKey" = "8:_B839C141624D4A12B1A718FF0D25B18D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_30B8D378C6989575EE1FA05E35B353EA"
-        "OwnerKey" = "8:_97FAEE8D2D4E436A9E5A7DE70A0AEDF7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_71A94CBFE47144F18856C4CC57EE1BB8"
+        "MsmKey" = "8:_D6A9502E2D434C7E90CE2057586213C1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_97FAEE8D2D4E436A9E5A7DE70A0AEDF7"
+        "MsmKey" = "8:_DD77621707C441CBB7137A908229C174"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_97FAEE8D2D4E436A9E5A7DE70A0AEDF7"
+        "OwnerKey" = "8:_5AA8A0BEF02C3CF54F1EB1BBCB82D748"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_089BA3B7F0302515CDC5F27644FF54A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_30B8D378C6989575EE1FA05E35B353EA"
+        "OwnerKey" = "8:_B839C141624D4A12B1A718FF0D25B18D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -156,65 +144,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_089BA3B7F0302515CDC5F27644FF54A7"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_089BA3B7F0302515CDC5F27644FF54A7"
-                    {
-                    "Name" = "8:Microsoft.VisualBasic.PowerPacks.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.VisualBasic.PowerPacks.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_117BC093DD024A14B55E9DAF5D039F50"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1547D3017E3B4837807873002A6BC01F"
-            {
-            "SourcePath" = "8:..\\AnyStore\\AnyStore_log.ldf"
-            "TargetName" = "8:AnyStore_log.ldf"
-            "Tag" = "8:"
-            "Folder" = "8:_117BC093DD024A14B55E9DAF5D039F50"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_30B8D378C6989575EE1FA05E35B353EA"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5AA8A0BEF02C3CF54F1EB1BBCB82D748"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_30B8D378C6989575EE1FA05E35B353EA"
+                    "_5AA8A0BEF02C3CF54F1EB1BBCB82D748"
                     {
                     "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
@@ -238,10 +175,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_71A94CBFE47144F18856C4CC57EE1BB8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D6A9502E2D434C7E90CE2057586213C1"
             {
-            "SourcePath" = "8:..\\AnyStore\\AnyStore.mdf"
-            "TargetName" = "8:AnyStore.mdf"
+            "SourcePath" = "8:..\\BIMStore\\BIMStore_log.ldf"
+            "TargetName" = "8:BIMStore_log.ldf"
             "Tag" = "8:"
             "Folder" = "8:_117BC093DD024A14B55E9DAF5D039F50"
             "Condition" = "8:"
@@ -250,7 +187,27 @@
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
-            "Permanent" = "11:TRUE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DD77621707C441CBB7137A908229C174"
+            {
+            "SourcePath" = "8:..\\BIMStore\\BIMStore.mdf"
+            "TargetName" = "8:BIMStore.mdf"
+            "Tag" = "8:"
+            "Folder" = "8:_117BC093DD024A14B55E9DAF5D039F50"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
@@ -313,7 +270,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:AnyStore"
+        "ProductName" = "8:BIMStore"
         "ProductCode" = "8:{6296234B-CDBA-4774-82F4-431F67ACF334}"
         "PackageCode" = "8:{0A80466F-5095-42FC-9D78-187A20382C05}"
         "UpgradeCode" = "8:{113CBECA-C0A5-4CEF-991C-347E93EB34BD}"
@@ -437,13 +394,13 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C987017A1F3244879E96B4056DA331C7"
             {
-            "Name" = "8:AnyStore"
+            "Name" = "8:BIMStore"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_97FAEE8D2D4E436A9E5A7DE70A0AEDF7"
+            "Target" = "8:"
             "Folder" = "8:_D1B246DB098F4C219CEA50C54E126A93"
             "WorkingFolder" = "8:_117BC093DD024A14B55E9DAF5D039F50"
             "Icon" = "8:"
@@ -848,9 +805,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_97FAEE8D2D4E436A9E5A7DE70A0AEDF7"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B839C141624D4A12B1A718FF0D25B18D"
             {
-            "SourcePath" = "8:..\\AnyStore\\obj\\Debug\\AnyStore.exe"
+            "SourcePath" = "8:..\\BIMStore\\obj\\Release\\BIMStore.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_117BC093DD024A14B55E9DAF5D039F50"
@@ -868,9 +825,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release|Any CPU"
             "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{896E58FE-627C-4AB5-8C76-D5986E158A39}"
+            "OutputProjectGuid" = "8:{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
