@@ -10,6 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -29,6 +30,17 @@ namespace BIMStore
         {
             lblLoggedInUser.Text = frmLogin.loggedIn;
             LoadChart();
+            System.Timers.Timer aTimer = new System.Timers.Timer();
+            aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            aTimer.Interval = 5000;
+            aTimer.Enabled = true;
+        }
+
+        // Specify what you want to happen when the Elapsed event is raised.
+        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            //TODO switch MainChart
+            Console.WriteLine("Hello World!");
         }
 
         //Set a public static method to specify whether the form is purchase or sale

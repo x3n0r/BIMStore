@@ -53,17 +53,20 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pnlInventory = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStripTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
+            this.pnlInventory.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlFooter
             // 
             this.pnlFooter.BackColor = System.Drawing.Color.LightSeaGreen;
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 417);
+            this.pnlFooter.Location = new System.Drawing.Point(0, 619);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(1192, 34);
+            this.pnlFooter.Size = new System.Drawing.Size(1207, 34);
             this.pnlFooter.TabIndex = 0;
             // 
             // menuStripTop
@@ -80,7 +83,7 @@
             this.salesToolStripMenuItem});
             this.menuStripTop.Location = new System.Drawing.Point(0, 0);
             this.menuStripTop.Name = "menuStripTop";
-            this.menuStripTop.Size = new System.Drawing.Size(1192, 24);
+            this.menuStripTop.Size = new System.Drawing.Size(1207, 24);
             this.menuStripTop.TabIndex = 1;
             this.menuStripTop.Text = "menuStrip1";
             // 
@@ -207,9 +210,9 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.LightSeaGreen;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1158, 58);
+            this.panel3.Location = new System.Drawing.Point(1173, 58);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(34, 359);
+            this.panel3.Size = new System.Drawing.Size(34, 561);
             this.panel3.TabIndex = 18;
             // 
             // panel2
@@ -218,7 +221,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 58);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(34, 359);
+            this.panel2.Size = new System.Drawing.Size(34, 561);
             this.panel2.TabIndex = 17;
             // 
             // panel1
@@ -227,7 +230,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1192, 34);
+            this.panel1.Size = new System.Drawing.Size(1207, 34);
             this.panel1.TabIndex = 16;
             // 
             // Chart
@@ -245,15 +248,36 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.Chart.Series.Add(series1);
-            this.Chart.Size = new System.Drawing.Size(1112, 301);
+            this.Chart.Size = new System.Drawing.Size(1127, 503);
             this.Chart.TabIndex = 19;
+            this.Chart.TabStop = false;
             this.Chart.Text = "chart1";
+            // 
+            // pnlInventory
+            // 
+            this.pnlInventory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlInventory.Controls.Add(this.textBox1);
+            this.pnlInventory.Location = new System.Drawing.Point(46, 120);
+            this.pnlInventory.Name = "pnlInventory";
+            this.pnlInventory.Size = new System.Drawing.Size(1111, 483);
+            this.pnlInventory.TabIndex = 20;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(23, 19);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1063, 444);
+            this.textBox1.TabIndex = 0;
             // 
             // frmAdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1192, 451);
+            this.ClientSize = new System.Drawing.Size(1207, 653);
+            this.Controls.Add(this.pnlInventory);
             this.Controls.Add(this.Chart);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -275,6 +299,8 @@
             this.menuStripTop.ResumeLayout(false);
             this.menuStripTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
+            this.pnlInventory.ResumeLayout(false);
+            this.pnlInventory.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,6 +329,8 @@
         private System.Windows.Forms.ToolStripMenuItem bookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesToolStripMenuItem;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
+        private System.Windows.Forms.Panel pnlInventory;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
