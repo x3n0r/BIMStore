@@ -1,0 +1,11 @@
+Code First to an Existing Database
+https://docs.microsoft.com/en-us/ef/ef6/modeling/code-first/workflows/existing-database
+
+Migration with EF
+https://docs.microsoft.com/en-us/ef/ef6/modeling/code-first/migrations/index
+
+Additional Stuff EF 
+https://docs.microsoft.com/en-us/ef/ef6/modeling/code-first/migrations/existing-database
+
+Seed DB in code first migration
+http://www.entityframeworktutorial.net/code-first/seed-database-in-code-first.aspx
