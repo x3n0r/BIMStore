@@ -6,7 +6,7 @@ It implements more features
 ## Tools and Technologies Used
 1. C# programming language
 2. MS Express DB
-3. Linq to sql
+3. ~ ~Linq to sql~ ~ EntityFramework.6.1.3
 4. Microsoft Visual Studio 2017 Comunity (IDE)
 5. Git & Github (Version Control)
 
