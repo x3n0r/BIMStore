@@ -33,7 +33,41 @@ namespace BIMStore.DAL
                 MessageBox.Show(ex.Message);
             }
 
-            return compdata[0];
+            if (compdata.Count == 0)
+            {
+                return null;
+            } else {
+                return compdata[0];
+            }
+        }
+        #endregion
+        #region Insert Data in Database
+        public bool Insert(tbl_companydata cd)
+        {
+            bool isSuccess = false;
+            try
+            {
+
+                db.tbl_companydata.Add(cd);
+                db.SaveChanges();
+
+                //If the query is executed Successfully then the value to rows will be greater than 0 else it will be less than 0
+                if (cd.Id > 0)
+                {
+                    //Query Sucessfull
+                    isSuccess = true;
+                }
+                else
+                {
+                    //Query Failed
+                    isSuccess = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return isSuccess;
         }
         #endregion
         #region Update Method
@@ -48,7 +82,7 @@ namespace BIMStore.DAL
                           where compdata.Id == cd.Id
                           select compdata;
 
-                tbl_companydata myCompData = erg.SingleOrDefault();
+                tbl_companydata myCompData = erg.FirstOrDefault();
                 if (myCompData != null)
                 {
                     //Passing Value using cmd

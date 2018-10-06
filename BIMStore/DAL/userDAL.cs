@@ -76,7 +76,7 @@ namespace BIMStore.DAL
                           where user.Id == u.Id
                           select user;
 
-                tbl_users myUser = erg.SingleOrDefault();
+                tbl_users myUser = erg.FirstOrDefault();
                 if (myUser != null)
                 {
                     myUser.first_name = u.first_name;
@@ -116,7 +116,7 @@ namespace BIMStore.DAL
                           where user.Id == u.Id
                           select user;
 
-                db.tbl_users.Remove(erg.SingleOrDefault());
+                db.tbl_users.Remove(erg.FirstOrDefault());
                 db.SaveChanges();
 
                 isSuccess = true;
@@ -165,7 +165,7 @@ namespace BIMStore.DAL
                           select user;
 
 
-                tbl_users myUser = erg.SingleOrDefault();
+                tbl_users myUser = erg.FirstOrDefault();
                 if (myUser != null)
                 {
                     u.Id = myUser.Id;

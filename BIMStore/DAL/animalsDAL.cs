@@ -78,7 +78,7 @@ namespace BIMStore.DAL
                           where anm.Id == a.Id
                           select anm;
 
-                tbl_animals myAnm = erg.SingleOrDefault();
+                tbl_animals myAnm = erg.FirstOrDefault();
 
                 if (myAnm != null)
                 {
@@ -118,7 +118,7 @@ namespace BIMStore.DAL
                           where anm.Id == a.Id
                           select anm;
 
-                db.tbl_animals.Remove(erg.SingleOrDefault());
+                db.tbl_animals.Remove(erg.FirstOrDefault());
                 db.SaveChanges();
 
                 isSuccess = true;

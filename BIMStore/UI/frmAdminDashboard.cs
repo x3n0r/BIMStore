@@ -25,33 +25,38 @@ namespace BIMStore
 
         transactionDAL tDAL = new transactionDAL();
         DeaCustDAL dcDAL = new DeaCustDAL();
+        System.Timers.Timer aTimer = new System.Timers.Timer();
 
         private void frmAdminDashboard_Load(object sender, EventArgs e)
         {
             lblLoggedInUser.Text = frmLogin.loggedIn;
             LoadChart();
-            System.Timers.Timer aTimer = new System.Timers.Timer();
+            LoadInventoryWarning();
+
+            aTimer.SynchronizingObject = this;
             aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            aTimer.Interval = 5000;
+            aTimer.Interval = 10000;
             aTimer.Enabled = true;
         }
 
-        // Specify what you want to happen when the Elapsed event is raised.
-        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            //TODO switch MainChart
-            Console.WriteLine("Hello World!");
+            tabControl.SelectedIndex = (tabControl.SelectedIndex + 1 < tabControl.TabCount) ?
+                 tabControl.SelectedIndex + 1 : tabControl.SelectedIndex = 0;
         }
+        //bool change changethis = !changethis;
 
         //Set a public static method to specify whether the form is purchase or sale
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmUsers user = new frmUsers();
             user.Show();
         }
 
         private void frmAdminDashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
+            aTimer.Enabled = false;
             frmLogin login = new frmLogin();
             login.Show();
             this.Hide();
@@ -59,42 +64,49 @@ namespace BIMStore
 
         private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmCategories category = new frmCategories();
             category.Show();
         }
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmProducts product = new frmProducts();
             product.Show();
         }
 
         private void deealerAndCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmDeaCust DeaCust = new frmDeaCust();
             DeaCust.Show();
         }
 
         private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmTransactions transaction = new frmTransactions();
             transaction.Show();
         }
 
         private void inventoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmInventory inventory = new frmInventory();
             inventory.Show();
         }
 
         private void companydataToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmCompanyData companydata = new frmCompanyData();
             companydata.Show();
         }
 
         private void rectangleShape1_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmCompanyData companydata = new frmCompanyData();
             companydata.Show();
         }
@@ -102,6 +114,7 @@ namespace BIMStore
 
         private void lblbtnCompanyData_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmCompanyData companydata = new frmCompanyData();
             companydata.Show();
         }
@@ -109,6 +122,7 @@ namespace BIMStore
         private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //set value on transactionType static method
+            aTimer.Enabled = false;
             frmPurchaseAndSales purchase = new frmPurchaseAndSales();
             purchase.transactionType = "Purchase";
             purchase.Show();
@@ -117,6 +131,7 @@ namespace BIMStore
         private void saleToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //Set the value to transacionType method to sale
+            aTimer.Enabled = false;
             frmPurchaseAndSales sale = new frmPurchaseAndSales();
             sale.transactionType = "Sale";
             sale.Show();
@@ -124,7 +139,8 @@ namespace BIMStore
 
         private void bookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Set the value to transacionType method to sale
+            //Set the value to transacionType method to 
+            aTimer.Enabled = false;
             frmPurchaseAndSales sale = new frmPurchaseAndSales();
             sale.transactionType = "Booking";
             sale.Show();
@@ -133,8 +149,16 @@ namespace BIMStore
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            aTimer.Enabled = false;
             frmSales sales = new frmSales();
             sales.Show();
+        }
+        
+        private void LoadInventoryWarning()
+        {
+            productsDAL pdal = new productsDAL();
+            List<tbl_products> warningProducts = pdal.GetProductsByWarning(5);
+            dgvInventoryWarning.DataSource = warningProducts;
         }
 
         private void LoadChart()
@@ -223,6 +247,18 @@ namespace BIMStore
         private void frmAdminDashboard_Activated(object sender, EventArgs e)
         {
             LoadChart();
+            aTimer.Enabled = true;
         }
+
+        private void Chart_MouseEnter(object sender, EventArgs e)
+        {
+            aTimer.Enabled = false;
+        }
+
+        private void Chart_MouseLeave(object sender, EventArgs e)
+        {
+            aTimer.Enabled = true;
+        }
+        
     }
 }

@@ -101,7 +101,7 @@ namespace BIMStore.DAL
                           where prods.Id == p.Id
                           select prods;
 
-                tbl_products myProd = erg.SingleOrDefault();
+                tbl_products myProd = erg.FirstOrDefault();
                 if (myProd != null)
                 {
                     //Passing the values using parameters and cmd
@@ -140,7 +140,7 @@ namespace BIMStore.DAL
                           where prods.Id == p.Id
                           select prods;
 
-                db.tbl_products.Remove(erg.SingleOrDefault());
+                db.tbl_products.Remove(erg.FirstOrDefault());
                 db.SaveChanges();
 
                 isSuccess = true;
@@ -188,7 +188,7 @@ namespace BIMStore.DAL
                           where prods.name.Contains(keyword)
                           select prods;
 
-                tbl_products myProd = erg.SingleOrDefault();
+                tbl_products myProd = erg.FirstOrDefault();
                 if (myProd != null)
                 {
                     p.Id = myProd.Id;
@@ -218,7 +218,7 @@ namespace BIMStore.DAL
                           where prods.name.Contains(ProductName)
                           select prods;
 
-                tbl_products myProd = erg.SingleOrDefault();
+                tbl_products myProd = erg.FirstOrDefault();
                 if (myProd != null)
                 {
                     p.Id = myProd.Id;
@@ -246,7 +246,7 @@ namespace BIMStore.DAL
                           where prods.Id == productID
                           select prods;
 
-                tbl_products myProd = erg.SingleOrDefault();
+                tbl_products myProd = erg.FirstOrDefault();
                 if (myProd != null)
                 {
                     p.Id = myProd.Id;
@@ -280,7 +280,7 @@ namespace BIMStore.DAL
                           where prods.Id == ProductID
                           select prods;
 
-                tbl_products myProd = erg.SingleOrDefault();
+                tbl_products myProd = erg.FirstOrDefault();
                 //Lets check if the datatable has value or not
                 if (myProd != null)
                 {
@@ -309,7 +309,7 @@ namespace BIMStore.DAL
                           where prods.Id == ProductID
                           select prods;
 
-                tbl_products myProd = erg.SingleOrDefault();
+                tbl_products myProd = erg.FirstOrDefault();
                 if (myProd != null)
                 {
                     //Passing the VAlue trhough parameters
@@ -394,6 +394,29 @@ namespace BIMStore.DAL
                 prod = erg.ToList<tbl_products>();
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return prod;
+        }
+        #endregion
+        #region DISPLAY PRODUCTS BASED ON CATEGORIES
+        public List<tbl_products> GetProductsByWarning(int warningint)
+        {
+            //To hold the data from database 
+            List<tbl_products> prod = new List<tbl_products>();
+
+            try
+            {
+                var erg = from prods in db.tbl_products
+                          where prods.qty <= warningint &&
+                          prods.hasqty == true
+                          select prods;
+
+                prod = erg.ToList<tbl_products>();
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

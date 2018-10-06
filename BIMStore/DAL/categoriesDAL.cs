@@ -79,7 +79,7 @@ namespace BIMStore.DAL
                           where cat.Id == c.Id
                           select cat;
 
-                tbl_categories myCat = erg.SingleOrDefault();
+                tbl_categories myCat = erg.FirstOrDefault();
                 if (myCat != null)
                 {
                     //Passing Value using cmd
@@ -118,7 +118,7 @@ namespace BIMStore.DAL
                           where cat.Id == c.Id
                           select cat;
 
-                db.tbl_categories.Remove(erg.SingleOrDefault());
+                db.tbl_categories.Remove(erg.FirstOrDefault());
                 db.SaveChanges();
 
                 isSuccess = true;
@@ -164,7 +164,7 @@ namespace BIMStore.DAL
                 var erg = from cat in db.tbl_categories
                           where cat.Id == catid
                           select cat;
-                tbl_categories cats = erg.SingleOrDefault();
+                tbl_categories cats = erg.FirstOrDefault();
                 //If we have values on myDeaCust we need to save it
                 if (cats != null)
                 {

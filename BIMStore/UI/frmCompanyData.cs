@@ -32,23 +32,30 @@ namespace BIMStore.UI
         {
             //Here write the code to display all the categries in DAta Grid View
             tbl_companydata dt = dal.Select();
-            //dgvCategories.DataSource = dt;
-            txtCompanyDataID.Text = dt.Id.ToString();
-            txtName.Text = dt.name;
-            txtSlogan.Text = dt.slogan;
-            txtStreet.Text = dt.address_street;
-            txtCity.Text = dt.address_city;
-            txtPostcode.Text = dt.address_postcode;
-            txtCountry.Text = dt.address_country;
-            txtTelno.Text = dt.contact_phone;
-            txteMail.Text = dt.contact_email;
-            txtIBAN.Text = dt.IBAN;
-            txtLogo.Text = dt.logo;
-            if (txtLogo.Text != "")
+            if (dt != null)
             {
-                LoadImage(txtLogo.Text);
+                //dgvCategories.DataSource = dt;
+                txtCompanyDataID.Text = dt.Id.ToString();
+                txtName.Text = dt.name;
+                txtSlogan.Text = dt.slogan;
+                txtStreet.Text = dt.address_street;
+                txtCity.Text = dt.address_city;
+                txtPostcode.Text = dt.address_postcode;
+                txtCountry.Text = dt.address_country;
+                txtTelno.Text = dt.contact_phone;
+                txteMail.Text = dt.contact_email;
+                txtIBAN.Text = dt.IBAN;
+                txtLogo.Text = dt.logo;
+                if (txtLogo.Text != "")
+                {
+                    LoadImage(txtLogo.Text);
+                }
+                txtBIC.Text = dt.BIC;
+            } else
+            {
+                btnAdd.Visible = true;
+                btnUpdate.Visible = false;
             }
-            txtBIC.Text = dt.BIC;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -113,6 +120,35 @@ namespace BIMStore.UI
         private void txtPostcode_KeyPress(object sender, KeyPressEventArgs e)
         {
             helperDAL.txtBoxCheckNumber(e, txtPostcode);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            tbl_companydata dt = new tbl_companydata();
+            dt.address_city = txtCity.Text;
+            dt.address_country = txtCountry.Text;
+            dt.address_postcode = txtPostcode.Text;
+            dt.address_street = txtStreet.Text;
+            dt.BIC = txtBIC.Text;
+            dt.contact_email = txteMail.Text;
+            dt.contact_phone = txtTelno.Text;
+            dt.IBAN= txtIBAN.Text;
+            dt.logo = txtLogo.Text;
+            dt.name = txtName.Text;
+            dt.slogan = txtSlogan.Text;
+            bool success = dal.Insert(dt);
+            if (success == true)
+            {
+                //CAtegory updated Successfully 
+                MessageBox.Show("Company Data Added Successfully");
+                btnAdd.Visible = false;
+                btnUpdate.Visible = true;
+            }
+            else
+            {
+                //FAiled to Update Category
+                MessageBox.Show("Failed to Add Company Data");
+            }
         }
     }
 }

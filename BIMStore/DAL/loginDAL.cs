@@ -40,7 +40,7 @@ namespace BIMStore.DAL
                 //    today_listview.Items.Add(item);
                 //}
 
-                tbl_users myUser = erg.SingleOrDefault();
+                tbl_users myUser = erg.FirstOrDefault();
                 if (myUser != null)
                 {
                     u.user_type = myUser.user_type;

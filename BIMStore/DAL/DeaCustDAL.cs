@@ -79,7 +79,7 @@ namespace BIMStore.DAL
                           where deacust.Id == dc.Id
                           select deacust;
 
-                tbl_dea_cust myDeaCust = erg.SingleOrDefault();
+                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
                 if (myDeaCust != null)
                 {
                     //Passing the values through parameters
@@ -119,7 +119,7 @@ namespace BIMStore.DAL
                           where deacust.Id == dc.Id
                           select deacust;
 
-                db.tbl_dea_cust.Add(erg.SingleOrDefault());
+                db.tbl_dea_cust.Add(erg.FirstOrDefault());
                 db.SaveChanges();
 
                 isSuccess = true;
@@ -211,13 +211,14 @@ namespace BIMStore.DAL
 
             try
             {
+                string temp = dict[deacustnothing];
                 var erg = from deacusts in db.tbl_dea_cust
                           where ( deacusts.first_name.Contains(keyword) ||
                                 deacusts.last_name.Contains(keyword) ) &&
-                                deacusts.type.Contains(dict[deacustnothing])                       
+                                deacusts.type.Contains(temp)                       
                           select deacusts;
 
-                tbl_dea_cust myDeaCust = erg.SingleOrDefault();
+                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
                 //If we have values on myDeaCust we need to save it in dealerCustomer BLL
                 if (myDeaCust != null)
                 {
@@ -255,7 +256,7 @@ namespace BIMStore.DAL
                           select deacusts;
 
 
-                tbl_dea_cust myDeaCust = erg.SingleOrDefault();
+                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
                 if (myDeaCust != null)
                 {
                     dc.Id = myDeaCust.Id;
@@ -292,7 +293,7 @@ namespace BIMStore.DAL
                           select deacusts;
 
 
-                tbl_dea_cust myDeaCust = erg.SingleOrDefault();
+                tbl_dea_cust myDeaCust = erg.FirstOrDefault();
                 if (myDeaCust != null)
                 {
                     dc.Id = myDeaCust.Id;

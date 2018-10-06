@@ -62,7 +62,7 @@ namespace BIMStore.DAL
                           where trans.Id == TransID && trans.kontobez == "S"
                           select trans;
 
-                db.tbl_transactions.Remove(erg.SingleOrDefault());
+                db.tbl_transactions.Remove(erg.FirstOrDefault());
                 db.SaveChanges();
 
                 isSuccess = true;
@@ -130,7 +130,7 @@ namespace BIMStore.DAL
                 var erg = from tran in db.tbl_transactions
                           where tran.Id == transID
                           select tran;
-                tbl_transactions tra = erg.SingleOrDefault();
+                tbl_transactions tra = erg.FirstOrDefault();
                 if ( tra != null )
                 {
                     trans.Id = tra.Id;
@@ -235,7 +235,7 @@ namespace BIMStore.DAL
                           tran.grandTotal == GrandTotal &&
                           tran.kontobez == "S"
                           select tran;
-                trans = erg.SingleOrDefault();
+                trans = erg.FirstOrDefault();
             }
             catch (Exception ex)
             {
