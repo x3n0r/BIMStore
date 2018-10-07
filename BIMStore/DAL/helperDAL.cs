@@ -59,16 +59,13 @@ namespace BIMStore.DAL
         public static void txtBoxCheckDecimal(KeyPressEventArgs e,TextBox txtBox)
         {
             if (!char.IsControl(e.KeyChar)
-    && !char.IsDigit(e.KeyChar)
-    //&& e.KeyChar != '.' && e.KeyChar != ',')
-    && e.KeyChar != ',')
+                && !char.IsDigit(e.KeyChar)
+                && e.KeyChar != ',')
             {
                 e.Handled = true;
             }
 
-            //check if '.' , ',' pressed
             char sepratorChar = 's';
-            //if (e.KeyChar == '.' || e.KeyChar == ',')
             if (e.KeyChar == ',')
             {
                 // check if it's in the beginning of text not accept

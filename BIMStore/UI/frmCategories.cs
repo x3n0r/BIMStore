@@ -192,5 +192,13 @@ namespace BIMStore.UI
         {
             helperDAL.txtBoxCheckDecimal(e, txtTax);
         }
+
+        private void frmCategories_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
     }
 }

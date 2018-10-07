@@ -49,6 +49,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.chbHasQTY = new System.Windows.Forms.CheckBox();
+            this.txtwarningqty = new System.Windows.Forms.TextBox();
+            this.lblwarningqty = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -62,7 +64,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(836, 33);
+            this.panel1.Size = new System.Drawing.Size(843, 33);
             this.panel1.TabIndex = 2;
             // 
             // pictureBoxClose
@@ -224,7 +226,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.ForestGreen;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(266, 358);
+            this.btnAdd.Location = new System.Drawing.Point(265, 355);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(119, 50);
             this.btnAdd.TabIndex = 6;
@@ -237,7 +239,7 @@
             this.btnUpdate.BackColor = System.Drawing.Color.Chartreuse;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(395, 358);
+            this.btnUpdate.Location = new System.Drawing.Point(394, 355);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(119, 50);
             this.btnUpdate.TabIndex = 7;
@@ -251,7 +253,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(524, 358);
+            this.btnDelete.Location = new System.Drawing.Point(523, 355);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(119, 50);
             this.btnDelete.TabIndex = 8;
@@ -270,13 +272,34 @@
             this.chbHasQTY.TabIndex = 5;
             this.chbHasQTY.Text = "Has Quantity";
             this.chbHasQTY.UseVisualStyleBackColor = true;
+            this.chbHasQTY.CheckedChanged += new System.EventHandler(this.chbHasQTY_CheckedChanged);
+            // 
+            // txtwarningqty
+            // 
+            this.txtwarningqty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtwarningqty.Location = new System.Drawing.Point(120, 324);
+            this.txtwarningqty.Name = "txtwarningqty";
+            this.txtwarningqty.Size = new System.Drawing.Size(224, 25);
+            this.txtwarningqty.TabIndex = 100;
+            // 
+            // lblwarningqty
+            // 
+            this.lblwarningqty.AutoSize = true;
+            this.lblwarningqty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblwarningqty.Location = new System.Drawing.Point(12, 332);
+            this.lblwarningqty.Name = "lblwarningqty";
+            this.lblwarningqty.Size = new System.Drawing.Size(72, 17);
+            this.lblwarningqty.TabIndex = 102;
+            this.lblwarningqty.Text = "warningqty";
             // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(836, 420);
+            this.ClientSize = new System.Drawing.Size(843, 415);
+            this.Controls.Add(this.lblwarningqty);
+            this.Controls.Add(this.txtwarningqty);
             this.Controls.Add(this.chbHasQTY);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -296,10 +319,12 @@
             this.Controls.Add(this.lblProductID);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmProducts";
             this.Load += new System.EventHandler(this.frmProducts_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProducts_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
@@ -331,5 +356,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.CheckBox chbHasQTY;
+        private System.Windows.Forms.TextBox txtwarningqty;
+        private System.Windows.Forms.Label lblwarningqty;
     }
 }

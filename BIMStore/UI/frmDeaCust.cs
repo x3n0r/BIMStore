@@ -250,5 +250,13 @@ namespace BIMStore.UI
         {
             helperDAL.txtBoxCheckNumber(e, txtPostcode);
         }
+
+        private void frmDeaCust_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -104,7 +104,7 @@
             this.lblTransactionType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTransactionType.Location = new System.Drawing.Point(10, 43);
             this.lblTransactionType.Name = "lblTransactionType";
-            this.lblTransactionType.Size = new System.Drawing.Size(107, 17);
+            this.lblTransactionType.Size = new System.Drawing.Size(105, 17);
             this.lblTransactionType.TabIndex = 4;
             this.lblTransactionType.Text = "Transaction Type";
             // 
@@ -308,10 +308,12 @@
             this.Controls.Add(this.dgvTransactions);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmTransactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transactions";
             this.Load += new System.EventHandler(this.frmTransactions_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTransactions_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

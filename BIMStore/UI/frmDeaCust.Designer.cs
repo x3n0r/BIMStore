@@ -94,7 +94,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(335, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(181, 21);
+            this.lblTop.Size = new System.Drawing.Size(180, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "DEALER and CUSTOMER";
             // 
@@ -114,7 +114,7 @@
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(24, 90);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(36, 17);
+            this.lblType.Size = new System.Drawing.Size(35, 17);
             this.lblType.TabIndex = 5;
             this.lblType.Text = "Type";
             // 
@@ -442,10 +442,12 @@
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmDeaCust";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDeaCust";
             this.Load += new System.EventHandler(this.frmDeaCust_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDeaCust_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

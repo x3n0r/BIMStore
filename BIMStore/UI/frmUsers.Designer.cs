@@ -283,7 +283,7 @@
             this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserType.Location = new System.Drawing.Point(12, 400);
             this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(67, 17);
+            this.lblUserType.Size = new System.Drawing.Size(66, 17);
             this.lblUserType.TabIndex = 17;
             this.lblUserType.Text = "User Type";
             // 
@@ -416,10 +416,12 @@
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Users";
             this.Load += new System.EventHandler(this.frmUsers_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsers_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

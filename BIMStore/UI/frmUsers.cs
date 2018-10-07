@@ -207,5 +207,13 @@ namespace BIMStore.UI
         {
             helperDAL.check_buttons(txtUserID, btnAdd, btnDelete, btnUpdate);
         }
+
+        private void frmUsers_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
     }
 }

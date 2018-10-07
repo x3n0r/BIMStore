@@ -195,7 +195,7 @@ namespace BIMStore.UI
             }
 
             //Search the product and display on respective textboxes
-            tbl_products p = pDAL.GetProductsForTransaction(keyword);
+            tbl_products p = pDAL.GetProductIDFromName(keyword);
 
             //Set the values on textboxes based on p object
             txtProductName.Text = p.name;
@@ -641,6 +641,14 @@ namespace BIMStore.UI
         private void txtPaidAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             helperDAL.txtBoxCheckDecimal(e, txtPaidAmount);
+        }
+
+        private void frmPurchaseAndSales_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
         }
     }
 }

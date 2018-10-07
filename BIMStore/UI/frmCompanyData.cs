@@ -150,5 +150,13 @@ namespace BIMStore.UI
                 MessageBox.Show("Failed to Add Company Data");
             }
         }
+
+        private void frmCompanyData_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
     }
 }

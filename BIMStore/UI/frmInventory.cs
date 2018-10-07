@@ -61,5 +61,13 @@ namespace BIMStore.UI
             List<tbl_products> prod = pdal.SelectHasQTY();
             dgvProducts.DataSource = prod;
         }
+
+        private void frmInventory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -146,10 +146,12 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblDateTo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmSales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase and Sale";
             this.Load += new System.EventHandler(this.frmSales_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmSales_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

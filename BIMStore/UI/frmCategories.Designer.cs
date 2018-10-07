@@ -79,7 +79,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(398, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(100, 21);
+            this.lblTop.Size = new System.Drawing.Size(99, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "CATEGORIES";
             // 
@@ -230,7 +230,7 @@
             this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(12, 132);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(28, 17);
+            this.lblTax.Size = new System.Drawing.Size(27, 17);
             this.lblTax.TabIndex = 14;
             this.lblTax.Text = "Tax";
             // 
@@ -256,10 +256,12 @@
             this.Controls.Add(this.lblCategoryID);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmCategories";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCategories";
             this.Load += new System.EventHandler(this.frmCategories_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCategories_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

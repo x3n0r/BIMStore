@@ -326,10 +326,12 @@
             this.Controls.Add(this.lblAnimalID);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmAnimals";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAnimals";
             this.Load += new System.EventHandler(this.frmAnimals_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAnimals_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

@@ -113,6 +113,7 @@ namespace BIMStore.DAL
                     myProd.added_date = p.added_date;
                     myProd.added_by = p.added_by;
                     myProd.hasqty = p.hasqty;
+                    myProd.warningqty = p.warningqty;
                     //myProd.Id = p.id;
                     db.SaveChanges();
                 }
@@ -176,36 +177,6 @@ namespace BIMStore.DAL
             return prod;
         }
         #endregion
-        #region METHOD TO SEARCH PRODUCT IN TRANSACTION MODULE
-        public tbl_products GetProductsForTransaction(string keyword)
-        {
-            //Create an object of tbl_products and return it
-            tbl_products p = new tbl_products();
-
-            try
-            {
-                var erg = from prods in db.tbl_products
-                          where prods.name.Contains(keyword)
-                          select prods;
-
-                tbl_products myProd = erg.FirstOrDefault();
-                if (myProd != null)
-                {
-                    p.Id = myProd.Id;
-                    p.name = myProd.name;
-                    p.rate = decimal.Parse(myProd.rate.ToString());
-                    p.qty = decimal.Parse(myProd.qty.ToString());
-                    p.hasqty = (bool)myProd.hasqty;
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            return p;
-        }
-        #endregion
         #region METHOD TO GET PRODUCT ID BASED ON PRODUCT NAME
         public tbl_products GetProductIDFromName(string ProductName)
         {
@@ -222,8 +193,12 @@ namespace BIMStore.DAL
                 if (myProd != null)
                 {
                     p.Id = myProd.Id;
+                    p.name = myProd.name;
+                    p.rate = decimal.Parse(myProd.rate.ToString());
+                    p.qty = decimal.Parse(myProd.qty.ToString());
                     p.hasqty = (bool)myProd.hasqty;
                     p.category = (int)myProd.category;
+                    p.warningqty = myProd.warningqty;
                 }
             }
             catch (Exception ex)
@@ -257,6 +232,7 @@ namespace BIMStore.DAL
                     p.rate = myProd.rate;
                     p.qty = myProd.qty;
                     p.name = myProd.name;
+                    p.warningqty = myProd.warningqty;
                         
                 }
             }
@@ -401,26 +377,25 @@ namespace BIMStore.DAL
             return prod;
         }
         #endregion
-        #region DISPLAY PRODUCTS BASED ON CATEGORIES
-        public List<tbl_products> GetProductsByWarning(int warningint)
+        #region DISPLAY PRODUCTS BASED ON Warning
+        public List<tbl_products> GetProductsByWarning()
         {
             //To hold the data from database 
             List<tbl_products> prod = new List<tbl_products>();
-
             try
             {
                 var erg = from prods in db.tbl_products
-                          where prods.qty <= warningint &&
+                          where (prods.qty <= prods.warningqty && prods.warningqty != 0 ) &&
                           prods.hasqty == true
                           select prods;
 
                 prod = erg.ToList<tbl_products>();
+    
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
             return prod;
         }
         #endregion

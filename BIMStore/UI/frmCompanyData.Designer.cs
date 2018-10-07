@@ -393,7 +393,7 @@
             this.btnAdd.Location = new System.Drawing.Point(96, 362);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(130, 44);
-            this.btnAdd.TabIndex = 100;
+            this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Visible = false;
@@ -432,10 +432,12 @@
             this.Controls.Add(this.lblCompanyDataID);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmCompanyData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCategories";
             this.Load += new System.EventHandler(this.frmCompanyData_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCompanyData_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

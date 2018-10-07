@@ -26,5 +26,7 @@ namespace BIMStore.BLL
         public int? added_by { get; set; }
 
         public bool hasqty { get; set; }
+
+        public int warningqty { get; set; }
     }
 }

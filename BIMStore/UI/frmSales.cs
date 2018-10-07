@@ -117,5 +117,12 @@ namespace BIMStore.UI
 
         }
 
+        private void frmSales_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
     }
 }

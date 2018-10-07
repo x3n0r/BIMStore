@@ -1,5 +1,6 @@
 ﻿using BIMStore.BLL;
 using BIMStore.DAL;
+using BIMStore.Properties;
 using BIMStore.UI;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,8 @@ namespace BIMStore
             lblLoggedInUser.Text = frmLogin.loggedIn;
             LoadChart();
             LoadInventoryWarning();
+
+            setupTabControlLeaveEnter();
 
             aTimer.SynchronizingObject = this;
             aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
@@ -153,11 +156,19 @@ namespace BIMStore
             frmSales sales = new frmSales();
             sales.Show();
         }
-        
+
+        public class asdf
+        {
+            public Icon newicon { get; set; }
+            public tbl_products prods { get; set; }
+        }
+
         private void LoadInventoryWarning()
         {
+            pbwarning.Image = Resources.warning.ToBitmap();
+
             productsDAL pdal = new productsDAL();
-            List<tbl_products> warningProducts = pdal.GetProductsByWarning(5);
+            List<tbl_products> warningProducts = pdal.GetProductsByWarning();
             dgvInventoryWarning.DataSource = warningProducts;
         }
 
@@ -247,18 +258,32 @@ namespace BIMStore
         private void frmAdminDashboard_Activated(object sender, EventArgs e)
         {
             LoadChart();
+            LoadInventoryWarning();
             aTimer.Enabled = true;
         }
 
-        private void Chart_MouseEnter(object sender, EventArgs e)
+        private void setupTabControlLeaveEnter ()
+        {
+            tabControl.MouseEnter += new EventHandler(control_MouseEnter);
+            tabControl.MouseEnter += new EventHandler(control_MouseLeave);
+            foreach (TabPage page in tabControl.TabPages)
+            {
+                foreach (Control control in page.Controls)
+                {
+                    control.MouseEnter += new EventHandler(control_MouseEnter);
+                    control.MouseLeave += new EventHandler(control_MouseLeave);
+                }
+            }
+        }
+
+        private void control_MouseEnter(object sender, EventArgs e)
         {
             aTimer.Enabled = false;
         }
 
-        private void Chart_MouseLeave(object sender, EventArgs e)
+        private void control_MouseLeave(object sender, EventArgs e)
         {
             aTimer.Enabled = true;
         }
-        
     }
 }

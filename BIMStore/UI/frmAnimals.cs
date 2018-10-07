@@ -180,5 +180,13 @@ namespace BIMStore.UI
         {
             helperDAL.check_buttons(txtAnimalID, btnAdd, btnDelete, btnUpdate);
         }
+
+        private void frmAnimals_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
     }
 }

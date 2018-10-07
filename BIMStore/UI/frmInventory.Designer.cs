@@ -69,7 +69,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(369, 7);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(95, 21);
+            this.lblTop.Size = new System.Drawing.Size(94, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "INVENTORY";
             // 
@@ -128,10 +128,12 @@
             this.Controls.Add(this.dgvProducts);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "frmInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInventory";
             this.Load += new System.EventHandler(this.frmInventory_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmInventory_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();

@@ -54,6 +54,13 @@ namespace BIMStore.UI
             p.rate = decimal.Parse(txtRate.Text);
             p.qty = 0;
             p.hasqty = chbHasQTY.Checked;
+            if (chbHasQTY.Checked && txtwarningqty.Text != "")
+            {
+                p.warningqty = int.Parse(txtwarningqty.Text);
+            } else
+            {
+                p.warningqty = 0;
+            }
             
             p.added_date = DateTime.Now;
             //Getting username of logged in user
@@ -89,6 +96,7 @@ namespace BIMStore.UI
             txtRate.Text = "";
             txtSearch.Text = "";
             chbHasQTY.Checked = true;
+            txtwarningqty.Text = "";
         }
 
         private void dgvProducts_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -104,9 +112,11 @@ namespace BIMStore.UI
             if (dgvProducts.Rows[rowIndex].Cells[8].Value.ToString() == "True" )
             {
                 chbHasQTY.Checked = true;
+                txtwarningqty.Text = dgvProducts.Rows[rowIndex].Cells[9].Value.ToString();
             } else
             {
                 chbHasQTY.Checked = false;
+                txtwarningqty.Text = "";
             }
 
         }
@@ -121,6 +131,14 @@ namespace BIMStore.UI
             p.rate = decimal.Parse(txtRate.Text);
             p.added_date = DateTime.Now;
             p.hasqty = chbHasQTY.Checked;
+            if (chbHasQTY.Checked && txtwarningqty.Text != "")
+            {
+                p.warningqty = int.Parse(txtwarningqty.Text);
+            }
+            else
+            {
+                p.warningqty = 0;
+            }
             //Getting Username of logged in user for added by
             String loggedUsr = frmLogin.loggedIn;
             tbl_users usr = udal.GetIDFromUsername(loggedUsr);
@@ -205,5 +223,18 @@ namespace BIMStore.UI
             helperDAL.txtBoxCheckDecimal(e, txtRate);
         }
 
+        private void frmProducts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
+
+        private void chbHasQTY_CheckedChanged(object sender, EventArgs e)
+        {
+            txtwarningqty.Visible = !txtwarningqty.Visible;
+            lblwarningqty.Visible = !lblwarningqty.Visible;
+        }
     }
 }

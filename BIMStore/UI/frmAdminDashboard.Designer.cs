@@ -56,12 +56,14 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pbwarning = new System.Windows.Forms.PictureBox();
             this.dgvInventoryWarning = new System.Windows.Forms.DataGridView();
             this.menuStripTop.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbwarning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryWarning)).BeginInit();
             this.SuspendLayout();
             // 
@@ -280,11 +282,10 @@
             this.Chart.TabIndex = 19;
             this.Chart.TabStop = false;
             this.Chart.Text = "chart1";
-            this.Chart.MouseEnter += new System.EventHandler(this.Chart_MouseEnter);
-            this.Chart.MouseLeave += new System.EventHandler(this.Chart_MouseLeave);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.pbwarning);
             this.tabPage2.Controls.Add(this.dgvInventoryWarning);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -293,16 +294,25 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // pbwarning
+            // 
+            this.pbwarning.Location = new System.Drawing.Point(6, 6);
+            this.pbwarning.Name = "pbwarning";
+            this.pbwarning.Size = new System.Drawing.Size(69, 69);
+            this.pbwarning.TabIndex = 3;
+            this.pbwarning.TabStop = false;
+            // 
             // dgvInventoryWarning
             // 
             this.dgvInventoryWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvInventoryWarning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventoryWarning.Location = new System.Drawing.Point(6, 6);
+            this.dgvInventoryWarning.Location = new System.Drawing.Point(6, 81);
             this.dgvInventoryWarning.Name = "dgvInventoryWarning";
-            this.dgvInventoryWarning.Size = new System.Drawing.Size(1101, 456);
-            this.dgvInventoryWarning.TabIndex = 0;
+            this.dgvInventoryWarning.ReadOnly = true;
+            this.dgvInventoryWarning.Size = new System.Drawing.Size(1101, 381);
+            this.dgvInventoryWarning.TabIndex = 1;
             // 
             // frmAdminDashboard
             // 
@@ -333,6 +343,7 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbwarning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryWarning)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -366,6 +377,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dgvInventoryWarning;
+        private System.Windows.Forms.PictureBox pbwarning;
     }
 }
 

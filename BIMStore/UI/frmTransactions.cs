@@ -203,5 +203,13 @@ namespace BIMStore.UI
             purchase.Show();
             purchase.LoadBooking(Convert.ToInt32(dgvTransactions.Rows[rowIndex].Cells[0].Value));
         }
+
+        private void frmTransactions_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.X)
+            {
+                this.Close();
+            }
+        }
     }
 }

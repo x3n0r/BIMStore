@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201810050955480_v1.Designer.cs">
       <DependentUpon>201810050955480_v1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810071820251_tblproducts_warningqty.cs" />
+    <Compile Include="Migrations\201810071820251_tblproducts_warningqty.Designer.cs">
+      <DependentUpon>201810071820251_tblproducts_warningqty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="UI\frmAnimals.cs">
       <SubType>Form</SubType>
@@ -188,6 +192,9 @@
     <EmbeddedResource Include="Migrations\201810050955480_v1.resx">
       <DependentUpon>201810050955480_v1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810071820251_tblproducts_warningqty.resx">
+      <DependentUpon>201810071820251_tblproducts_warningqty.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmAdminDashboard.resx">
       <DependentUpon>frmAdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,7 +274,13 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\alert.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="resources\system_file_manager.ico" />
+    <None Include="resources\warning.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
