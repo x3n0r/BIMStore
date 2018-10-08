@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BIMStore.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,30 @@ namespace BIMStore.DAL
             {
                 e.Handled = true;
             }
+        }
+
+        public static List<tbl_transactions_view> convertTransactionsTableToView(List<tbl_transactions> transactions)
+        {
+            List<tbl_transactions_view> transviews = new List<tbl_transactions_view>();
+            foreach (tbl_transactions tran in transactions)
+            {
+                tbl_transactions_view tranview = new tbl_transactions_view();
+                tranview = (tbl_transactions_view)tran;
+                transviews.Add(tranview);
+            }
+            return transviews;
+        }
+
+        public static List<tbl_products_view> convertProductsTableToView(List<tbl_products> products)
+        {
+            List<tbl_products_view> prodsviews = new List<tbl_products_view>();
+            foreach (tbl_products prod in products)
+            {
+                tbl_products_view prodview = new tbl_products_view();
+                prodview = (tbl_products_view)prod;
+                prodsviews.Add(prodview);
+            }
+            return prodsviews;
         }
 
         public static void txtBoxCheckDecimal(KeyPressEventArgs e,TextBox txtBox)

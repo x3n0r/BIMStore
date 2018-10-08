@@ -195,6 +195,7 @@
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Location = new System.Drawing.Point(397, 100);
             this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.ReadOnly = true;
             this.dgvProducts.Size = new System.Drawing.Size(418, 227);
             this.dgvProducts.TabIndex = 99;
             this.dgvProducts.TabStop = false;
@@ -229,7 +230,7 @@
             this.btnAdd.Location = new System.Drawing.Point(265, 355);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(119, 50);
-            this.btnAdd.TabIndex = 6;
+            this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -242,7 +243,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(394, 355);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(119, 50);
-            this.btnUpdate.TabIndex = 7;
+            this.btnUpdate.TabIndex = 8;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -256,7 +257,7 @@
             this.btnDelete.Location = new System.Drawing.Point(523, 355);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(119, 50);
-            this.btnDelete.TabIndex = 8;
+            this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -280,7 +281,7 @@
             this.txtwarningqty.Location = new System.Drawing.Point(120, 324);
             this.txtwarningqty.Name = "txtwarningqty";
             this.txtwarningqty.Size = new System.Drawing.Size(224, 25);
-            this.txtwarningqty.TabIndex = 100;
+            this.txtwarningqty.TabIndex = 6;
             // 
             // lblwarningqty
             // 

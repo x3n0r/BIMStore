@@ -79,6 +79,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\tbl_prodcuts_view.cs" />
+    <Compile Include="BLL\tbl_transactions_view.cs" />
     <Compile Include="BLL\PDFBLL.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="DAL\animalsDAL.cs" />
@@ -274,9 +276,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\alert.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Content Include="resources\system_file_manager.ico" />
     <None Include="resources\warning.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -58,6 +58,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pbwarning = new System.Windows.Forms.PictureBox();
             this.dgvInventoryWarning = new System.Windows.Forms.DataGridView();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripTop.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -87,7 +88,8 @@
             this.inventoryToolStripMenuItem,
             this.paymentToolStripMenuItem,
             this.transactionToolStripMenuItem,
-            this.salesToolStripMenuItem});
+            this.salesToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.menuStripTop.Location = new System.Drawing.Point(0, 0);
             this.menuStripTop.Name = "menuStripTop";
             this.menuStripTop.Size = new System.Drawing.Size(1207, 24);
@@ -170,7 +172,7 @@
             // transactionToolStripMenuItem
             // 
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.transactionToolStripMenuItem.Text = "Transaction";
             this.transactionToolStripMenuItem.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
             // 
@@ -209,7 +211,7 @@
             this.lblSHead.ForeColor = System.Drawing.Color.MediumSeaGreen;
             this.lblSHead.Location = new System.Drawing.Point(40, 61);
             this.lblSHead.Name = "lblSHead";
-            this.lblSHead.Size = new System.Drawing.Size(311, 25);
+            this.lblSHead.Size = new System.Drawing.Size(310, 25);
             this.lblSHead.TabIndex = 6;
             this.lblSHead.Text = "Billing and Inventory Management";
             // 
@@ -314,6 +316,13 @@
             this.dgvInventoryWarning.Size = new System.Drawing.Size(1101, 381);
             this.dgvInventoryWarning.TabIndex = 1;
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // frmAdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,6 +344,7 @@
             this.Text = "Admin Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmAdminDashboard_Activated);
+            this.Deactivate += new System.EventHandler(this.frmAdminDashboard_Deactivate);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAdminDashboard_FormClosed);
             this.Load += new System.EventHandler(this.frmAdminDashboard_Load);
             this.menuStripTop.ResumeLayout(false);
@@ -378,6 +388,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dgvInventoryWarning;
         private System.Windows.Forms.PictureBox pbwarning;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

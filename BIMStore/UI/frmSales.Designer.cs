@@ -90,7 +90,7 @@
             this.lblDateTo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTo.Location = new System.Drawing.Point(308, 45);
             this.lblDateTo.Name = "lblDateTo";
-            this.lblDateTo.Size = new System.Drawing.Size(53, 17);
+            this.lblDateTo.Size = new System.Drawing.Size(54, 17);
             this.lblDateTo.TabIndex = 5;
             this.lblDateTo.Text = "Date To";
             // 
@@ -118,6 +118,7 @@
             this.dgvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTransactions.Location = new System.Drawing.Point(12, 284);
             this.dgvTransactions.Name = "dgvTransactions";
+            this.dgvTransactions.ReadOnly = true;
             this.dgvTransactions.Size = new System.Drawing.Size(672, 328);
             this.dgvTransactions.TabIndex = 11;
             this.dgvTransactions.TabStop = false;

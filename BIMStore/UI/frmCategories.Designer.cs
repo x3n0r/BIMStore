@@ -79,7 +79,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(398, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(99, 21);
+            this.lblTop.Size = new System.Drawing.Size(100, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "CATEGORIES";
             // 
@@ -189,6 +189,7 @@
             this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategories.Location = new System.Drawing.Point(422, 99);
             this.dgvCategories.Name = "dgvCategories";
+            this.dgvCategories.ReadOnly = true;
             this.dgvCategories.Size = new System.Drawing.Size(411, 163);
             this.dgvCategories.TabIndex = 11;
             this.dgvCategories.TabStop = false;
@@ -230,7 +231,7 @@
             this.lblTax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTax.Location = new System.Drawing.Point(12, 132);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(27, 17);
+            this.lblTax.Size = new System.Drawing.Size(28, 17);
             this.lblTax.TabIndex = 14;
             this.lblTax.Text = "Tax";
             // 

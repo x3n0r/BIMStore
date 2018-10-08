@@ -107,21 +107,6 @@ namespace BIMStore
             companydata.Show();
         }
 
-        private void rectangleShape1_Click(object sender, EventArgs e)
-        {
-            aTimer.Enabled = false;
-            frmCompanyData companydata = new frmCompanyData();
-            companydata.Show();
-        }
-
-
-        private void lblbtnCompanyData_Click(object sender, EventArgs e)
-        {
-            aTimer.Enabled = false;
-            frmCompanyData companydata = new frmCompanyData();
-            companydata.Show();
-        }
-
         private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //set value on transactionType static method
@@ -262,6 +247,11 @@ namespace BIMStore
             aTimer.Enabled = true;
         }
 
+        private void frmAdminDashboard_Deactivate(object sender, EventArgs e)
+        {
+            aTimer.Enabled = false;
+        }
+
         private void setupTabControlLeaveEnter ()
         {
             tabControl.MouseEnter += new EventHandler(control_MouseEnter);
@@ -278,12 +268,24 @@ namespace BIMStore
 
         private void control_MouseEnter(object sender, EventArgs e)
         {
-            aTimer.Enabled = false;
+            if (Form.ActiveForm == this)
+            {
+                aTimer.Enabled = false;
+            }
         }
 
         private void control_MouseLeave(object sender, EventArgs e)
         {
-            aTimer.Enabled = true;
+            if (Form.ActiveForm == this)
+            {
+                aTimer.Enabled = true;
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Environment.Exit(0);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace BIMStore.UI
 
             //Display all the products in Datagrid view when the form is loaded
             List<tbl_products> prod = pdal.SelectHasQTY();
-            dgvProducts.DataSource = prod;
+            dgvProducts.DataSource = helperDAL.convertProductsTableToView(prod);
         }
         
         private void cmbCategories_SelectedIndexChanged(object sender, EventArgs e)

@@ -93,6 +93,7 @@
             this.dgvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTransactions.Location = new System.Drawing.Point(14, 238);
             this.dgvTransactions.Name = "dgvTransactions";
+            this.dgvTransactions.ReadOnly = true;
             this.dgvTransactions.Size = new System.Drawing.Size(819, 325);
             this.dgvTransactions.TabIndex = 3;
             this.dgvTransactions.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTransactions_RowHeaderMouseDoubleClick);
@@ -104,7 +105,7 @@
             this.lblTransactionType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTransactionType.Location = new System.Drawing.Point(10, 43);
             this.lblTransactionType.Name = "lblTransactionType";
-            this.lblTransactionType.Size = new System.Drawing.Size(105, 17);
+            this.lblTransactionType.Size = new System.Drawing.Size(107, 17);
             this.lblTransactionType.TabIndex = 4;
             this.lblTransactionType.Text = "Transaction Type";
             // 

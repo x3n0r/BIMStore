@@ -69,7 +69,7 @@
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTop.Location = new System.Drawing.Point(369, 7);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(94, 21);
+            this.lblTop.Size = new System.Drawing.Size(95, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "INVENTORY";
             // 
@@ -78,6 +78,7 @@
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Location = new System.Drawing.Point(13, 97);
             this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.ReadOnly = true;
             this.dgvProducts.Size = new System.Drawing.Size(810, 321);
             this.dgvProducts.TabIndex = 4;
             // 

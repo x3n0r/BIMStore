@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace BIMStore.UI
 {
+
     public partial class frmTransactions : Form
     {
         public frmTransactions()
@@ -32,7 +33,8 @@ namespace BIMStore.UI
         {
             //Dispay all the transactions
             List<tbl_transactions> trans = tdal.DisplayAllTransactions();
-            dgvTransactions.DataSource = trans;
+            dgvTransactions.DataSource = helperDAL.convertTransactionsTableToView(trans);
+
         }
 
         private void cmbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,11 +136,11 @@ namespace BIMStore.UI
                     m.MenuItems.Add(new MenuItem("Pay Booking", PayBooking_Click)); // muss H sein
                     m.MenuItems.Add(new MenuItem("Show Bill", ShowBill_Click)); // muss H sein
 
-
+                    /*
                     if (currentMouseOverRow >= 0)
                     {
                         m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
-                    }
+                    }*/
 
                     m.Show(dgvTransactions, new Point(e.X, e.Y));
                 } else
@@ -146,11 +148,11 @@ namespace BIMStore.UI
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Delete Payment", DeletePayment_Click)); // muss S sein
 
-
+                    /*
                     if (currentMouseOverRow >= 0)
                     {
                         m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
-                    }
+                    }*/
 
                     m.Show(dgvTransactions, new Point(e.X, e.Y));
                 }

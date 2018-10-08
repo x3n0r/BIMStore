@@ -65,7 +65,7 @@ namespace BIMStore.UI
             TimeSpan ts = new TimeSpan(23, 59, 59);
             DateTo = DateTo.Date + ts;
             List<tbl_transactions> trans =  tDAL.SearchByDate(DateFrom,DateTo);
-            dgvTransactions.DataSource = trans;
+            dgvTransactions.DataSource = helperDAL.convertTransactionsTableToView(trans);
 
             foreach ( var tran in trans)
             {

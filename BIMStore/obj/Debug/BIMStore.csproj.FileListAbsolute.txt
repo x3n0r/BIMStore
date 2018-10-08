@@ -76,7 +76,6 @@ E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmLogin.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmProducts.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmSales.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmPurchaseAndSales.resources
-E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmTransactions.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.frmUserDashboard.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.Properties.Resources.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmUsers.resources
@@ -116,3 +115,6 @@ C:\Users\Christopher\Desktop\BIMStore\BIMStore\obj\Debug\BIMStore.pdb
 C:\Users\Christopher\Desktop\BIMStore\BIMStore\bin\Debug\resources\alert.ico
 C:\Users\Christopher\Desktop\BIMStore\BIMStore\bin\Debug\resources\warning.ico
 C:\Users\Christopher\Desktop\BIMStore\BIMStore\obj\Debug\BIMStore.Migrations.tblproducts_warningqty.resources
+E:\BIMStore\BIMStore\bin\Debug\resources\warning.ico
+E:\BIMStore\BIMStore\obj\Debug\BIMStore.Migrations.tblproducts_warningqty.resources
+E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmTransactions.resources

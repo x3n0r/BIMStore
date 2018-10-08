@@ -283,7 +283,7 @@
             this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserType.Location = new System.Drawing.Point(12, 400);
             this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(66, 17);
+            this.lblUserType.Size = new System.Drawing.Size(67, 17);
             this.lblUserType.TabIndex = 17;
             this.lblUserType.Text = "User Type";
             // 
@@ -315,6 +315,7 @@
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Location = new System.Drawing.Point(332, 80);
             this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.ReadOnly = true;
             this.dgvUsers.Size = new System.Drawing.Size(492, 345);
             this.dgvUsers.TabIndex = 21;
             this.dgvUsers.TabStop = false;

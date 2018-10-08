@@ -42,7 +42,7 @@ namespace BIMStore.UI
 
             //Load all the Products in Data Grid View
             List<tbl_products> prod = pdal.Select();
-            dgvProducts.DataSource = prod;
+            dgvProducts.DataSource = helperDAL.convertProductsTableToView(prod);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace BIMStore.UI
                 Clear();
                 //Refreshing DAta Grid View
                 List<tbl_products> prod = pdal.Select();
-                dgvProducts.DataSource = prod;
+                dgvProducts.DataSource = helperDAL.convertProductsTableToView(prod);
             }
             else
             {
@@ -155,7 +155,7 @@ namespace BIMStore.UI
                 Clear();
                 //REfresh the Data Grid View
                 List<tbl_products> prod = pdal.Select();
-                dgvProducts.DataSource = prod;
+                dgvProducts.DataSource = helperDAL.convertProductsTableToView(prod);
             }
             else
             {
@@ -180,7 +180,7 @@ namespace BIMStore.UI
                 Clear();
                 //Refresh DAta Grid View
                 List<tbl_products> prod = pdal.Select();
-                dgvProducts.DataSource = prod;
+                dgvProducts.DataSource = helperDAL.convertProductsTableToView(prod);
             }
             else
             {
@@ -198,13 +198,13 @@ namespace BIMStore.UI
             {
                 //Search the products
                 List<tbl_products> prod = pdal.Search(keywords);
-                dgvProducts.DataSource = prod;
+                dgvProducts.DataSource = helperDAL.convertProductsTableToView(prod);
             }
             else
             {
                 //Display All the products
                 List<tbl_products> prod = pdal.Select();
-                dgvProducts.DataSource = prod;
+                dgvProducts.DataSource = helperDAL.convertProductsTableToView(prod);
             }
         }
 
