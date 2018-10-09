@@ -6,7 +6,6 @@ E:\BIMStore\BIMStore\bin\Release\EntityFramework.SqlServer.dll
 E:\BIMStore\BIMStore\bin\Release\EntityFramework.xml
 E:\BIMStore\BIMStore\bin\Release\EntityFramework.SqlServer.xml
 E:\BIMStore\BIMStore\bin\Release\de\EntityFramework.resources.dll
-E:\BIMStore\BIMStore\obj\Release\BIMStore.csprojResolveAssemblyReference.cache
 E:\BIMStore\BIMStore\obj\Release\BIMStore.Migrations.v1.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.frmAdminDashboard.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmCompanyData.resources

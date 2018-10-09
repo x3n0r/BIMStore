@@ -64,7 +64,6 @@ E:\BIMStore\BIMStore\bin\Debug\EntityFramework.SqlServer.dll
 E:\BIMStore\BIMStore\bin\Debug\EntityFramework.xml
 E:\BIMStore\BIMStore\bin\Debug\EntityFramework.SqlServer.xml
 E:\BIMStore\BIMStore\bin\Debug\de\EntityFramework.resources.dll
-E:\BIMStore\BIMStore\obj\Debug\BIMStore.csprojResolveAssemblyReference.cache
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.Migrations.v1.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.frmAdminDashboard.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmCompanyData.resources
