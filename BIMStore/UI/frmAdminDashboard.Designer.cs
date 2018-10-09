@@ -46,6 +46,7 @@
             this.bookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblLoggedInUser = new System.Windows.Forms.Label();
             this.lblSHead = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pbwarning = new System.Windows.Forms.PictureBox();
             this.dgvInventoryWarning = new System.Windows.Forms.DataGridView();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripTop.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -179,9 +179,16 @@
             // salesToolStripMenuItem
             // 
             this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
-            this.salesToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.salesToolStripMenuItem.Text = "Sales";
+            this.salesToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.salesToolStripMenuItem.Text = "Sales Report";
             this.salesToolStripMenuItem.Click += new System.EventHandler(this.salesToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.exitToolStripMenuItem.Text = "Close";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // lblUser
             // 
@@ -315,13 +322,6 @@
             this.dgvInventoryWarning.ReadOnly = true;
             this.dgvInventoryWarning.Size = new System.Drawing.Size(1101, 381);
             this.dgvInventoryWarning.TabIndex = 1;
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // frmAdminDashboard
             // 

@@ -30,6 +30,10 @@ namespace BIMStore
 
         private void frmAdminDashboard_Load(object sender, EventArgs e)
         {
+            //Adding test form for debug mode only
+#if (DEBUG)
+            ExtendmenuStripItems();
+#endif
             lblLoggedInUser.Text = frmLogin.loggedIn;
             LoadChart();
             LoadInventoryWarning();
@@ -286,6 +290,24 @@ namespace BIMStore
         {
             this.Close();
             Environment.Exit(0);
+        }
+
+
+        private void ExtendmenuStripItems()
+        {
+            ToolStripMenuItem test = new ToolStripMenuItem();
+            test.Name = "Test";
+            test.Text = "Test";
+            test.Tag = "Test";
+            test.Click += new EventHandler(testToolStripMenuItem_Click);
+            menuStripTop.Items.Add(test);
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aTimer.Enabled = false;
+            frmTest test = new frmTest();
+            test.Show();
         }
     }
 }
