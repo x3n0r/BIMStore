@@ -1,7 +1,7 @@
 This is a simple desktop application developed in microsoft platform.
 This Project is based on AnyStore (https://github.com/vijaythapa333/anystore/)
 It implements more features
-# anystore - Billing and Inventory Management System Build in C# and MS Express DB
+# BIMStore - Billing and Inventory Management System Build in C# and MS Express DB
 
 ## Tools and Technologies Used
 1. C# programming language
