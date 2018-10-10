@@ -480,7 +480,6 @@
             this.dgvAddedProducts.AllowUserToAddRows = false;
             this.dgvAddedProducts.AllowUserToDeleteRows = false;
             this.dgvAddedProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAddedProducts.Enabled = false;
             this.dgvAddedProducts.Location = new System.Drawing.Point(7, 35);
             this.dgvAddedProducts.Name = "dgvAddedProducts";
             this.dgvAddedProducts.ReadOnly = true;

@@ -192,7 +192,7 @@ namespace BIMStore.UI
             txtProductName.Text = p.name;
             txtInventory.Text = p.qty.ToString();
             txtRate.Text = p.rate.ToString();
-            tbl_categories c = cDAL.Search(p.Id);
+            tbl_categories c = cDAL.Search((int)p.category);
             txtTax.Text = c.tax.ToString();
         }
 
@@ -200,7 +200,7 @@ namespace BIMStore.UI
         {
 
             //Get Product Name, Rate and Qty customer wants to buy
-            if (txtQty.Text == "" || txtRate.Text == "" || txtProductName.Text == "")
+            if (txtQty.Text == "" || txtRate.Text == "" || txtProductName.Text == "" || txtQty.Text == "0")
             {
                 return;
             }

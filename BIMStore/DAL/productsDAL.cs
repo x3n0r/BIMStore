@@ -190,7 +190,7 @@ namespace BIMStore.DAL
                           select prods;
 
                 tbl_products myProd = erg.FirstOrDefault();
-                if (myProd != null)
+                    if (myProd != null)
                 {
                     p.Id = myProd.Id;
                     p.name = myProd.name;
