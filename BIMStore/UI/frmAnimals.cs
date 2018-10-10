@@ -76,6 +76,7 @@ namespace BIMStore.UI
             txtNotes.Text = "";
             txtSearch.Text = "";
             txtName.Text = "";
+            dtpDateOfBirth.Value = DateTime.Now;
         }
         /*
         private void frmDeaCust_Load(object sender, EventArgs e)
@@ -94,7 +95,13 @@ namespace BIMStore.UI
             txtName.Text = dgvDeaCust.Rows[rowIndex].Cells[1].Value.ToString();
             txtSpecies.Text = dgvDeaCust.Rows[rowIndex].Cells[2].Value.ToString();
             txtRace.Text = dgvDeaCust.Rows[rowIndex].Cells[3].Value.ToString();
-            dtpDateOfBirth.Value = Convert.ToDateTime(dgvDeaCust.Rows[rowIndex].Cells[4].Value);
+            if (dgvDeaCust.Rows[rowIndex].Cells[4].Value != null)
+            {
+                dtpDateOfBirth.Value = Convert.ToDateTime(dgvDeaCust.Rows[rowIndex].Cells[4].Value);
+            } else
+            {
+                dtpDateOfBirth.Value = DateTime.Now;
+            }
             txtNotes.Text = dgvDeaCust.Rows[rowIndex].Cells[5].Value.ToString();
 
         }
@@ -108,6 +115,7 @@ namespace BIMStore.UI
             a.race = txtRace.Text;
             a.notes = txtNotes.Text;
             a.name = txtName.Text;
+            a.date_of_birth = dtpDateOfBirth.Value;
 
             //create boolean variable to check whether the Pet is updated or not
             bool success = aDal.Update(a);
@@ -187,6 +195,57 @@ namespace BIMStore.UI
             {
                 this.Close();
             }
+        }
+
+        private void txtAge_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            helperDAL.txtBoxCheckNumber(e, txtAge);
+        }
+
+        private void txtAge_TextChanged(object sender, EventArgs e)
+        {
+            int age = Convert.ToInt32(txtAge.Text);
+            DateTime myDate = DateTime.Now;
+            DateTime newDate = myDate.AddYears(-age);
+            if (dtpDateOfBirth.Value != newDate)
+            {
+                dtpDateOfBirth.Value = newDate;
+            }
+        }
+
+        private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
+        {
+            int years = DateTime.Now.Year - dtpDateOfBirth.Value.Year;
+            if (dtpDateOfBirth.Value.AddYears(years) > DateTime.Now) years--;
+            //int age = CalculateYourAge(dtpDateOfBirth.Value);
+            if (txtAge.Text != years.ToString())
+            {
+                txtAge.Text = years.ToString();
+            }
+        }
+
+        public static int CalculateYourAge(DateTime Dob)
+        {
+            DateTime Now = DateTime.Now;
+            int _Years = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
+            DateTime _DOBDateNow = Dob.AddYears(_Years);
+            int _Months = 0;
+            for (int i = 1; i <= 12; i++)
+            {
+                if (_DOBDateNow.AddMonths(i) == Now)
+                {
+                    _Months = i;
+                    break;
+                }
+                else if (_DOBDateNow.AddMonths(i) >= Now)
+                {
+                    _Months = i - 1;
+                    break;
+                }
+            }
+            int Days = Now.Subtract(_DOBDateNow.AddMonths(_Months)).Days;
+
+            return _Years;
         }
     }
 }

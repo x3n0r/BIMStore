@@ -58,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2999C593B96DE5C6E2D8AA2F68ABEE9E"
+        "OwnerKey" = "8:_C34E97BAD119B065A13868D26974760D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,7 +70,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C34E97BAD119B065A13868D26974760D"
+        "OwnerKey" = "8:_2999C593B96DE5C6E2D8AA2F68ABEE9E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -175,11 +175,6 @@
             "AssemblyAsmDisplayName" = "8:EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_2999C593B96DE5C6E2D8AA2F68ABEE9E"
-                    {
-                    "Name" = "8:EntityFramework.SqlServer.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:EntityFramework.SqlServer.dll"
             "TargetName" = "8:"
@@ -206,11 +201,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_C34E97BAD119B065A13868D26974760D"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -257,11 +247,6 @@
             "AssemblyAsmDisplayName" = "8:EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E35B8C94704D350AB01E07A0ABB40636"
-                    {
-                    "Name" = "8:EntityFramework.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:EntityFramework.dll"
             "TargetName" = "8:"
@@ -337,15 +322,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BIMStoreSetup"
-        "ProductCode" = "8:{5A43D3B4-73B1-4146-90DA-868F0E729BD8}"
-        "PackageCode" = "8:{FC2284FE-592E-444A-A748-49C1B38B7EE5}"
+        "ProductCode" = "8:{CE50E8AD-860A-4FDC-A5CB-8677B84F235B}"
+        "PackageCode" = "8:{B82B3D9D-5177-471A-AA5F-229206B478E6}"
         "UpgradeCode" = "8:{89866F9B-6C01-4D70-BEA4-67FD3E934914}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.5.0"
+        "ProductVersion" = "8:1.6.0"
         "Manufacturer" = "8:x3n0r"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
