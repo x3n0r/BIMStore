@@ -28,3 +28,4 @@ E:\BIMStore\BIMStore\obj\Release\BIMStore.pdb
 E:\BIMStore\BIMStore\bin\Release\resources\warning.ico
 E:\BIMStore\BIMStore\obj\Release\BIMStore.Migrations.tblproducts_warningqty.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmTest.resources
+E:\BIMStore\BIMStore\obj\Release\BIMStore.csprojResolveAssemblyReference.cache
