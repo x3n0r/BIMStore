@@ -21,8 +21,6 @@ namespace BIMStore.UI
             InitializeComponent();
         }
 
-        private int count_prod = 0;
-
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -95,13 +93,6 @@ namespace BIMStore.UI
             List<items> lit = new List<items>();
             foreach ( var transdet in transdets)
             {
-
-                if (count_prod >= 26)
-                {
-                    //Display error MEssage
-                    MessageBox.Show("Not more than 26 Products allowed.");
-                    return;
-                }
 
                 tbl_products p = pDAL.GetProductFromID((int)transdet.product_id);
                 tbl_categories c = cDAL.Search((int)transdet.product_id);
@@ -207,12 +198,7 @@ namespace BIMStore.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (count_prod >= 26)
-            {
-                //Display error MEssage
-                MessageBox.Show("Not more than 26 Products allowed.");
-                return;
-            }
+
             //Get Product Name, Rate and Qty customer wants to buy
             if (txtQty.Text == "" || txtRate.Text == "" || txtProductName.Text == "")
             {
@@ -274,7 +260,6 @@ namespace BIMStore.UI
                 txtSubTotal.Text = subTotal.ToString();
                 txtTaxCalc.Text = taxcalc.ToString();
 
-                count_prod += 1;
                 success = true;
             }
 
