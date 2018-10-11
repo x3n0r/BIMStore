@@ -10,7 +10,7 @@ namespace BIMStore
     public partial class Context : DbContext
     {
         public Context()
-            : base("name=Context")
+            : base("Context")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<Context, Configuration>());
         }
