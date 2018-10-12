@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIMStore", "BIMStore\BIMStore.csproj", "{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupBIMStore", "SetupBIMStore\SetupBIMStore.vdproj", "{C56B0DF4-B138-4CD1-B799-824CD9A2BEA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -18,6 +20,9 @@ Global
 		{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56B0DF4-B138-4CD1-B799-824CD9A2BEA8}.All|Any CPU.ActiveCfg = Release
+		{C56B0DF4-B138-4CD1-B799-824CD9A2BEA8}.Debug|Any CPU.ActiveCfg = Debug
+		{C56B0DF4-B138-4CD1-B799-824CD9A2BEA8}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
