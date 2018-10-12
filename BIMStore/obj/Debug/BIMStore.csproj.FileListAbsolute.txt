@@ -118,4 +118,5 @@ E:\BIMStore\BIMStore\bin\Debug\resources\warning.ico
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.Migrations.tblproducts_warningqty.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmTransactions.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmTest.resources
-E:\BIMStore\BIMStore\obj\Debug\BIMStore.csprojResolveAssemblyReference.cache
+E:\BIMStore\BIMStore\obj\Debug\BIMStore.csprojAssemblyReference.cache
+E:\BIMStore\BIMStore\obj\Debug\BIMStore.csproj.CopyComplete

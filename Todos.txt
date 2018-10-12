@@ -1,2 +1,2 @@
-Deploying Database Changes in Your Continuous Delivery Pipeline with Redgate ReadyRoll and Visual Studio Team Services
-https://abelsquidhead.com/index.php/2017/05/17/deploying-database-changes-in-your-continuous-delivery-pipeline-with-redgate-readyroll-and-visual-studio-team-services/
+
+https://www.advancedinstaller.com/visual-studio-extension.html
