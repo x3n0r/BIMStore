@@ -58,12 +58,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_42EDB9201071E82F62C40FC64D9567FD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_41DB638963CE4FE3B9AE397927E0385D"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -77,6 +71,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_98F3559EF333F358CFA73132E732FF38"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_42EDB9201071E82F62C40FC64D9567FD"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -97,6 +97,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -113,6 +121,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -330,7 +346,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SetupBIMStore"
+        "ProductName" = "8:BIMStore"
         "ProductCode" = "8:{21D617EF-927E-49DB-A4E2-88F6D8DAC70E}"
         "PackageCode" = "8:{B95223D7-78EF-41E0-BC7B-101E9952AC11}"
         "UpgradeCode" = "8:{3752D2E7-188D-4CF8-B40E-6C32F4C2B697}"
@@ -343,7 +359,7 @@
         "Manufacturer" = "8:x3n0r"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/x3n0r/BIMStore"
-        "Title" = "8:SetupBIMStore"
+        "Title" = "8:BIMStore"
         "Subject" = "8:"
         "ARPCONTACT" = "8:x3n0r"
         "Keywords" = "8:bim store"
@@ -867,7 +883,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_41DB638963CE4FE3B9AE397927E0385D"
             {
-            "SourcePath" = "8:..\\BIMStore\\obj\\Debug\\BIMStore.exe"
+            "SourcePath" = "8:..\\BIMStore\\obj\\Release\\BIMStore.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E92D2B4A7BA64816A5325C8862208C5B"
