@@ -1,3 +1,4 @@
+E:\BIMStore\BIMStore\bin\Release\resources\warning.ico
 E:\BIMStore\BIMStore\bin\Release\BIMStore.exe.config
 E:\BIMStore\BIMStore\bin\Release\BIMStore.exe
 E:\BIMStore\BIMStore\bin\Release\BIMStore.pdb
@@ -6,8 +7,11 @@ E:\BIMStore\BIMStore\bin\Release\EntityFramework.SqlServer.dll
 E:\BIMStore\BIMStore\bin\Release\EntityFramework.xml
 E:\BIMStore\BIMStore\bin\Release\EntityFramework.SqlServer.xml
 E:\BIMStore\BIMStore\bin\Release\de\EntityFramework.resources.dll
+E:\BIMStore\BIMStore\obj\Release\BIMStore.csprojAssemblyReference.cache
 E:\BIMStore\BIMStore\obj\Release\BIMStore.Migrations.v1.resources
+E:\BIMStore\BIMStore\obj\Release\BIMStore.Migrations.tblproducts_warningqty.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.frmAdminDashboard.resources
+E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmTest.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmCompanyData.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmCategories.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmAnimals.resources
@@ -21,12 +25,8 @@ E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmTransactions.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.frmUserDashboard.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.Properties.Resources.resources
 E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmUsers.resources
-E:\BIMStore\BIMStore\obj\Release\BIMStore.csproj.GenerateResource.Cache
+E:\BIMStore\BIMStore\obj\Release\BIMStore.csproj.GenerateResource.cache
 E:\BIMStore\BIMStore\obj\Release\BIMStore.csproj.CoreCompileInputs.cache
+E:\BIMStore\BIMStore\obj\Release\BIMStore.csproj.CopyComplete
 E:\BIMStore\BIMStore\obj\Release\BIMStore.exe
 E:\BIMStore\BIMStore\obj\Release\BIMStore.pdb
-E:\BIMStore\BIMStore\bin\Release\resources\warning.ico
-E:\BIMStore\BIMStore\obj\Release\BIMStore.Migrations.tblproducts_warningqty.resources
-E:\BIMStore\BIMStore\obj\Release\BIMStore.UI.frmTest.resources
-E:\BIMStore\BIMStore\obj\Release\BIMStore.csprojAssemblyReference.cache
-E:\BIMStore\BIMStore\obj\Release\BIMStore.csproj.CopyComplete

@@ -7,10 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIMStore", "BIMStore\BIMSto
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}.All|Any CPU.Build.0 = Release|Any CPU
 		{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D00E95F-BAEF-4681-BB1A-66042D38DC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -5,7 +5,7 @@
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory />
-    <BootstrapperUrlHistory>E:\BIMStore\BIMStoreSetup\InstallationDependencies</BootstrapperUrlHistory>
+    <BootstrapperUrlHistory>E:\BIMStore\DependenciesForInstallation|E:\BIMStore\BIMStoreSetup\InstallationDependencies</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>de-DE</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
