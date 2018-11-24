@@ -119,7 +119,7 @@ namespace BIMStore.DAL
                           where deacust.Id == dc.Id
                           select deacust;
 
-                db.tbl_dea_cust.Add(erg.FirstOrDefault());
+                db.tbl_dea_cust.Remove(erg.FirstOrDefault());
                 db.SaveChanges();
 
                 isSuccess = true;
