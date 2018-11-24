@@ -181,7 +181,7 @@ namespace BIMStore
             Dictionary<int, Series> custsprofit = new Dictionary<int, Series>();
             foreach (var cust in custs)
             {
-                Series seriesXY = Chart.Series.Add(cust.last_name.ToString());
+                Series seriesXY = Chart.Series.Add(cust.last_name.ToString()+" "+ cust.first_name.ToString()+" "+cust.Id);
                 seriesXY.ChartType = SeriesChartType.Spline;
                 seriesXY.MarkerStyle = MarkerStyle.Circle;
                 seriesXY.MarkerSize = 8;

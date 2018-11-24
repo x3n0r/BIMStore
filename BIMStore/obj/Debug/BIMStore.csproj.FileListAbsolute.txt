@@ -111,7 +111,6 @@ C:\Users\Christopher\Desktop\BIMStore\BIMStore\obj\Debug\BIMStore.csproj.CoreCom
 C:\Users\Christopher\Desktop\BIMStore\BIMStore\obj\Debug\BIMStore.csproj.CopyComplete
 C:\Users\Christopher\Desktop\BIMStore\BIMStore\obj\Debug\BIMStore.exe
 C:\Users\Christopher\Desktop\BIMStore\BIMStore\obj\Debug\BIMStore.pdb
-C:\Users\Christopher\Desktop\BIMStore\BIMStore\bin\Debug\resources\alert.ico
 C:\Users\Christopher\Desktop\BIMStore\BIMStore\bin\Debug\resources\warning.ico
 C:\Users\Christopher\Desktop\BIMStore\BIMStore\obj\Debug\BIMStore.Migrations.tblproducts_warningqty.resources
 E:\BIMStore\BIMStore\bin\Debug\resources\warning.ico
@@ -120,3 +119,4 @@ E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmTransactions.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmTest.resources
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.csprojAssemblyReference.cache
 E:\BIMStore\BIMStore\obj\Debug\BIMStore.csproj.CopyComplete
+C:\Users\Christopher\Desktop\BIMStore\BIMStore\obj\Debug\BIMStore.UI.frmTest.resources
