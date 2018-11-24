@@ -135,6 +135,7 @@ namespace BIMStore.UI
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Pay Booking", PayBooking_Click)); // muss H sein
                     m.MenuItems.Add(new MenuItem("Show Bill", ShowBill_Click)); // muss H sein
+                    m.MenuItems.Add(new MenuItem("Delete Payment", DeletePayment_Click));
 
                     /*
                     if (currentMouseOverRow >= 0)

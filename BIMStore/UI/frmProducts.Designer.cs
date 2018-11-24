@@ -36,12 +36,12 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
-            this.lblRate = new System.Windows.Forms.Label();
+            this.lblNetPrice = new System.Windows.Forms.Label();
             this.txtProductID = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
-            this.txtRate = new System.Windows.Forms.TextBox();
+            this.txtNetPrice = new System.Windows.Forms.TextBox();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
@@ -51,6 +51,8 @@
             this.chbHasQTY = new System.Windows.Forms.CheckBox();
             this.txtwarningqty = new System.Windows.Forms.TextBox();
             this.lblwarningqty = new System.Windows.Forms.Label();
+            this.txtGrossPrice = new System.Windows.Forms.TextBox();
+            this.lblGrossPrice = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -128,15 +130,15 @@
             this.lblDescription.TabIndex = 6;
             this.lblDescription.Text = "Description";
             // 
-            // lblRate
+            // lblNetPrice
             // 
-            this.lblRate.AutoSize = true;
-            this.lblRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRate.Location = new System.Drawing.Point(12, 270);
-            this.lblRate.Name = "lblRate";
-            this.lblRate.Size = new System.Drawing.Size(36, 17);
-            this.lblRate.TabIndex = 7;
-            this.lblRate.Text = "Price";
+            this.lblNetPrice.AutoSize = true;
+            this.lblNetPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNetPrice.Location = new System.Drawing.Point(12, 303);
+            this.lblNetPrice.Name = "lblNetPrice";
+            this.lblNetPrice.Size = new System.Drawing.Size(58, 17);
+            this.lblNetPrice.TabIndex = 7;
+            this.lblNetPrice.Text = "Price net";
             // 
             // txtProductID
             // 
@@ -170,6 +172,7 @@
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(224, 25);
             this.cmbCategory.TabIndex = 2;
+            this.cmbCategory.TextChanged += new System.EventHandler(this.cmbCategory_TextChanged);
             // 
             // txtDescription
             // 
@@ -181,14 +184,15 @@
             this.txtDescription.Size = new System.Drawing.Size(224, 102);
             this.txtDescription.TabIndex = 3;
             // 
-            // txtRate
+            // txtNetPrice
             // 
-            this.txtRate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRate.Location = new System.Drawing.Point(120, 270);
-            this.txtRate.Name = "txtRate";
-            this.txtRate.Size = new System.Drawing.Size(224, 25);
-            this.txtRate.TabIndex = 4;
-            this.txtRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
+            this.txtNetPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNetPrice.Location = new System.Drawing.Point(120, 303);
+            this.txtNetPrice.Name = "txtNetPrice";
+            this.txtNetPrice.ReadOnly = true;
+            this.txtNetPrice.Size = new System.Drawing.Size(224, 25);
+            this.txtNetPrice.TabIndex = 4;
+            this.txtNetPrice.TabStop = false;
             // 
             // dgvProducts
             // 
@@ -196,7 +200,7 @@
             this.dgvProducts.Location = new System.Drawing.Point(397, 100);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
-            this.dgvProducts.Size = new System.Drawing.Size(418, 227);
+            this.dgvProducts.Size = new System.Drawing.Size(418, 281);
             this.dgvProducts.TabIndex = 99;
             this.dgvProducts.TabStop = false;
             this.dgvProducts.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProducts_RowHeaderMouseClick);
@@ -227,7 +231,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.ForestGreen;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(265, 355);
+            this.btnAdd.Location = new System.Drawing.Point(268, 387);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(119, 50);
             this.btnAdd.TabIndex = 7;
@@ -240,7 +244,7 @@
             this.btnUpdate.BackColor = System.Drawing.Color.Chartreuse;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(394, 355);
+            this.btnUpdate.Location = new System.Drawing.Point(397, 387);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(119, 50);
             this.btnUpdate.TabIndex = 8;
@@ -254,7 +258,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(523, 355);
+            this.btnDelete.Location = new System.Drawing.Point(526, 387);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(119, 50);
             this.btnDelete.TabIndex = 9;
@@ -267,7 +271,7 @@
             this.chbHasQTY.AutoSize = true;
             this.chbHasQTY.Checked = true;
             this.chbHasQTY.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbHasQTY.Location = new System.Drawing.Point(120, 301);
+            this.chbHasQTY.Location = new System.Drawing.Point(120, 332);
             this.chbHasQTY.Name = "chbHasQTY";
             this.chbHasQTY.Size = new System.Drawing.Size(87, 17);
             this.chbHasQTY.TabIndex = 5;
@@ -278,7 +282,7 @@
             // txtwarningqty
             // 
             this.txtwarningqty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtwarningqty.Location = new System.Drawing.Point(120, 324);
+            this.txtwarningqty.Location = new System.Drawing.Point(120, 355);
             this.txtwarningqty.Name = "txtwarningqty";
             this.txtwarningqty.Size = new System.Drawing.Size(224, 25);
             this.txtwarningqty.TabIndex = 6;
@@ -287,18 +291,40 @@
             // 
             this.lblwarningqty.AutoSize = true;
             this.lblwarningqty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblwarningqty.Location = new System.Drawing.Point(12, 332);
+            this.lblwarningqty.Location = new System.Drawing.Point(12, 363);
             this.lblwarningqty.Name = "lblwarningqty";
             this.lblwarningqty.Size = new System.Drawing.Size(72, 17);
             this.lblwarningqty.TabIndex = 102;
             this.lblwarningqty.Text = "warningqty";
+            // 
+            // txtGrossPrice
+            // 
+            this.txtGrossPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGrossPrice.Location = new System.Drawing.Point(120, 272);
+            this.txtGrossPrice.Name = "txtGrossPrice";
+            this.txtGrossPrice.Size = new System.Drawing.Size(224, 25);
+            this.txtGrossPrice.TabIndex = 4;
+            this.txtGrossPrice.TextChanged += new System.EventHandler(this.txtGrossPrice_TextChanged);
+            this.txtGrossPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGrossPrice_KeyPress);
+            // 
+            // lblGrossPrice
+            // 
+            this.lblGrossPrice.AutoSize = true;
+            this.lblGrossPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrossPrice.Location = new System.Drawing.Point(12, 272);
+            this.lblGrossPrice.Name = "lblGrossPrice";
+            this.lblGrossPrice.Size = new System.Drawing.Size(73, 17);
+            this.lblGrossPrice.TabIndex = 104;
+            this.lblGrossPrice.Text = "Price gross";
             // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(843, 415);
+            this.ClientSize = new System.Drawing.Size(843, 449);
+            this.Controls.Add(this.txtGrossPrice);
+            this.Controls.Add(this.lblGrossPrice);
             this.Controls.Add(this.lblwarningqty);
             this.Controls.Add(this.txtwarningqty);
             this.Controls.Add(this.chbHasQTY);
@@ -308,12 +334,12 @@
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.dgvProducts);
-            this.Controls.Add(this.txtRate);
+            this.Controls.Add(this.txtNetPrice);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtProductID);
-            this.Controls.Add(this.lblRate);
+            this.Controls.Add(this.lblNetPrice);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblName);
@@ -344,12 +370,12 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Label lblRate;
+        private System.Windows.Forms.Label lblNetPrice;
         private System.Windows.Forms.TextBox txtProductID;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.TextBox txtRate;
+        private System.Windows.Forms.TextBox txtNetPrice;
         private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearch;
@@ -359,5 +385,7 @@
         private System.Windows.Forms.CheckBox chbHasQTY;
         private System.Windows.Forms.TextBox txtwarningqty;
         private System.Windows.Forms.Label lblwarningqty;
+        private System.Windows.Forms.TextBox txtGrossPrice;
+        private System.Windows.Forms.Label lblGrossPrice;
     }
 }

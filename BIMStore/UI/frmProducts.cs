@@ -47,11 +47,15 @@ namespace BIMStore.UI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (txtName.Text == "" || txtNetPrice.Text == "")
+            {
+                return;
+            }
             //Get All the Values from Product Form
             p.name = txtName.Text;
             p.category = Convert.ToInt32(cmbCategory.SelectedValue);
             p.description = txtDescription.Text;
-            p.rate = decimal.Parse(txtRate.Text);
+            p.rate = decimal.Parse(txtNetPrice.Text);
             p.qty = 0;
             p.hasqty = chbHasQTY.Checked;
             if (chbHasQTY.Checked && txtwarningqty.Text != "")
@@ -93,10 +97,11 @@ namespace BIMStore.UI
             txtProductID.Text = "";
             txtName.Text = "";
             txtDescription.Text = "";
-            txtRate.Text = "";
+            txtNetPrice.Text = "";
             txtSearch.Text = "";
             chbHasQTY.Checked = true;
             txtwarningqty.Text = "";
+            txtGrossPrice.Text = "";
         }
 
         private void dgvProducts_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -108,7 +113,8 @@ namespace BIMStore.UI
             txtName.Text = dgvProducts.Rows[rowIndex].Cells[1].Value.ToString();
             cmbCategory.Text = dgvProducts.Rows[rowIndex].Cells[2].Value.ToString();
             txtDescription.Text = dgvProducts.Rows[rowIndex].Cells[3].Value.ToString();
-            txtRate.Text = dgvProducts.Rows[rowIndex].Cells[4].Value.ToString();
+            txtNetPrice.Text = dgvProducts.Rows[rowIndex].Cells[4].Value.ToString();
+            CalculateGrossPrice();
             if (dgvProducts.Rows[rowIndex].Cells[8].Value.ToString() == "True" )
             {
                 chbHasQTY.Checked = true;
@@ -128,7 +134,7 @@ namespace BIMStore.UI
             p.name = txtName.Text;
             p.category = Convert.ToInt32(cmbCategory.SelectedValue);
             p.description = txtDescription.Text;
-            p.rate = decimal.Parse(txtRate.Text);
+            p.rate = decimal.Parse(txtNetPrice.Text);
             p.added_date = DateTime.Now;
             p.hasqty = chbHasQTY.Checked;
             if (chbHasQTY.Checked && txtwarningqty.Text != "")
@@ -218,11 +224,6 @@ namespace BIMStore.UI
             helperDAL.check_buttons(txtProductID, btnAdd, btnDelete, btnUpdate);
         }
 
-        private void txtRate_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            helperDAL.txtBoxCheckDecimal(e, txtRate);
-        }
-
         private void frmProducts_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Alt && e.KeyCode == Keys.X)
@@ -235,6 +236,47 @@ namespace BIMStore.UI
         {
             txtwarningqty.Visible = !txtwarningqty.Visible;
             lblwarningqty.Visible = !lblwarningqty.Visible;
+        }
+
+        private void txtGrossPrice_TextChanged(object sender, EventArgs e)
+        {
+            CalculateNetPrice();
+        }
+
+        private void cmbCategory_TextChanged(object sender, EventArgs e)
+        {
+            CalculateNetPrice();
+        }
+
+        private void CalculateGrossPrice()
+        {
+            if (txtNetPrice.Text != "")
+            {
+                //Formel: B = N * (p / 100 + 1)
+                decimal net = decimal.Parse(txtNetPrice.Text);
+                tbl_categories cat = (tbl_categories)cmbCategory.SelectedItem;
+                decimal gross = net * (cat.tax / 100 + 1);
+                gross = Decimal.Round(gross, 2);
+                txtGrossPrice.Text = gross.ToString();
+            }
+        }
+
+        private void CalculateNetPrice()
+        {
+            if ( txtGrossPrice.Text != "")
+            {
+                //Formel: N = B / (p / 100 + 1)
+                decimal gross = decimal.Parse(txtGrossPrice.Text);
+                tbl_categories cat = (tbl_categories) cmbCategory.SelectedItem;
+                decimal net = gross / (cat.tax / 100 + 1);
+                net = Decimal.Round(net, 2);
+                txtNetPrice.Text = net.ToString();
+            }
+        }
+
+        private void txtGrossPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            helperDAL.txtBoxCheckDecimal(e, txtNetPrice);
         }
     }
 }
