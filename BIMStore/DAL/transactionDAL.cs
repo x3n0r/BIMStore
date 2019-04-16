@@ -59,7 +59,7 @@ namespace BIMStore.DAL
             try
             {
                 var erg = from trans in db.tbl_transactions
-                          where trans.Id == TransID
+                          where trans.Id == TransID && trans.kontobez == "S"
                           select trans;
 
                 db.tbl_transactions.Remove(erg.FirstOrDefault());
