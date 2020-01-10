@@ -213,7 +213,7 @@ namespace BIMStore.DAL
 
                 //Anschreiben
                 String Anschreiben;
-                Anschreiben = "Sehr geehrte(r) " + Anrede + " " + Nachname + ",||anbei erhalten Sie die Rechnung Nummer " + Rechnungsnr + ".|Nachfolgend eine Detailauftellung Ihrer Bestellung:";
+                Anschreiben = "Sehr geehrte/r " + Anrede + " " + Nachname + ",||gerne übermittle ich Ihnen Ihre Rechnung Nr. " + Rechnungsnr + ".|Nachfolgend eine Detailauftellung der in Anspruch genommenen Leistungen:";
                 Anschreiben = Anschreiben.Replace("|", Environment.NewLine);
                 e.Graphics.DrawString(Anschreiben, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 400));
             }
@@ -331,11 +331,13 @@ namespace BIMStore.DAL
             }
 
             //Footer
-            String Fußzeile = "Seite: " + pageCount + "         IBAN: " + IBAN + "         BIC: " + BIC;
+            String Fußzeile = "Seite: " + pageCount + "|     IBAN: " + IBAN + "|     BIC: " + BIC;
+            String Fußzeile2 = "FB 501049m|"+ "UID: ATU 66441656|" + "SteuerNr.: 313/5589";
             Fußzeile = Fußzeile.Replace("|", Environment.NewLine);
+            Fußzeile2 = Fußzeile2.Replace("|", Environment.NewLine);
             e.Graphics.DrawLine(new Pen(Color.Gray, 1), new Point(87, 1100), new Point(735, 1100)); // Trennung der Fußzeile
-            e.Graphics.DrawString(Fußzeile, new Font("Courier", 10), new SolidBrush(Color.Gray), new Point(145, 1110));
-
+            e.Graphics.DrawString(Fußzeile, new Font("Courier", 10), new SolidBrush(Color.Gray), new Point(100, 1110));
+            e.Graphics.DrawString(Fußzeile2, new Font("Courier", 10), new SolidBrush(Color.Gray), new Point(500, 1110));
         }
 
         private int printInvoiceSummary(int Zeichenhöhe, PrintPageEventArgs e)
@@ -401,7 +403,7 @@ namespace BIMStore.DAL
             Zeichenhöhe += 30;
             //Transfer request below table
             string gesamt_string = total.ToString("n2") + " €";
-            String überweisungsaufforderung = "Bitte überweisen Sie den Gesamtbetrag von " + gesamt_string + " innerhalb 7 Tagen |unter Angabe der Rechnungsnummer auf mein Konto. ||Vielen Dank!||" + Sachbearbeiter;
+            String überweisungsaufforderung = "Bitte überweisen Sie den Gesamtbetrag von " + gesamt_string + " innerhalb 7 Tagen |unter Angabe des Namen Ihres Tieres auf mein Konto. ||Vielen Dank für Ihr Vertrauen!||Mit freundlichen Grüßen||" + Sachbearbeiter;
             überweisungsaufforderung = überweisungsaufforderung.Replace("|", Environment.NewLine);
             //e.Graphics.DrawString(überweisungsaufforderung, new Font("Courier", 10), Brushes.Black, new Point(87, tabellentiefe + 190)); //Dynamisch gehalten, das der Ort dieses Textes je nach Anzahl der Produkte passend geschrieben wird.
             e.Graphics.DrawString(überweisungsaufforderung, new Font("Courier", 10), Brushes.Black, new Point(87, Zeichenhöhe)); //Dynamisch gehalten, das der Ort dieses Textes je nach Anzahl der Produkte passend geschrieben wird.

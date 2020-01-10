@@ -101,7 +101,8 @@ namespace BIMStore.UI
                 it.amount = Convert.ToInt32(transdet.qty);
                 it.productnumber = (int)transdet.product_id;
                 it.name = p.name;
-                it.price = transdet.price;
+                it.price = Math.Round(transdet.price * (1 - (c.tax / 100)),2);
+                //it.price = transdet.price;
                 it.total = it.amount * it.price;
                 it.tax = c.tax;
                 lit.Add(it);
@@ -206,8 +207,7 @@ namespace BIMStore.UI
             }
 
             bool cpas = false;
-            cpas = CalculateProductAndShow(txtProductName.Text, decimal.Parse(txtRate.Text),
-                decimal.Parse(txtQty.Text), Convert.ToDecimal(txtTax.Text));
+            cpas = CalculateProductAndShow(txtProductName.Text, decimal.Parse(txtRate.Text), decimal.Parse(txtQty.Text), Convert.ToDecimal(txtTax.Text));
             if ( cpas == true )
             {
                 ClearProduct();
@@ -215,21 +215,25 @@ namespace BIMStore.UI
             CalculateGrandTotal();
         }
 
-        private bool CalculateProductAndShow(string productName, decimal Rate, decimal Qty, 
-            decimal taxpercent)
+        private bool CalculateProductAndShow(string productName, decimal Rate, decimal Qty, decimal taxpercent)
         {
 
             bool success = false;
 
-            decimal Total = Rate * Qty; //Total=RatexQty
+
+            decimal Total = Rate * (1 - (taxpercent / 100));
+            decimal taxcalc = 0;
+
+
+            Total = Total * Qty; //Total=RatexQty
             decimal subTotal = decimal.Parse(txtSubTotal.Text);
             //Display the Subtotal in textbox
             //Get the subtotal value from textbox
 
             subTotal = subTotal + Total;
-            decimal taxcalc = 0;
+            //decimal taxcalc = 0;
             decimal.TryParse(txtTaxCalc.Text, out taxcalc);
-            decimal ntax = (Total / 100) * taxpercent;
+            decimal ntax = (Rate * Qty) - Total;
             taxcalc += ntax;
             tbl_products p = pDAL.GetProductIDFromName(productName);
             tbl_categories c = cDAL.Search((int)p.category);
@@ -252,7 +256,7 @@ namespace BIMStore.UI
             else
             {
                 //Add product to the dAta Grid View
-                transactionDT.Rows.Add(productName, Rate, Qty, Total);
+                transactionDT.Rows.Add(productName, Rate, Qty, Total+ntax);
 
                 //Show in DAta Grid View
                 dgvAddedProducts.DataSource = transactionDT;
@@ -287,7 +291,11 @@ namespace BIMStore.UI
         {
             //Get the value fro discount textbox
             string value = txtDiscount.Text;
-
+            string val2 = txtTaxCalc.Text;
+            if ( val2 == "" )
+            {
+                return;
+            }
             if (value == "")
             {
                 txtDiscount.Text = "0";
@@ -297,9 +305,11 @@ namespace BIMStore.UI
                 //Get the discount in decimal value
                 decimal subTotal = decimal.Parse(txtSubTotal.Text);
                 decimal discount = decimal.Parse(txtDiscount.Text);
+                decimal ntax = decimal.Parse(txtTaxCalc.Text);
 
                 //Calculate the grandtotal based on discount
-                decimal grandTotal = ((100 - discount) / 100) * subTotal;
+                decimal total = subTotal + ntax;
+                decimal grandTotal = ((100 - discount) / 100) * total;
 
                 //Display the GrandTotla in TextBox
                 txtGrandTotal.Text = grandTotal.ToString();
@@ -311,6 +321,7 @@ namespace BIMStore.UI
             decimal paidAmount = 0;
             if (txtGrandTotal.Text == "")
             {
+                CalculateGrandTotal();
                 return;
             }
             decimal grandTotal = decimal.Parse(txtGrandTotal.Text);
@@ -470,7 +481,8 @@ namespace BIMStore.UI
                 it.amount = Convert.ToInt32(transactionDetail.qty);
                 it.productnumber = (int)transactionDetail.product_id;
                 it.name = transactionDT.Rows[i][0].ToString();
-                it.price = transactionDetail.price;
+                it.price = Math.Round(transactionDetail.price * (1 - (c.tax / 100)), 2);
+                //it.price = transdet.price;
                 it.total = it.amount * it.price;
                 it.tax = c.tax;
                 lit.Add(it);
@@ -573,11 +585,11 @@ namespace BIMStore.UI
 
                 pdf.sum = Convert.ToDecimal(txtSubTotal.Text);
                 pdf.total = Convert.ToDecimal(txtGrandTotal.Text);
-                foreach (var value in pdf.taxes)
-                {
-                    pdf.total += value.Value;
-                }
-                pdf.discount = Convert.ToDecimal(txtSubTotal.Text) - Convert.ToDecimal(txtGrandTotal.Text);
+                //foreach (var value in pdf.taxes)
+                //{
+                //    pdf.total += value.Value;
+                //}
+                pdf.discount = Convert.ToDecimal(txtSubTotal.Text) + Convert.ToDecimal(txtTaxCalc.Text) - Convert.ToDecimal(txtGrandTotal.Text);
 
                 //Get the Username of Logged in user
                 string username = frmLogin.loggedIn;
