@@ -82,6 +82,7 @@ namespace BIMStore.UI
             lblTop.Text = trans.type;
             txtDiscount.Text = trans.discount.ToString();
             txtGrandTotal.Text = trans.grandTotal.ToString();
+            txtTaxCalc.Text = trans.tax.ToString();
             dtpBillDate.Value = trans.transaction_date;
 
             tbl_dea_cust deacust = dcDAL.GetDeaCustIDFromID((int)trans.dea_cust_id);

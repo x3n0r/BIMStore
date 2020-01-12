@@ -93,4 +93,3 @@ C:\Users\a3270.PAD01\Projects\BIMStore\BIMStore\obj\Release\BIMStore.csproj.Core
 C:\Users\a3270.PAD01\Projects\BIMStore\BIMStore\obj\Release\BIMStore.csproj.CopyComplete
 C:\Users\a3270.PAD01\Projects\BIMStore\BIMStore\obj\Release\BIMStore.exe
 C:\Users\a3270.PAD01\Projects\BIMStore\BIMStore\obj\Release\BIMStore.pdb
-C:\Users\a3270.PAD01\Projects\BIMStore\BIMStore\obj\Release\BIMStore.csprojAssemblyReference.cache
