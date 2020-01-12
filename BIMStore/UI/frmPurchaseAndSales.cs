@@ -392,6 +392,7 @@ namespace BIMStore.UI
             transaction.grandTotal = Math.Round(decimal.Parse(txtPaidAmount.Text), 2);
             transaction.transaction_date = DateTime.Now;
             transaction.discount = 0;
+            transaction.tax = 0;
 
             //Get the Username of Logged in user
             string username = frmLogin.loggedIn;
@@ -431,6 +432,7 @@ namespace BIMStore.UI
             DateTime now = DateTime.Now;
             transaction.transaction_date = new DateTime(dtpBillDate.Value.Year,dtpBillDate.Value.Month,dtpBillDate.Value.Day,now.Hour,now.Minute,now.Second);
             transaction.discount = decimal.Parse(txtDiscount.Text);
+            transaction.tax = decimal.Parse(txtTaxCalc.Text);
 
             //Get the Username of Logged in user
             string username = frmLogin.loggedIn;
