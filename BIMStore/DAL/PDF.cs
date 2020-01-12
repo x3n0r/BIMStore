@@ -213,7 +213,7 @@ namespace BIMStore.DAL
 
                 //Anschreiben
                 String Anschreiben;
-                Anschreiben = "Sehr geehrte/r " + Anrede + " " + Nachname + ",||gerne übermittle ich Ihnen Ihre Rechnung Nr. " + Rechnungsnr + ".|Nachfolgend eine Detailauftellung der in Anspruch genommenen Leistungen:";
+                Anschreiben = "Sehr geehrte/r " + Anrede + " " + Nachname + ",||gerne übermittle ich Ihnen Ihre Rechnung Nr. " + Rechnungsnr + ".|Nachfolgend eine Detailaufstellung der in Anspruch genommenen Leistungen:";
                 Anschreiben = Anschreiben.Replace("|", Environment.NewLine);
                 e.Graphics.DrawString(Anschreiben, new Font("Courier", 10), new SolidBrush(Color.Black), new Point(87, 400));
             }
